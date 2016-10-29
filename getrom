@@ -1,0 +1,2 @@
+#!/bin/bash
+gtar -x "$1" -f Cold*.tar.xz
