@@ -1,0 +1,10 @@
+argdo! %s/C\\/CNO_/ge | write!
+argdo! %s/H\\/HAVE_/ge | write!
+argdo! %s/A\\/ALLOW_/ge | write!
+argdo! %s/c\\/cno_/ge | write!
+argdo! %s/\\s/_struct/ge | write!
+argdo! %s/\\f/_func/ge | write!
+argdo! %s/\\e/_enum/ge | write!
+argdo! %s/\\ty/_type/ge | write!
+argdo! %s/fwm(\([^)]*\))/#ifndef CNO_\1\r#if C\\H\\PREREQ\r#define CNO_\1(\.\.\.) \1(__VA_ARGS__)\r#else\r#define C\\\1(\.\.\.) C\\noop\r#endif \/\/C\\H\\PREREQ\r#endif \/\/CNO_\1/ge | write!
+quit!
