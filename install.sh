@@ -1,3 +1,6 @@
 #!/bin/bash
-sudo chmod 777 getrom searchrom
-sudo cp getrom searchrom /usr/local/bin
+chmod 777 getrom searchrom
+ln getrom /usr/local/bin/getrom
+ln searchrom /usr/local/bin/searchrom
+ln vimrc ~/.vimrc
+ln expansions ~/.expansions
