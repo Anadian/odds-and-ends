@@ -1,3 +1,8 @@
+argdo! %s/LLC\\/LowLevelConfig/ge | write!
+argdo! %s/DP\\/DreamPuff_/ge | write!
+argdo! %s/llcvm(\([^)]*\))/C\\sprintf(buffer, "\1=%d\\n", C\\LowLevelConfig.SECTION.\1);\r\t\tC\\fputs(buffer, configfile);/ge | write!
+argdo! %s/llcnm(\([^,]*\),\([^)]*\))/if(C\\strcmp(name,"\2") == 0) pconfig->\1.\2 = C\\atoi(value);/ge | write!
+argdo! %s/fwm(\([^)]*\))/#ifndef CNO_\1\r#if C\\H\\PREREQ\r#define CNO_\1(\.\.\.) \1(__VA_ARGS__)\r#else\r#define C\\\1(\.\.\.) C\\noop\r#endif \/\/C\\H\\PREREQ\r#endif \/\/CNO_\1/ge | write!
 argdo! %s/C\\/CNO_/ge | write!
 argdo! %s/H\\/HAVE_/ge | write!
 argdo! %s/A\\/ALLOW_/ge | write!
@@ -6,5 +11,5 @@ argdo! %s/\\s/_struct/ge | write!
 argdo! %s/\\f/_func/ge | write!
 argdo! %s/\\e/_enum/ge | write!
 argdo! %s/\\ty/_type/ge | write!
-argdo! %s/fwm(\([^)]*\))/#ifndef CNO_\1\r#if C\\H\\PREREQ\r#define CNO_\1(\.\.\.) \1(__VA_ARGS__)\r#else\r#define C\\\1(\.\.\.) C\\noop\r#endif \/\/C\\H\\PREREQ\r#endif \/\/CNO_\1/ge | write!
+argdo! %s/headertm(\([^)]*\))/#ifndef \1\r#define \1\r\r#ifdef __cplusplus\rextern "C"{\r#endif \/\/__cplusplus\r\r\r\r#ifdef __cplusplus\r}\r#endif \/\/__cplusplus\r\r#endif \/\/\1/ge | write!
 quit!
