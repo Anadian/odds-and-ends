@@ -1,3 +1,10 @@
+argdo! %g/.*\/\/p$/de | write!
+argdo! %s/DPAMC(\([^,]*\),\([^)]*\))/C\\strcpy(DP\\ActionPads[actionpad].actioncodes[DreamPuff_Action_\1].\2code, ""); DP\\ActionPads[actionpad].actioncodes[DreamPuff_Action_\1].\2enabled = 1;/ge | write!
+argdo! %s/DPAM(\([^)]*\)/DPAMC(\1,primary)\rDPAMC(\1,secondary)\rDPAMC(\1,tertiary/ge | write!
+"PredefinedMacroTemplate
+argdo! %s/^PMT_\([^(]*\)(\([^,]*\),\([^,]*\),\([^,]*\),\([^)]*\))/\/\/\0\r#if \5\r#define CNO_\1_\2 \3\r#define CNO_\1_NAME \4\r#define CNO_\1 CNO_\1_\2\r#endif \/\/\5/ge | write!
+"ConditionallyDefinedMacro
+argdo! %s/^\/\/CDM(\([^,]*\),\([^)]*\))/\0\r#if !defined(\1) \/\/p\r#define \1 \2 \/\/p\r#endif \/\/!defined(\1) \/\/p/ge | write!
 argdo! %s/LLC\\/LowLevelConfig/ge | write!
 argdo! %s/DP\\/DreamPuff_/ge | write!
 argdo! %s/llcvm(\([^)]*\))/C\\sprintf(buffer, "\1=%d\\n", C\\LowLevelConfig.SECTION.\1);\r\t\tC\\fputs(buffer, configfile);/ge | write!
@@ -11,5 +18,6 @@ argdo! %s/\\s/_struct/ge | write!
 argdo! %s/\\f/_func/ge | write!
 argdo! %s/\\e/_enum/ge | write!
 argdo! %s/\\ty/_type/ge | write!
+argdo! %s/ON\\/Option_Name_/ge | write!
 argdo! %s/headertm(\([^)]*\))/#ifndef \1\r#define \1\r\r#ifdef __cplusplus\rextern "C"{\r#endif \/\/__cplusplus\r\r\r\r#ifdef __cplusplus\r}\r#endif \/\/__cplusplus\r\r#endif \/\/\1/ge | write!
 quit!
