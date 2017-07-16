@@ -5,8 +5,9 @@ ln searchrom /usr/local/bin/searchrom;
 ln empty-dir /usr/local/bin/empty-dir;
 ln git-lazy /usr/local/bin/git-lazy;
 ln git-current /usr/local/bin/git-current;
-ln clang-search-paths /usr/local/bin/clang-search-paths
-ln clang-linker-info /usr/local/bin/clang-linker-info
-ln clang-predefined-macros /usr/local/bin/clang-predefined-macros
+ln clang-search-paths /usr/local/bin/clang-search-paths;
+ln clang-linker-info /usr/local/bin/clang-linker-info;
+ln clang-predefined-macros /usr/local/bin/clang-predefined-macros;
+ln profilerc ~/.profilerc
 ln vimrc ~/.vimrc
 ln expansions ~/.expansions
