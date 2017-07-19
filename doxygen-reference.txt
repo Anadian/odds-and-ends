@@ -1,0 +1,26 @@
+doxygen reference
+/** //Start of multi-line Doxygen comment.
+ *	@file	Describe a file. //@file include/cno_build.h or source/main.c
+ *	@def	Describe a #define. //@def #define CNO_printf(...) //printf(__VA_ARGS__);
+ *	@var	Describe a variable. //@var c\u8\ty ApplicationRunning
+ *	@fn		Describe a function. //c\u8\ty CNO_GetSomething(c\u8\ty *output, c\u8\ty input)
+ *	@struct Describes a struct.
+ *	@typedef	Describes a typedef.
+ *  @brief     Brief description.
+ *  @details   Detailed description.
+ *  @author    Author (can be specified multiple times).
+ *  @param		Describe function argument. eg @param dest [out] destination buffer or @param source [in] source buffer.
+ *	@return		Describe function return value.
+ *  @version   Code version.
+ *  @date      Created and last edited. //@date created 2017-07-19 or @date edited 2017-07-19
+ *  @pre       Prerequisites.
+ *	@post		Post Conditions.
+ *  @bug       Known bugs.
+ *	@note		A notice.
+ *  @warning   A warning.
+ *  @copyright License.
+ *	@see 		Refer to another piece of documentation.
+ *	@code{.extension}	Start a literal code block (for examples, et cetera).
+ *	@endcode	End a literal code block.
+ *	///Single line Doxygen comment.
+ */ //End of multi-line Doxygen comment.
