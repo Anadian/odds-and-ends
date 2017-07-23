@@ -4,23 +4,29 @@ doxygen reference
  *	@def	Describe a #define. //@def #define CNO_printf(...) //printf(__VA_ARGS__);
  *	@var	Describe a variable. //@var c\u8\ty ApplicationRunning
  *	@fn		Describe a function. //c\u8\ty CNO_GetSomething(c\u8\ty *output, c\u8\ty input)
- *	@struct Describes a struct.
+ *	@struct Describes a struct. //or @class @union @enum
+ *	@property	Describe a member of a struct.
  *	@typedef	Describes a typedef.
  *  @brief     Brief description.
  *  @details   Detailed description.
  *  @author    Author (can be specified multiple times).
  *  @param		Describe function argument. eg @param dest [out] destination buffer or @param source [in] source buffer.
- *	@return		Describe function return value.
+ *	@return		Describe function return value in general. //eg @return Boolean.
+ *	@retval		Describe a specific return value. //e.g. @retval 1 On success.
  *  @version   Code version.
  *  @date      Created and last edited. //@date created 2017-07-19 or @date edited 2017-07-19
  *  @pre       Prerequisites.
  *	@post		Post Conditions.
  *  @bug       Known bugs.
+ *	@todo		Documents potential, future features.
  *	@note		A notice.
  *  @warning   A warning.
+ *	@deprecated	Describe deprecated documentation.
+ *	@since		Documents since when a something's been available/
  *  @copyright License.
  *	@see 		Refer to another piece of documentation.
  *	@code{.extension}	Start a literal code block (for examples, et cetera).
  *	@endcode	End a literal code block.
+ *	@dir		Describe a directory.
  *	///Single line Doxygen comment.
- */ //End of multi-line Doxygen comment.
+*/ //End of multi-line Doxygen comment.
