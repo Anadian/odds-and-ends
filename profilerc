@@ -1,4 +1,4 @@
 export PAGER=less
 export EDITOR=vim
 alias gfosk='ls -GFosk'
-
+alias wget-plus='wget -nH -np -k -r'
