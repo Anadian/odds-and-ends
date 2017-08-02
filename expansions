@@ -1,4 +1,6 @@
 argdo! %g/.*\/\/p$/de | write!
+"javascript function macro
+argdo! %s/jsfunctionmacro(\([^,]*\),\([^)]*\))/function \1(\2){\r\tconsole.log("%s: ", arguments.callee.name, \2);\r\tvar _return = [0,null];\r\t\r\tconsole.log("%s returned: ", arguments.callee.name, _return);\r\treturn _return;\r}/ge | write!
 argdo! %s/DPAMC(\([^,]*\),\([^)]*\))/C\\strcpy(DP\\ActionPads[actionpad].actioncodes[DreamPuff_Action_\1].\2code, ""); DP\\ActionPads[actionpad].actioncodes[DreamPuff_Action_\1].\2enabled = 1;/ge | write!
 argdo! %s/DPAM(\([^)]*\)/DPAMC(\1,primary)\rDPAMC(\1,secondary)\rDPAMC(\1,tertiary/ge | write!
 "PredefinedMacroTemplate
