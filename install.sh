@@ -1,5 +1,5 @@
 #!/bin/bash
-chmod 777 getrom searchrom remove.pl empty-dir git-lazy git-current git-update clang-search-paths clang-linker-info clang-predefined-macros gcc-predefined-macros gcc-search-paths;
+chmod 777 getrom searchrom remove.pl empty-dir git-lazy git-current git-update clang-search-paths clang-linker-info clang-predefined-macros gcc-predefined-macros gcc-search-paths crontab;
 ln -f remove.pl /usr/local/bin/remove.pl;
 ln -f getrom /usr/local/bin/getrom;
 ln -f searchrom /usr/local/bin/searchrom;
