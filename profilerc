@@ -11,6 +11,6 @@ alias ssh-mbp='ssh -v cameron@192.168.2.12'
 alias ftp-mbp='sftp cameron@192.168.2.12'
 alias ssh-phone='ssh -v nemo@192.168.2.17'
 alias ftp-phone='sftp nemo@192.2.17'
-if [[$HOSTNAME == Anad-MBP*]]; then
+if [[ $HOSTNAME == Anad-MBP* ]]; then
 	sudo cron -x ext,load,pars,misc,proc
 fi
