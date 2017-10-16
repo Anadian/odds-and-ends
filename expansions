@@ -1,9 +1,9 @@
 argdo! %g/.*\/\/p$/de | write!
-"javascript function macro
+"javascript function macro (<FunctionName>,<Arguments>)
 argdo! %s/jsfunctionmacro(\([^,]*\),\([^)]*\))/function \1(\2){\r\tconsole.log("%s: ", arguments.callee.name, \2);\r\tvar _return = [0,null];\r\t\r\tconsole.log("%s returned: ", arguments.callee.name, _return);\r\treturn _return;\r}/ge | write!
-"file comment macro
+"file comment macro (<Filename>,<Description>)
 argdo! %s/filecommenttm(\([^,]*\),\([^)]*\))/\/**\r*\t@file \1\r*\t@brief \2\r*\t@author Anadian\r*\t@license MIT License:\rMITlicensetm(2017,Canosw)\r*\//ge | write!
-"MIT license macro
+"MIT license macro (<Organization>,<Year>)
 argdo! %s/MITlicensetm(\([^,]*\),\([^)]*\))/\tCopyright \1 \2\r\tPermission is hereby granted, free of charge, to any person obtaining a copy of this \rsoftware and associated documentation files (the "Software"), to deal in the Software \rwithout restriction, including without limitation the rights to use, copy, modify, \rmerge, publish, distribute, sublicense, and\/or sell copies of the Software, and to \rpermit persons to whom the Software is furnished to do so, subject to the following \rconditions:\r\tThe above copyright notice and this permission notice shall be included in all copies \ror substantial portions of the Software.\r\tTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \rINCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A \rPARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT \rHOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF \rCONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE \rOR THE USE OR OTHER DEALINGS IN THE SOFTWARE./ge | write!
 "gnu_make variable initialise and print
 argdo! %s/mkvar(\([^,]*\),\([^)]\))/ifeq ($(origin \1),undefined)\r\1=\2\rendif #($(origin \1),undefined)\r\rifeq ($(VERBOSE),1)\r$(info \1:$(\1))\rendif #($(VERBOSE),1)\r/ge | write!
