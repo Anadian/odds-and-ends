@@ -18,6 +18,7 @@ argdo! %s/DP\\/DreamPuff_/ge | write!
 argdo! %s/llcvm(\([^)]*\))/C\\sprintf(buffer, "\1=%d\\n", C\\LowLevelConfig.SECTION.\1);\r\t\tC\\fputs(buffer, configfile);/ge | write!
 argdo! %s/llcnm(\([^,]*\),\([^)]*\))/if(C\\strcmp(name,"\2") == 0) pconfig->\1.\2 = C\\atoi(value);/ge | write!
 argdo! %s/fwm(\([^)]*\))/#ifndef CNO_\1\r#if C\\H\\PREREQ\r#define CNO_\1(\.\.\.) \1(__VA_ARGS__)\r#else\r#define C\\\1(\.\.\.) C\\noop\r#endif \/\/C\\H\\PREREQ\r#endif \/\/CNO_\1/ge | write!
+argdo! %s/App\\/Application/ge | write!
 argdo! %s/C\\/CNO_/ge | write!
 argdo! %s/H\\/HAVE_/ge | write!
 argdo! %s/A\\/ALLOW_/ge | write!
