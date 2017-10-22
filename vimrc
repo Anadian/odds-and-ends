@@ -3,7 +3,7 @@ set tabstop=4
 set nomore
 set noerrorbells
 set ruler
-set cursorline
+set nocursorline
 set laststatus=2
 set autoindent
 set autoread
