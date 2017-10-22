@@ -6,6 +6,7 @@ set ruler
 set cursorline
 set laststatus=2
 set autoindent
+set autoread
 syntax enable
 command! Expand so ~/.expansions
 
