@@ -7,4 +7,5 @@ if git commit -m 'Cron.sh auto commit.' ; then
 	git push origin master;
 else
 	git pull origin master;
+	crontab -l > ./crontab;
 fi
