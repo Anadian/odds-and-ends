@@ -1,0 +1,2 @@
+so ~/.expansions
+quit!

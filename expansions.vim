@@ -31,4 +31,3 @@ argdo! %s/\\e/_enum/ge | write!
 argdo! %s/\\ty/_type/ge | write!
 argdo! %s/ON\\/Option_Name_/ge | write!
 argdo! %s/headertm(\([^)]*\))/#ifndef \1\r#define \1\r\r#ifdef __cplusplus\rextern "C"{\r#endif \/\/__cplusplus\r\r\r\r#ifdef __cplusplus\r}\r#endif \/\/__cplusplus\r\r#endif \/\/\1/ge | write!
-quit!

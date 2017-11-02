@@ -1,5 +1,19 @@
 #!/bin/bash
-chmod 777 getrom searchrom remove.pl empty-dir git-lazy git-current git-update clang-search-paths clang-linker-info clang-predefined-macros gcc-predefined-macros gcc-search-paths crontab full-path;
+chmod 777 getrom;
+chmod 777 searchrom;
+chmod 777 remove.pl; 
+chmod 777 empty-dir;
+chmod 777 git-lazy;
+chmod 777 git-current;
+chmod 777 git-update;
+chmod 777 clang-search-paths;
+chmod 777 clang-linker-info;
+chmod 777 clang-predefined-macros;
+chmod 777 gcc-predefined-macros;
+chmod 777 gcc-search-paths;
+chmod 777 full-path;
+chmod 777 crontab;
+#/usr/local/bin stuff
 ln -f remove.pl /usr/local/bin/remove.pl;
 ln -f getrom /usr/local/bin/getrom;
 ln -f searchrom /usr/local/bin/searchrom;
@@ -13,6 +27,8 @@ ln -f clang-predefined-macros /usr/local/bin/clang-predefined-macros;
 ln -f gcc-predefined-macros /usr/local/bin/gcc-predefined-macros;
 ln -f gcc-search-paths /usr/local/bin/gcc-search-paths;
 ln -f full-path /usr/local/bin/full-path;
+#home stuff
 ln -f profilerc ~/.profilerc;
 ln -f vimrc ~/.vimrc;
-ln -f expansions ~/.expansions;
+ln -f expansions.vim ~/.expansions;
+ln -f expand_and_exit.vim ~/.expand_and_exit;
