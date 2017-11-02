@@ -1,12 +1,20 @@
-let g:mapleader=","
-map <leader>k bn<cr>
-map <leader>j bp<cr>
-map <leader>h bfirst<cr>
-map <leader>l blast<cr>
+set nocompatible
+nnoremap ˚ :bp<cr>
+nnoremap ∆ :bn<cr>
+nnoremap ˙ :bfirst<cr>
+nnoremap ¬ :blast<cr>
+nnoremap ; :
+nnoremap <C>; ;
+nnoremap ∑ :write!<cr>
+command! SudoWrite w !sudo tee % > /dev/null
+nnoremap „ :SudoWrite<cr>
+set hid
 set so=4
 set encoding=utf8
 set shiftwidth=4
+set shiftround
 set tabstop=4
+set number
 set nomore
 set noerrorbells
 set ruler
