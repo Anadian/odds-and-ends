@@ -3,6 +3,10 @@ nnoremap ˚ :bp<cr>
 nnoremap ∆ :bn<cr>
 nnoremap ˙ :bfirst<cr>
 nnoremap ¬ :blast<cr>
+nnoremap ≤ <C-W>h
+nnoremap ≥ <C-W>l
+nnoremap ÷ <C-W>v
+nnoremap œ :close<cr>
 nnoremap ; :
 nnoremap <C>; ;
 nnoremap ∑ :write!<cr>
