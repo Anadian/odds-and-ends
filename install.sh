@@ -31,4 +31,4 @@ ln -f full-path /usr/local/bin/full-path;
 ln -f profilerc ~/.profilerc;
 ln -f vimrc ~/.vimrc;
 ln -f expansions.vim ~/.expansions;
-ln -f expand_and_exit.vim ~/.expand_and_exit;
+ln -f external_expand.vim ~/.external_expand;

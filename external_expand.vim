@@ -1,0 +1,2 @@
+argdo! Expand | write!
+quit!

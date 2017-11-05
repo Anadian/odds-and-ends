@@ -2,7 +2,9 @@ MAILTO=''
 PATH= /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
 @daily cd ~/dev/DreamPuff && ./cron.sh >> ~/cron.log 2>&1
 @daily cd ~/dev/OddsandEnds && ./cron.sh >> ~/cron.log 2>&1
+@daily cd ~/dev/logjs && ./cron.sh >> ~/cron.log 2>&1
 @daily cd ~/dev/www2 && ./cron.sh >> ~/cron.log 2>&1
 @daily cd ~/dev/Pacter && ./cron.sh >> ~/cron.log 2>&1
 @daily cd ~/dev/Documentation && ./cron.sh >> ~/cron.log 2>&1
 @daily cd ~/dev/PDcorrupter && ./cron.sh >> ~/cron.log 2>&1
+
