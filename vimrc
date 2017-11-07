@@ -1,8 +1,9 @@
 set nocompatible
-nnoremap ˚ :bp<cr>
-nnoremap ∆ :bn<cr>
-nnoremap ˙ :bfirst<cr>
+nnoremap “ :bp<cr>
+nnoremap ‘ :bn<cr>
+nnoremap ƒ :bfirst<cr>
 nnoremap ¬ :blast<cr>
+nnoremap « :ls<cr>
 nnoremap ≤ <C-W>h
 nnoremap ≥ <C-W>l
 nnoremap ÷ <C-W>v
@@ -12,6 +13,8 @@ nnoremap <C>; ;
 nnoremap ∑ :write!<cr>
 command! SudoWrite w !sudo tee % > /dev/null
 nnoremap „ :SudoWrite<cr>
+nnoremap ∆ gj
+nnoremap ˚ gk
 set hid
 set so=4
 set encoding=utf8
