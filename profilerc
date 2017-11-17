@@ -18,9 +18,9 @@ git config --global alias.unstage 'reset HEAD ---'
 git config --global alias.last 'log -l HEAD'
 git config --global alias.cg 'config --global'
 alias ssh-mbp='ssh -v cameron@192.168.2.12'
-alias ftp-mbp='sftp cameron@192.168.2.12'
+alias ftp-mbp='sftp -v cameron@192.168.2.12'
 alias ssh-phone='ssh -v nemo@192.168.2.17'
-alias ftp-phone='sftp nemo@192.168.2.17'
+alias ftp-phone='sftp -v nemo@192.168.2.17'
 if [[ $HOSTNAME == Anad-MBP* ]]; then
 	sudo cron -x ext,load,pars,misc,proc
 fi
