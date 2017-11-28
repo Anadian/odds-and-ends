@@ -1,2 +1,2 @@
-argdo! Expand | write!
+argdo! so ~/.expansions | write!
 quit!
