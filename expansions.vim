@@ -31,6 +31,9 @@
 "ConditionallyDefinedMacro
 %s/^\/\/CDM(\([^,]*\),\(.*\))$/\0\r#if !defined(\1) \/\/p\r#define \1 \2 \/\/p\r#endif \/\/!defined(\1) \/\/p/ge
 
+"Macro (<Condition>`<Name>`<Value>)
+%s/^macro(\([^`]*\)`\([^`]*\)`\(.*\))$/\/* \0 *\/\r#if \1\r#define \2 \3\r#endif \/* \1 *\//ge
+
 %s/LLC\\/LowLevelConfig/ge
 %s/DP\\/DreamPuff_/ge
 %s/llcvm(\([^)]*\))/C\\sprintf(buffer, "\1=%d\\n", C\\LowLevelConfig.SECTION.\1);\r\t\tC\\fputs(buffer, configfile);/ge
