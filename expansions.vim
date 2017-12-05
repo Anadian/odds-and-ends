@@ -23,7 +23,7 @@
 %s/DPAM(\([^)]*\)/DPAMC(\1,primary)\rDPAMC(\1,secondary)\rDPAMC(\1,tertiary/ge
 
 "C Safe Include(<Expression>,<IncludeStatement>)
-%s/^CSI(\([^,]*\),\([^)]*\))/\/* \0 *\/\r#if \1\r#include <\2>\r#endif \/* \1 *\/\r/ge
+%s/^CSI(\([^,]*\),\([^)]*\))/\/* \0 *\/\r#if \1\r#include \2\r#endif \/* \1 *\//ge
 
 "PredefinedMacroTemplate
 %s/^PMT_\([^(]*\)(\([^,]*\),\([^,]*\),\([^,]*\),\([^)]*\))/\/\/\0\r#if \5\r#define CNO_\1_\2 \3\r#define CNO_\1_NAME \4\r#define CNO_\1 CNO_\1_\2\r#endif \/\/\5/ge
