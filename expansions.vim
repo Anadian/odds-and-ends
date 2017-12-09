@@ -46,6 +46,7 @@
 %s/C\\/CNO_/ge
 %s/H\\/HAVE_/ge
 %s/A\\/ALLOW_/ge
+%s/CS\\/CNO_Setting_/ge
 %s/c\\/cno_/ge
 %s/\\s/_struct/ge
 %s/\\f/_func/ge
