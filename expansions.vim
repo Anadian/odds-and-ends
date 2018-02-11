@@ -12,6 +12,12 @@
 "javascript if-option: fill-item
 %s/jsoptfill(\(\w\+\))/if(Options.\1 != null) item.\1 = Options.\1;/ge
 
+"javascript function-argument check (argument)
+%s/jsargcheck(\(\w\+\))/if(\1 == undefined){\r\t Log.log('fina', null, Path.basename(__filename), 'Fina_Purchase_Add', 'error','[Function argument: \\'\1\\'  not specified.]');\r\t_return[0] = -2;\r\t_return[1] += '[Function argument: \\'\1\\' not specified.]';\r}/ge
+
+"javascript if-variable-undefined fill (variable,value)
+%s/jsifundef(\(\w\+\),\([^)]\+\))/if(\1 == undefined){\r\t\1 = \2;\r}/ge
+
 "file comment macro (<Filename>,<Description>)
 %s/filecommenttm(\([^,]*\),\([^)]*\))/\/**\r*\t@file \1\r*\t@brief \2\r*\t@author Anadian\r*\t@license MIT License:\rMITlicensetm(2017,Canosw)\r*\//ge
 
