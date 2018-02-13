@@ -13,6 +13,8 @@ nnoremap <C>; ;
 nnoremap ∑ :write!<cr>
 command! SudoWrite w !sudo tee % > /dev/null
 nnoremap „ :SudoWrite<cr>
+command! Expand so ~/.expansions
+nnoremap ® :Expand<cr>
 nnoremap ∆ gj
 nnoremap ˚ gk
 set hid
@@ -30,5 +32,4 @@ set laststatus=2
 set autoindent
 set autoread
 syntax enable
-command! Expand so ~/.expansions
 
