@@ -1,5 +1,11 @@
 %g/.*\/\/p$/de
 
+"C-JSON Object set string property (<Object>,<Property>)
+%s/cjsonsetstring(\([a-z0-9_]*\),\([a-z_]*\))/JSON_Status set_\2_return = json_object_set_string(\1_object, "\2", (*environment).\1.\2);/ge
+
+"c safe xdg getenv with default macro (<VariableName>,<PropertyName>,<DefaultValue>)
+%s/^xdg(\([A-Z_]*\),\([a-z_]*\),\([^)]*\))/if(getenv("\1") != NULL) C\\String_Copy(\&((*environment_xdg).\2), getenv("\1"));\relse C\\String_Copy(\&((*environment_xdg).\2), "\3");/ge
+
 "javascript function macro (<FunctionName>,<Arguments>)
 %s/jsfunctionmacro(\([^,]*\),\([^)]*\))/function \1(\2){\r\tconsole.log("%s: ", arguments.callee.name, \2);\r\tvar _return = [0,null];\r\t\r\tconsole.log("%s returned: ", arguments.callee.name, _return);\r\treturn _return;\r}/ge
 
