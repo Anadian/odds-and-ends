@@ -72,5 +72,5 @@
 %s/\\e/_enum/ge
 %s/\\ty/_type/ge
 %s/ON\\/Option_Name_/ge
-%s/headertm(\([^)]*\))/#ifndef \1\r#define \1\r\r#ifdef __cplusplus\rextern "C"{\r#endif \/\/__cplusplus\r\r\r\r#ifdef __cplusplus\r}\r#endif \/\/__cplusplus\r\r#endif \/\/\1/ge
+%s/headertm(\([^)]*\))/#if !defined(\1)\r#define \1\r\r#if defined(__cplusplus)\rextern "C"{\r#endif \/* defined(__cplusplus) *\/\r\r\r\r#if defined(__cplusplus)\r}\r#endif \/* defined(__cplusplus) *\/\r\r#endif \/* !defined(\1) *\//ge
 write!
