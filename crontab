@@ -8,4 +8,5 @@ PATH= /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
 @daily cd ~/dev/Pacter && ./cron.sh >> ~/cron.log 2>&1
 @daily cd ~/dev/Documentation && ./cron.sh >> ~/cron.log 2>&1
 @daily cd ~/dev/PDcorrupter && ./cron.sh >> ~/cron.log 2>&1
+@hourly cd ~/dev/24ho11 && ./cron.sh >> ~/cron.log 2>&1
 
