@@ -17,6 +17,9 @@ command! Expand so ~/.expansions
 nnoremap ® :Expand<cr>
 nnoremap ∆ gj
 nnoremap ˚ gk
+nnoremap ˇ cetrue<esc>
+nnoremap Ï cefalse<esc>
+nnoremap ˜ cenull<esc>
 set hid
 set so=4
 set encoding=utf8
