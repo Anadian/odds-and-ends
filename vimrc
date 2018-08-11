@@ -20,6 +20,7 @@ nnoremap ˚ gk
 nnoremap ˇ cetrue<esc>
 nnoremap Ï cefalse<esc>
 nnoremap ˜ cenull<esc>
+inoremap <c-u> <esc>
 set hid
 set so=4
 set encoding=utf8
