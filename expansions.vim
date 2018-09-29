@@ -73,6 +73,9 @@
 %s/\\ty/_type/ge
 %s/ON\\/Option_Name_/ge
 
+" Expand f<BACKSLASH>r to function_return
+%s/f\\r/function_return/ge
+
 "C Header file template (Name)
 %s/headertm(\([^)]*\))/#if !defined(\1)\r#define \1\r\r#if defined(__cplusplus)\rextern "C"{\r#endif \/* defined(__cplusplus) *\/\r\r\r\r#if defined(__cplusplus)\r}\r#endif \/* defined(__cplusplus) *\/\r\r#endif \/* !defined(\1) *\//ge
 write!
