@@ -28,7 +28,7 @@
 %s/jsifundef(\(\w\+\),\([^)]\+\))/if(\1 == undefined){\r\t\1 = \2;\r}/ge
 
 "file comment macro (<Filename>,<Description>)
-%s/filecommenttm(\([^,]*\),\([^)]*\))/\/**\r*\t@file \1\r*\t@brief \2\r*\t@author Anadian\r*\t@license MIT License:\rMITlicensetm(2017,Canosw)\r*\//ge
+%s/filecommenttm(\([^,]*\),\([^)]*\))/\/**\r*\t@file \1\r*\t@brief \2\r*\t@author Anadian\r*\t@license MIT License:\rMITlicensetm(2018,Canosw)\r*\//ge
 
 
 "MIT license macro (<Year>,<Organization>)
@@ -72,5 +72,10 @@
 %s/\\e/_enum/ge
 %s/\\ty/_type/ge
 %s/ON\\/Option_Name_/ge
+
+" Expand f<BACKSLASH>r to function_return
+%s/f\\r/function_return/ge
+
+"C Header file template (Name)
 %s/headertm(\([^)]*\))/#if !defined(\1)\r#define \1\r\r#if defined(__cplusplus)\rextern "C"{\r#endif \/* defined(__cplusplus) *\/\r\r\r\r#if defined(__cplusplus)\r}\r#endif \/* defined(__cplusplus) *\/\r\r#endif \/* !defined(\1) *\//ge
 write!
