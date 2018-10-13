@@ -2,7 +2,8 @@
 
 mkdir $1;
 cd $1;
-mkdir -p node/npm;
+mkdir -p node/npm/node_modules;
+ln -s node/npm/node_modules node_modules;
 mkdir -p scripts;
 mkdir -p source;
 mkdir -p Resources;

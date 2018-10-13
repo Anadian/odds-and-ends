@@ -12,6 +12,9 @@
 "javascript debug log
 %s/jsdebuglog(\(.*\))$/Log.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'debug',\1);/ge
 
+"javascript error log
+%s/jserrorlog(\(.*\))$/Log.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'error',\1);/ge
+
 "javascript log debug macro (<ModuleName>,<FunctionName>,<Message>)
 %s/jsdebugtm(\([^,]*\),\([^,]*\),\(.*\));/Log.log(process.argv0,\1,Path.basename(__filename),\2,'debug',\3);/ge
 
