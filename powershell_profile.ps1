@@ -4,3 +4,4 @@ Function choco-plus{ choco $args -dy }
 New-Alias -Name 'which' -Value 'where.exe' -Description 'Makes where work correctly.'
 #Function arg-test{ $args[0]; $args[1]; $args; $args[2..($args.Length - 1)];}
 Function ln{ New-Item -ItemType HardLink -Path $args[0] -Value $args[1] $args[2..($args.Length - 1)] }
+Function diff-plus{ Compare-Object -ReferenceObject $(Get-Content $args[0]) -DifferenceObject $(Get-Content $args[1]) -CaseSensitive -IncludeEqual }
