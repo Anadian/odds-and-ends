@@ -3,7 +3,11 @@
 mkdir $1;
 cd $1;
 mkdir -p node/npm/node_modules;
+cd node/npm;
+npm install;
+cd ../..;
 ln -s node/npm/node_modules node_modules;
+ln node/npm/package-lock.json package-lock.json;
 mkdir -p scripts;
 mkdir -p source;
 mkdir -p Resources;
