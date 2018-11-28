@@ -26,7 +26,7 @@ set ffs=unix,dos,mac
 " Automatically tab to the current indentation when creating a new line.
 set autoindent
 set smartindent     " indent when
-" Make make auto indentation 4 spaces in width.
+" Make auto indentation 4 spaces in width.
 set shiftwidth=4
 " Make tabs 4 spaces in width.
 set tabstop=4
@@ -62,7 +62,7 @@ set showcmd
 " Allow backspace over any thing while in insert mode.
 set backspace=indent,eol,start
 " Enable proper mouse support.
-set mouse=a
+"set mouse=a
 " Enable proper clipboard support.
 set clipboard=unnamed
 " Show invisible characters.
@@ -105,7 +105,7 @@ nnoremap ≤ <C-W>h
 nnoremap ≥ <C-W>l
 " Opt+/ Split into vertical windows.
 nnoremap ÷ <C-W>v
-" Close current window.
+" Opt+m Close current window.
 nnoremap µ :close<cr>
 " Makes semi-colon work like a colon.
 nnoremap ; :
@@ -121,10 +121,10 @@ nnoremap „ :SudoWrite<cr>
 command! Expand so ~/.expansions
 " Opt+r Execute 'Expand' command.
 nnoremap ® :Expand<cr>
-" Move up one window-width-dependent line like a gui text editor.
-nnoremap ∆ gj
-" Move down one window-width-dependent line like a gui text editor.
+" Opt+k Move up one window-width-dependent line like a gui text editor.
 nnoremap ˚ gk
+" Opt+j Move down one window-width-dependent line like a gui text editor.
+nnoremap ∆ gj
 " Opt+Shift+t Replace the word under the cursor with 'true'; useful for JSON files.
 nnoremap ˇ cetrue<esc>
 " Opt+Shift+f Replace the word under the cursor with 'false'; useful for JSON files.
