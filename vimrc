@@ -88,7 +88,22 @@ try
 catch
 endtry
 
+" #Commands
+" Add command 'SudoWrite' to force writing of the current buffer, overiding permissions.
+command! SudoWrite w !sudo tee % > /dev/null
+" Add command 'Expand' to source '%s/<search>/<replace>/ge' style macros from ~/.expansions
+command! Expand so ~/.expansions
+
+" #Universal remaps
+" Disable Control+u while in insert mode to prevent accidental content loss.
+inoremap <c-u> <esc>
+" Allow multiple indentation/deindentation in visual mode.
+vnoremap < <gv
+vnoremap > >gv
+
+
 " #Mappings
+if(has("macunix"))
 " Opt+[ Previous Buffer
 nnoremap “ :bp<cr>
 " Opt+] Next Buffer
@@ -113,12 +128,8 @@ nnoremap ; :
 nnoremap <C>; ;
 " Opt+w Write buffer to file.
 nnoremap ∑ :write!<cr>
-" Add command 'SudoWrite' to force writing of the current buffer, overiding permissions.
-command! SudoWrite w !sudo tee % > /dev/null
 " Opt+Shift+W Execute 'SudoWrite' command.
 nnoremap „ :SudoWrite<cr>
-" Add command 'Expand' to source '%s/<search>/<replace>/ge' style macros from ~/.expansions
-command! Expand so ~/.expansions
 " Opt+r Execute 'Expand' command.
 nnoremap ® :Expand<cr>
 " Opt+k Move up one window-width-dependent line like a gui text editor.
@@ -131,11 +142,46 @@ nnoremap ˇ cetrue<esc>
 nnoremap Ï cefalse<esc>
 " Opt+Shift+n Replace the word under the cursor with 'null'; useful for JSON files.
 nnoremap ˜ cenull<esc>
-" Disable Control+u while in insert mode to prevent accidental content loss.
-inoremap <c-u> <esc>
-" Allow multiple indentation/deindentation in visual mode.
-vnoremap < <gv
-vnoremap > >gv
+elseif(has("linux"))
+" Alt+[ Previous Buffer
+nnoremap <A-[> :bp<cr>
+" Alt+] Next Buffer
+nnoremap <A-]> :bn<cr>
+" Alt+f First Buffer
+nnoremap ƒ :bfirst<cr>
+" Alt+l Last Buffer
+nnoremap ¬ :blast<cr>
+" Alt+\ List Buffers
+nnoremap « :ls<cr>
+" Alt+, Move to the left window.
+nnoremap ≤ <C-W>h
+" Alt+. Move to the right window.
+nnoremap ≥ <C-W>l
+" Alt+/ Split into vertical windows.
+nnoremap ÷ <C-W>v
+" Alt+m Close current window.
+nnoremap µ :close<cr>
+" Makes semi-colon work like a colon.
+nnoremap ; :
+" Ensures that Control+; still results in a normal semi-colon.
+nnoremap <C>; ;
+" Alt+w Write buffer to file.
+nnoremap ∑ :write!<cr>
+" Alt+Shift+W Execute 'SudoWrite' command.
+nnoremap „ :SudoWrite<cr>
+" Alt+r Execute 'Expand' command.
+nnoremap ® :Expand<cr>
+" Alt+k Move up one window-width-dependent line like a gui text editor.
+nnoremap ˚ gk
+" Alt+j Move down one window-width-dependent line like a gui text editor.
+nnoremap ∆ gj
+" Alt+Shift+t Replace the word under the cursor with 'true'; useful for JSON files.
+nnoremap ˇ cetrue<esc>
+" Alt+Shift+f Replace the word under the cursor with 'false'; useful for JSON files.
+nnoremap Ï cefalse<esc>
+" Alt+Shift+n Replace the word under the cursor with 'null'; useful for JSON files.
+nnoremap ˜ cenull<esc>
 
+endif
 " #Helpful syntax notes
 " <nop> No operation
