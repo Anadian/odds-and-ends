@@ -142,45 +142,49 @@ nnoremap ˇ cetrue<esc>
 nnoremap Ï cefalse<esc>
 " Opt+Shift+n Replace the word under the cursor with 'null'; useful for JSON files.
 nnoremap ˜ cenull<esc>
-elseif(has("linux"))
+elseif(has("unix") && !has("gui_running"))
+"	let s:sh_command = 'ps -o ' . shellescape('command=') . ' -p $(ps -o ' . shellescape('ppid=') . ' -p $$)'
+"	echomsg s:sh_command
+"	let s:terminal_emulator_output = system( "s:sh_command" );
+"	echomsg s:terminal_emulator_output
 " Alt+[ Previous Buffer
-nnoremap <A-[> :bp<cr>
+nnoremap <esc>[ :bp<cr>
 " Alt+] Next Buffer
-nnoremap <A-]> :bn<cr>
+nnoremap <esc>] :bn<cr>
 " Alt+f First Buffer
-nnoremap ƒ :bfirst<cr>
+nnoremap <esc>f :bfirst<cr>
 " Alt+l Last Buffer
-nnoremap ¬ :blast<cr>
+nnoremap <esc>l :blast<cr>
 " Alt+\ List Buffers
-nnoremap « :ls<cr>
+nnoremap <esc>\ :ls<cr>
 " Alt+, Move to the left window.
-nnoremap ≤ <C-W>h
+nnoremap <esc>, <C-W>h
 " Alt+. Move to the right window.
-nnoremap ≥ <C-W>l
+nnoremap <esc>. <C-W>l
 " Alt+/ Split into vertical windows.
-nnoremap ÷ <C-W>v
+nnoremap <esc>/ <C-W>v
 " Alt+m Close current window.
-nnoremap µ :close<cr>
+nnoremap <esc>m :close<cr>
 " Makes semi-colon work like a colon.
 nnoremap ; :
 " Ensures that Control+; still results in a normal semi-colon.
 nnoremap <C>; ;
 " Alt+w Write buffer to file.
-nnoremap ∑ :write!<cr>
+nnoremap <esc>w :write!<cr>
 " Alt+Shift+W Execute 'SudoWrite' command.
-nnoremap „ :SudoWrite<cr>
+nnoremap <esc>W :SudoWrite<cr>
 " Alt+r Execute 'Expand' command.
-nnoremap ® :Expand<cr>
+nnoremap <esc>r :Expand<cr>
 " Alt+k Move up one window-width-dependent line like a gui text editor.
-nnoremap ˚ gk
+nnoremap <esc>k gk
 " Alt+j Move down one window-width-dependent line like a gui text editor.
-nnoremap ∆ gj
+nnoremap <esc>j gj
 " Alt+Shift+t Replace the word under the cursor with 'true'; useful for JSON files.
-nnoremap ˇ cetrue<esc>
+nnoremap <esc>T cetrue<esc>
 " Alt+Shift+f Replace the word under the cursor with 'false'; useful for JSON files.
-nnoremap Ï cefalse<esc>
+nnoremap <esc>F cefalse<esc>
 " Alt+Shift+n Replace the word under the cursor with 'null'; useful for JSON files.
-nnoremap ˜ cenull<esc>
+nnoremap <esc>N cenull<esc>
 
 endif
 " #Helpful syntax notes

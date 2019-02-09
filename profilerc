@@ -6,6 +6,7 @@ alias ls-plus='ls -GAFosh'
 alias date-iso-utc='date -ju +%Y-%m-%dT%H:%M:%S%z'
 alias date-iso='date -j +%Y-%m-%dT%H:%M:%S%z'
 alias wget-plus='wget -nH -np -k -r'
+alias terminal-emulator='ps -o "command=" -p $(ps -o "ppid=" -p $$)'
 #alias gtb='git branch'
 #alias gtc='git checkout'
 #alias gtm='git merge'
@@ -22,10 +23,18 @@ git config --global alias.pow 'pull origin wip'
 git config --global alias.unstage 'reset HEAD ---'
 git config --global alias.last 'log -l HEAD'
 git config --global alias.cg 'config --global'
-alias ssh-mbp='ssh -v cameron@192.168.2.11'
-alias ftp-mbp='sftp -v cameron@192.168.2.11'
-alias ssh-phone='ssh -v nemo@192.168.2.16'
-alias ftp-phone='sftp -v nemo@192.168.2.16'
+alias ssh-mbp='ssh -v cameron@192.168.2.15'
+alias ftp-mbp='sftp -v cameron@192.168.2.15'
+#alias ssh-phone='ssh -v nemo@192.168.2.16'
+#alias ftp-phone='sftp -v nemo@192.168.2.16'
+alias ssh-ubuntu='ssh -v cameron@192.168.2.26'
+alias ftp-ubuntu='sftp -v cameron@192.168.2.26'
+if [[ $(uname -o) == 'GNU/Linux' ]]; then
+	set meta-flag on;
+	set input-meta on;
+	set convert-meta on;
+	set output-meta on;
+fi
 #if [[ $HOSTNAME == Anad-MBP* ]]; then
 #	sudo cron -x ext,load,pars,misc,proc
 #fi
