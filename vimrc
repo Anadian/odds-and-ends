@@ -103,7 +103,7 @@ vnoremap > >gv
 " Makes semi-colon work like a colon.
 nnoremap ; :
 " Ensures that Control+; still results in a normal semi-colon.
-nnoremap <C>; ;
+nnoremap <C-;> ;
 
 " #Mappings
 if(has('osxdarwinlr'))
@@ -125,10 +125,6 @@ nnoremap ≥ <C-W>l
 nnoremap ÷ <C-W>v
 " Opt+m Close current window.
 nnoremap µ :close<cr>
-" Makes semi-colon work like a colon.
-nnoremap ; :
-" Ensures that Control+; still results in a normal semi-colon.
-nnoremap <C>; ;
 " Opt+w Write buffer to file.
 nnoremap ∑ :write!<cr>
 " Opt+Shift+W Execute 'SudoWrite' command.
@@ -148,7 +144,7 @@ nnoremap ˜ cenull<esc>
 elseif(has("unix") && !has("gui_running"))
 "	let s:sh_command = 'ps -o ' . shellescape('command=') . ' -p $(ps -o ' . shellescape('ppid=') . ' -p $$)'
 "	echomsg s:sh_command
-"	let s:terminal_emulator_output = system( "s:sh_command" );
+"	let s:terminal_emulator_output = system( s:sh_command );
 "	echomsg s:terminal_emulator_output
 " Alt+[ Previous Buffer
 nnoremap <esc>[ :bp<cr>
@@ -184,8 +180,8 @@ nnoremap <esc>T cetrue<esc>
 nnoremap <esc>F cefalse<esc>
 " Alt+Shift+n Replace the word under the cursor with 'null'; useful for JSON files.
 nnoremap <esc>N cenull<esc>
-
-else "Probably Mac system-Vim
+else
+"Probably Mac system-Vim
 " Opt+[ Previous Buffer
 nnoremap “ :bp<cr>
 " Opt+] Next Buffer
