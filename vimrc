@@ -100,10 +100,13 @@ inoremap <c-u> <esc>
 " Allow multiple indentation/deindentation in visual mode.
 vnoremap < <gv
 vnoremap > >gv
-
+" Makes semi-colon work like a colon.
+nnoremap ; :
+" Ensures that Control+; still results in a normal semi-colon.
+nnoremap <C>; ;
 
 " #Mappings
-if(has("macunix"))
+if(has('osxdarwinlr'))
 " Opt+[ Previous Buffer
 nnoremap “ :bp<cr>
 " Opt+] Next Buffer
@@ -165,10 +168,6 @@ nnoremap <esc>. <C-W>l
 nnoremap <esc>/ <C-W>v
 " Alt+m Close current window.
 nnoremap <esc>m :close<cr>
-" Makes semi-colon work like a colon.
-nnoremap ; :
-" Ensures that Control+; still results in a normal semi-colon.
-nnoremap <C>; ;
 " Alt+w Write buffer to file.
 nnoremap <esc>w :write!<cr>
 " Alt+Shift+W Execute 'SudoWrite' command.
@@ -186,6 +185,41 @@ nnoremap <esc>F cefalse<esc>
 " Alt+Shift+n Replace the word under the cursor with 'null'; useful for JSON files.
 nnoremap <esc>N cenull<esc>
 
+else "Probably Mac system-Vim
+" Opt+[ Previous Buffer
+nnoremap “ :bp<cr>
+" Opt+] Next Buffer
+nnoremap ‘ :bn<cr>
+" Opt+f First Buffer
+nnoremap ƒ :bfirst<cr>
+" Opt+l Last Buffer
+nnoremap ¬ :blast<cr>
+" Opt+\ List Buffers
+nnoremap « :ls<cr>
+" Opt+, Move to the left window.
+nnoremap ≤ <C-W>h
+" Opt+. Move to the right window.
+nnoremap ≥ <C-W>l
+" Opt+/ Split into vertical windows.
+nnoremap ÷ <C-W>v
+" Opt+m Close current window.
+nnoremap µ :close<cr>
+" Opt+w Write buffer to file.
+nnoremap ∑ :write!<cr>
+" Opt+Shift+W Execute 'SudoWrite' command.
+nnoremap „ :SudoWrite<cr>
+" Opt+r Execute 'Expand' command.
+nnoremap ® :Expand<cr>
+" Opt+k Move up one window-width-dependent line like a gui text editor.
+nnoremap ˚ gk
+" Opt+j Move down one window-width-dependent line like a gui text editor.
+nnoremap ∆ gj
+" Opt+Shift+t Replace the word under the cursor with 'true'; useful for JSON files.
+nnoremap ˇ cetrue<esc>
+" Opt+Shift+f Replace the word under the cursor with 'false'; useful for JSON files.
+nnoremap Ï cefalse<esc>
+" Opt+Shift+n Replace the word under the cursor with 'null'; useful for JSON files.
+nnoremap ˜ cenull<esc>
 endif
 " #Helpful syntax notes
 " <nop> No operation
