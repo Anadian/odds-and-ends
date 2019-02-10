@@ -106,7 +106,7 @@ nnoremap ; :
 nnoremap <C-;> ;
 
 " #Mappings
-if(has('osxdarwinlr'))
+if(has('macunix'))
 " Opt+[ Previous Buffer
 nnoremap “ :bp<cr>
 " Opt+] Next Buffer

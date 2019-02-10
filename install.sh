@@ -34,3 +34,5 @@ ln -f profilerc ~/.profilerc;
 ln -f vimrc ~/.vimrc;
 ln -f expansions.vim ~/.expansions;
 ln -f external_expand.vim ~/.external_expand;
+mkdir -p ~/.config/nvim
+ln -f nvim_init.vim ~/.config/nvim/init.vim;
