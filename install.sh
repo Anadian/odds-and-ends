@@ -13,6 +13,8 @@ chmod 777 gcc-predefined-macros;
 chmod 777 gcc-search-paths;
 chmod 777 full-path;
 chmod 777 create-node-project-directory.sh;
+chmod 777 new-github-repository.sh;
+chmod 777 create-c-project-directories.sh;
 chmod 777 crontab;
 #/usr/local/bin stuff
 ln -f remove.pl /usr/local/bin/remove.pl;
@@ -28,7 +30,9 @@ ln -f clang-predefined-macros /usr/local/bin/clang-predefined-macros;
 ln -f gcc-predefined-macros /usr/local/bin/gcc-predefined-macros;
 ln -f gcc-search-paths /usr/local/bin/gcc-search-paths;
 ln -f full-path /usr/local/bin/full-path;
-ln -f create-node-project-directory.sh /usr/local/bin/create-node-project-directory
+ln -f create-node-project-directory.sh /usr/local/bin/create-node-project-directory;
+ln -f new-github-repository.sh /usr/local/bin/new-github-repository;
+ln -f create-c-project-directories.sh /usr/local/bin/create-c-project-directories;
 #home stuff
 ln -f profilerc ~/.profilerc;
 ln -f vimrc ~/.vimrc;
