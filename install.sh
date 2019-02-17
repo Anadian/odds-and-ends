@@ -15,6 +15,7 @@ chmod 777 full-path;
 chmod 777 create-node-project-directory.sh;
 chmod 777 new-github-repository.sh;
 chmod 777 create-c-project-directories.sh;
+chmod 777 create-node-project-directories.sh;
 chmod 777 crontab;
 #/usr/local/bin stuff
 ln -f remove.pl /usr/local/bin/remove.pl;
@@ -33,6 +34,7 @@ ln -f full-path /usr/local/bin/full-path;
 ln -f create-node-project-directory.sh /usr/local/bin/create-node-project-directory;
 ln -f new-github-repository.sh /usr/local/bin/new-github-repository;
 ln -f create-c-project-directories.sh /usr/local/bin/create-c-project-directories;
+ln -f create-node-project-directories.sh /usr/local/bin/create-node-project-directories;
 #home stuff
 ln -f profilerc ~/.profilerc;
 ln -f vimrc ~/.vimrc;
