@@ -12,6 +12,9 @@
 "javascript debug log
 %s/jsdebuglog(\(.*\))$/Log.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'debug',\1);/ge
 
+"javascript warn log
+%s/jswarnlog(\(.*\))$/Log.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'warn',\1);/ge
+
 "javascript error log
 %s/jserrorlog(\(.*\))$/Log.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'error',\1);/ge
 
