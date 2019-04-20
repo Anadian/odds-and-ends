@@ -65,6 +65,8 @@ set backspace=indent,eol,start
 "set mouse=a
 " Enable proper clipboard support.
 set clipboard=unnamed
+" Removing the annoying auto-comment on lines following a commented line.
+set formatoptions -= r formatoptions -= o
 " Show invisible characters.
 "set list
 " Make keyboard fast?
@@ -265,3 +267,4 @@ nnoremap ˜ cenull<esc>
 endif
 " #Helpful syntax notes
 " <nop> No operation
+" Use :scriptnames to see all scripts that have been sourced in the order they were sourced
