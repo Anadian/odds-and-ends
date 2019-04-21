@@ -66,7 +66,8 @@ set backspace=indent,eol,start
 " Enable proper clipboard support.
 set clipboard=unnamed
 " Removing the annoying auto-comment on lines following a commented line.
-set formatoptions -= r formatoptions -= o
+" "fo format options
+autocmd! BufEnter * set fo-=r fo-=o
 " Show invisible characters.
 "set list
 " Make keyboard fast?
