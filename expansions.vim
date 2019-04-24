@@ -33,6 +33,9 @@
 "javascript if-variable-undefined fill (variable,value)
 %s/jsifundef(\(\w\+\),\([^)]\+\))/if(\1 == undefined){\r\t\1 = \2;\r}/ge
 
+" if input_object.node.npm.<field> != null else ...
+%s/pnn(\(\w\+\))$/if( input_object.node.npm.\1 != null ){\r\tpackage_json_object.\1 = input_object.node.npm.\1;\r} else if( input_object.\1 != null ){\r\tpackage_json_object.\1 = input_object.\1;\r} else{\r\tconsole.error('Error: can\\'t derive a value for the "\1" field from input object: %o', input_object);\r}/ge
+
 "file comment macro (<Filename>,<Description>)
 %s/filecommenttm(\([^,]*\),\([^)]*\))/\/**\r*\t@file \1\r*\t@brief \2\r*\t@author Anadian\r*\t@license MIT License:\rMITlicensetm(2018,Canosw)\r*\//ge
 
