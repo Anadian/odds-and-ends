@@ -64,7 +64,7 @@ set backspace=indent,eol,start
 " Enable proper mouse support.
 "set mouse=a
 " Enable proper clipboard support.
-set clipboard=unnamed
+"set clipboard=unnamed
 " Removing the annoying auto-comment on lines following a commented line.
 " "fo format options
 autocmd! BufEnter * set fo-=r fo-=o
