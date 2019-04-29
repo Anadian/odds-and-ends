@@ -156,6 +156,8 @@ nnoremap <C-H> :Hexmode<cr>
 
 " #Mappings
 if(has('macunix'))
+" Opt+; Normal Semicolon Function
+nnoremap … ;
 " Opt+[ Previous Buffer
 nnoremap “ :bp<cr>
 " Opt+] Next Buffer
