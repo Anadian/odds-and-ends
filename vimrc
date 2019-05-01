@@ -271,3 +271,4 @@ endif
 " #Helpful syntax notes
 " <nop> No operation
 " Use :scriptnames to see all scripts that have been sourced in the order they were sourced
+" Control+l forces redrawing of the screen.
