@@ -36,6 +36,9 @@
 " if input_object.node.npm.<field> != null else ...
 %s/pnn(\(\w\+\))$/if( input_object.node.npm.\1 != null ){\r\tpackage_json_object.\1 = input_object.node.npm.\1;\r} else if( input_object.\1 != null ){\r\tpackage_json_object.\1 = input_object.\1;\r} else{\r\tconsole.error('Error: can\\'t derive a value for the "\1" field from input object: %o', input_object);\r}/ge
 
+" if this.<key> is <type> assign json_object.<key>
+%s/kit(\(\w\+\),\(\w\+\))$/if( typeof(this.\1) === '\2' ){\r\t\t\tjson_object.\1 = this.\1;\r\t\t}/ge
+
 "file comment macro (<Filename>,<Description>)
 %s/filecommenttm(\([^,]*\),\([^)]*\))/\/**\r*\t@file \1\r*\t@brief \2\r*\t@author Anadian\r*\t@license MIT License:\rMITlicensetm(2018,Canosw)\r*\//ge
 

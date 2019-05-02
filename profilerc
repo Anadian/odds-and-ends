@@ -7,6 +7,8 @@ alias ls-plus='ls -GAFosh'
 alias date-iso-utc='date -ju +%Y-%m-%dT%H:%M:%S%z'
 alias date-iso='date -j +%Y-%m-%dT%H:%M:%S%z'
 alias wget-plus='wget -nH -np -k -r'
+alias vi='nvim';
+alias vim='nvim';
 alias terminal-emulator='ps -o "command=" -p $(ps -o "ppid=" -p $$)'
 #alias gtb='git branch'
 #alias gtc='git checkout'
