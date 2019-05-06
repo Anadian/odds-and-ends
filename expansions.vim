@@ -39,6 +39,9 @@
 " if this.<key> is <type> assign json_object.<key>
 %s/kit(\(\w\+\),\(\w\+\))$/if( typeof(this.\1) === '\2' ){\r\t\t\tjson_object.\1 = this.\1;\r\t\t}/ge
 
+"return property not correct type (<property>,<type>)
+%s/rer(\(\w\+\),\(\w\+\))$/_return = [-X,'Error: property "\1" is not a \2.'];\r/ge
+
 "file comment macro (<Filename>,<Description>)
 %s/filecommenttm(\([^,]*\),\([^)]*\))/\/**\r*\t@file \1\r*\t@brief \2\r*\t@author Anadian\r*\t@license MIT License:\rMITlicensetm(2018,Canosw)\r*\//ge
 
