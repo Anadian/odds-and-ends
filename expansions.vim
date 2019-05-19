@@ -10,13 +10,22 @@
 %s/jsfunctionmacro(\([^,]*\),\([^)]*\))/function \1(\2){\r\tconsole.log("%s: ", arguments.callee.name, \2);\r\tvar _return = [0,null];\r\t\r\tconsole.log("%s returned: ", arguments.callee.name, _return);\r\treturn _return;\r}/ge
 
 "javascript debug log
-%s/jsdebuglog(\(.*\))$/ApplicationLog.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'debug',\1);/ge
+"%s/jsdebuglog(\(.*\))$/ApplicationLog.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'debug',\1);/ge
+%s/jsdebuglog(\(.*\))$/Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: \1});
+
+"javascript info log
+%s/jsinfolog(\(.*\))$/Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: \1});
+
+"javascript note log
+%s/jsnotelog(\(.*\))$/Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'note', message: \1});
 
 "javascript warn log
-%s/jswarnlog(\(.*\))$/ApplicationLog.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'warn',\1);/ge
+"%s/jswarnlog(\(.*\))$/ApplicationLog.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'warn',\1);/ge
+%s/jswarnlog(\(.*\))$/Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'warn', message: \1});
 
 "javascript error log
-%s/jserrorlog(\(.*\))$/ApplicationLog.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'error',\1);/ge
+"%s/jserrorlog(\(.*\))$/ApplicationLog.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'error',\1);/ge
+%s/jserrorlog(\(.*\))$/Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: \1});
 
 "javascript log debug macro (<ModuleName>,<FunctionName>,<Message>)
 %s/jsdebugtm(\([^,]*\),\([^,]*\),\(.*\));/Log.log(process.argv0,\1,Path.basename(__filename),\2,'debug',\3);/ge
