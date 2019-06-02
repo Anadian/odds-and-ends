@@ -30,8 +30,8 @@ alias ssh-mbp='ssh -v cameron@192.168.2.15'
 alias ftp-mbp='sftp -v cameron@192.168.2.15'
 alias ssh-phone='ssh -v nemo@192.168.2.25'
 alias ftp-phone='sftp -v nemo@192.168.2.25'
-alias ssh-ubuntu='ssh -v cameron@192.168.2.26'
-alias ftp-ubuntu='sftp -v cameron@192.168.2.26'
+alias ssh-ubuntu='ssh -v cameron@192.168.0.177'
+alias ftp-ubuntu='sftp -v cameron@192.168.0.177'
 if [[ $(uname -o) == 'GNU/Linux' ]]; then
 	set meta-flag on;
 	set input-meta on;
