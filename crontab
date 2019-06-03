@@ -1,12 +1,14 @@
 MAILTO=''
 PATH= /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
 @daily cd ~/dev/CNO && ./cron.sh >> ~/cron.log 2>&1
-@daily cd ~/dev/DreamPuff && ./cron.sh >> ~/cron.log 2>&1
+#@daily cd ~/dev/DreamPuff && ./cron.sh >> ~/cron.log 2>&1
 @daily cd ~/dev/OddsandEnds && ./cron.sh >> ~/cron.log 2>&1
-@daily cd ~/dev/logjs && ./cron.sh >> ~/cron.log 2>&1
+#@daily cd ~/dev/logjs && ./cron.sh >> ~/cron.log 2>&1
 @daily cd ~/dev/www2 && ./cron.sh >> ~/cron.log 2>&1
 @daily cd ~/dev/Pacter && ./cron.sh >> ~/cron.log 2>&1
 @daily cd ~/dev/Documentation && ./cron.sh >> ~/cron.log 2>&1
 @daily cd ~/dev/PDcorrupter && ./cron.sh >> ~/cron.log 2>&1
-@hourly cd ~/dev/24ho11 && ./cron.sh >> ~/cron.log 2>&1
-
+#@hourly cd ~/dev/24ho11 && ./cron.sh >> ~/cron.log 2>&1
+@daily cd ~/dev/jsonic-parse && ./cron.sh >> ~/cron.log 2>&1
+@daily cd ~/dev/function-factory && ./cron.sh >> ~/cron.log 2>&1
+@daily cd ~/dev/youtube-video-info && ./cron.sh >> ~/cron.log 2>&1
