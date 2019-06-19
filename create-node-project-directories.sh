@@ -8,7 +8,11 @@ else
 	npm install;
 	cd ../..;
 	ln -s node/npm/node_modules node_modules;
-	ln node/npm/package-lock.json package-lock.json;
+	ln -s node/npm/package-lock.json package-lock.json;
+	npm init;
+	cd node/npm;
+	ln -s ../../package.json package.json;
+	cd ../..;
 	mkdir -p scripts;
 	mkdir -p source;
 	mkdir -p Resources;
