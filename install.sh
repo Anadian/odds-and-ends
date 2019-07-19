@@ -1,4 +1,5 @@
 #!/bin/bash
+#Pseudo-command permissions
 chmod 777 getrom;
 chmod 777 searchrom;
 chmod 777 remove.pl; 
@@ -16,7 +17,11 @@ chmod 777 create-node-project-directory.sh;
 chmod 777 new-github-repository.sh;
 chmod 777 create-c-project-directories.sh;
 chmod 777 create-node-project-directories.sh;
+#config permissions
 chmod 777 crontab;
+chmod 777 profilerc;
+chmod 777 vimrc;
+chmod 777 nvim_init.vim;
 chmod 777 openSUSE_15_1_init.sh;
 #/usr/local/bin stuff
 ln -f remove.pl /usr/local/bin/remove.pl;
