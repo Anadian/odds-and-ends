@@ -17,6 +17,7 @@ chmod 777 new-github-repository.sh;
 chmod 777 create-c-project-directories.sh;
 chmod 777 create-node-project-directories.sh;
 chmod 777 crontab;
+chmod 777 openSUSE_15_1_init.sh;
 #/usr/local/bin stuff
 ln -f remove.pl /usr/local/bin/remove.pl;
 ln -f getrom /usr/local/bin/getrom;

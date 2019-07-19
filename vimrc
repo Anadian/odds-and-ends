@@ -198,6 +198,40 @@ elseif(has("unix") && !has("gui_running"))
 "	let s:terminal_emulator_output = system( s:sh_command );
 "	echomsg s:terminal_emulator_output
 " Alt+[ Previous Buffer
+nnoremap <M-[> :bp<cr>
+" Alt+] Next Buffer
+nnoremap <M-]> :bn<cr>
+" Alt+f First Buffer
+nnoremap <M-f> :bfirst<cr>
+" Alt+l Last Buffer
+nnoremap <M-l> :blast<cr>
+" Alt+\ List Buffers
+nnoremap <M-\> :ls<cr>
+" Alt+, Move to the left window.
+nnoremap <M-,> <C-W>h
+" Alt+. Move to the right window.
+nnoremap <M-.> <C-W>l
+" Alt+/ Split into vertical windows.
+nnoremap <M-/> <C-W>v
+" Alt+m Close current window.
+nnoremap <M-m> :close<cr>
+" Alt+w Write buffer to file.
+nnoremap <M-w> :write!<cr>
+" Alt+Shift+W Execute 'SudoWrite' command.
+nnoremap <M-W> :SudoWrite<cr>
+" Alt+r Execute 'Expand' command.
+nnoremap <M-r> :Expand<cr>
+" Alt+k Move up one window-width-dependent line like a gui text editor.
+nnoremap <M-k> gk
+" Alt+j Move down one window-width-dependent line like a gui text editor.
+nnoremap <M-j> gj
+" Alt+Shift+t Replace the word under the cursor with 'true'; useful for JSON files.
+nnoremap <M-T> cetrue<esc>
+" Alt+Shift+f Replace the word under the cursor with 'false'; useful for JSON files.
+nnoremap <M-F> cefalse<esc>
+" Alt+Shift+n Replace the word under the cursor with 'null'; useful for JSON files.
+nnoremap <M-N> cenull<esc>
+" Alt+[ Previous Buffer
 nnoremap <esc>[ :bp<cr>
 " Alt+] Next Buffer
 nnoremap <esc>] :bn<cr>
