@@ -231,6 +231,7 @@ nnoremap <M-T> cetrue<esc>
 nnoremap <M-F> cefalse<esc>
 " Alt+Shift+n Replace the word under the cursor with 'null'; useful for JSON files.
 nnoremap <M-N> cenull<esc>
+"Gnome Terminal
 " Alt+[ Previous Buffer
 nnoremap <esc>[ :bp<cr>
 " Alt+] Next Buffer
@@ -265,6 +266,41 @@ nnoremap <esc>T cetrue<esc>
 nnoremap <esc>F cefalse<esc>
 " Alt+Shift+n Replace the word under the cursor with 'null'; useful for JSON files.
 nnoremap <esc>N cenull<esc>
+"xterm unicode mode
+" Alt+[ Previous Buffer
+nnoremap Û :bp<cr>
+" Alt+] Next Buffer
+nnoremap Ý :bn<cr>
+" Alt+f First Buffer
+nnoremap æ :bfirst<cr>
+" Alt+l Last Buffer
+nnoremap ì :blast<cr>
+" Alt+\ List Buffers
+nnoremap Ü :ls<cr>
+" Alt+, Move to the left window.
+nnoremap ¬ <C-W>h
+" Alt+. Move to the right window.
+nnoremap ® <C-W>l
+" Alt+/ Split into vertical windows.
+nnoremap ¯ <C-W>v
+" Alt+m Close current window.
+nnoremap í :close<cr>
+" Alt+w Write buffer to file.
+nnoremap ÷ :write!<cr>
+" Alt+Shift+W Execute 'SudoWrite' command.
+nnoremap × :SudoWrite<cr>
+" Alt+r Execute 'Expand' command.
+nnoremap ò :Expand<cr>
+" Alt+k Move up one window-width-dependent line like a gui text editor.
+nnoremap ë gk
+" Alt+j Move down one window-width-dependent line like a gui text editor.
+nnoremap ê gj
+" Alt+Shift+t Replace the word under the cursor with 'true'; useful for JSON files.
+nnoremap Ô cetrue<esc>
+" Alt+Shift+f Replace the word under the cursor with 'false'; useful for JSON files.
+nnoremap Æ cefalse<esc>
+" Alt+Shift+n Replace the word under the cursor with 'null'; useful for JSON files.
+nnoremap Î cenull<esc>
 else
 "Probably Mac system-Vim
 " Opt+[ Previous Buffer
