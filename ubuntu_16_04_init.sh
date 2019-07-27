@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt-get update
-sudo apt-get install -y man-db openssl firefox clang make git tar vim less perl curl wget xz-utils exfat-utils p7zip-full gparted gimp audacity vlc ssh gnupg2 gnupg-doc
+sudo apt-get install -y man-db openssl firefox clang make git tar vim less perl curl wget xz-utils exfat-utils hfsutils hfsplus hfsprogs p7zip-full gparted gimp audacity vlc ssh gnupg2 gnupg-doc gksu artha
 #Docker CE
 sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -15,9 +15,11 @@ sudo sh -c "echo deb https://deb.nodesource.com/node_9.x xenial main > /etc/apt/
 #Dropbox
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ xenial main" >> /etc/apt/sources.list.d/dropbox.list'
+#Nautilus open-as-administrator
+sudo add-apt-repository ppa:noobslab/apps
 #kdiction
 #sudo snap refresh
 #sudo snap install kdictionary
 
 apt-get update
-apt-get install docker-ce docker-ce-cli containerd.io boot-repair neovim nodejs dropbox
+apt-get install docker-ce docker-ce-cli containerd.io boot-repair neovim nodejs dropbox open-as-administrator
