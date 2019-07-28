@@ -21,5 +21,7 @@ sudo add-apt-repository ppa:noobslab/apps
 #sudo snap refresh
 #sudo snap install kdictionary
 
-apt-get update
-apt-get install docker-ce docker-ce-cli containerd.io boot-repair neovim nodejs dropbox open-as-administrator
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io boot-repair neovim nodejs dropbox open-as-administrator
+
+sudo ./install.sh
