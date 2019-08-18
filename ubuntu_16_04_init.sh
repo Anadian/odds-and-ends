@@ -17,11 +17,13 @@ sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ xenial main" >> /etc/apt/sources.list.d/dropbox.list'
 #Nautilus open-as-administrator
 sudo add-apt-repository ppa:noobslab/apps
-#kdiction
+#Flatpak
+sudo add-apt-repository ppa:alexlarsson/flatpak
+#Mailspring
 sudo snap refresh
 sudo snap install go mailspring
 
 sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io boot-repair neovim nodejs dropbox open-as-administrator
+sudo apt-get install docker-ce docker-ce-cli containerd.io boot-repair neovim nodejs dropbox open-as-administrator flatpak
 
 sudo ./install.sh
