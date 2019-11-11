@@ -42,9 +42,9 @@ ln -f new-github-repository.sh /usr/local/bin/new-github-repository;
 ln -f create-c-project-directories.sh /usr/local/bin/create-c-project-directories;
 ln -f create-node-project-directories.sh /usr/local/bin/create-node-project-directories;
 #home stuff
-ln -f profilerc ~/.profilerc;
-ln -f vimrc ~/.vimrc;
-ln -f expansions.vim ~/.expansions;
-ln -f external_expand.vim ~/.external_expand;
+ln -f scripts/bash/profilerc.sh ~/.profilerc;
+ln -f config/vimrc ~/.vimrc;
+ln -f scripts/vim/expansions.vim ~/.expansions;
+ln -f scripts/vim/external_expand.vim ~/.external_expand;
 mkdir -p ~/.config/nvim
-ln -f nvim_init.vim ~/.config/nvim/init.vim;
+ln -f config/nvim_init.vim ~/.config/nvim/init.vim;
