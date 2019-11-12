@@ -4,6 +4,7 @@ export PAGER=less
 export VISUAL=nvim
 export EDITOR=nvim
 export GOPATH=/home/cameron/dev/go
+export GITHUB_USERNAME='Anadian';
 alias ls-plus='ls -GAFosh'
 alias date-iso-utc='date -ju +%Y-%m-%dT%H:%M:%S%z'
 alias date-iso='date -j +%Y-%m-%dT%H:%M:%S%z'
