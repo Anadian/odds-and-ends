@@ -35,6 +35,8 @@ chmod 777 'scripts/bash/git-lazy.sh';
 ln -f 'scripts/bash/git-lazy.sh' /usr/local/bin/git-lazy;
 chmod 777 'scripts/bash/git-update.sh';
 ln -f 'scripts/bash/git-update.sh' /usr/local/bin/git-update;
+chmod 777 'scripts/bash/gnome-screen-idle-delay.sh';
+ln -f 'scripts/bash/gnome-screen-idle-delay.sh' /usr/local/bin/gnome-screen-idle-delay;
 chmod 777 'scripts/bash/gnome-screen-idle-delay-10.sh';
 ln -f 'scripts/bash/gnome-screen-idle-delay-10.sh' /usr/local/bin/gnome-screen-idle-delay-10;
 chmod 777 'scripts/bash/gnome-screen-idle-delay-600.sh';
