@@ -32,12 +32,12 @@ if (( $# >= 2 )); then
 # Usage
 # API
 # Contributing
-Changes are tracked in [Documents/CHANGES.md](./CHANGES.md).
+Changes are tracked in [CHANGES.md](CHANGES.md).
 # License
 $repo_license ©$(date -u +%Y) $GITHUB_USERNAME
-SEE LICENSE IN [Documents/LICENSE](./LICENSE)" > $repo_name/Documents/README.md;
-			echo "$repo_license ©$(date -u +%Y) $GITHUB_USERNAME" > $repo_name/Documents/LICENSE;
-			echo "$(date -u +%Y-%m-%d) v0.0.0 First commit." > $repo_name/Documents/CHANGES.md;
+SEE LICENSE IN [LICENSE](LICENSE)" > $repo_name/README.md;
+			echo "$repo_license ©$(date -u +%Y) $GITHUB_USERNAME" > $repo_name/LICENSE;
+			echo "$(date -u +%Y-%m-%d) v0.0.0 First commit." > $repo_name/CHANGES.md;
 			echo '#!/bin/bash
 scripts_directory=$(dirname $0);
 echo "scripts_directory: $scripts_directory";
@@ -47,8 +47,8 @@ cd $project_directory;
 ln Documents/README.md README.md;
 ln Documents/LICENSE LICENSE;
 ln Documents/CHANGES.md CHANGES.md;' > $repo_name/scripts/hardlinks.sh;
-			chmod 777 $repo_name/scripts/hardlinks.sh;
-			./$repo_name/scripts/hardlinks.sh;
+			#chmod 777 $repo_name/scripts/hardlinks.sh;
+			#./$repo_name/scripts/hardlinks.sh;
 			cd $repo_name;
 			git init;
 			git remote add origin "https://github.com/$GITHUB_USERNAME/$repo_name";

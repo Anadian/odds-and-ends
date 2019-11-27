@@ -24,4 +24,5 @@ MAILTO=''
 PATH= /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
 @daily cd ~/dev/OddsandEnds && crontab -l > config/crontab
 @daily cd ~/dev/OddsandEnds && ./cron.sh >> ~/cron.log 2>&1
+@daily cd ~/dev/function-factory && ./cron.sh >> ~/cron.log 2>&1
 @daily cd ~/StrategyWiki/Sentient && ./cron.sh >> ~/cron.log 2>&1
