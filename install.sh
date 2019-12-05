@@ -41,6 +41,8 @@ chmod 777 'scripts/bash/gnome-screen-idle-delay-10.sh';
 ln -f 'scripts/bash/gnome-screen-idle-delay-10.sh' /usr/local/bin/gnome-screen-idle-delay-10;
 chmod 777 'scripts/bash/gnome-screen-idle-delay-600.sh';
 ln -f 'scripts/bash/gnome-screen-idle-delay-600.sh' /usr/local/bin/gnome-screen-idle-delay-600;
+chmod 777 'scripts/bash/init-go-project.sh';
+ln -f 'scripts/bash/init-go-project.sh' /usr/local/bin/init-go-project;
 chmod 777 'scripts/bash/mac-idle-time.sh';
 ln -f 'scripts/bash/mac-idle-time.sh' /usr/local/bin/mac-idle-time;
 chmod 777 'scripts/bash/profilerc.sh';
