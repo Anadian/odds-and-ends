@@ -76,8 +76,27 @@ load.json{
 		"master.rdm",
 		"patch.rdp",
 		"mod.rdp"
-	}
+	]
 }
+
+File Format:
+RD<M|P><VarInt version string>{<JSON metadata>}{RDX}<binary archive>
+
+<JSON metadata> format schema
+{
+	"title": "RDX JSON metadata JSON-Schema",
+	"description": "A JSON-Schema defining the layout of the JSON metadata section of a RDM or RDP file.",
+	"type": "object",
+	"properties": {
+		"name": {
+			"type": "string"
+		},
+		"version": {
+			"type": "string"
+		},
+		"description": {
+			"type": "string"
+		},
 
 
 
