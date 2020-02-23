@@ -85,17 +85,29 @@ autocmd! BufEnter * set fo-=r fo-=o
 " Enable syntax highlighting.
 syntax enable
 " Enable persistent undo.
-try
-    set undodir=~/.vim_runtime/undodir
-    set undofile
-catch
-endtry
+if(has('win32') == 1)
+	try
+		set undodir=~\.vim_runtime\undodir
+		set undofile
+	catch
+	endtry
+else
+	try
+		set undodir=~/.vim_runtime/undodir
+		set undofile
+	catch
+	endtry
+endif
 
 " #Commands
 " Add command 'SudoWrite' to force writing of the current buffer, overiding permissions.
 command! SudoWrite w !sudo tee % > /dev/null
 " Add command 'Expand' to source '%s/<search>/<replace>/ge' style macros from ~/.expansions
-command! Expand so ~/.expansions
+if( has('win32') == 1 )
+	command! Expand so ~\.expansions
+else
+	command! Expand so ~/.expansions
+endif
 
 "From Vim Wiki: adds a :Hexmode command to toggle hex editing.
 " ex command for toggling hex mode - define mapping if desired
@@ -192,7 +204,7 @@ nnoremap ˇ cetrue<esc>
 nnoremap Ï cefalse<esc>
 " Opt+Shift+n Replace the word under the cursor with 'null'; useful for JSON files.
 nnoremap ˜ cenull<esc>
-elseif(has("unix") && !has("gui_running"))
+elseif( (has("unix") && !has("gui_running")) || (has('win32')) )
 "	let s:sh_command = 'ps -o ' . shellescape('command=') . ' -p $(ps -o ' . shellescape('ppid=') . ' -p $$)'
 "	echomsg s:sh_command
 "	let s:terminal_emulator_output = system( s:sh_command );
