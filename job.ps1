@@ -1,3 +1,5 @@
 #powershell
 # job.ps1
-Get-Date
+echo 'OddsandEnds\job.ps1' >> ~\scheduled_jobs.log;
+Get-Date -Format 'FileDateTimeUniversal' >> ~\scheduled_jobs.log;
+
