@@ -12,6 +12,9 @@
 "Util\fmt -> Utility.format
 %s/Util\\fmt/Utility.format/ge
 
+"go\msi -> map[string]interface{}
+%s/go\\msi/map[string]interface{}/ge
+
 "javascript debug log
 "%s/jsdebuglog(\(.*\))$/ApplicationLog.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'debug',\1);/ge
 %s/jsdebuglog(\(.*\))$/Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: \1});/ge
@@ -90,6 +93,12 @@
 
 "Function wrapper macro
 %s/fwm(\([^)]*\))/#ifndef CNO_\1\r#if C\\H\\PREREQ\r#define CNO_\1(\.\.\.) \1(__VA_ARGS__)\r#else\r#define C\\\1(\.\.\.) C\\noop\r#endif \/\/C\\H\\PREREQ\r#endif \/\/CNO_\1/ge
+
+"e\r -> error_report
+%s/e\\r/error_report/ge
+
+"E\R -> ErrorReport
+%s/E\\R/ErrorReport/ge
 
 %s/App\\/Application/ge
 %s/C\\/CNO_/ge
