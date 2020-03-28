@@ -74,6 +74,12 @@
 
 %s/DPAM(\([^)]*\)/DPAMC(\1,primary)\rDPAMC(\1,secondary)\rDPAMC(\1,tertiary/ge
 
+"goSUCC creates a success printf message for go testing files. (<message>,<additional printf terms>)
+%s/goSUCC(\([^,]*\),\([^)]*\))/log.Printf("Success: \1\\n",\2);/ge
+
+"goFAIL creates a failure printf message for go testing files. (<message>,<additional printf terms>)
+%s/goFAIL(\([^,]*\),\([^)]*\))/log.Printf("Failure: \1\\n",\2);/ge
+
 "C Safe Include(<Expression>,<IncludeStatement>)
 %s/^CSI(\([^,]*\),\([^)]*\))/\/* \0 *\/\r#if \1\r#include \2\r#endif \/* \1 *\//ge
 
