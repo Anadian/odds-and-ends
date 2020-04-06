@@ -13,6 +13,7 @@ if [[ $GITHUB_USERNAME != '' ]]; then
 	"language": "go",
 	"go": [
 		"1.13",
+		"1.14",
 		"master"
 	],
 	"before_install": [
