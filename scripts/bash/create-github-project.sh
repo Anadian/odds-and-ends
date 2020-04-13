@@ -13,11 +13,11 @@ if (( $# >= 2 )); then
 	fi
 	if (( ${#repo_description} < 120 )); then
 		if [[ $GITHUB_USERNAME != '' ]]; then
-			mkdir -p "$repo_name/Documents" "$repo_name/scripts"
+			mkdir -p "$repo_name/Documents" "$repo_name/scripts" "$repo_name/source";
 			echo "# $repo_name
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 [![Semantic Versioning 2.0.0](https://img.shields.io/badge/semver-2.0.0-brightgreen?style=flat-square)](https://semver.org/spec/v2.0.0.html)
-[![License](https://img.shields.io/github/license/$GITHUB_USERNAME/$repo_name)](https://github.com/$GITHUB_USERNAME/$repo_name/Documents/LICENSE)
+[![License](https://img.shields.io/github/license/$GITHUB_USERNAME/$repo_name)](https://github.com/$GITHUB_USERNAME/$repo_name/LICENSE)
 
 > $repo_description
 # Table of Contents
