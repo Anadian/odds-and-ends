@@ -26,7 +26,7 @@ cd $project_directory;
 
 json2yaml --preserve-key-order ci/travis.json .travis.yml;' > scripts/update-travis.sh;
 	npm init;
-	npm install --save-dev ava nyc coveralls;
+	npm install --save-dev nyc coveralls;
 	chmod 777 scripts/update-travis.sh;
 	./scripts/update-travis.sh;
 else

@@ -17,6 +17,7 @@ if (( $# >= 2 )); then
 			echo "# $repo_name
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 [![Semantic Versioning 2.0.0](https://img.shields.io/badge/semver-2.0.0-brightgreen?style=flat-square)](https://semver.org/spec/v2.0.0.html)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square)](https://conventionalcommits.org)
 [![License](https://img.shields.io/github/license/$GITHUB_USERNAME/$repo_name)](https://github.com/$GITHUB_USERNAME/$repo_name/LICENSE)
 
 > $repo_description
@@ -35,7 +36,11 @@ if (( $# >= 2 )); then
 Changes are tracked in [CHANGES.md](CHANGES.md).
 # License
 $repo_license ©$(date -u +%Y) $GITHUB_USERNAME
-SEE LICENSE IN [LICENSE](LICENSE)" > $repo_name/README.md;
+
+SEE LICENSE IN [LICENSE](LICENSE)
+
+[![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)\
+This project's documentation is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)." > $repo_name/README.md;
 			echo "$repo_license ©$(date -u +%Y) $GITHUB_USERNAME" > $repo_name/LICENSE;
 			echo "$(date -u +%Y-%m-%d) v0.0.0 First commit." > $repo_name/CHANGES.md;
 			echo '#!/bin/bash
