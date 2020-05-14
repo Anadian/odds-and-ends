@@ -9,6 +9,9 @@
 "javascript function macro (<FunctionName>,<Arguments>)
 %s/jsfunctionmacro(\([^,]*\),\([^)]*\))/function \1(\2){\r\tconsole.log("%s: ", arguments.callee.name, \2);\r\tvar _return = [0,null];\r\t\r\tconsole.log("%s returned: ", arguments.callee.name, _return);\r\treturn _return;\r}/ge
 
+"javascript try/catch function macro
+%s/^\(\t*\)js\\tc(\([A-Za-z0-9_.]\+\)(\([^)]*\)))$/\1try{\r\1\t\2(\3);\r\1} catch(error){\r\1\treturn_error = new Error(`\2 threw an error: \${error}`);\r\1\tthrow return_error;\r\1}/ge
+
 "Util\fmt -> Utility.format
 %s/Util\\fmt/Utility.format/ge
 
