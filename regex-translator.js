@@ -1589,7 +1589,7 @@ function getMediaryStringFromRegexString( regex_string, input_flavour_string = '
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `received: ${arguments_array}`});
 	//Variables
 	var to_object = {};
-	var to_values = {};
+	var to_values_array = {};
 	var intermediary_string = regex_string;
 	//Parametre checks
 	if( typeof(regex_string) !== 'string' ){
@@ -1605,10 +1605,12 @@ function getMediaryStringFromRegexString( regex_string, input_flavour_string = '
 
 	//Function
 	to_object = MetaRegexObject[input_flavour_string];
-	to_values = to_object.values();
-	for( var i = 0; i < to_values.length; i++ ){
-		intermediary_string = intermediary_string.replace( to_values.to.search_regex, to_values.to.replace_string );
-		console.log(intermediary_string);
+	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `to_object: ${to_object}`});
+	to_values_array = Array.from(Object.values(to_object));
+	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `to_values_array: ${to_values_array}`});
+	for( var i = 0; i < to_values_array.length; i++ ){
+		intermediary_string = intermediary_string.replace( to_values_array[i].to.search_regex, to_values_array[i].to.replace_string );
+		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `intermediary string at ${i}: ${intermediary_string}`});
 	}
 
 	//Return
@@ -1639,8 +1641,11 @@ function getMediaryStringFromRegexString_Test(){
 	const FUNCTION_NAME = 'getMediaryStringFromRegexString_Test';
 	//Variables
 	var _return = false;
-	var return_error = null;
+	var successful_input = '^t*h+i?s{5,10} (is) [a] \\$+?i*?\\{m\\}\\[p\\].e\\^ \\| <pcre> (r|R)egex\\.\\+\\*\\?=$';
+	var temp_output = '';
 	//Tests
+	temp_output = getMediaryStringFromRegexString( successful_input, 'pcre' );
+	
 	//Return
 	return _return;
 }
@@ -1756,6 +1761,7 @@ async function main_Async_Test(){
 	var return_error = null;
 	//Tests
 	try{
+		getMediaryStringFromRegexString_Test();
 	} catch(error){
 		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'crit', message: `Test failed with error: '${error}'`});
 		process.exitCode = 4;

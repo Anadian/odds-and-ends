@@ -95,34 +95,34 @@
 "Macro (<Condition>`<Name>`<Value>)
 %s/^macro(\([^`]*\)`\([^`]*\)`\(.*\))$/\/* \0 *\/\r#if \1\r#define \2 \3\r#endif \/* \1 *\//ge
 
-%s/LLC\\/LowLevelConfig/ge
-%s/DP\\/DreamPuff_/ge
-%s/llcvm(\([^)]*\))/C\\sprintf(buffer, "\1=%d\\n", C\\LowLevelConfig.SECTION.\1);\r\t\tC\\fputs(buffer, configfile);/ge
-%s/llcnm(\([^,]*\),\([^)]*\))/if(C\\strcmp(name,"\2") == 0) pconfig->\1.\2 = C\\atoi(value);/ge
+"%s/LLC\\/LowLevelConfig/ge
+"%s/DP\\/DreamPuff_/ge
+"%s/llcvm(\([^)]*\))/C\\sprintf(buffer, "\1=%d\\n", C\\LowLevelConfig.SECTION.\1);\r\t\tC\\fputs(buffer, configfile);/ge
+"%s/llcnm(\([^,]*\),\([^)]*\))/if(C\\strcmp(name,"\2") == 0) pconfig->\1.\2 = C\\atoi(value);/ge
 
 "Function wrapper macro
-%s/fwm(\([^)]*\))/#ifndef CNO_\1\r#if C\\H\\PREREQ\r#define CNO_\1(\.\.\.) \1(__VA_ARGS__)\r#else\r#define C\\\1(\.\.\.) C\\noop\r#endif \/\/C\\H\\PREREQ\r#endif \/\/CNO_\1/ge
+"%s/fwm(\([^)]*\))/#ifndef CNO_\1\r#if C\\H\\PREREQ\r#define CNO_\1(\.\.\.) \1(__VA_ARGS__)\r#else\r#define C\\\1(\.\.\.) C\\noop\r#endif \/\/C\\H\\PREREQ\r#endif \/\/CNO_\1/ge
 
 "e\r -> error_report
-%s/e\\r/error_report/ge
+"%s/e\\r/error_report/ge
 
 "E\R -> ErrorReport
-%s/E\\R/ErrorReport/ge
+"%s/E\\R/ErrorReport/ge
 
 %s/App\\/Application/ge
-%s/C\\/CNO_/ge
-%s/H\\/HAVE_/ge
-%s/A\\/ALLOW_/ge
-%s/CS\\/CNO_Setting_/ge
-%s/c\\/cno_/ge
-%s/\\s/_struct/ge
-%s/\\f/_func/ge
-%s/\\e/_enum/ge
-%s/\\ty/_type/ge
-%s/ON\\/Option_Name_/ge
+"%s/C\\/CNO_/ge
+"%s/H\\/HAVE_/ge
+"%s/A\\/ALLOW_/ge
+"%s/CS\\/CNO_Setting_/ge
+"%s/c\\/cno_/ge
+"%s/\\s/_struct/ge
+"%s/\\f/_func/ge
+"%s/\\e/_enum/ge
+"%s/\\ty/_type/ge
+"%s/ON\\/Option_Name_/ge
 
 " Expand f<BACKSLASH>r to function_return
-%s/f\\r/function_return/ge
+"%s/f\\r/function_return/ge
 
 "C Header file template (Name)
 %s/headertm(\([^)]*\))/#if !defined(\1)\r#define \1\r\r#if defined(__cplusplus)\rextern "C"{\r#endif \/* defined(__cplusplus) *\/\r\r\r\r#if defined(__cplusplus)\r}\r#endif \/* defined(__cplusplus) *\/\r\r#endif \/* !defined(\1) *\//ge
