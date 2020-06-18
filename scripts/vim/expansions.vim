@@ -9,6 +9,9 @@
 "javascript function macro (<FunctionName>,<Arguments>)
 %s/jsfunctionmacro(\([^,]*\),\([^)]*\))/function \1(\2){\r\tconsole.log("%s: ", arguments.callee.name, \2);\r\tvar _return = [0,null];\r\t\r\tconsole.log("%s returned: ", arguments.callee.name, _return);\r\treturn _return;\r}/ge
 
+"BASH test macro (<TestName>,<TestCommand>)
+%s/bash\\test(\([a-zA-Z0-9_-]*\),\(.*\))$/# Test: \1\rtest_name='\1';\rtest_results[$test_name]=0;\recho '\2';\r\2 1>temp_stdout.txt 2>temp_stderr.txt;\rtest_code=$?;\rtest_stdout=`cat temp_stdout.txt`;\rtest_stderr=`cat temp_stderr.txt`;\rrm temp_stdout.txt temp_stderr.txt;\rif [[ $test_code ]]; then\r\t\relse\r\ttest_results[$test_name]=0;\r\techo "Test: $test_name failed with erroneous exit code $test_code (stderr: '$test_stderr')";\rfi\r/ge
+
 "javascript try/catch function macro
 %s/^\(\t*\)js\\tc(\([A-Za-z0-9_]\+ = \)\{,1}\([A-Za-z0-9_.]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3(\4);\r\1} catch(error){\r\1\treturn_error = new Error(`\3 threw an error: \${error}`);\r\1\tthrow return_error;\r\1}/ge
 
