@@ -14,6 +14,8 @@
 
 %s/\(\t*\)js\\syscall(\([A-Za-z0-9_]*\))/\1var \2 = \r\1console.log('\2: %o', \2);/ge
 
+%s/js\\ava(\([A-Za-z0-9_:]*\))/AVA('\1', function(t){\r\tvar test_name = '\1';\r\t\r}/ge
+
 "javascript try/catch function macro
 %s/^\(\t*\)js\\tc(\([A-Za-z0-9_]\+ = \)\{,1}\([A-Za-z0-9_. ]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3(\4);\r\1} catch(error){\r\1\treturn_error = new Error(`\3 threw an error: \${error}`);\r\1\tthrow return_error;\r\1}/ge
 
