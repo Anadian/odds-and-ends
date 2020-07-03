@@ -22,8 +22,10 @@ sudo add-apt-repository ppa:alexlarsson/flatpak
 #Mailspring
 sudo snap refresh
 sudo snap install go mailspring
+#QDirStat
+sudo add-apt-repository 'ppa:nathan-renniewaldock/qdirstat'
 
 sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io boot-repair neovim nodejs dropbox open-as-administrator flatpak
+sudo apt-get install docker-ce docker-ce-cli containerd.io boot-repair neovim nodejs dropbox open-as-administrator flatpak qdirstat
 
 sudo ./install.sh
