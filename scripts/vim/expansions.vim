@@ -25,6 +25,12 @@
 "go\msi -> map[string]interface{}
 %s/go\\msi/map[string]interface{}/ge
 
+" AnimationClipPlayable from AnimationClip name
+%s/cs\\acp(\(\w\+\))/\1_playable = AnimationClipPlayable.Create( playable_graph, \1_clip );/ge
+
+"Unity AnimationPlayable from clip
+%s/^\(\t*\)cs\\ani(\(\w\+\))/\1AnimationClipPlayable \2_playable = AnimationClipPlayable.Create( playable_graph, \2_clip );\r\1AnimationPlayableOutput \2_playable_output = AnimationPlayableOutput.Create( playable_graph, "\2", animator_component );/ge
+
 "javascript debug log
 "%s/jsdebuglog(\(.*\))$/ApplicationLog.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'debug',\1);/ge
 %s/jsdebuglog(\(.*\))$/Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: \1});/ge
