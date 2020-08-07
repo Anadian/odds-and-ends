@@ -25,6 +25,9 @@
 "go\msi -> map[string]interface{}
 %s/go\\msi/map[string]interface{}/ge
 
+"AnimationStateComponent
+%s/cs\\asc/animation_state_component/ge
+
 " AnimationClipPlayable from AnimationClip name
 %s/cs\\acp(\(\w\+\))/\1_playable = AnimationClipPlayable.Create( playable_graph, \1_clip );/ge
 
