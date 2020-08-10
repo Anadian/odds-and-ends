@@ -217,6 +217,8 @@ nnoremap <M-]> :bn<cr>
 nnoremap <M-f> :bfirst<cr>
 " Alt+l Last Buffer
 nnoremap <M-l> :blast<cr>
+" Alt+p Previous Buffer
+nnoremap <M-p> :b#<cr>
 " Alt+\ List Buffers
 nnoremap <M-\> :ls<cr>
 " Alt+, Move to the left window.
