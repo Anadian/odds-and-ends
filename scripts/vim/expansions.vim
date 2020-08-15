@@ -25,6 +25,9 @@
 "go\msi -> map[string]interface{}
 %s/go\\msi/map[string]interface{}/ge
 
+" Animation playable and mix connect
+%s/^\(\t*\)cs\\am(\(\w\+\),\(\d\))/\1\2_playable = AnimationClipPlayable.Create( playable_graph, \2_clip );\r\1playable_graph.Connect( \2_playable, 0, animation_mixer_playable, \3 );/ge
+
 "AnimationStateComponent
 %s/cs\\asc/animation_state_component/ge
 
