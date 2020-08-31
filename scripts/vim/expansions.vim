@@ -26,7 +26,7 @@
 %s/go\\msi/map[string]interface{}/ge
 
 "cs\log(<string>) > Debug.Log($"{gameObject.name}: {name}: {fname}: <string>");
-%s/^\(\t*\)cs\\log(\([^)]*\))/\1Debug.Log($"{gameObject.name}: {name}: {fname}: \2");/ge
+%s/^\(\t*\)cs\\log(\([^)]*\))/\1Debug.Log($"{gameObject.name}: {cname}: {fname}: \2");/ge
 
 " Animation playable and mix connect
 %s/^\(\t*\)cs\\am(\(\w\+\),\(\d\))/\1\2_playable = AnimationClipPlayable.Create( playable_graph, \2_clip );\r\1playable_graph.Connect( \2_playable, 0, animation_mixer_playable, \3 );/ge
