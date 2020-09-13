@@ -31,6 +31,15 @@
 "cs\iac Input Action callback function (<name>)
 %s/^\(\t*\)cs\\iac(\(\w\+\))/\1public void \2( InputAction.CallbackContext context ){\r\1\tstring fname = "\2";\r\1}/ge
 
+"cs\ac(<CLIPENUM>) -> animation_playables[AnimationClip.]
+%s/cs\\ac(\(\w\+\))/animation_playables[AnimationClip.\1]/ge
+
+"cs\AMP -> AnimationMixerPlayable
+%s/cs\\AMP/AnimationMixerPlayable/ge
+
+"\amp -> _animation_mixer_playable
+%s/\\amp/_animation_mixer_playable/ge
+
 " Animation playable and mix connect
 %s/^\(\t*\)cs\\am(\(\w\+\),\(\d\))/\1\2_playable = AnimationClipPlayable.Create( playable_graph, \2_clip );\r\1playable_graph.Connect( \2_playable, 0, animation_mixer_playable, \3 );/ge
 
