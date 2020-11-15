@@ -51,6 +51,8 @@ chmod 777 'scripts/bash/searchrom.sh';
 ln -f 'scripts/bash/searchrom.sh' /usr/local/bin/searchrom;
 chmod 777 'scripts/bash/init-node-project.sh';
 ln -f 'scripts/bash/init-node-project.sh' /usr/local/bin/init-node-project;
+chmod 777 'scripts/bash/git-fatfiles.sh';
+ln -f 'scripts/bash/git-fatfiles.sh' /usr/local/bin/git-fatfiles;
 #scripts/vim
 chmod 777 'scripts/vim/expansions.vim';
 ln -f 'scripts/vim/expansions.vim' ~/.expansions;
