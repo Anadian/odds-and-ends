@@ -53,6 +53,8 @@ chmod 777 'scripts/bash/init-node-project.sh';
 ln -f 'scripts/bash/init-node-project.sh' /usr/local/bin/init-node-project;
 chmod 777 'scripts/bash/git-fatfiles.sh';
 ln -f 'scripts/bash/git-fatfiles.sh' /usr/local/bin/git-fatfiles;
+chmod 777 'scripts/bash/git-listobjectsbysize.sh';
+ln -f 'scripts/bash/git-listobjectsbysize.sh' /usr/local/bin/git-listobjectsbysize;
 #scripts/vim
 chmod 777 'scripts/vim/expansions.vim';
 ln -f 'scripts/vim/expansions.vim' ~/.expansions;
