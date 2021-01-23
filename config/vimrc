@@ -356,6 +356,14 @@ nnoremap Ï cefalse<esc>
 " Opt+Shift+n Replace the word under the cursor with 'null'; useful for JSON files.
 nnoremap ˜ cenull<esc>
 endif
+" #Plugins via vim-plug
+if( has('win32') == 1 )
+	call plug#begin( stdpath('data').'\Plugged' )
+else
+	call plug#begin( stdpath('data').'/Plugged' )
+endif
+Plug 'hjson/vim-hjson'
+call plug#end()
 " #Helpful syntax notes
 " <nop> No operation
 " Use :scriptnames to see all scripts that have been sourced in the order they were sourced
