@@ -60,6 +60,9 @@ chmod 777 'scripts/vim/expansions.vim';
 ln -f 'scripts/vim/expansions.vim' ~/.expansions;
 chmod 777 'scripts/vim/external_expand.vim';
 ln -f 'scripts/vim/external_expand.vim' ~/.external_expand;
+#scripts/node
+chmod 777 'scripts/node/init-node-project.js';
+ln -f 'scripts/node/init-node-project.js' /usr/local/bin/init-node-project;
 #config
 chmod 777 'config/vimrc';
 ln -f config/vimrc ~/.vimrc;
