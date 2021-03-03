@@ -29,7 +29,7 @@
 %s/^\(\t*\)cs\\log(\([^)]*\))/\1Debug.Log($"{Time.frameCount}: {gameObject.name}: {cname}: {fname}: \2");/ge
 
 " Component script function (<function_signature_string>)
-%s/^\(\t*\)cs\\csf(\([A-Za-z0-9_]\+\) \([A-Za-z0-9_]\+\)(\(.*\)))$/\1\2 \3(\4){\r\1\tstring fname="\3";\r\1}ge
+%s/^\(\t*\)cs\\csf(\([A-Za-z0-9_]\+\) \([A-Za-z0-9_]\+\)(\(.*\)))$/\1\2 \3(\4){\r\1\tstring fname="\3";\r\1}/ge
 "cs\iac Input Action callback function (<name>)
 %s/^\(\t*\)cs\\iac(\(\w\+\))/\1public void \2( InputAction.CallbackContext context ){\r\1\tstring fname = "\2";\r\1}/ge
 
