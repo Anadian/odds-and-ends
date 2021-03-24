@@ -11,7 +11,7 @@ package_json_object.scripts = {
     "update-config": "hjson -j ci/github-actions.hjson | json2yaml --preserve-key-order -o .github/workflows/ci.yml",
     "update-deps": "npm-check-updates -u",
     "release": "standard-version",
-    "publish-release": "git push --follow-tags origin master && npm publish"
+    "publish-release": "git push --follow-tags origin main && npm publish"
 };
 
 package_json_object.bin = {};

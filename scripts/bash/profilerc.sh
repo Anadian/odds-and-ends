@@ -19,6 +19,7 @@ alias terminal-emulator='ps -o "command=" -p $(ps -o "ppid=" -p $$)'
 #alias gtc='git checkout'
 #alias gtm='git merge'
 #alias gaa='git add --all'
+git config --global init.defaultBranch 'main';
 git config --global alias.b branch
 git config --global alias.ck checkout
 git config --global alias.m merge
@@ -26,7 +27,7 @@ git config --global alias.aa 'add --all'
 git config --global alias.a add
 git config --global alias.co commit
 git config --global alias.cl clone
-git config --global alias.pom 'pull origin master'
+git config --global alias.pom 'pull origin main'
 git config --global alias.pow 'pull origin wip'
 git config --global alias.unstage 'reset HEAD ---'
 git config --global alias.last 'log -l HEAD'
