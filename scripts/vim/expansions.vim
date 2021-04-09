@@ -17,7 +17,7 @@
 %s/js\\ava(\([A-Za-z0-9_:]*\))/AVA('\1', function(t){\r\tvar test_name = '\1';\r\t\r}/ge
 
 "javascript try/catch function macro
-%s/^\(\t*\)js\\tc(\(var \)\{,1}\([A-Za-z0-9_]\+ = \)\{,1}\([A-Za-z0-9_. ]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3\4(\5);\r\1} catch(error){\r\1\treturn_error = new Error(`\4 threw an error: \${error}`);\r\1\tthrow return_error;\r\1}/ge
+%s/^\(\t*\)js\\tc(\(var \)\{,1}\([A-Za-z0-9_.]\+ = \)\{,1}\([A-Za-z0-9_. ]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3\4(\5);\r\1} catch(error){\r\1\treturn_error = new Error(`\4 threw an error: \${error}`);\r\1\tthrow return_error;\r\1}/ge
 
 "Util\fmt -> Utility.format
 %s/Util\\fmt/Utility.format/ge
