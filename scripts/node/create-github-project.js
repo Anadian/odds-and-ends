@@ -12,7 +12,7 @@ async function main_Async(){
 			console.error('No license specified.');
 		}
 		if( description.length <= 120 ){
-			if( env['GITHUB_USERNAME'] !== '' ){
+			if( Sh.env['GITHUB_USERNAME'] !== '' ){
 				var inquirer_questions = [
 					{
 						type: 'confirm',
@@ -41,7 +41,7 @@ async function main_Async(){
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 [![Semantic Versioning 2.0.0](https://img.shields.io/badge/semver-2.0.0-brightgreen?style=flat-square)](https://semver.org/spec/v2.0.0.html)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square)](https://conventionalcommits.org)
-[![License](https://img.shields.io/github/license/${env['GITHUB_USERNAME']}/${project_name})](https://github.com/${env['GITHUB_USERNAME']}/${project_name}/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/${Sh.env['GITHUB_USERNAME']}/${project_name})](https://github.com/${Sh.env['GITHUB_USERNAME']}/${project_name}/blob/main/LICENSE)
 
 > ${description}
 # Table of Contents
@@ -58,7 +58,7 @@ async function main_Async(){
 # Contributing
 Changes are tracked in [CHANGELOG.md](CHANGELOG.md).
 # License
-${license} ©${datetime.getUTCFullYear()} ${env['GITHUB_USERNAME']}
+${license} ©${datetime.getUTCFullYear()} ${Sh.env['GITHUB_USERNAME']}
 
 SEE LICENSE IN [LICENSE](LICENSE)
 
@@ -68,8 +68,8 @@ This project's documentation is licensed under a [Creative Commons Attribution-S
 				Sh.mkdir( '-p', '.github/workflows' );
 				var answers_object = await prompt_promise;
 				if( answers_object.mit === true ){
-					Sh.echo(`MIT ©${datetime.getUTCFullYear()} ${env['GITHUB_USERNAME']}
-	Copyright ${datetime.getUTCFullYear()} ${env['GITHUB_USERNAME']}
+					Sh.echo(`MIT ©${datetime.getUTCFullYear()} ${Sh.env['GITHUB_USERNAME']}
+	Copyright ${datetime.getUTCFullYear()} ${Sh.env['GITHUB_USERNAME']}
 	Permission is hereby granted, free of charge, to any person obtaining a copy of this 
 software and associated documentation files (the "Software"), to deal in the Software 
 without restriction, including without limitation the rights to use, copy, modify, 
@@ -87,7 +87,7 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`).to('LICENSE');
 				}
 				if( answers_object.git === true ){
 					Sh.exec('git init');
-					Sh.exec( `git remote add origin 'https://github.com/${env['GITHUB_USERNAME']}/${project_name}'`);
+					Sh.exec( `git remote add origin 'https://github.com/${Sh.env['GITHUB_USERNAME']}/${project_name}'`);
 					Sh.exec('git add --all .');
 					Sh.exec(`git commit -m 'v0.0.0 First commit.'`);
 					Sh.exec('git push -u origin main');
@@ -102,3 +102,5 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`).to('LICENSE');
 		console.error('Error: not enough arguments specified.');
 	}
 }
+
+main_Async();

@@ -1,5 +1,7 @@
 #!/bin/bash
 #install.sh
+#npm global dependencies.
+npm i -g shelljs inquirer;
 #scripts/bash
 chmod 777 'scripts/bash/clang-linker-info.sh';
 ln -f 'scripts/bash/clang-linker-info.sh' /usr/local/bin/clang-linker-info;
@@ -11,8 +13,10 @@ chmod 777 'scripts/bash/clense-bad-roms.sh';
 ln -f 'scripts/bash/clense-bad-roms.sh' /usr/local/bin/clense-bad-roms;
 chmod 777 'scripts/bash/create-c-project-directories.sh';
 ln -f 'scripts/bash/create-c-project-directories.sh' /usr/local/bin/create-c-project-directories;
-chmod 777 'scripts/bash/create-github-project.sh';
-ln -f 'scripts/bash/create-github-project.sh' /usr/local/bin/create-github-project;
+#chmod 777 'scripts/bash/create-github-project.sh';
+chmod 777 'scripts/node/create-github-project.js';
+#ln -f 'scripts/bash/create-github-project.sh' /usr/local/bin/create-github-project;
+ln -f 'scripts/node/create-github-project.js' /usr/local/bin/create-github-project;
 chmod 777 'scripts/bash/create-node-project-directories.sh';
 ln -f 'scripts/bash/create-node-project-directories.sh' /usr/local/bin/create-node-project-directories;
 chmod 777 'scripts/bash/create-node-project-directory.sh';
