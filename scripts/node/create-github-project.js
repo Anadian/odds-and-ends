@@ -3,11 +3,12 @@ const Sh = require('shelljs');
 const Inquirer = require('inquirer');
 
 async function main_Async(){
-	if( process.argv.length > 2 ){
-		var project_name = process.argv[1];
-		var description = process.argv[2];
-		if( process.argv.length > 3 ){
-			var license = process.argv[3];
+	console.log( process.argv );
+	if( process.argv.length > 3 ){
+		var project_name = process.argv[2];
+		var description = process.argv[3];
+		if( process.argv.length > 4 ){
+			var license = process.argv[4];
 		} else{
 			console.error('No license specified.');
 		}
