@@ -14,7 +14,7 @@
 
 %s/\(\t*\)js\\syscall(\([A-Za-z0-9_]*\))/\1var \2 = \r\1console.log('\2: %o', \2);/ge
 
-%s/js\\ava(\([A-Za-z0-9_:]*\))/AVA('\1', function(t){\r\tvar test_name = '\1';\r\t\r}/ge
+%s/js\\ava(\([A-Za-z0-9_:]*\))/AVA( '\1', function(t){\r\tconst test_name = '\1';\r\t\r} )/ge
 
 "javascript comment istanbul ignore next
 %s/js\\iin/\/* istanbul ignore next *\//ge
