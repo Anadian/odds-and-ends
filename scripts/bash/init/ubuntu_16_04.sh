@@ -1,7 +1,7 @@
 #!/bin/bash
 #Apt
 sudo apt-get update
-sudo apt-get install -y man-db openssl firefox clang make git tar vim less perl curl wget xz-utils exfat-utils hfsutils hfsplus hfsprogs p7zip-full gparted gimp audacity ssh gnupg2 gnupg-doc gksu artha libx11-dev libglfw3 libglfw2 libglfw3-dev libglfw3-doc xorg-dev libsecret-1-dev libsecret-tools git-extras python3 pip pulseaudio-utils deluge manpages manpages-dev pandoc pcre2-utils
+sudo apt-get install -y man-db openssl firefox clang make git tar vim less perl curl wget exfat-utils hfsutils hfsplus hfsprogs p7zip-full gparted gimp audacity ssh gnupg2 gnupg-doc gksu artha libx11-dev libglfw3 libglfw2 libglfw3-dev libglfw3-doc xorg-dev libsecret-1-dev libsecret-tools git-extras python3 pip pulseaudio-utils deluge manpages manpages-dev pandoc pcre2-utils
 #Snap
 sudo snap refresh
 sudo snap install node go powershell remarshal mailspring vlc subliminal-subtitles picard
