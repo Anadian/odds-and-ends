@@ -6,6 +6,7 @@ export EDITOR=nvim
 export GOPATH=/home/cameron/dev/go
 export GITHUB_USERNAME='Anadian';
 export PATH=$PATH:~/dev/go/bin;
+export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules;
 alias ls-plus='ls -GAFosh'
 #alias date-iso-utc='date -ju +%Y-%m-%dT%H:%M:%S%z'
 #alias date-iso='date -j +%Y-%m-%dT%H:%M:%S%z'

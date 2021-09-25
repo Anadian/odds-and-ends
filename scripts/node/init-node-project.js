@@ -9,10 +9,13 @@ async function main_Async(){
 	console.log( repo_directory );
 	if( Sh.env['GITHUB_USERNAME'] !== '' ){
 		Sh.mkdir( '-p', 'ci' );
+		Sh.mkdir( '-p', '.github/workflows' );
 		if( Sh.test( '-f', 'package.json' ) === true ){
 			Sh.exec('npm install --save-dev ava hjson npm-check-updates standard-version nyc coveralls');
-			Sh.echo('node_modules').toEnd('.gitignore');
-			Sh.echo('.nyc').toEnd('.gitignore');
+			if( Sh.test( '-e', '.gitignore' ) === false ){
+				Sh.echo('node_modules').toEnd('.gitignore');
+				Sh.echo('.nyc').toEnd('.gitignore');
+			}
 			var package_json_string = Sh.cat( 'package.json' ).stdout;
 			var package_json_object = JSON.parse( package_json_string );
 			package_json_object.scripts = {
@@ -20,7 +23,7 @@ async function main_Async(){
 				"lint": "eslint ./source/main.js",
 				"generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
 				"update-config": "hjson -j ci/github-actions.hjson | json2yaml --preserve-key-order -o .github/workflows/ci.yml",
-				"update-deps": "npm-check-updates -u",
+				"update-deps": "npm-check-updates -ux env-paths",
 				"release": "standard-version",
 				"publish-release": "git push --follow-tags origin main && npm publish"
 			};
