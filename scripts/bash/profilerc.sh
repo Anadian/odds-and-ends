@@ -4,14 +4,16 @@ export VISUAL=nvim
 export EDITOR=nvim
 export GOPATH=$HOME/dev/go
 export GITHUB_USERNAME='Anadian';
-export PATH=$HOME/.local/bin:$HOME/bin:/snap/bin:$PATH:$GOPATH;
+#printf 'PATH: %s\n' $PATH;
+export PATH=$HOME/.local/bin:$HOME/bin:/snap/bin:$PATH:$GOPATH/bin;
 export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules:$HOME/.local/lib/node_modules;
 alias ls-plus='ls -GAFosh'
 #alias date-iso-utc='date -ju +%Y-%m-%dT%H:%M:%S%z'
 #alias date-iso='date -j +%Y-%m-%dT%H:%M:%S%z'
 alias date-iso='date +%Y-%m-%dT%H:%M:%S%z';
 alias data-iso-utc='date -u +%Y-%m-%dT%H:%M:%S%z';
-alias wget-plus='wget -nH -np -k -r'
+alias wget-plus='wget -nH -np -nd -k';
+alias wget-plus-recursive='wget -nH -np -k -r';
 alias vi='nvim';
 alias vim='nvim';
 alias terminal-emulator='ps -o "command=" -p $(ps -o "ppid=" -p $$)'
