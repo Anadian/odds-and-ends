@@ -1,12 +1,11 @@
-export PATH=$PATH:~/bin
 export PS1="[\[\033[1;31m\]\u\[\033[0;00m\]\[\033[0;00m\]@\[\033[0;00m\]\[\033[0;34m\]\h\[\033[0;00m\]:\[\033[0;36m\]\W\[\033[0;00m\]]\s\$ "
 export PAGER=less
 export VISUAL=nvim
 export EDITOR=nvim
-export GOPATH=/home/cameron/dev/go
+export GOPATH=$HOME/dev/go
 export GITHUB_USERNAME='Anadian';
-export PATH=$PATH:~/dev/go/bin;
-export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules;
+export PATH=$HOME/.local/bin:$HOME/bin:/snap/bin:$PATH:$GOPATH;
+export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules:$HOME/.local/lib/node_modules;
 alias ls-plus='ls -GAFosh'
 #alias date-iso-utc='date -ju +%Y-%m-%dT%H:%M:%S%z'
 #alias date-iso='date -j +%Y-%m-%dT%H:%M:%S%z'
