@@ -1,7 +1,12 @@
 #!/bin/bash
 #install.sh
+mode=0;
 if [[ $1 == 'uninstall' ]]; then
 	mode=1;
+elif [[ $1 == 'symbolic' ]]; then
+	mode=2;
+elif [[ $1 == 'copy' ]]; then
+	mode=3;
 else
 	mode=0;
 fi
@@ -14,7 +19,9 @@ else
 	install_directory=$HOME/.local/bin;
 	mkdir -p $install_directory;
 fi
-
+declare -A Map=(
+	['scripts/bash/clang-linker-info.sh']="$install_directory/clang-linker-info"
+);
 if [[ $mode != 1 ]]; then
 	#scripts/bash
 	chmod 777 'scripts/bash/clang-linker-info.sh';
