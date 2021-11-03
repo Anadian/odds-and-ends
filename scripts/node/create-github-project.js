@@ -87,6 +87,7 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`).to('LICENSE');
 				}
 				if( answers_object.git === true ){
+					Sh.echo('node_modules/**\n.nyc/**\n').to('.gitignore');
 					Sh.exec('git init');
 					Sh.exec( `git remote add origin 'https://github.com/${Sh.env['GITHUB_USERNAME']}/${project_name}'`);
 					Sh.exec('git add --all .');
