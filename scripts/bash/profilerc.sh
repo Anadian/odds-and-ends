@@ -43,6 +43,8 @@ alias ssh-ubuntu='ssh -v cameron@192.168.0.177'
 alias ftp-ubuntu='sftp -v cameron@192.168.0.177'
 alias ssh-galaxys8='ssh -p 8022 u0_a224@galaxys8'
 alias ftp-galaxys8='sftp -P 8022 u0_a224@galaxys8'
+alias ssh-cn-d7k='ssh willa@cn-d7k';
+alias ftp-cn-d7k='sftp willa@cn-d7k';
 if [[ $(uname -o) == 'GNU/Linux' ]]; then
 	set meta-flag on;
 	set input-meta on;
