@@ -46,19 +46,19 @@ declare -A Map=(
 	['scripts/bash/gnome-screen-idle-delay-600.sh']="$install_directory/gnome-screen-idle-delay-600"
 	['scripts/bash/init-go-project.sh']="$install_directory/init-go-project"
 	['scripts/bash/mac-idle-time.sh']="$install_directory/mac-idle-time"
-	['scripts/bash/profilerc.sh']="~/.profilerc"
+	['scripts/bash/profilerc.sh']="$HOME/.profilerc"
 	#['scripts/bash/searchrom.sh']="$install_directory/searchrom"
 	['scripts/bash/git-fatfiles.sh']="$install_directory/git-fatfiles"
 	['scripts/bash/git-listobjectsbysize.sh']="$install_directory/git-listobjectsbysize"
 	#scripts/vim
-	['scripts/vim/expansions.vim']="~/.expansions"
-	['scripts/vim/external_expand.vim']="~/.external_expand"
+	['scripts/vim/expansions.vim']="$HOME/.expansions"
+	['scripts/vim/external_expand.vim']="$HOME/.external_expand"
 	#scripts/node
 	['scripts/node/create-github-project.js']="$install_directory/create-github-project"
 	['scripts/node/init-node-project.js']="$install_directory/init-node-project"
 	#config/vim
-	['config/vimrc']="~/.vimrc"
-	['config/nvim_init.vim']="~/.config/nvim/init.vim"
+	['config/vimrc']="$HOME/.vimrc"
+	['config/nvim_init.vim']="$HOME/.config/nvim/init.vim"
 );
 #install_command='echo';
 chmod_command='chmod 777';
