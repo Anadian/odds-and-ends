@@ -1,4 +1,4 @@
-#!/usr/local/bin/node
+#!/usr/bin/env node
 
 //const FileSystem = require('fs');
 const Sh = require('shelljs');
