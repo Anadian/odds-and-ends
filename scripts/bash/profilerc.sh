@@ -7,6 +7,9 @@ export GITHUB_USERNAME='Anadian';
 #printf 'PATH: %s\n' $PATH;
 export PATH=$HOME/.local/bin:$HOME/bin:/snap/bin:$PATH:$GOPATH/bin;
 export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules:$HOME/.local/lib/node_modules;
+if [[ $(uname -o) == 'Android' ]]; then
+	export NODE_PATH=/data/data/com.termux/files/usr/lib/node_modules:$NODE_PATH;
+fi
 alias ls-plus='ls -GAFosh'
 #alias date-iso-utc='date -ju +%Y-%m-%dT%H:%M:%S%z'
 #alias date-iso='date -j +%Y-%m-%dT%H:%M:%S%z'
