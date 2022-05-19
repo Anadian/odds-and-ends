@@ -54,6 +54,7 @@ declare -A Map=(
 	['scripts/vim/expansions.vim']="$HOME/.expansions"
 	['scripts/vim/external_expand.vim']="$HOME/.external_expand"
 	#scripts/node
+	['scripts/node/sluggify-filename.sh.js']="$install_directory/sluggify-filename"
 	['scripts/node/create-github-project.js']="$install_directory/create-github-project"
 	['scripts/node/init-node-project.js']="$install_directory/init-node-project"
 	#config/vim

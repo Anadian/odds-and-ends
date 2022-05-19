@@ -19,6 +19,12 @@
 "javascript comment istanbul ignore next
 %s/js\\iin/\/* istanbul ignore next *\//ge
 
+"javascript smart constructor
+%s/js\\sc(\([A-Za-z_]*\))/function \1( options ){\r\tif( !( this instanceof \1 ) ){\r\t\treturn ( new \1( options ) );\r\t}\r\treturn this;\r}/ge
+
+"javascript property default
+%s/js\\pd(\([A-Za-z0-9_]*\),\(.*\))$/this.\1 = ( this.\1 || options.\1 ) ?? ( \2 );/ge
+
 "javascript try/catch function macro
 %s/^\(\t*\)js\\tc(\(var \)\{,1}\([A-Za-z0-9_.]\+ = \)\{,1}\([A-Za-z0-9_. ]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3\4(\5);\r\1} catch(error){\r\1\treturn_error = new Error(`\4 threw an error: \${error}`);\r\1\tthrow return_error;\r\1}/ge
 
