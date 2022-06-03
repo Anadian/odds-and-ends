@@ -29,7 +29,7 @@
 %s/^\(\t*\)js\\tc(\(var \)\{,1}\([A-Za-z0-9_.]\+ = \)\{,1}\([A-Za-z0-9_. ]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3\4(\5);\r\1} catch(error){\r\1\treturn_error = new Error(`\4 threw an error: \${error}`);\r\1\tthrow return_error;\r\1}/ge
 
 "javascript 'strictly not equal' operator (=!=)
-%s/ \([^= ]\+\) \?=!= \?\([^= ]\+\) /\1 != \2 \&\& typeof(\1) === typeof(\2) /ge
+%s/ \([^= ]\+\) \?=!= \?\([^= ]\+\) / ( \1 != \2 \&\& typeof(\1) === typeof(\2) ) /ge
 
 "Util\fmt -> Utility.format
 %s/Util\\fmt/Utility.format/ge

@@ -10,6 +10,9 @@ elif [[ $1 == 'symbolic' ]]; then
 elif [[ $1 == 'copy' ]]; then
 	mode=3;
 	install_command='cp -f';
+elif [[ $1 == 'diff' ]]; then
+	mode=4;
+	install_command='diff -q';
 else
 	mode=0;
 	install_command='ln -f';
