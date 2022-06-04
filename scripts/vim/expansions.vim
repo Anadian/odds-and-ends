@@ -20,7 +20,7 @@
 %s/js\\iin/\/* istanbul ignore next *\//ge
 
 "javascript smart constructor
-%s/js\\sc(\([A-Za-z_]*\))/function \1( options ){\r\tif( !( this instanceof \1 ) ){\r\t\treturn ( new \1( options ) );\r\t}\r\treturn this;\r}/ge
+%s/js\\sc(\([A-Za-z0-9_]*\))/function \1( options ){\r\tif( !( this instanceof \1 ) ){\r\t\treturn ( new \1( options ) );\r\t}\r\treturn this;\r}/ge
 
 "javascript property default
 %s/js\\pd(\([A-Za-z0-9_]*\),\(.*\))$/this.\1 = ( this.\1 || options.\1 ) ?? ( \2 );/ge

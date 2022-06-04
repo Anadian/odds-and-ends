@@ -12,7 +12,7 @@ for( var i = 2; i < process.argv.length; i++ ){
 	var ext = Path.extname( oname );
 	var basename = Path.basename( oname, ext );
 	var dirname = Path.dirname( oname );
-	var safename = basename.replace( ' ', '_' );
+	var safename = basename.replace( / /g, '_' );
 	safename = URLsafe( safename );
 
 	FS.renameSync( oname, Path.join( dirname, safename+ext ) );
