@@ -23,10 +23,11 @@ async function main_Async(){
 				"lint": "eslint ./source/main.js",
 				"generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
 				"update-config": "hjson -j ci/github-actions.hjson | json2yaml --preserve-key-order -o .github/workflows/ci.yml",
-				"update-deps": "npm-check-updates -ux env-paths",
+				"update-deps": "npm-check-updates -u",
 				"release": "standard-version",
 				"publish-release": "git push --follow-tags origin main && npm publish"
 			};
+			package_json_object.type = 'module';
 
 			package_json_object.bin = {};
 			package_json_object.bin[package_json_object.name] = './source/main.js';
