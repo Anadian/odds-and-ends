@@ -363,6 +363,7 @@ else
 	call plug#begin( stdpath('data').'/Plugged' )
 endif
 Plug 'hjson/vim-hjson'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 " #Helpful syntax notes
 " <nop> No operation
