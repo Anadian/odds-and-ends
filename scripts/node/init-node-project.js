@@ -11,7 +11,7 @@ async function main_Async(){
 		Sh.mkdir( '-p', 'ci' );
 		Sh.mkdir( '-p', '.github/workflows' );
 		if( Sh.test( '-f', 'package.json' ) === true ){
-			Sh.exec('npm install --save-dev ava hjson npm-check-updates standard-version nyc coveralls');
+			Sh.exec('pnpm install --save-dev ava hjson npm-check-updates standard-version nyc coveralls');
 			if( Sh.test( '-e', '.gitignore' ) === false ){
 				Sh.echo('node_modules').toEnd('.gitignore');
 				Sh.echo('.nyc').toEnd('.gitignore');
