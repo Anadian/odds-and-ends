@@ -16,6 +16,15 @@
 
 %s/js\\ava(\([A-Za-z0-9_:]*\))/AVA( '\1', function(t){\r\tconst test_name = '\1';\r\t\r} )/ge
 
+"javascript start c8 ignore
+%s/js\\c0/\/* c8 ignore start *\//ge
+
+"javascript start c8 ignore
+%s/js\\c1/\/* c8 ignore stop *\//ge
+
+"javascript comment c8 ignore next
+%s/js\\cin/\/* c8 ignore next *\//ge
+
 "javascript comment istanbul ignore next
 %s/js\\iin/\/* istanbul ignore next *\//ge
 
