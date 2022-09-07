@@ -11,21 +11,25 @@ async function main_Async(){
 		Sh.mkdir( '-p', 'ci' );
 		Sh.mkdir( '-p', '.github/workflows' );
 		if( Sh.test( '-f', 'package.json' ) === true ){
-			Sh.exec('pnpm install --save-dev ava hjson npm-check-updates standard-version nyc coveralls');
+			Sh.exec('pnpm install --save-dev ava hjson npm-check-updates standard-version c8 coveralls');
 			if( Sh.test( '-e', '.gitignore' ) === false ){
-				Sh.echo('node_modules').toEnd('.gitignore');
-				Sh.echo('.nyc').toEnd('.gitignore');
+				Sh.echo('node_modules/**').toEnd('.gitignore');
+				Sh.echo('.nyc/**').toEnd('.gitignore');
+				Sh.echo('coverage/**').toEnd('.gitignore');
 			}
 			var package_json_string = Sh.cat( 'package.json' ).stdout;
 			var package_json_object = JSON.parse( package_json_string );
 			package_json_object.scripts = {
 				"test": "ava -v ./source/main.test.js",
+				"coverage": "c8 pnpm test",
+				"coverage-report": "c8 report -r=text-lcov > coverage/lcov.txt",
+				"ci": "pnpm coverage && pnpm coverage-report",
 				"lint": "eslint ./source/main.js",
 				"generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
 				"update-config": "hjson -j ci/github-actions.hjson | json2yaml --preserve-key-order -o .github/workflows/ci.yml",
 				"update-deps": "npm-check-updates -u",
 				"release": "standard-version",
-				"publish-release": "git push --follow-tags origin main && npm publish"
+				"publish-release": "git push --follow-tags origin main && pnpm publish"
 			};
 			package_json_object.type = 'module';
 
