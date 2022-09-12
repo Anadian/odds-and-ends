@@ -32,12 +32,13 @@ async function main_Async(){
 				"publish-release": "git push --follow-tags origin main && pnpm publish"
 			};
 			package_json_object.type = 'module';
+			package_json_object.exports = './source/main.js';
 
 			package_json_object.bin = {};
 			package_json_object.bin[package_json_object.name] = './source/main.js';
 
 			package_json_object.engines = {
-				node: '>=12'
+				node: '>=14.8.0'
 			};
 			package_json_object.eslintConfig = {
 				"env": {
