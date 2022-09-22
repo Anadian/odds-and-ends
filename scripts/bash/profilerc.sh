@@ -10,13 +10,14 @@ export PATH=$HOMEBIN:$HOME/bin:/snap/bin:$PATH:$GOPATH/bin;
 export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules:$HOME/.local/lib/node_modules;
 if [[ $(uname -o) == 'Android' ]]; then
 	export NODE_PATH=/data/data/com.termux/files/usr/lib/node_modules:$NODE_PATH;
+else
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)";
 fi
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)";
 alias ls-plus='ls -GAFosh'
 #alias date-iso-utc='date -ju +%Y-%m-%dT%H:%M:%S%z'
 #alias date-iso='date -j +%Y-%m-%dT%H:%M:%S%z'
 alias date-iso='date +%Y-%m-%dT%H:%M:%S%z';
-alias data-iso-utc='date -u +%Y-%m-%dT%H:%M:%S%z';
+alias date-iso-utc='date -u +%Y-%m-%dT%H:%M:%S%z';
 alias wget-plus='wget -nH -np -nd -k';
 alias wget-plus-recursive='wget -nH -np -k -r';
 alias vi='nvim';
