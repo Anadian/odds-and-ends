@@ -16,6 +16,8 @@
 
 %s/js\\ava(\([A-Za-z0-9_:]*\))/AVA( '\1', function( t ){\r\tt.log( t.title );\r\t\r} )/ge
 
+" JSON schema reference 
+%s/jsc\\ref(\([A-Za-z0-9_-]\+\))/"$ref": "#\/$defs\/\1"/ge
 "javascript start c8 ignore
 %s/js\\c0/\/* c8 ignore start *\//ge
 
