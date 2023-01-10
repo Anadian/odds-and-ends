@@ -27,6 +27,8 @@ alias terminal-emulator='ps -o "command=" -p $(ps -o "ppid=" -p $$)'
 #alias gtc='git checkout'
 #alias gtm='git merge'
 #alias gaa='git add --all'
+git config --global user.name $GITHUB_USERNAME;
+git config --global user.email 'willand@yandex.com';
 git config --global init.defaultBranch 'main';
 git config --global alias.b branch
 git config --global alias.ck checkout
@@ -60,3 +62,4 @@ fi
 #if [[ $HOSTNAME == Anad-MBP* ]]; then
 #	sudo cron -x ext,load,pars,misc,proc
 #fi
+source ~/.local/bin/bashmarks.sh

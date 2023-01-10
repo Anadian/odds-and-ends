@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const Sh = require('shelljs');
-const Inquirer = require('inquirer');
+import * as Sh from 'shelljs';
+import * as Inquirer from 'inquirer';
 
 async function main_Async(){
 	console.log( process.argv );
