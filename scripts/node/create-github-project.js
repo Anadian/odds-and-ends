@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import * as Sh from 'shelljs';
-import * as Inquirer from 'inquirer';
+import Sh from 'shelljs';
+import Inquirer from 'inquirer';
 
 async function main_Async(){
 	console.log( process.argv );
@@ -35,7 +35,12 @@ async function main_Async(){
 						]
 					}
 				];
-				var prompt_promise = Inquirer.prompt( inquirer_questions );
+				try{
+					var answers_object = await Inquirer.prompt( inquirer_questions );
+				} catch(error){
+					return_error = new Error(`await Inquirer.prompt threw an error: ${error}`);
+					throw return_error;
+				}
 				Sh.mkdir( '-p', `${project_name}/source` );
 				var datetime = new Date();
 				Sh.echo(`# ${project_name}
@@ -67,7 +72,6 @@ SEE LICENSE IN [LICENSE](LICENSE)
 This project's documentation is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).`).to(`${project_name}/README.md`);
 				Sh.cd( project_name );
 				Sh.mkdir( '-p', '.github/workflows' );
-				var answers_object = await prompt_promise;
 				if( answers_object.mit === true ){
 					Sh.echo(`MIT ©${datetime.getUTCFullYear()} ${Sh.env['GITHUB_USERNAME']}
 	Copyright ${datetime.getUTCFullYear()} ${Sh.env['GITHUB_USERNAME']}

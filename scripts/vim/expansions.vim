@@ -42,6 +42,9 @@
 "javascript try/catch function macro
 %s/^\(\t*\)js\\tc(\(var \)\{,1}\([A-Za-z0-9_.]\+ = \)\{,1}\([A-Za-z0-9_. ]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3\4(\5);\r\1} catch(error){\r\1\treturn_error = new Error(`\4 threw an error: \${error}`);\r\1\tthrow return_error;\r\1}/ge
 
+"javascript promise block
+%s/^\(\t*\)js\\promise(\([A-Za-z0-9_.]\+\)\(([^)]*)\)\=)$/\1\2\3.then(\r\1\t() => {\r\1\t\t\r\1\t},\r\1\t( error ) => {\r\1\t\treturn_error = new Error(`\2 threw an error: \${error}`);\r\1\t\tthrow return_error;\r\1\t}\r\1); \/\/\2/ge
+
 "javascript 'strictly not equal' operator (=!=)
 %s/ \([^= ]\+\) \?=!= \?\([^= ]\+\) / ( \1 != \2 \&\& typeof(\1) === typeof(\2) ) /ge
 

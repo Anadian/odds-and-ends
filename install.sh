@@ -21,7 +21,7 @@ if [[ $EUID == 0 ]]; then
 	#printf 'We are root.\n';
 	install_directory='/usr/local/bin';
 	#npm global dependencies.
-	npm i -g shelljs inquirer;
+	pnpm install --global shelljs inquirer;
 else
 	install_directory=$HOME/.local/bin;
 	mkdir -p $install_directory;
@@ -68,11 +68,11 @@ declare -A Map=(
 chmod_command='chmod 777';
 if [[ $mode != 1 ]]; then
 	map_keys_string=${!Map[@]};
-	echo $map_keys_string;
+	#echo $map_keys_string;
 	#declare -a map_keys_array=( $map_keys_string ); #working
 	#echo ${map_keys_array[0]};
 	for key_string in "${!Map[@]}"; do
-		#echo $key_string;
+		echo $key_string;
 		$chmod_command $key_string;
 		$install_command "$key_string" "${Map[$key_string]}";
 	done

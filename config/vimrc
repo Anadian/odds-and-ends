@@ -98,6 +98,8 @@ else
 	catch
 	endtry
 endif
+" Make diff always vertical.
+set diffopt+=vertical
 
 " #Commands
 " Add command 'SudoWrite' to force writing of the current buffer, overiding permissions.

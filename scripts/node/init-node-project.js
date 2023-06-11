@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 //const FileSystem = require('fs');
-const Sh = require('shelljs');
+import Sh from 'shelljs';
 //const Execa = require('execa');
 
 async function main_Async(){
@@ -117,7 +117,7 @@ async function main_Async(){
 					}
 				]
 			};
-			output_string = JSON.stringify( package_json_object, null, '\t' );
+			var output_string = JSON.stringify( package_json_object, null, '\t' );
 			Sh.echo(`${output_string}`).to('package.json');
 		} else{
 			console.error('Error: You need to run `npm init` manually before `init-node-project`.');
