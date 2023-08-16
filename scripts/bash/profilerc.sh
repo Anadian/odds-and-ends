@@ -13,6 +13,7 @@ if [[ $(uname -o) == 'Android' ]]; then
 	export NODE_PATH=/data/data/com.termux/files/usr/lib/node_modules:$NODE_PATH;
 else
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)";
+	export HOMEBREW_NO_EMOJI=1;
 fi
 alias ls-plus='ls -GAFosh'
 #alias date-iso-utc='date -ju +%Y-%m-%dT%H:%M:%S%z'
@@ -29,7 +30,7 @@ alias terminal-emulator='ps -o "command=" -p $(ps -o "ppid=" -p $$)'
 #alias gtm='git merge'
 #alias gaa='git add --all'
 git config --global user.name $GITHUB_USERNAME;
-git config --global user.email 'willand@yandex.com';
+git config --global user.email 'willanad@yandex.com';
 git config --global init.defaultBranch 'main';
 git config --global alias.b branch
 git config --global alias.ck checkout
