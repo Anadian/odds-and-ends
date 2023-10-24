@@ -43,6 +43,7 @@
 	"exports": "./source/main.js",
 	"bin": {
 		"create-github-project": "./scripts/node/create-github-project.js",
+		"cno-project": "./scripts/node/cno-project.js",
 		"init-node-project": "./scripts/node/init-node-project.js",
 		"sluggify-filename": "./scripts/node/sluggify-filename.sh.js"
 	},
@@ -126,6 +127,7 @@
 		]
 	},
 	"dependencies": {
+		"@inquirer/prompts": "^3.2.0",
 		"inquirer": "^9.1.4",
 		"shelljs": "^0.8.5",
 		"speakingurl": "^14.0.1"
