@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/Anadian/OddsandEnds/compare/v0.0.1...v0.0.2) (2023-10-24)
+
+
+### Bug Fixes
+
+* dep issue ([7c65d2f](https://github.com/Anadian/OddsandEnds/commit/7c65d2f4c9fc5c620224a9cf2a2f8c19db5733b5))
+
 ### 0.0.1 (2023-10-24)
 
 

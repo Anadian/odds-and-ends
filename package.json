@@ -1,6 +1,6 @@
 {
 	"name": "oddsandends",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Various scripts and single-source-file tools, mostly for personal use.",
 	"main": "source/main.js",
 	"devDependencies": {
