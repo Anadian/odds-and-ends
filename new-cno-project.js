@@ -106,13 +106,16 @@ async function main_Async( options = {} ){
 			return_error = new Error(`process.cwd threw an error: ${error}`);
 			throw return_error;
 		}
+		var base = '';
 		try{
-			PathNS.basename( current_directory );
+			base = PathNS.basename( current_directory );
 		} catch(error){
 			return_error = new Error(`PathNS.basename threw an error: ${error}`);
 			throw return_error;
 		}
-	inquirer_prompt = { message: 'Project name?', default: project_name };
+		this.project.name = base;
+	}
+	inquirer_prompt = { message: 'Project name?', default: this.project.name };
 	try{
 		project_name = await InquirerNS.input( inquirer_prompt );
 	} catch(error){

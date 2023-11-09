@@ -1,87 +1,7 @@
 #!/usr/bin/env node
-/**
-# [cno-project.js](source/cno-project.js)
-> cno-project project manager class.
-
-Author: Anadian
-
-Code license: MIT
-```
-	Copyright 2022 Anadian
-	Permission is hereby granted, free of charge, to any person obtaining a copy of this 
-software and associated documentation files (the "Software"), to deal in the Software 
-without restriction, including without limitation the rights to use, copy, modify, 
-merge, publish, distribute, sublicense, and/or sell copies of the Software, and to 
-permit persons to whom the Software is furnished to do so, subject to the following 
-conditions:
-	The above copyright notice and this permission notice shall be included in all copies 
-or substantial portions of the Software.
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
-CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
-OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-```
-Documentation License: [![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
-> The source-code comments and documentation are written in [GitHub Flavored Markdown](https://github.github.com/gfm/).
-
-*/
-
-//# Dependencies
-	//## Internal
-	//## Standard
-	import * as PathNS from 'node:path';
-	//## External
-	import Sh from 'shelljs';
-	import * as InquirerNS from '@inquirer/prompts';
-//# Constants
-const FILENAME = 'cno-project.js';
-//## Errors
-
-//# Global Variables
-/**## Functions*/
-/**
-### ProjectManager
-> A class for managing projects ala cno-project.
-#### Parametres
-| name | type | description |
-| --- | --- | --- |
-| options | object? | Additional options to pass to the smart constructor. |
-
-##### Options Properties
-| name | type | description |
-| --- | --- | --- |
-| packageMeta | PackageMeta? | An instance of [simple-package-meta](https://github.com/Anadian/simple-package-meta) to be used by this instance and any subclasses initialised along with it. |
-| logger | object? | The logger to be used by this instance. |
-| config | ConfigManager? | The [cno-config-manager] instance to be used by the created instance. |
-
-#### Throws
-| code | type | condition |
-| --- | --- | --- |
-| 'ERR_INVALID_ARG_TYPE' | TypeError | Thrown if `options` is neither an object nor `null` |
-
-#### History
-| version | change |
-| --- | --- |
-| 0.0.0 | Introduced |
-*/
-export default function ProjectManager( options = {} ){
-	if( !( this instanceof ProjectManager ) ){
-		return new ProjectManager( options );
-	}
-	const FUNCTION_NAME = 'ProjectManager';
-	this.packageMeta = ( this.packageMeta || options.packageMeta ) ?? ( null );
-	this.logger = ( this.logger || options.logger ) ?? ( ApplicationLogWinstonInterface.nullLogger );
-	this.config = ( this.config || options.config ) ?? ( null );
-	//state
-	this.project = ( this.project || options.project ) ?? ( { name: ( process.argv[2] || options.project_name ) ?? ( '' ), desc: ( process.argv[3] || options.desc ) ?? ( '' ), directory: ( process.argv[4] || options.project_directory ) ?? ( '' )} );
-	this.git = ( this.git || options.git ) ?? ( { exists: false, username: Sh.env['GITHUB_USERNAME'], origin: '' } );
-	this.node = ( this.node || options.node ) ?? ( {} );
-	this.documentation = ( this.documentation || options.documentation ) ?? ( {} );
-	this.agenda = ( this.agenda || options.agenda ) ?? ( { directory: false, git: false, node: false, documentation: false } );
-	return this;
-}
+import * as PathNS from 'node:path';
+import Sh from 'shelljs';
+import * as InquirerNS from '@inquirer/prompts';
 
 async function main_Async( options = {} ){
 	console.log( process.argv );
@@ -98,20 +18,6 @@ async function main_Async( options = {} ){
 	var license = 'none';
 	var datetime = new Date();
 	var package_json = {};
-	if( this.project.name == '' ){
-		var current_directory = '';
-		try{
-			current_directory = process.cwd();
-		} catch(error){
-			return_error = new Error(`process.cwd threw an error: ${error}`);
-			throw return_error;
-		}
-		try{
-			PathNS.basename( current_directory );
-		} catch(error){
-			return_error = new Error(`PathNS.basename threw an error: ${error}`);
-			throw return_error;
-		}
 	inquirer_prompt = { message: 'Project name?', default: project_name };
 	try{
 		project_name = await InquirerNS.input( inquirer_prompt );
@@ -126,21 +32,7 @@ async function main_Async( options = {} ){
 		return_error = new Error(`await InquirerNS.input threw an error: ${error}`);
 		throw return_error;
 	}
-	inquirer_prompt = { message: 'Select which submodules are needed.', choices: [
-		{ name: 'Project directory', value: 'directory', checked: true },
-		{ name: 'Git', value: 'git', checked: true },
-		{ name: 'Node', value: 'node', checked: true },
-		{ name: 'Documentation', value: 'documentation', checked: true }
-	] };
-	try{
-		inquirer_answer = await InquirerNS.checkbox( inquirer_prompt );
-	} catch(error){
-		return_error = new Error(`await InquirerNS.checkbox threw an error: ${error}`);
-		throw return_error;
-	}
-	console.log("%o", inquirer_answer);
-	//Project directory
-	inquirer_prompt = { message: 'Create new directory? If no, use current directory.', default: true };
+	inquirer_prompt = { message: 'Create directory?', default: true };
 	try{
 		inquirer_answer = await InquirerNS.confirm( inquirer_prompt );
 	} catch(error){
@@ -162,31 +54,7 @@ async function main_Async( options = {} ){
 		Sh.mkdir( '-p', project_directory );
 		Sh.cd( project_directory );
 	}
-	// Git
-	if( Sh.test( '-d', '.git' ) === false ){
-		inquirer_prompt = { message: 'Initialise Git repository?', default: true };
-		try{
-			inquirer_answer = await InquirerNS.confirm( inquirer_prompt );
-		} catch(error){
-			return_error = new Error(`await InquirerNS.confirm threw an error: ${error}`);
-			throw return_error;
-		}
-		if( inquirer_answer === true ){
-			project_git = true;
-			Sh.echo('node_modules/**\ncoverage/**\n').to('.gitignore');
-			//github_username = Sh.env['GITHUB_USERNAME'];
-			github_username = Sh.exec('git config --get user.name').stdout.trimEnd();
-			inquirer_prompt = { message: 'GitHub username?', default: github_username };
-			try{
-				github_username = await InquirerNS.input( inquirer_prompt );
-			} catch(error){
-				return_error = new Error(`await InquirerNS.input threw an error: ${error}`);
-				throw return_error;
-			}
-			Sh.exec('git init');
-		}
-	} //Git repo doesn't exist.
-	inquirer_prompt = { message: 'Add origin?', default: true };
+	inquirer_prompt = { message: 'Initialise Git repository?', default: true };
 	try{
 		inquirer_answer = await InquirerNS.confirm( inquirer_prompt );
 	} catch(error){
@@ -194,14 +62,35 @@ async function main_Async( options = {} ){
 		throw return_error;
 	}
 	if( inquirer_answer === true ){
-		inquirer_prompt = { message: 'Origin URL?', default: `https://github.com/${github_username}/${project_name}` };
+		project_git = true;
+		Sh.echo('node_modules/**\ncoverage/**\n').to('.gitignore');
+		//github_username = Sh.env['GITHUB_USERNAME'];
+		github_username = Sh.exec('git config --get user.name').stdout.trimEnd();
+		inquirer_prompt = { message: 'GitHub username?', default: github_username };
 		try{
-			github_origin = await InquirerNS.input( inquirer_prompt );
+			github_username = await InquirerNS.input( inquirer_prompt );
 		} catch(error){
 			return_error = new Error(`await InquirerNS.input threw an error: ${error}`);
 			throw return_error;
 		}
-		Sh.exec(`git remote add origin ${github_origin}`);
+		Sh.exec('git init');
+		inquirer_prompt = { message: 'Add origin?', default: true };
+		try{
+			inquirer_answer = await InquirerNS.confirm( inquirer_prompt );
+		} catch(error){
+			return_error = new Error(`await InquirerNS.confirm threw an error: ${error}`);
+			throw return_error;
+		}
+		if( inquirer_answer === true ){
+			inquirer_prompt = { message: 'Origin URL?', default: `https://github.com/${github_username}/${project_name}` };
+			try{
+				github_origin = await InquirerNS.input( inquirer_prompt );
+			} catch(error){
+				return_error = new Error(`await InquirerNS.input threw an error: ${error}`);
+				throw return_error;
+			}
+			Sh.exec(`git remote add origin ${github_origin}`);
+		}
 	}
 	inquirer_prompt = { message: 'License?', choices: [
 		{
@@ -245,12 +134,8 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`).to('LICENSE');
 		return_error = new Error(`await InquirerNS.confirm threw an error: ${error}`);
 		throw return_error;
 	}
-	if( inquirer_answer === true ){ //Init node
-		if( Sh.test( '-f', 'package.json' ) === true ){
-			inquirer_prompt = { message: 'package.json already exists; merge with new stuff?', default: true };
-		} else{
-			inquirer_prompt = { message: 'Create package.json?', default: true };
-		}
+	if( inquirer_answer === true ){
+		inquirer_prompt = { message: 'Create package.json?', default: true };
 		if( inquirer_answer === true ){
 			package_json = {
 				"name": project_name,
