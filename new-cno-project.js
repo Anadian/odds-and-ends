@@ -7,7 +7,7 @@ Author: Anadian
 
 Code license: MIT
 ```
-	Copyright 2022 Anadian
+	Copyright 2023 Anadian
 	Permission is hereby granted, free of charge, to any person obtaining a copy of this 
 software and associated documentation files (the "Software"), to deal in the Software 
 without restriction, including without limitation the rights to use, copy, modify, 
@@ -82,7 +82,142 @@ export default function ProjectManager( options = {} ){
 	this.agenda = ( this.agenda || options.agenda ) ?? ( { directory: false, git: false, node: false, documentation: false } );
 	return this;
 }
+/**
+### ProjectManager.prototype.promptProjectDirectory
+> The first thing it needs to know.
 
+#### Throws
+| code | type | condition |
+| --- | --- | --- |
+| 'ERR_INVALID_ARG_TYPE' | TypeError | Thrown if a given argument isn't of the correct type. |
+
+#### History
+| version | change |
+| --- | --- |
+| 0.0.1 | WIP |
+*/
+ProjectManager.prototype.promptProjectDirectory = async function(){
+	const FUNCTION_NAME = 'ProjectManager.prototype.promptProjectDirectory';
+	//Variables
+	var arguments_array = Array.from(arguments);
+	var return_error = null;
+	this.logger.log({file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `received: ${arguments_array}`});
+
+	//Function
+	var current_directory = '';
+	try{
+		current_directory = process.cwd();
+	} catch(error){
+		return_error = new Error(`process.cwd threw an error: ${error}`);
+		throw return_error;
+	}
+	var first_input = process.argv[2];
+	if( first_input === '.' ){
+		this.logger.log({file: FILENAME, function: FUNCTION_NAME, level: 'info', message: `Using '${current_directory}' as project diriectory.`});
+		this.project.directory = current_directory;
+	} else{
+		try{
+			this.project.directory = PathNS.resolve( first_input );
+		} catch(error){
+			return_error = new Error(`PathNS.resolve threw an error: ${error}`);
+			throw return_error;
+		}
+	}
+	var inquirer_prompt = { };
+	var inquirer_answer = null;
+	inquirer_prompt = { message: 'Directory path?', default: this.project.directory };
+	try{
+		this.project.directory = await InquirerNS.input( inquirer_prompt );
+	} catch(error){
+		return_error = new Error(`await InquirerNS.input threw an error: ${error}`);
+		throw return_error;
+	}
+	Sh.mkdir( '-p', this.project.directory );
+	Sh.cd( this.project.directory );
+}
+/**
+### ProjectManager.prototype.promptAgenda
+> Gets the user set agenda for this cno-project invoktion.
+
+#### Throws
+| code | type | condition |
+| --- | --- | --- |
+| 'ERR_INVALID_ARG_TYPE' | TypeError | Thrown if a given argument isn't of the correct type. |
+
+#### History
+| version | change |
+| --- | --- |
+| 0.0.1 | WIP |
+*/
+ProjectManager.prototype.promptAgenda = async function(){
+	const FUNCTION_NAME = 'ProjectManager.prototype.promptAgenda';
+	//Variables
+	var arguments_array = Array.from(arguments);
+	var return_error = null;
+	this.logger.log({file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `received: ${arguments_array}`});
+
+	//Function
+	var inquirer_prompt = {};
+	var inquirer_answer = null;
+	inquirer_prompt = { message: 'Select which submodules are needed.', choices: [
+		{ name: 'Project directory', value: 'directory', checked: true },
+		{ name: 'Git', value: 'git', checked: true },
+		{ name: 'Node', value: 'node', checked: true },
+		{ name: 'Documentation', value: 'documentation', checked: true }
+	] };
+	try{
+		inquirer_answer = await InquirerNS.checkbox( inquirer_prompt );
+	} catch(error){
+		return_error = new Error(`await InquirerNS.checkbox threw an error: ${error}`);
+		throw return_error;
+	}
+	for( const answer of inquirer_answer ){
+		this.logger.log({file: FILENAME, function: FUNCTION_NAME, level: 'info', message: `Needing ${answer}`});
+		this.agenda[answer] = true;
+	}
+}
+/**
+### ProjectManager.prototype.collectInfo
+> Reads the filesystem and environment variables to hopefully offer smarter defaults.
+
+#### Throws
+| code | type | condition |
+| --- | --- | --- |
+| 'ERR_INVALID_ARG_TYPE' | TypeError | Thrown if a given argument isn't of the correct type. |
+
+#### History
+| version | change |
+| --- | --- |
+| 0.0.1 | WIP |
+*/
+ProjectManager.prototype.collectInfo = async function(){
+	const FUNCTION_NAME = 'ProjectManager.prototype.collectInfo';
+	//Variables
+	var arguments_array = Array.from(arguments);
+	var return_error = null;
+	this.logger.log({file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `received: ${arguments_array}`});
+
+	//Function
+	if( this.project.name == '' ){
+		var base = '';
+		try{
+			base = PathNS.basename( this.project.directory );
+		} catch(error){
+			return_error = new Error(`PathNS.basename threw an error: ${error}`);
+			throw return_error;
+		}
+		this.project.name = base;
+	}
+	if( Sh.test( '-d', '.git' ) === true ){
+		this.git.exists = true;
+		this.git.username = Sh.exec('git config --get user.name').stdout.trimEnd();
+		var match = Sh.exec('git remote show origin').stdout.match( /Fetch URL: (.*)/ );
+		this.git.origin = match[1];
+	}
+	if( Sh.test( '-e', 'package.json' ) ){
+		this.node.exists = true;
+	}
+}
 async function main_Async( options = {} ){
 	console.log( process.argv );
 	var return_error = null;
@@ -98,23 +233,6 @@ async function main_Async( options = {} ){
 	var license = 'none';
 	var datetime = new Date();
 	var package_json = {};
-	if( this.project.name == '' ){
-		var current_directory = '';
-		try{
-			current_directory = process.cwd();
-		} catch(error){
-			return_error = new Error(`process.cwd threw an error: ${error}`);
-			throw return_error;
-		}
-		var base = '';
-		try{
-			base = PathNS.basename( current_directory );
-		} catch(error){
-			return_error = new Error(`PathNS.basename threw an error: ${error}`);
-			throw return_error;
-		}
-		this.project.name = base;
-	}
 	inquirer_prompt = { message: 'Project name?', default: this.project.name };
 	try{
 		project_name = await InquirerNS.input( inquirer_prompt );
@@ -127,18 +245,6 @@ async function main_Async( options = {} ){
 		desc = await InquirerNS.input( inquirer_prompt );
 	} catch(error){
 		return_error = new Error(`await InquirerNS.input threw an error: ${error}`);
-		throw return_error;
-	}
-	inquirer_prompt = { message: 'Select which submodules are needed.', choices: [
-		{ name: 'Project directory', value: 'directory', checked: true },
-		{ name: 'Git', value: 'git', checked: true },
-		{ name: 'Node', value: 'node', checked: true },
-		{ name: 'Documentation', value: 'documentation', checked: true }
-	] };
-	try{
-		inquirer_answer = await InquirerNS.checkbox( inquirer_prompt );
-	} catch(error){
-		return_error = new Error(`await InquirerNS.checkbox threw an error: ${error}`);
 		throw return_error;
 	}
 	console.log("%o", inquirer_answer);
