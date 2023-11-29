@@ -36,6 +36,7 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 	import Sh from 'shelljs';
 	import * as InquirerNS from '@inquirer/prompts';
 	import ParseJSON from 'parse-json';
+	import * as ApplicationLogWinstonInterface from 'application-log-winston-inferface';
 //# Constants
 const FILENAME = 'cno-project.js';
 //## Errors
@@ -292,7 +293,7 @@ ProjectManager.prototype.collectInfo = async function( options = {} ){
 		var match = Sh.exec('git remote show origin').stdout.match( /Fetch URL: (.*)/ );
 		console.log(`${this.git.origin} | ${match[1]} | https://github.com/${this.git.username}/${this.project.name}`);
 		this.git.origin = ( this.git.origin || match[1] ) ?? `https://github.com/${this.git.username}/${this.project.name}`;
-		inquirer_prompt = { message: 'Git Origin URL?', default:  };
+		inquirer_prompt = { message: 'Git Origin URL?', default: this.git.origin };
 		try{
 			inquirer_answer = await InquirerNS.input( inquirer_prompt );
 		} catch(error){
@@ -467,7 +468,7 @@ ProjectManager.prototype.processNode = async function( options = {} ){
 	}
 	if( inquirer_answer === true ){
 		this.packageJSON.scripts = Object.assign( this.packageJSON.scripts, {
-				"test": "node test ./source/main.test.js",
+				"test": "node --test ./source/main.test.js",
 				"coverage": "c8 pnpm test",
 				"coverage-report": "c8 report -r=text-lcov > coverage/lcov.txt",
 				"ci": "pnpm coverage && pnpm coverage-report",
@@ -713,254 +714,30 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`).to('LICENSE');
 	[![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)\
 	This project's documentation is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).`).to('README.md');
 		}
+	}
 }
 async function main_Async( options = {} ){
 	console.log( process.argv );
 	var return_error = null;
-	var inquirer_prompt = {};
-	var inquirer_answer = null;
-	var project_name = ( process.argv[2] || options.project_name ) ?? ( '' );
-	var desc = ( process.argv[3] || options.desc ) ?? ( '' );
-	//var license = ( process.argv[4] || options.license ) ?? ( '' );
-	var project_directory = ( process.argv[4] || options.project_directory ) ?? ( '' );
-	var project_git = false;
-	var github_username = Sh.env['GITHUB_USERNAME'];
-	var github_origin = '';
-	var license = 'none';
-	var datetime = new Date();
-	var package_json = {};
-	inquirer_prompt = { message: 'Project name?', default: this.project.name };
-	try{
-		project_name = await InquirerNS.input( inquirer_prompt );
-	} catch(error){
-		return_error = new Error(`await InquirerNS.input threw an error: ${error}`);
-		throw return_error;
+	var project_manager = new ProjectManager( { 
+		project: {
+			directory: process.argv[2],
+			name: process.argv[3],
+			desc: process.argv[4]
+		},
+		license: { spdx: process.argv[5] }
+	} );
+	await project_manager.promptProjectDirectory();
+	await project_manager.promptAgenda();
+	await project_manager.collectInfo();
+	if( project_manager.agenda.git ){
+		await project_manager.processGit();
 	}
-	inquirer_prompt = { message: 'Description (<120)?', default: desc };
-	try{
-		desc = await InquirerNS.input( inquirer_prompt );
-	} catch(error){
-		return_error = new Error(`await InquirerNS.input threw an error: ${error}`);
-		throw return_error;
+	if( project_manager.agenda.node ){
+		await project_manager.processNode();
 	}
-	console.log("%o", inquirer_answer);
-	//Project directory
-	inquirer_prompt = { message: 'Create new directory? If no, use current directory.', default: true };
-	try{
-		inquirer_answer = await InquirerNS.confirm( inquirer_prompt );
-	} catch(error){
-		return_error = new Error(`await InquirerNS.confirm threw an error: ${error}`);
-		throw return_error;
-	}
-	if( inquirer_answer === true ){
-		if( project_directory == '' ){
-			console.log('Making default project directory.');
-			project_directory = PathNS.join( process.cwd(), project_name );
-		}
-		inquirer_prompt = { message: 'Directory path?', default: project_directory };
-		try{
-			project_directory = await InquirerNS.input( inquirer_prompt );
-		} catch(error){
-			return_error = new Error(`await InquirerNS.input threw an error: ${error}`);
-			throw return_error;
-		}
-		Sh.mkdir( '-p', project_directory );
-		Sh.cd( project_directory );
-	}
-	// Git
-	inquirer_prompt = { message: 'Initialise Node?', default: true };
-	try{
-		inquirer_answer = await InquirerNS.confirm( inquirer_prompt );
-	} catch(error){
-		return_error = new Error(`await InquirerNS.confirm threw an error: ${error}`);
-		throw return_error;
-	}
-	if( inquirer_answer === true ){ //Init node
-		if( Sh.test( '-f', 'package.json' ) === true ){
-			inquirer_prompt = { message: 'package.json already exists; merge with new stuff?', default: true };
-		} else{
-			inquirer_prompt = { message: 'Create package.json?', default: true };
-		}
-		if( inquirer_answer === true ){
-			package_json = {
-				"name": project_name,
-				"version": "0.0.0",
-				"description": desc,
-				"scripts": {
-						"test": "ava -v ./source/main.test.js",
-						"coverage": "c8 pnpm test",
-						"coverage-report": "c8 report -r=text-lcov > coverage/lcov.txt",
-						"ci": "pnpm coverage && pnpm coverage-report",
-						"lint": "eslint ./source/main.js",
-						"generate-docs": "scripts/generate-docs.js",
-						"update-config": "hjson -j ci/github-actions.hjson | json2yaml --preserve-key-order -o .github/workflows/ci.yml",
-						"update-deps": "npm-check-updates -u",
-						"release": "standard-version",
-						"publish-release": "git push --follow-tags origin main && pnpm publish",
-				},
-				"repository": {
-						"type": "git",
-						"url": `git+${github_origin}.git`
-				},
-				"author": github_username,
-				"license": license,
-				"main": "source/main.js",
-				"type": "module",
-				"exports": "./source/lib.js",
-				"engines": {
-						"node": ">=14.8.0"
-				},
-				"bugs": {
-						"url": `${github_origin}/issues`
-				},
-				"homepage": `${github_origin}#readme`,
-				"keywords": [
-						"libre",
-						"free",
-						"open",
-						"mit",
-				],
-				"eslintConfig": {
-						"env": {
-								"commonjs": true,
-								"es6": true,
-								"node": true
-						},
-						"extends": "eslint:recommended",
-						"globals": {
-								"Atomics": "readonly",
-								"SharedArrayBuffer": "readonly"
-						},
-						"parserOptions": {
-								"ecmaVersion": 11
-						},
-						"rules": {
-								"no-unused-vars": [
-										"warn"
-								],
-								"no-useless-escape": "off",
-								"no-empty": "warn"
-						}
-				},
-				"standard-version": {
-						"types": [
-								{
-										"type": "build",
-										"section": "Build",
-										"hidden": false
-								},
-								{
-										"type": "ci",
-										"section": "Continuous Integration",
-										"hidden": false
-								},
-								{
-										"type": "chore",
-										"section": "Chores",
-										"hidden": false
-								},
-								{
-										"type": "docs",
-										"section": "Documentation",
-										"hidden": false
-								},
-								{
-										"type": "feat",
-										"section": "Features",
-										"hidden": false
-								},
-								{
-										"type": "fix",
-										"section": "Bug Fixes",
-										"hidden": false
-								},
-								{
-										"type": "perf",
-										"section": "Performance",
-										"hidden": false
-								},
-								{
-										"type": "refactor",
-										"section": "Refactoring",
-										"hidden": false
-								},
-								{
-										"type": "style",
-										"section": "Code Style",
-										"hidden": false
-								},
-								{
-										"type": "test",
-										"section": "Tests",
-										"hidden": false
-								}
-						]
-				}
-			};
-			Sh.echo( JSON.stringify( package_json, null, '\t' ) ).to('package.json');
-		} //create package.json
-		inquirer_prompt = { message: 'Install dev deps?', default: true };
-		if( inquirer_answer === true ){
-			Sh.exec('pnpm add --save-dev c8 coveralls eslint extract-documentation-comments hjson npm-check-updates standard-version');
-		}
-	} //Init node
-	inquirer_prompt = { message: 'Add README?', default: true };
-	try{
-		inquirer_answer = await InquirerNS.confirm( inquirer_prompt );
-	} catch(error){
-		return_error = new Error(`await InquirerNS.confirm threw an error: ${error}`);
-		throw return_error;
-	}
-	if( inquirer_answer === true ){
-		Sh.echo(`# ${project_name}
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-[![Semantic Versioning 2.0.0](https://img.shields.io/badge/semver-2.0.0-brightgreen?style=flat-square)](https://semver.org/spec/v2.0.0.html)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square)](https://conventionalcommits.org)
-[![License](https://img.shields.io/github/license/${github_username}/${project_name})](https://github.com/${github_username}/${project_name}/blob/main/LICENSE)
-
-> ${desc}
-# Table of Contents
-- [Background](#Background)
-- [Install](#Install)
-- [Usage](#Usage)
-- [API](#API)
-- [Contributing](#Contributing)
-- [License](#License)
-# Background
-# Install
-# Usage
-# API
-# Contributing
-Changes are tracked in [CHANGELOG.md](CHANGELOG.md).
-# License
-${license} ©${datetime.getUTCFullYear()} ${github_username}
-
-SEE LICENSE IN [LICENSE](LICENSE)
-
-[![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)\
-This project's documentation is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).`).to('README.md');
-	}
-	inquirer_prompt = { message: 'Make initial commit?', default: true };
-	try{
-		inquirer_answer = await InquirerNS.confirm( inquirer_prompt );
-	} catch(error){
-		return_error = new Error(`await InquirerNS.confirm threw an error: ${error}`);
-		throw return_error;
-	}
-	if( inquirer_answer === true ){
-		Sh.exec('git add --all .');
-		Sh.exec(`git commit -m 'v0.0.0 First commit.'`);
-		Sh.exec('git push -u origin main');
-	}
-	inquirer_prompt = { message: 'Initialise CI?', default: true };
-	try{
-		inquirer_answer = await InquirerNS.confirm( inquirer_prompt );
-	} catch(error){
-		return_error = new Error(`await InquirerNS.confirm threw an error: ${error}`);
-		throw return_error;
-	}
-	if( inquirer_answer === true ){
-		Sh.mkdir( '-p', '.github/workflows' );
+	if( project_manager.agenda.documentation ){
+		await project_manager.processDocumentation();
 	}
 }
 

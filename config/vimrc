@@ -373,7 +373,7 @@ lua require('Comment').setup()
 " My own comment function
 function! CommentUncommented( symbol )
 	"echo execute('echo "hello ' . a:symbol . '"')
-	echo 'CommentUncommented received: ' . a:symbol; 
+	echo 'CommentUncommented received: ' . a:symbol 
 	execute('substitute/\(' . a:symbol . '\|\(.\)\)/' . a:symbol . '\2/ge');
 endfunction
 
