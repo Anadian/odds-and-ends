@@ -65,7 +65,7 @@ declare -A Map=(
 	#config/vim
 	['config/vimrc']="$HOME/.vimrc"
 	#['config/nvim_init.vim']="$HOME/.config/nvim/init.vim"
-	['config/nvim_init.lua']="$HOME/.config/nvim/init.lua"
+	['config/nvim-init.lua']="$HOME/.config/nvim/init.lua"
 	['config/bashmarks-sdirs.bash']="$HOME/.sdirs"
 );
 #install_command='echo';
