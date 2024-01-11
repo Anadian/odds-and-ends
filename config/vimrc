@@ -359,23 +359,23 @@ nnoremap Ï cefalse<esc>
 nnoremap ˜ cenull<esc>
 endif
 " #Plugins via vim-plug
-if( has('win32') == 1 )
-	call plug#begin( stdpath('data').'\Plugged' )
-else
-	call plug#begin( stdpath('data').'/Plugged' )
-endif
-Plug 'hjson/vim-hjson'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'cheap-glitch/vim-v'
-Plug 'numToStr/Comment.nvim'
-call plug#end()
-lua require('Comment').setup()
-" My own comment function
-function! CommentUncommented( symbol )
-	"echo execute('echo "hello ' . a:symbol . '"')
-	echo 'CommentUncommented received: ' . a:symbol 
-	execute('substitute/\(' . a:symbol . '\|\(.\)\)/' . a:symbol . '\2/ge');
-endfunction
+"if( has('win32') == 1 )
+"	call plug#begin( stdpath('data').'\Plugged' )
+"else
+"	call plug#begin( stdpath('data').'/Plugged' )
+"endif
+"Plug 'hjson/vim-hjson'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'cheap-glitch/vim-v'
+"Plug 'numToStr/Comment.nvim'
+"call plug#end()
+"lua require('Comment').setup()
+"" My own comment function
+"function! CommentUncommented( symbol )
+"	"echo execute('echo "hello ' . a:symbol . '"')
+"	echo 'CommentUncommented received: ' . a:symbol 
+"	execute('substitute/\(' . a:symbol . '\|\(.\)\)/' . a:symbol . '\2/ge');
+"endfunction
 
 " coc.nvim config
 " Use tab for trigger completion with characters ahead and navigate

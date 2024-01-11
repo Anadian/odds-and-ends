@@ -64,7 +64,9 @@ declare -A Map=(
 	['scripts/bash/shims/cno-project.sh']="$install_directory/cno-project"
 	#config/vim
 	['config/vimrc']="$HOME/.vimrc"
-	['config/nvim_init.vim']="$HOME/.config/nvim/init.vim"
+	#['config/nvim_init.vim']="$HOME/.config/nvim/init.vim"
+	['config/nvim_init.lua']="$HOME/.config/nvim/init.lua"
+	['config/bashmarks-sdirs.bash']="$HOME/.sdirs"
 );
 #install_command='echo';
 chmod_command='chmod 777';
