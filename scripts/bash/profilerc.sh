@@ -45,16 +45,16 @@ git config --global alias.unstage 'reset HEAD ---'
 git config --global alias.last 'log -l HEAD'
 git config --global alias.cg 'config --global'
 git config --global alias.change '!git add --all . && git commit -m '
-alias ssh-mbp='ssh -v cameron@192.168.0.105'
-alias ftp-mbp='sftp -v cameron@192.168.0.105'
-alias ssh-phone='ssh -v nemo@192.168.2.25'
-alias ftp-phone='sftp -v nemo@192.168.2.25'
-alias ssh-ubuntu='ssh -v cameron@192.168.0.177'
-alias ftp-ubuntu='sftp -v cameron@192.168.0.177'
-alias ssh-galaxys8='ssh -p 8022 u0_a348@galaxys8'
-alias ftp-galaxys8='sftp -P 8022 u0_a348@galaxys8'
-alias ssh-cn-d7k='ssh willa@cn-d7k';
-alias ftp-cn-d7k='sftp willa@cn-d7k';
+#alias ssh-mbp='ssh -v cameron@192.168.0.105'
+#alias ftp-mbp='sftp -v cameron@192.168.0.105'
+#alias ssh-phone='ssh -v nemo@192.168.2.25'
+#alias ftp-phone='sftp -v nemo@192.168.2.25'
+#alias ssh-ubuntu='ssh -v cameron@192.168.0.177'
+#alias ftp-ubuntu='sftp -v cameron@192.168.0.177'
+alias ssh-galaxys8='ssh -p 8022 u0_a394@galaxys8'
+alias ftp-galaxys8='sftp -P 8022 u0_a394@galaxys8'
+#alias ssh-cn-d7k='ssh willa@cn-d7k';
+#alias ftp-cn-d7k='sftp willa@cn-d7k';
 if [[ $(uname -o) == 'GNU/Linux' ]]; then
 	set meta-flag on;
 	set input-meta on;
