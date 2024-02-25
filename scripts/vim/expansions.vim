@@ -42,6 +42,9 @@
 "javascript try/catch function macro
 %s/^\(\t*\)js\\tc(\(var \)\{,1}\([A-Za-z0-9_.]\+ = \)\{,1}\([A-Za-z0-9_. ]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3\4(\5);\r\1} catch(error){\r\1\treturn_error = new Error(`\4 threw an error: \${error}`);\r\1\tthrow return_error;\r\1}/ge
 
+"javascript NodeJS test throws function
+%s/js\\tt(\([^)]*\))/Test( \1, function( t ){\r\tt.diagnostic( t.name );\r\tconst expected = {\r\t\tinstanceOf: TypeError,\r\t\tcode: 'ERR_INVALID_ARG_TYPE'\r\t};\r\tconst input_function = LoggerNS.initLogger.bind( null, 0 );\r\tconst validator_function = errorExpected.bind( null, expected );\r\tAssert.throws( input_function, validator_function );\r} );/ge
+
 "javascript promise block
 %s/^\(\t*\)js\\promise(\([A-Za-z0-9_.]\+\)\(([^)]*)\)\=)$/\1\2\3.then(\r\1\t() => {\r\1\t\t\r\1\t},\r\1\t( error ) => {\r\1\t\treturn_error = new Error(`\2 threw an error: \${error}`);\r\1\t\tthrow return_error;\r\1\t}\r\1); \/\/\2/ge
 
