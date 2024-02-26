@@ -24,7 +24,7 @@
 "javascript start c8 ignore
 %s/js\\c0/\/* c8 ignore start *\//ge
 
-"javascript start c8 ignore
+"javascript stop c8 ignore
 %s/js\\c1/\/* c8 ignore stop *\//ge
 
 "javascript comment c8 ignore next
