@@ -24,7 +24,9 @@ alias wget-plus='wget -nH -np -nd -k';
 alias wget-plus-recursive='wget -nH -np -k -r';
 alias vi='nvim';
 alias vim='nvim';
-alias terminal-emulator='ps -o "command=" -p $(ps -o "ppid=" -p $$)'
+alias terminal-emulator='ps -o "command=" -p $(ps -o "ppid=" -p $$)';
+alias set-clipboard='xclip -selection clipboard'; 
+alias get-clipboard='xclip -selection clipboard -o';
 #alias gtb='git branch'
 #alias gtc='git checkout'
 #alias gtm='git merge'
