@@ -6,6 +6,8 @@ export GOPATH=$HOME/dev/go
 export GITHUB_USERNAME='Anadian';
 #printf 'PATH: %s\n' $PATH;
 export HOMEBIN=$HOME/.local/bin;
+export COREPACK_ENABLE_AUTO_PIN=0;
+export COREPACK_ENABLE_PROJECT_SPEC=0;
 export PNPM_HOME="$HOME/.local/share/pnpm";
 export NODE_PATH="$PNPM_HOME/global/5/node_modules:$NODE_PATH:/usr/local/lib/node_modules:$HOME/.local/lib/node_modules";
 export PATH=$HOMEBIN:$HOME/bin:$PNPM_HOME:/snap/bin:$PATH:$GOPATH/bin;
@@ -16,6 +18,7 @@ else
 	export HOMEBREW_NO_EMOJI=1;
 fi
 alias ls-plus='ls -GAFosh'
+alias ls-bins='ls ${PATH//;/ }';
 #alias date-iso-utc='date -ju +%Y-%m-%dT%H:%M:%S%z'
 #alias date-iso='date -j +%Y-%m-%dT%H:%M:%S%z'
 alias date-iso='date +%Y-%m-%dT%H:%M:%S%z';

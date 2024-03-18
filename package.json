@@ -132,5 +132,6 @@
 		"parse-json": "^8.1.0",
 		"shelljs": "^0.8.5",
 		"speakingurl": "^14.0.1"
-	}
+	},
+	"packageManager": "pnpm@8.15.5+sha1.a58c038faac410c947dbdb93eb30994037d0fce2"
 }
