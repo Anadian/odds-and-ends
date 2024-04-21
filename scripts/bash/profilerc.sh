@@ -1,3 +1,4 @@
+#!/bin/bash
 export PS1="[\[\033[1;31m\]\u\[\033[0;00m\]\[\033[0;00m\]@\[\033[0;00m\]\[\033[0;34m\]\h\[\033[0;00m\]:\[\033[0;36m\]\W\[\033[0;00m\]]\s\$ "
 export PAGER=less
 export VISUAL=nvim
@@ -18,7 +19,7 @@ else
 	export HOMEBREW_NO_EMOJI=1;
 fi
 alias ls-plus='ls -GAFosh'
-alias ls-bins='ls ${PATH//;/ }';
+alias ls-bins='ls ${PATH//:/ }';
 #alias date-iso-utc='date -ju +%Y-%m-%dT%H:%M:%S%z'
 #alias date-iso='date -j +%Y-%m-%dT%H:%M:%S%z'
 alias date-iso='date +%Y-%m-%dT%H:%M:%S%z';
@@ -28,8 +29,13 @@ alias wget-plus-recursive='wget -nH -np -k -r';
 alias vi='nvim';
 alias vim='nvim';
 alias terminal-emulator='ps -o "command=" -p $(ps -o "ppid=" -p $$)';
-alias set-clipboard='xclip -selection clipboard'; 
-alias get-clipboard='xclip -selection clipboard -o';
+if [[ -n $WAYLAND_DISPLAY ]]; then
+	alias get-clipboard='wl-paste';
+	alias set-clipboard='wl-copy';
+else
+	alias set-clipboard='xclip -selection clipboard'; 
+	alias get-clipboard='xclip -selection clipboard -o';
+fi
 #alias gtb='git branch'
 #alias gtc='git checkout'
 #alias gtm='git merge'
@@ -58,6 +64,10 @@ git config --global alias.change '!git add --all . && git commit -m '
 #alias ftp-ubuntu='sftp -v cameron@192.168.0.177'
 alias ssh-galaxys8='ssh -p 8022 u0_a394@galaxys8'
 alias ftp-galaxys8='sftp -P 8022 u0_a394@galaxys8'
+# Domains for SSH URLs
+export SSH_D7k='cameron@192.168.0.101:22';
+export SSH_SGS8='u0_a394@192.168.0.46:8022';
+export SSH_A15='willa@192.168.0.41:22';
 #alias ssh-cn-d7k='ssh willa@cn-d7k';
 #alias ftp-cn-d7k='sftp willa@cn-d7k';
 if [[ $(uname -o) == 'GNU/Linux' ]]; then

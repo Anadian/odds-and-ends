@@ -37,19 +37,22 @@
 %s/js\\sc(\([A-Za-z0-9_]*\))/function \1( options ){\r\tif( !( this instanceof \1 ) ){\r\t\treturn ( new \1( options ) );\r\t}\r\treturn this;\r}/ge
 
 "javascript property default
-%s/js\\pd(\([A-Za-z0-9_.]*\),\(.*\))$/this.\1 = ( this.\1 || options.\1 ) ?? ( \2 );/ge
+%s/js\\pd(\([A-Za-z0-9_.]*\),\(.*\))$/this.\1 ??= options.\1 ?? \2;/ge
 
 "javascript try/catch function macro
 %s/^\(\t*\)js\\tc(\(var \)\{,1}\([A-Za-z0-9_.]\+ = \)\{,1}\([A-Za-z0-9_. ]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3\4(\5);\r\1} catch(error){\r\1\treturn_error = new Error(`\4 threw an error: \${error}`);\r\1\tthrow return_error;\r\1}/ge
 
 "javascript NodeJS test throws function
-%s/js\\tt(\([^)]*\))/Test( \1, function( t ){\r\tt.diagnostic( t.name );\r\tconst expected = {\r\t\tinstanceOf: TypeError,\r\t\tcode: 'ERR_INVALID_ARG_TYPE'\r\t};\r\tconst input_function = LoggerNS.initLogger.bind( null, 0 );\r\tconst validator_function = errorExpected.bind( null, expected );\r\tAssert.throws( input_function, validator_function );\r} );/ge
+%s/js\\tt(\([^)]*\))/Test.test( '\1:throws', function( t ){\r\tt.diagnostic( t.name );\r\tconst test_matrix = {\r\t\tfunctions: {\r\t\t\tdefaultExport: DefaultExport.\1,\r\t\t\tnamespaceExport: NamespaceExport.\1,\r\t\t\tnamedExport: \1\r\t\t},\r\t\tconditions: {\r\t\t\tinput_options_type: {\r\t\t\t\targs: [\r\t\t\t\t\ttrue\r\t\t\t\t],\r\t\t\t\texpected: {\r\t\t\t\t\tinstanceOf: TypeError,\r\t\t\t\t\tcode: 'ERR_INVALID_ARG_TYPE'\r\t\t\t\t}\r\t\t\t}\r\t\t}\r\t};\r\tfor( const function_key of Object.keys( test_matrix.functions ) ){\r\t\tvar input_function = test_matrix.functions[function_key];\r\t\tfor( const condition_key of Object.keys( test_matrix.conditions ) ){\r\t\t\tt.diagnostic( `${t.name}:${function_key}:${condition_key}` );\r\t\t\tvar condition = test_matrix.conditions[condition_key];\r\t\t\tvar bound_function = input_function.bind( null, ...condition.args );\r\t\t\tvar validator_function = errorExpected.bind( null, condition.expected );\r\t\t\tTest.assert.throws( bound_function, validator_function );\r\t\t}\r\t}\r} );/ge
+
+"javascript NodeJS test returns function
+%s/js\\tr(\([^)]*\))/Test.test( '\1:returns', function( t ){\r\tt.diagnostic( t.name );\r\tvar test_matrix = {\r\t\tfunctions: {\r\t\t\tdefaultExport: DefaultExport.\1,\r\t\t\tnamespaceExport: NamespaceExport.\1,\r\t\t\tnamedExport: \1\r\t\t},\r\t\tconditions: {\r\t\t\tinput_options_noop: {\r\t\t\t\targs: [\r\t\t\t\t\t{\r\t\t\t\t\t\tnoop: true\r\t\t\t\t\t}\r\t\t\t\t],\r\t\t\t\texpected: null\r\t\t\t}\r\t\t}\r\t};\r\tfor( const function_key of Object.keys( test_matrix.functions ) ){\r\t\tvar input_function = test_matrix.functions[function_key];\r\t\tfor( const condition_key of Object.keys( test_matrix.conditions ) ){\r\t\t\tt.diagnostic( `${t.name}:${function_key}:${condition_key}` );\r\t\t\tvar condition = test_matrix.conditions[condition_key];\r\t\t\tvar function_return = input_function.apply( null, condition.args );\r\t\t\tTest.assert.deepStrictEqual( function_return, condition.expected );\r\t\t}\r\t}\r} );/ge
 
 "javascript promise block
 %s/^\(\t*\)js\\promise(\([A-Za-z0-9_.]\+\)\(([^)]*)\)\=)$/\1\2\3.then(\r\1\t() => {\r\1\t\t\r\1\t},\r\1\t( error ) => {\r\1\t\treturn_error = new Error(`\2 threw an error: \${error}`);\r\1\t\tthrow return_error;\r\1\t}\r\1); \/\/\2/ge
 
 "javascript 'strictly not equal' operator (=!=)
-%s/ \([^= ]\+\) \?=!= \?\([^= ]\+\) / ( \1 != \2 \&\& typeof(\1) === typeof(\2) ) /ge
+%s/ \([^= ]\+\) \?=!= \?\([^= ]\+\) / \1 != \2 \&\& typeof(\1) === typeof(\2) /ge
 
 "Util\fmt -> Utility.format
 %s/Util\\fmt/Utility.format/ge
