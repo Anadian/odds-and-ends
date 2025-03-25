@@ -7,14 +7,14 @@
 %s/^xdg(\([A-Z_]*\),\([a-z_]*\),\([^)]*\))/if(getenv("\1") != NULL) C\\String_Copy(\&((*environment_xdg).\2), getenv("\1"));\relse C\\String_Copy(\&((*environment_xdg).\2), "\3");/ge
 
 "javascript function macro (<FunctionName>,<Arguments>)
-%s/jsfunctionmacro(\([^,]*\),\([^)]*\))/function \1(\2){\r\tconsole.log("%s: ", arguments.callee.name, \2);\r\tvar _return = [0,null];\r\t\r\tconsole.log("%s returned: ", arguments.callee.name, _return);\r\treturn _return;\r}/ge
+"%s/jsfunctionmacro(\([^,]*\),\([^)]*\))/function \1(\2){\r\tconsole.log("%s: ", arguments.callee.name, \2);\r\tvar _return = [0,null];\r\t\r\tconsole.log("%s returned: ", arguments.callee.name, _return);\r\treturn _return;\r}/ge
 
 "BASH test macro (<TestName>,<TestCommand>)
 %s/bash\\test(\([a-zA-Z0-9_-]*\),\(.*\))$/# Test: \1\rtest_name='\1';\rtest_results[$test_name]=0;\recho '\2';\r\2 1>temp_stdout.txt 2>temp_stderr.txt;\rtest_code=$?;\rtest_stdout=`cat temp_stdout.txt`;\rtest_stderr=`cat temp_stderr.txt`;\rrm temp_stdout.txt temp_stderr.txt;\rif [[ $test_code ]]; then\r\t\relse\r\ttest_results[$test_name]=0;\r\techo "Test: $test_name failed with erroneous exit code $test_code (stderr: '$test_stderr')";\rfi\r/ge
 
-%s/\(\t*\)js\\syscall(\([A-Za-z0-9_]*\))/\1var \2 = \r\1console.log('\2: %o', \2);/ge
+"%s/\(\t*\)js\\syscall(\([A-Za-z0-9_]*\))/\1var \2 = \r\1console.log('\2: %o', \2);/ge
 
-%s/js\\ava(\([A-Za-z0-9_:]*\))/AVA( '\1', function( t ){\r\tt.log( t.title );\r\t\r} )/ge
+"%s/js\\ava(\([A-Za-z0-9_:]*\))/AVA( '\1', function( t ){\r\tt.log( t.title );\r\t\r} )/ge
 
 "Javascript
 
@@ -43,10 +43,10 @@
 %s/^\(\t*\)js\\tc(\(var \)\{,1}\([A-Za-z0-9_.]\+ = \)\{,1}\([A-Za-z0-9_. ]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3\4(\5);\r\1} catch(error){\r\1\treturn_error = new Error(`\4 threw an error: \${error}`);\r\1\tthrow return_error;\r\1}/ge
 
 "javascript NodeJS test throws function
-%s/js\\tt(\([^)]*\))/Test.test( '\1:throws', function( t ){\r\tt.diagnostic( t.name );\r\tconst test_matrix = {\r\t\tfunctions: {\r\t\t\tdefaultExport: DefaultExport.\1,\r\t\t\tnamespaceExport: NamespaceExport.\1,\r\t\t\tnamedExport: \1\r\t\t},\r\t\tconditions: {\r\t\t\tinput_options_type: {\r\t\t\t\targs: [\r\t\t\t\t\ttrue\r\t\t\t\t],\r\t\t\t\texpected: {\r\t\t\t\t\tinstanceOf: TypeError,\r\t\t\t\t\tcode: 'ERR_INVALID_ARG_TYPE'\r\t\t\t\t}\r\t\t\t}\r\t\t}\r\t};\r\tfor( const function_key of Object.keys( test_matrix.functions ) ){\r\t\tvar input_function = test_matrix.functions[function_key];\r\t\tfor( const condition_key of Object.keys( test_matrix.conditions ) ){\r\t\t\tt.diagnostic( `${t.name}:${function_key}:${condition_key}` );\r\t\t\tvar condition = test_matrix.conditions[condition_key];\r\t\t\tvar bound_function = input_function.bind( null, ...condition.args );\r\t\t\tvar validator_function = errorExpected.bind( null, condition.expected );\r\t\t\tTest.assert.throws( bound_function, validator_function );\r\t\t}\r\t}\r} );/ge
+%s/js\\tt(\([^)]*\))/Test.test( '\1:throws', function( t ){\r\tt.diagnostic( t.name );\r\tconst test_matrix = {\r\t\tfunctions: {\r\t\t\tdefaultExport: DefaultExport.\1,\r\t\t\tnamespaceExport: NamespaceExport.\1,\r\t\t\tnamedExport: \1\r\t\t},\r\t\tconditions: {\r\t\t\tinput_options_type: {\r\t\t\t\targs: [\r\t\t\t\t\ttrue\r\t\t\t\t],\r\t\t\t\texpected: {\r\t\t\t\t\tinstanceOf: TypeError,\r\t\t\t\t\tcode: 'ERR_INVALID_ARG_TYPE'\r\t\t\t\t}\r\t\t\t}\r\t\t}\r\t};\r\tfor( const function_key of Object.keys( test_matrix.functions ) ){\r\t\tvar input_function = test_matrix.functions[function_key];\r\t\tfor( const condition_key of Object.keys( test_matrix.conditions ) ){\r\t\t\tvar test_id = `${t.name}:${function_key}:${condition_key}`;\r\t\t\tt.diagnostic( test_id );\r\t\t\tvar condition = test_matrix.conditions[condition_key];\r\t\t\tvar bound_function = input_function.bind( null, ...condition.args );\r\t\t\tvar validator_function = Test.errorExpected.bind( null, condition.expected );\r\t\t\tTest.assert.throws( bound_function, validator_function, test_id );\r\t\t}\r\t}\r} );/ge
 
 "javascript NodeJS test returns function
-%s/js\\tr(\([^)]*\))/Test.test( '\1:returns', function( t ){\r\tt.diagnostic( t.name );\r\tvar test_matrix = {\r\t\tfunctions: {\r\t\t\tdefaultExport: DefaultExport.\1,\r\t\t\tnamespaceExport: NamespaceExport.\1,\r\t\t\tnamedExport: \1\r\t\t},\r\t\tconditions: {\r\t\t\tinput_options_noop: {\r\t\t\t\targs: [\r\t\t\t\t\t{\r\t\t\t\t\t\tnoop: true\r\t\t\t\t\t}\r\t\t\t\t],\r\t\t\t\texpected: null\r\t\t\t}\r\t\t}\r\t};\r\tfor( const function_key of Object.keys( test_matrix.functions ) ){\r\t\tvar input_function = test_matrix.functions[function_key];\r\t\tfor( const condition_key of Object.keys( test_matrix.conditions ) ){\r\t\t\tt.diagnostic( `${t.name}:${function_key}:${condition_key}` );\r\t\t\tvar condition = test_matrix.conditions[condition_key];\r\t\t\tvar function_return = input_function.apply( null, condition.args );\r\t\t\tTest.assert.deepStrictEqual( function_return, condition.expected );\r\t\t}\r\t}\r} );/ge
+%s/js\\tr(\([^)]*\))/Test.test( '\1:returns', function( t ){\r\tt.diagnostic( t.name );\r\tvar test_matrix = {\r\t\tfunctions: {\r\t\t\tdefaultExport: DefaultExport.\1,\r\t\t\tnamespaceExport: NamespaceExport.\1,\r\t\t\tnamedExport: \1\r\t\t},\r\t\tconditions: {\r\t\t\tinput_options_noop: {\r\t\t\t\targs: [\r\t\t\t\t\t{\r\t\t\t\t\t\tnoop: true\r\t\t\t\t\t}\r\t\t\t\t],\r\t\t\t\texpected: null\r\t\t\t}\r\t\t}\r\t};\r\tfor( const function_key of Object.keys( test_matrix.functions ) ){\r\t\tvar input_function = test_matrix.functions[function_key];\r\t\tfor( const condition_key of Object.keys( test_matrix.conditions ) ){\r\t\t\tvar test_id = `${t.name}:${function_key}:${condition_key}`;\r\t\t\tt.diagnostic( test_id );\r\t\t\tvar condition = test_matrix.conditions[condition_key];\r\t\t\tvar function_return = input_function.apply( null, condition.args );\r\t\t\tTest.assert.deepStrictEqual( function_return, condition.expected, test_id );\r\t\t}\r\t}\r} );/ge
 
 "javascript promise block
 %s/^\(\t*\)js\\promise(\([A-Za-z0-9_.]\+\)\(([^)]*)\)\=)$/\1\2\3.then(\r\1\t() => {\r\1\t\t\r\1\t},\r\1\t( error ) => {\r\1\t\treturn_error = new Error(`\2 threw an error: \${error}`);\r\1\t\tthrow return_error;\r\1\t}\r\1); \/\/\2/ge
@@ -59,6 +59,9 @@
 
 "go\msi -> map[string]interface{}
 %s/go\\msi/map[string]interface{}/ge
+
+"cs\r -> C# _Ready for Godot;
+"%s/cs\\r/\/\/Meta\r\tpublic Meta meta;\r\r\t\/\/ Called when the node enters the scene tree for the first time.\r\tpublic override void _Ready(){\r\t\tmeta = new Meta( Name );\r\t\tInit();\r\t\tmeta.ready_time = Meta.GetNow();\r\t}/g
 
 "cs\log(<string>) > Debug.Log($"{gameObject.name}: {name}: {fname}: <string>");
 %s/^\(\t*\)cs\\log(\([^)]*\))/\1Debug.Log($"{Time.frameCount}: {gameObject.name}: {cname}: {fname}: \2");/ge
@@ -92,35 +95,35 @@
 
 "javascript debug log
 "%s/jsdebuglog(\(.*\))$/ApplicationLog.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'debug',\1);/ge
-%s/jsdebuglog(\(.*\))$/this.logger.log({file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: \1});/ge
+%s/jsdebuglog(\(.*\))$/this?.logger?.log({file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: \1});/ge
 
 "javascript info log
 "%s/jsinfolog(\(.*\))$/Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: \1});/ge
-%s/jsinfolog(\(.*\))$/this.logger.log({file: FILENAME, function: FUNCTION_NAME, level: 'info', message: \1});/ge
+%s/jsinfolog(\(.*\))$/this?.logger?.log({file: FILENAME, function: FUNCTION_NAME, level: 'info', message: \1});/ge
 
 "javascript note log
 "%s/jsnotelog(\(.*\))$/Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'note', message: \1});/ge
-%s/jsnotelog(\(.*\))$/this.logger.log({file: FILENAME, function: FUNCTION_NAME, level: 'note', message: \1});/ge
+%s/jsnotelog(\(.*\))$/this?.logger?.log({file: FILENAME, function: FUNCTION_NAME, level: 'note', message: \1});/ge
 
 "javascript warn log
 "%s/jswarnlog(\(.*\))$/ApplicationLog.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'warn',\1);/ge
 "%s/jswarnlog(\(.*\))$/Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'warn', message: \1});/ge
-%s/jswarnlog(\(.*\))$/this.logger.log({file: FILENAME, function: FUNCTION_NAME, level: 'warn', message: \1});/ge
+%s/jswarnlog(\(.*\))$/this?.logger?.log({file: FILENAME, function: FUNCTION_NAME, level: 'warn', message: \1});/ge
 
 "javascript error log
 "%s/jserrorlog(\(.*\))$/ApplicationLog.log(PROCESS_NAME,MODULE_NAME,FILENAME,FUNCTION_NAME,'error',\1);/ge
 "%s/jserrorlog(\(.*\))$/Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: \1});/ge
-%s/jserrorlog(\(.*\))$/this.logger.log({file: FILENAME, function: FUNCTION_NAME, level: 'error', message: \1});/ge
+%s/jserrorlog(\(.*\))$/this?.logger?.log({file: FILENAME, function: FUNCTION_NAME, level: 'error', message: \1});/ge
 
 "javascript crit log
 "%s/jscritlog(\(.*\))$/Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'crit', message: \1});/ge
-%s/jscritlog(\(.*\))$/this.logger.log({file: FILENAME, function: FUNCTION_NAME, level: 'crit', message: \1});/ge
+%s/jscritlog(\(.*\))$/this?.logger?.log({file: FILENAME, function: FUNCTION_NAME, level: 'crit', message: \1});/ge
 
 "javascript log debug macro (<ModuleName>,<FunctionName>,<Message>)
-%s/jsdebugtm(\([^,]*\),\([^,]*\),\(.*\));/Log.log(process.argv0,\1,Path.basename(__filename),\2,'debug',\3);/ge
+"%s/jsdebugtm(\([^,]*\),\([^,]*\),\(.*\));/Log.log(process.argv0,\1,Path.basename(__filename),\2,'debug',\3);/ge
 
 "javascript log error macro (<ModuleName>,<FunctionName>,<Message>)
-%s/jserror(\([^,]*\),\([^,]*\),\(.*\));/Log.log(process.argv0,\1,Path.basename(__filename),\2,'error',\3);/ge
+"%s/jserror(\([^,]*\),\([^,]*\),\(.*\));/Log.log(process.argv0,\1,Path.basename(__filename),\2,'error',\3);/ge
 
 "javascript if-option: fill-item
 %s/jsoptfill(\(\w\+\))/if(Options.\1 != null) item.\1 = Options.\1;/ge

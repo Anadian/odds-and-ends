@@ -26,6 +26,7 @@ alias date-iso='date +%Y-%m-%dT%H:%M:%S%z';
 alias date-iso-utc='date -u +%Y-%m-%dT%H:%M:%S%z';
 alias wget-plus='wget -nH -np -nd -k';
 alias wget-plus-recursive='wget -nH -np -k -r';
+alias diff-plus='diff -ays';
 alias vi='nvim';
 alias vim='nvim';
 alias terminal-emulator='ps -o "command=" -p $(ps -o "ppid=" -p $$)';
@@ -36,6 +37,8 @@ else
 	alias set-clipboard='xclip -selection clipboard'; 
 	alias get-clipboard='xclip -selection clipboard -o';
 fi
+alias yt-dlp='yt-dlp --compat-options filename';
+alias grep='pcre2grep';
 #alias gtb='git branch'
 #alias gtc='git checkout'
 #alias gtm='git merge'
