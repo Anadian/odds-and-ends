@@ -60,9 +60,13 @@ declare -A Map=(
 	#['scripts/node/sluggify-filename.sh.js']="$install_directory/sluggify-filename"
 	#['scripts/node/create-github-project.js']="$install_directory/create-github-project"
 	#['scripts/node/init-node-project.js']="$install_directory/init-node-project"
+	['scripts/bash/shims/create-node-bash-shim.sh']="$install_directory/create-node-bash-shim"
+	['scripts/bash/shims/cno-project.sh']="$install_directory/cno-project"
 	#config/vim
 	['config/vimrc']="$HOME/.vimrc"
-	['config/nvim_init.vim']="$HOME/.config/nvim/init.vim"
+	#['config/nvim_init.vim']="$HOME/.config/nvim/init.vim"
+	['config/nvim-init.lua']="$HOME/.config/nvim/init.lua"
+	['config/bashmarks-sdirs.bash']="$HOME/.sdirs"
 );
 #install_command='echo';
 chmod_command='chmod 777';
@@ -104,4 +108,6 @@ else
 	rm -f $install_directory/git-listobjectsbysize;
 	rm -f $install_directory/create-github-project;
 	rm -f $install_directory/init-node-project;
+	rm -f $install_directory/create-node-bash-shim;
+	rm -f $install_directory/cno-project;
 fi

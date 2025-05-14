@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import Sh from 'shelljs';
-import Inquirer from 'inquirer';
+import * as InquirerNS from '@inquirer/prompts';
 
 async function main_Async(){
 	console.log( process.argv );
@@ -14,6 +14,24 @@ async function main_Async(){
 		}
 		if( description.length <= 120 ){
 			if( Sh.env['GITHUB_USERNAME'] !== '' ){
+				try{
+					init_git_bool = await InquirerNS.confirm( { message: 'Initialise Git repository?', default: true } );
+				} catch(error){
+					return_error = new Error(`await InquirerNS.confirm threw an error: ${error}`);
+					throw return_error;
+				}
+				try{
+					add_mit_bool = await InquirerNS.confirm( { message: 'Add an MIT license to the project directory?', default: true } );
+				} catch(error){
+					return_error = new Error(`await InquirerNS.confirm threw an error: ${error}`);
+					throw return_error;
+				}
+				try{
+					addition_select = await InquirerNS.select();
+				} catch(error){
+					return_error = new Error(`await InquirerNS.select threw an error: ${error}`);
+					throw return_error;
+				}
 				var inquirer_questions = [
 					{
 						type: 'confirm',
