@@ -2,6 +2,7 @@
 # install.ps1
 # Profile
 New-Item -Type HardLink -Path ~\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 -Value .\scripts\powershell\powershell_profile.ps1 -Force;
+New-Item -Type HardLink -Path $profile -Value .\scripts\powershell\powershell_profile.ps1 -Force;
 # VIM
 New-Item -Type HardLink -Path ~\.vimrc -Value .\config\vimrc -Force;
 New-Item -Type HardLink -Path ~\.expansions -Value .\scripts\vim\expansions.vim -Force;
