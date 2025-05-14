@@ -37,8 +37,7 @@ else
 	alias set-clipboard='xclip -selection clipboard'; 
 	alias get-clipboard='xclip -selection clipboard -o';
 fi
-alias yt-dlp='yt-dlp --compat-options filename --embed-metadata -k';
-alias yt-dlp-x='yt-dlp --compat-options filename --embed-metadata -x';
+alias yt-dlp="yt-dlp --config-locations $HOME/dev/OddsandEnds/config/yt-dlp.conf";
 alias grep='pcre2grep';
 #alias gtb='git branch'
 #alias gtc='git checkout'
