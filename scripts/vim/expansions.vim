@@ -39,7 +39,7 @@
 "javascript property default
 %s/js\\pd(\([A-Za-z0-9_.]*\),\(.*\))$/this.\1 ??= options.\1 ?? \2;/ge
 
-"javascript try/catch function macro
+"javascript try/catch function macro: 1 indentation, 2 declaration, 3 variable-assignement left hand, 4 assignment-right-hand function name, 5 function parametres
 %s/^\(\t*\)js\\tc(\(var \)\{,1}\([A-Za-z0-9_.]\+ = \)\{,1}\([A-Za-z0-9_. ]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3\4(\5);\r\1} catch(error){\r\1\treturn_error = new Error(`\4 threw an error: \${error}`);\r\1\tthrow return_error;\r\1}/ge
 
 "javascript NodeJS test throws function
