@@ -12,6 +12,7 @@ export COREPACK_ENABLE_PROJECT_SPEC=0;
 export PNPM_HOME="$HOME/.local/share/pnpm";
 export NODE_PATH="$PNPM_HOME/global/5/node_modules:$NODE_PATH:/usr/local/lib/node_modules:$HOME/.local/lib/node_modules";
 export PATH=$HOMEBIN:$HOME/bin:$PNPM_HOME:/snap/bin:$PATH:$GOPATH/bin;
+export RIPGREP_CONFIG_PATH="$HOME/dev/OddsandEnds/config/ripgreprc";
 if [[ $(uname -o) == 'Android' ]]; then
 	export NODE_PATH=/data/data/com.termux/files/usr/lib/node_modules:$NODE_PATH;
 else
