@@ -1,0 +1,1 @@
+file://SSH_SGS8//storage/emulated/0/RetroArch/overlays/

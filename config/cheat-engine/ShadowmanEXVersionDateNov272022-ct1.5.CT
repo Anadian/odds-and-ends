@@ -1,0 +1,1056 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"ShadowManPosScript"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Shadowman EX- Version Date: Nov 27 2022 (Direct X)
+  Version: 
+  Date   : 2025-07-13
+  Author : willa
+
+  This script does blah blah blah
+}
+{$lua}
+if syntaxcheck then return end
+if memrec then print( 'memrec:', memrec) end
+print('CEVersion:', getCEVersion());
+if( cheatEngineIs64Bit() == true ) then
+	print('64-bit');
+else
+	print('32-bit');
+end
+print('CheatEngineDir:', getCheatEngineDir());
+{$asm}
+luaCall(print('Defines'))
+
+define(mysignature,43 4e 4f 23 55 6e 69 71 75 65 23 53 69 67 6e 61 74 75 72 65 23 43 4e 4f)
+
+define(ShadowManPosAdd,"thoth_x64.exe"+45DAF7)
+define(ShadowManPosBytes,89 47 20 8B 87 44 05 00 00 89 47 24 8B 87 48 05 00 00 89 47 28)
+define(ShadowManPosBytesLength,$15)
+define(ShadowManPosNops,90 90 90 90 90 90 90)
+
+/*
+thoth_x64.exe.text+32CFBC - 66 41 0F6E 5E 20      - movd xmm3,[r14+20]
+thoth_x64.exe.text+32CFC2 - 48 8D 85 A8000000     - lea rax,[rbp+000000A8]
+thoth_x64.exe.text+32CFC9 - 0F5B DB               - cvtdq2ps xmm3,xmm3
+*/
+define(HPAdd,"thoth_x64.exe.text"+32CFBC)
+define(HPBytes,66 41 0F 6E 5E 20 48 8D 85 A8 00 00 00 0F 5B DB)
+define(HPBytesLength,$10)
+define(HPNops,90 90)
+
+[ENABLE]
+luaCall(print('ENABLE'))
+
+luaCall(print('Asserts'))
+assert(ShadowManPosAdd,ShadowManPosBytes)
+assert(HPAdd,HPBytes)
+
+luaCall(print('AOB Scans'))
+
+luaCall(print('Allocs'))
+alloc(ShadowManPosMemory,$1000)
+
+define(ShadowManPosIns,ShadowManPosMemory+500)
+define(HPIns,ShadowManPosMemory+600)
+
+luaCall(print('Labels'))
+
+label(ShadowManPosMemoryLabel)
+label(ShadowManPosBackupLabel)
+label(ShadowManPosEffectiveAddressLabel)
+label(ShadowManPosInsLabel)
+label(ShadowManPosCodeLabel)
+label(ShadowManPosReturnLabel)
+
+label(HPBackupLabel)
+label(HPEffectiveAddressLabel)
+label(HPInsLabel)
+label(HPCodeLabel)
+label(HPReturnLabel)
+
+label(FreeMoveEnabledLabel)
+label(FreeMoveSpeedLabel)
+label(SkipFreeMoveLabel)
+
+luaCall(print('Memory'))
+
+ShadowManPosMemory:
+	ShadowManPosMemoryLabel:
+	db mysignature
+	db '&lt;ShadowManPosBackup&gt;'
+	ShadowManPosBackupLabel:
+    readmem(ShadowManPosAdd,ShadowManPosBytesLength)
+	db '&lt;/ShadowManPosBackup&gt;'
+	db '&lt;ShadowManPosEffectiveAddress&gt;'
+	ShadowManPosEffectiveAddressLabel:
+	dq 00
+	db '&lt;/ShadowManPosEffectiveAddress&gt;'
+    db '&lt;HPBackup&gt;'
+	HPBackupLabel:
+    readmem(HPAdd,HPBytesLength)
+	db '&lt;/HPBackup&gt;'
+	db '&lt;HPEffectiveAddress&gt;'
+	HPEffectiveAddressLabel:
+	dq 00
+	db '&lt;/HPEffectiveAddress&gt;'
+    db '&lt;FreeMoveEnabled:u8&gt;'
+    FreeMoveEnabledLabel:
+    db 00
+    db '&lt;/FreeMoveEnabled:u8&gt;'
+    db '&lt;FreeMoveSpeed:f32&gt;'
+    FreeMoveSpeedLabel:
+    dd (float)8.0
+    db '&lt;/FreeMoveSpeed:f32&gt;'
+
+
+luaCall(print('Instructions'))
+
+ShadowManPosIns:
+	ShadowManPosInsLabel:
+	mov [ShadowManPosEffectiveAddressLabel],rdi
+
+ShadowManPosCodeLabel:
+	// Original code
+	mov [rdi+20],eax
+  mov eax,[rdi+00000544]
+  mov [rdi+24],eax
+  mov eax,[rdi+00000548]
+  mov [rdi+28],eax
+{$luacode}
+--print('LuaCode1');
+if( isKeyPressed( VK_NUMPAD5 ) == true ) then
+	--print('NUMPAD 5 pressed.');
+	enabled_address = getAddressSafe( 'FreeMoveEnabledLabel' );
+    --print( 'enabled_address:', enabled_address );
+    byte_value = readByte( enabled_address, 1, false );
+    if( byte_value ~= 0 ) then
+    	byte_value = 0;
+    else
+       	byte_value = 1;
+        address_list = getAddressList();
+        speed_address = getAddressSafe( 'FreeMoveSpeedLabel' );
+        x_memrec = address_list.getMemoryRecordByDescription( 'PosX' );
+   		x_address = x_memrec.getCurrentAddress();
+        y_memrec = address_list.getMemoryRecordByDescription( 'PosY' );
+   		y_address = y_memrec.getCurrentAddress();
+        previous_y_f32 = readFloat( y_address );
+        z_memrec = address_list.getMemoryRecordByDescription( 'PosZ' );
+        z_address = z_memrec.getCurrentAddress();
+        yaw_memrec = address_list.getMemoryRecordByDescription( 'FirstPersonYaw (rad AntiCW from North)' );
+        yaw_address = yaw_memrec.getCurrentAddress();
+	end
+    writeBytes( enabled_address, byte_value );
+end
+{$asm}
+	pushf
+    push rax
+    mov al,[FreeMoveEnabledLabel]
+    cmp al,1
+    pop rax
+    jne	SkipFreeMoveLabel
+{$luacode}
+cond_left = isKeyPressed( VK_NUMPAD4 );
+cond_right = isKeyPressed( VK_NUMPAD6 );
+cond_forward = isKeyPressed( VK_NUMPAD8 );
+cond_backward = isKeyPressed( VK_NUMPAD2 );
+cond_ascend = isKeyPressed( VK_NUMPAD7 );
+cond_descend = isKeyPressed( VK_NUMPAD1 );
+
+speed_f32 = readFloat( speed_address );
+yaw_f32 = readFloat( yaw_address );
+--print( 'speed: ', speed_f32, 'yaw: ', yaw_f32 );
+if( (cond_left == true) or (cond_right == true) or (cond_forward == true) or (cond_backward == true) ) then
+    x_f32 = readFloat( x_address );
+    z_f32 = readFloat( z_address );
+    if( cond_left == true ) then
+    	lower_bits = 2;
+    elseif( cond_right == true ) then
+    	lower_bits = 1;
+    else
+    	lower_bits = 0;
+    end
+    if( cond_forward == true ) then
+    	higher_bits = 1;
+    elseif( cond_backward == true ) then
+    	higher_bits = 2;
+    else
+    	higher_bits = 0;
+    end
+    x_vel_f32 = -1 * speed_f32 * math.sin(yaw_f32);
+    z_vel_f32 = speed_f32 * math.cos(yaw_f32);
+    if( x_vel_f32 ~= 0.0 ) then
+    	x_f32 = x_f32 + x_vel_f32;
+        writeFloat( x_address, x_f32 );
+    end
+    if( z_vel_f32 ~= 0.0 ) then
+    	z_f32 = z_f32 + z_vel_f32;
+        writeFloat( z_address, z_f32 );
+    end
+end
+if( (cond_ascend == true) or (cond_descend == true) ) then
+    if( cond_ascend == true ) then
+   		y_f32 = previous_y_f32 + speed_f32;
+   	elseif( cond_descend == true ) then
+   		y_f32 = previous_y_f32 - speed_f32;
+    end
+else
+	y_f32 = previous_y_f32;
+end
+writeFloat( y_address, y_f32 );
+previous_y_f32 = y_f32;
+{$asm}
+	SkipFreeMoveLabel:
+	popf
+  jmp ShadowManPosReturnLabel
+
+HPIns:
+	HPInsLabel:
+	mov [HPEffectiveAddressLabel],r14
+
+HPCodeLabel:
+	// Original code
+	movd xmm3,[r14+20]
+	lea rax,[rbp+000000A8]
+	cvtdq2ps xmm3,xmm3
+  jmp HPReturnLabel
+
+
+ShadowManPosAdd:
+  jmp ShadowManPosInsLabel
+  db ShadowManPosNops
+
+ShadowManPosReturnLabel:
+	luaCall(print('return'))
+	registerSymbol(ShadowManPosAdd)
+	registerSymbol(ShadowManPosBytes)
+	registerSymbol(ShadowManPosBytesLength)
+	registerSymbol(ShadowManPosNops)
+	registerSymbol(ShadowManPosIns)
+	registerSymbol(ShadowManPosMemoryLabel)
+	registerSymbol(ShadowManPosBackupLabel)
+	registerSymbol(ShadowManPosEffectiveAddressLabel)
+	registerSymbol(ShadowManPosInsLabel)
+	registerSymbol(ShadowManPosCodeLabel)
+    registerSymbol(FreeMoveEnabledLabel)
+	registerSymbol(FreeMoveSpeedLabel)
+	registerSymbol(SkipFreeMoveLabel)
+
+HPAdd:
+  jmp HPInsLabel
+  db HPNops
+
+HPReturnLabel:
+	luaCall(print('return'))
+	registerSymbol(HPAdd)
+	registerSymbol(HPBytes)
+	registerSymbol(HPBytesLength)
+	registerSymbol(HPNops)
+	registerSymbol(HPIns)
+	registerSymbol(HPBackupLabel)
+	registerSymbol(HPEffectiveAddressLabel)
+	registerSymbol(HPInsLabel)
+	registerSymbol(HPCodeLabel)
+
+[DISABLE]
+luaCall(print('DISABLE'))
+
+ShadowManPosAdd:
+	readmem(ShadowManPosBackupLabel,ShadowManPosBytesLength)
+
+HPAdd:
+	readmem(HPBackupLabel,HPBytesLength)
+
+luaCall(print('unregisterSymbols'))
+	unregisterSymbol(ShadowManPosAdd)
+	unregisterSymbol(ShadowManPosBytes)
+	unregisterSymbol(ShadowManPosBytesLength)
+	unregisterSymbol(ShadowManPosNops)
+	unregisterSymbol(ShadowManPosIns)
+	unregisterSymbol(ShadowManPosMemoryLabel)
+	unregisterSymbol(ShadowManPosBackupLabel)
+	unregisterSymbol(ShadowManPosEffectiveAddressLabel)
+	unregisterSymbol(ShadowManPosInsLabel)
+	unregisterSymbol(ShadowManPosCodeLabel)
+    //HP
+    unregisterSymbol(HPAdd)
+	unregisterSymbol(HPBytes)
+	unregisterSymbol(HPBytesLength)
+	unregisterSymbol(HPNops)
+	unregisterSymbol(HPIns)
+	unregisterSymbol(HPBackupLabel)
+	unregisterSymbol(HPEffectiveAddressLabel)
+	unregisterSymbol(HPInsLabel)
+	unregisterSymbol(HPCodeLabel)
+    //FreeMove
+    unregisterSymbol(FreeMoveEnabledLabel)
+	unregisterSymbol(FreeMoveSpeedLabel)
+	unregisterSymbol(SkipFreeMoveLabel)
+
+luaCall(print('Deallocs'))
+
+dealloc(ShadowManPosMemory)
+
+{
+// ORIGINAL CODE - INJECTION POINT: thoth_x64.exe.text+45CAF7
+
+thoth_x64.exe.text+45CAC7: 89 87 38 D1 01 00  - mov [rdi+0001D138],eax
+thoth_x64.exe.text+45CACD: 8B 47 28           - mov eax,[rdi+28]
+thoth_x64.exe.text+45CAD0: 89 87 3C D1 01 00  - mov [rdi+0001D13C],eax
+thoth_x64.exe.text+45CAD6: 8B 87 4C 05 00 00  - mov eax,[rdi+0000054C]
+thoth_x64.exe.text+45CADC: 89 47 08           - mov [rdi+08],eax
+thoth_x64.exe.text+45CADF: 8B 87 50 05 00 00  - mov eax,[rdi+00000550]
+thoth_x64.exe.text+45CAE5: 89 47 0C           - mov [rdi+0C],eax
+thoth_x64.exe.text+45CAE8: 8B 87 54 05 00 00  - mov eax,[rdi+00000554]
+thoth_x64.exe.text+45CAEE: 89 47 10           - mov [rdi+10],eax
+thoth_x64.exe.text+45CAF1: 8B 87 40 05 00 00  - mov eax,[rdi+00000540]
+// ---------- INJECTING HERE ----------
+thoth_x64.exe.text+45CAF7: 89 47 20           - mov [rdi+20],eax
+// ---------- DONE INJECTING  ----------
+thoth_x64.exe.text+45CAFA: 8B 87 44 05 00 00  - mov eax,[rdi+00000544]
+thoth_x64.exe.text+45CB00: 89 47 24           - mov [rdi+24],eax
+thoth_x64.exe.text+45CB03: 8B 87 48 05 00 00  - mov eax,[rdi+00000548]
+thoth_x64.exe.text+45CB09: 89 47 28           - mov [rdi+28],eax
+thoth_x64.exe.text+45CB0C: E8 DF 55 ED FF     - call thoth_x64.exe.text+3320F0
+thoth_x64.exe.text+45CB11: 48 8B CF           - mov rcx,rdi
+thoth_x64.exe.text+45CB14: E8 57 3A ED FF     - call thoth_x64.exe.text+330570
+thoth_x64.exe.text+45CB19: 48 8B CF           - mov rcx,rdi
+thoth_x64.exe.text+45CB1C: E8 1F 8B 02 00     - call thoth_x64.exe.text+485640
+thoth_x64.exe.text+45CB21: 48 8B CF           - mov rcx,rdi
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>15</ID>
+      <Description>"HP [0,MaxHP] Each pip is 1000 HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>HPEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>20</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"MaxHP [5000,10000]"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>HPEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>24</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>23</ID>
+      <Description>"MaxShadowCharge [0,10000]"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>HPEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>28</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"ShadowGunCharge [0,MaxShadowCharge]"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>HPEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>2C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"MP [0,MaxShadowCharge]"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>HPEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>30</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>20</ID>
+      <Description>"ShotgunAmmo [0,50]"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>HPEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>34</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"ViolaterAmmo [0,500]"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>HPEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>21</ID>
+      <Description>"SMGAmmo [0,500]"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>HPEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>40</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>18</ID>
+      <Description>"GamePaused"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>140DB2225</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"PosX"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>ShadowManPosEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>20</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"PosY"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>ShadowManPosEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>24</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"PosZ"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>ShadowManPosEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>28</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>24</ID>
+      <Description>"NewX"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>ShadowManPosEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>540</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25</ID>
+      <Description>"NewY"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>ShadowManPosEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>544</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26</ID>
+      <Description>"NewZ"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>ShadowManPosEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>548</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>27</ID>
+      <Description>"ThirdPersonYawSMYawRadAntiCWFromZ-"</Description>
+      <VariableType>Float</VariableType>
+      <Address>574CDDF8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>28</ID>
+      <Description>"Yaw;1@Z-;-1@Z+"</Description>
+      <VariableType>Float</VariableType>
+      <Address>574CDE30</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>29</ID>
+      <Description>"Yaw;+1@X+;-1@X-"</Description>
+      <VariableType>Float</VariableType>
+      <Address>574CDE50</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>30</ID>
+      <Description>"SMYawRadAntiCWFromZ-"</Description>
+      <VariableType>Float</VariableType>
+      <Address>thoth_x64.exe+F6184C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>31</ID>
+      <Description>"ThirdPersonPitch"</Description>
+      <VariableType>Float</VariableType>
+      <Address>thoth_x64.exe+F9A350</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>32</ID>
+      <Description>"Jacket"</Description>
+      <VariableType>Float</VariableType>
+      <Address>thoth_x64.exe+F6184C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>33</ID>
+      <Description>"TPTargetYaw"</Description>
+      <VariableType>Float</VariableType>
+      <Address>thoth_x64.exe+F99E3C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>35</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>thoth_x64.exe+F9A2FC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>36</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>thoth_x64.exe+F9A308</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>37</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>thoth_x64.exe+F9B42C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>38</ID>
+      <Description>"FirstPersonYaw"</Description>
+      <VariableType>Float</VariableType>
+      <Address>thoth_x64.exe+F9B438</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>39</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>thoth_x64.exe+F9B8EC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>40</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>thoth_x64.exe+F9B8F8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>41</ID>
+      <Description>"FPTargetPitch"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>140F9B428</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>42</ID>
+      <Description>"TPPitch"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>140F99E38</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>43</ID>
+      <Description>"EveryFrameX"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>574CE360</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>44</ID>
+      <Description>"EveryFrameY"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>574CE364</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>45</ID>
+      <Description>"EFZ"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>574CE368</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>46</ID>
+      <Description>"SomeGravY"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>574CE2EC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>47</ID>
+      <Description>"RealGravity"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>574CE2F8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>48</ID>
+      <Description>"SetToRealGreavity?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>574CDDEC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>51</ID>
+      <Description>"AllocatedMemory"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>ShadowManPosMemoryLabel</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>49</ID>
+      <Description>"FreeMoveEnabled"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>FreeMoveEnabledLabel</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>50</ID>
+      <Description>"FreeMoveSpeed"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>FreeMoveSpeedLabel</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>52</ID>
+      <Description>"FirstPersonYaw (rad AntiCW from North)"</Description>
+      <VariableType>Float</VariableType>
+      <Address>thoth_x64.exe+F9B438</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>AltWriter Code :mov [rdi+24],eax</Description>
+      <AddressString>thoth_x64.exe+45DB00</AddressString>
+      <Before>
+        <Byte>87</Byte>
+        <Byte>44</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>47</Byte>
+        <Byte>24</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>87</Byte>
+        <Byte>48</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>LedgePullUpCode :movss [rcx+24],xmm3</Description>
+      <AddressString>thoth_x64.exe+47CD8C</AddressString>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>59</Byte>
+        <Byte>24</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>59</Byte>
+        <Byte>24</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>61</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>CollisionPosCorrectorCode :movss [rbx+38],xmm2</Description>
+      <AddressString>thoth_x64.exe+2DB721</AddressString>
+      <Before>
+        <Byte>97</Byte>
+        <Byte>80</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>53</Byte>
+        <Byte>38</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>C2</Byte>
+        <Byte>0F</Byte>
+        <Byte>C6</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>GenericSetPosCode :movss [rbx+38],xmm5</Description>
+      <AddressString>thoth_x64.exe+2DAE48</AddressString>
+      <Before>
+        <Byte>50</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>D1</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>6B</Byte>
+        <Byte>38</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>73</Byte>
+        <Byte>3C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>PosWriterCode :mov [rdi+20],eax</Description>
+      <AddressString>thoth_x64.exe+45DAF7</AddressString>
+      <Before>
+        <Byte>87</Byte>
+        <Byte>40</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>47</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>87</Byte>
+        <Byte>44</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Player.SetHPCode :add [rbx+20],edi</Description>
+      <AddressString>thoth_x64.exe+32D1A9</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>20</Byte>
+        <Byte>5F</Byte>
+        <Byte>C3</Byte>
+      </Before>
+      <Actual>
+        <Byte>01</Byte>
+        <Byte>7B</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>C7</Byte>
+        <Byte>8B</Byte>
+        <Byte>4B</Byte>
+        <Byte>20</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>HUD.GetHPCode :movd xmm3,[r14+20]</Description>
+      <AddressString>thoth_x64.exe+32DFBC</AddressString>
+      <Before>
+        <Byte>E8</Byte>
+        <Byte>F4</Byte>
+        <Byte>F8</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>6E</Byte>
+        <Byte>5E</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+        <Byte>85</Byte>
+        <Byte>A8</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>NeutralJumpCode :mov [rbx+3C],eax</Description>
+      <AddressString>thoth_x64.exe+2DADCA</AddressString>
+      <Before>
+        <Byte>43</Byte>
+        <Byte>38</Byte>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>3C</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+        <Byte>08</Byte>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Generic.SetYCode :mov [rbx+3C],eax</Description>
+      <AddressString>thoth_x64.exe+2DAEEC</AddressString>
+      <Before>
+        <Byte>43</Byte>
+        <Byte>38</Byte>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+        <Byte>7C</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>3C</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>83</Byte>
+        <Byte>80</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>OtherGenericSetYCode :movss [rbx+3C],xmm6</Description>
+      <AddressString>thoth_x64.exe+2DAE4D</AddressString>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>6B</Byte>
+        <Byte>38</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>73</Byte>
+        <Byte>3C</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>7B</Byte>
+        <Byte>40</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>YetAnotherGenericSetYCode :movss [rbx+3C],xmm0</Description>
+      <AddressString>thoth_x64.exe+2DB51D</AddressString>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>4B</Byte>
+        <Byte>38</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>43</Byte>
+        <Byte>3C</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>53</Byte>
+        <Byte>40</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>SMTurnLeftCode :movss [rbx+18],xmm0</Description>
+      <AddressString>thoth_x64.exe+485403</AddressString>
+      <Before>
+        <Byte>18</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>2F</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>43</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>C8</Byte>
+        <Byte>76</Byte>
+        <Byte>17</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>SMTurnRightCode :movss [rbx+18],xmm0</Description>
+      <AddressString>thoth_x64.exe+485373</AddressString>
+      <Before>
+        <Byte>18</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>2F</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>43</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>C8</Byte>
+        <Byte>76</Byte>
+        <Byte>17</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>FirstPersonCode :mov [r8+18],eax</Description>
+      <AddressString>thoth_x64.exe+2D1F8E</AddressString>
+      <Before>
+        <Byte>75</Byte>
+        <Byte>07</Byte>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+        <Byte>2C</Byte>
+      </Before>
+      <Actual>
+        <Byte>41</Byte>
+        <Byte>89</Byte>
+        <Byte>40</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>20</Byte>
+        <Byte>5B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>PresumablyGravityCode :mov [rdi+24],eax</Description>
+      <AddressString>008E0510</AddressString>
+      <Before>
+        <Byte>87</Byte>
+        <Byte>44</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>47</Byte>
+        <Byte>24</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>87</Byte>
+        <Byte>48</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>ActualGravityCode :addss xmm1,[rbx+04]</Description>
+      <AddressString>thoth_x64.exe+2DACBE</AddressString>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>4B</Byte>
+        <Byte>10</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>4B</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>43</Byte>
+        <Byte>14</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Investigate hereCode :je thoth_x64.exe+46B502</Description>
+      <AddressString>thoth_x64.exe+46B4F2</AddressString>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>F2</Byte>
+        <Byte>84</Byte>
+        <Byte>D2</Byte>
+      </Before>
+      <Actual>
+        <Byte>74</Byte>
+        <Byte>0E</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>CD</Byte>
+        <Byte>F3</Byte>
+        <Byte>41</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <DisassemblerComments>
+    <DisassemblerComment>
+      <Address>"thoth_x64.exe"+46B4F2</Address>
+      <Comment>Never Jumps
+</Comment>
+    </DisassemblerComment>
+  </DisassemblerComments>
+</CheatTable>

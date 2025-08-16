@@ -1,0 +1,1401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"HP"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>1CF3BA62D24</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Gold"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>1EED6388E58</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Weights"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>1EED6388458</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"HPx100"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>1EEDF34BD24</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Invincibility"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : LaMulana2
+  Version: 
+  Date   : 2025-06-28
+  Author : willa
+
+  This script does blah blah blah
+}
+{$lua}
+if syntaxcheck then return end
+if memrec then print( 'memrec:', memrec) end
+print('CEVersion:', getCEVersion());
+if( cheatEngineIs64Bit() == true ) then
+	print('64-bit');
+else
+	print('32-bit');
+end
+print('CheatEngineDir:', getCheatEngineDir());
+{$asm}
+luaCall(print('Defines'))
+
+define(mysignature,43 4e 4f 23 55 6e 69 71 75 65 23 53 69 67 6e 61 74 75 72 65 23 43 4e 4f)
+
+/*define(InvincibilityAdd,L2STATUS.Status:setHP+38)
+define(InvincibilityBytes,89 87 E4 00 00 00 85 C0)*/
+define(InvincibilityAdd,NewPlayer:hitCallBack+a2)
+define(InvincibilityBytes,48 83 C4 20 85 C0 74 0A)
+define(InvincibilityBytesLength,8)
+define(InvincibilityNopLength,InvincibilityBytesLength-6)
+
+/* For next time: PosX_Setter
+1EE9B7B746C - F3 0F10 85 08FEFFFF   - movss xmm0,[rbp-000001F8]
+1EE9B7B7474 - F3 0F5A C0            - cvtss2sd xmm0,xmm0
+1EE9B7B7478 - F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+&gt;&gt;1EE9B7B747C - F3 0F11 28            - movss [rax],xmm5 //X coordinate pointed to by rax
+1EE9B7B7480 - 48 85 F6              - test rsi,rsi
+1EE9B7B7483 - 0F84 C6040000         - je 1EE9B7B794F
+1EE9B7B7489 - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+1EE9B7B7490 - F3 0F10 85 0CFEFFFF   - movss xmm0,[rbp-000001F4]
+
+L2STATUS.Status:setHP+38 - 89 87 E4000000        - mov [rdi+000000E4],eax
+L2STATUS.Status:setHP+3e - 85 C0                 - test eax,eax
+L2STATUS.Status:setHP+40 - 7F 10                 - jg L2STATUS.Status:setHP+52
+L2STATUS.Status:setHP+42 - C7 87 E4000000 00000000 - mov [rdi+000000E4],00000000 { 0 }
+L2STATUS.Status:setHP+4c - 41 BE 01000000        - mov r14d,00000001 { 1 }
+L2STATUS.Status:setHP+52 - 48 63 87 E4000000     - movsxd  rax,dword ptr [rdi+000000E4]
+L2STATUS.Status:setHP+59 - 39 45 EC              - cmp [rbp-14],eax
+L2STATUS.Status:setHP+5c - 75 0C                 - jne L2STATUS.Status:setHP+6a
+L2STATUS.Status:setHP+5e - 48 63 87 E4000000     - movsxd  rax,dword ptr [rdi+000000E4]
+L2STATUS.Status:setHP+65 - E9 B5000000           - jmp L2STATUS.Status:setHP+11f
+L2STATUS.Status:setHP+6a - 45 85 F6              - test r14d,r14d
+L2STATUS.Status:setHP+6d - 0F84 55000000         - je L2STATUS.Status:setHP+c8
+L2STATUS.Status:setHP+73 - 48 8B 87 D8000000     - mov rax,[rdi+000000D8]
+L2STATUS.Status:setHP+7a - 48 89 45 D8           - mov [rbp-28],rax
+L2STATUS.Status:setHP+7e - 48 63 87 E4000000     - movsxd  rax,dword ptr [rdi+000000E4]
+L2STATUS.Status:setHP+85 - B9 64000000           - mov ecx,00000064 { 100 }
+L2STATUS.Status:setHP+8a - 99                    - cdq
+L2STATUS.Status:setHP+8b - F7 F9                 - idiv ecx
+L2STATUS.Status:setHP+8d - 48 8B D0              - mov rdx,rax
+L2STATUS.Status:setHP+90 - 48 8B 45 D8           - mov rax,[rbp-28]
+L2STATUS.Status:setHP+94 - F3 0F10 05 A4000000   - movss xmm0,[L2STATUS.Status:setHP+140] { (5.00) }
+L2STATUS.Status:setHP+9c - F3 0F5A C0            - cvtss2sd xmm0,xmm0
+L2STATUS.Status:setHP+a0 - 48 8B C8              - mov rcx,rax
+L2STATUS.Status:setHP+a3 - F2 0F10 D0            - movsd xmm2,xmm0
+L2STATUS.Status:setHP+a7 - F2 0F5A D2            - cvtsd2ss xmm2,xmm2
+L2STATUS.Status:setHP+ab - 48 83 EC 20           - sub rsp,20 { 32 }
+L2STATUS.Status:setHP+af - 83 38 00              - cmp dword ptr [rax],00 { 0 }
+L2STATUS.Status:setHP+b2 - 49 BB D05C5FDA14020000 - mov r11,StatusBarIF:setHP { (-326416299) }
+L2STATUS.Status:setHP+bc - 41 FF D3              - call r11
+
+NewPlayer:hitCallBack+a2 - 48 83 C4 20           - add rsp,20 { 32 }
+NewPlayer:hitCallBack+a6 - 85 C0                 - test eax,eax
+NewPlayer:hitCallBack+a8 - 74 0A                 - je NewPlayer:hitCallBack+b4
+48 83 C4 20 85 C0 74 0A
+*/
+
+[ENABLE]
+luaCall(print('ENABLE'))
+
+luaCall(print('Asserts'))
+assert(InvincibilityAdd,InvincibilityBytes)
+
+luaCall(print('AOB Scans'))
+
+luaCall(print('Allocs'))
+alloc(NewMemory,$1000)
+
+define(InvincibilityIns,NewMemory+500)
+
+luaCall(print('Labels'))
+
+label(InvincibilityBackupLabel)
+label(InvincibilityMemoryLabel)
+label(InvincibilityInsLabel)
+label(InvincibilityCodeLabel)
+label(InvincibilityReturnLabel)
+
+luaCall(print('Memory'))
+
+NewMemory:
+	db mysignature
+	InvincibilityBackupLabel:
+    readmem(InvincibilityAdd,InvincibilityBytesLength)
+	InvincibilityMemoryLabel:
+
+luaCall(print('Instructions'))
+
+InvincibilityIns:
+	InvincibilityInsLabel:
+  	//test eax,eax
+	add rsp,20
+	test eax,eax
+	jmp long InvincibilityReturnLabel
+
+InvincibilityCodeLabel:
+  /*mov [rdi+000000E4],eax
+  test eax,eax*/
+  add rsp,20
+  test eax,eax
+  je NewPlayer:hitCallBack+b4
+  jmp InvincibilityReturnLabel
+
+InvincibilityAdd:
+  jmp long InvincibilityIns
+  nop
+  nop
+  nop
+  InvincibilityReturnLabel:
+	luaCall(print('return'))
+	registerSymbol(InvincibilityAdd)
+	registerSymbol(InvincibilityBytes)
+	registerSymbol(InvincibilityMemoryLabel)
+	registerSymbol(InvincibilityInsLabel)
+	registerSymbol(InvincibilityBackupLabel)
+	registerSymbol(InvincibilityIns)
+	registerSymbol(InvincibilityCodeLabel)
+
+
+[DISABLE]
+luaCall(print('DISABLE'))
+
+InvincibilityAdd:
+	readmem(InvincibilityBackupLabel,InvincibilityBytesLength)
+
+luaCall(print('unregisterSymbols'))
+	unregisterSymbol(InvincibilityAdd)
+	unregisterSymbol(InvincibilityBytes)
+	unregisterSymbol(InvincibilityMemoryLabel)
+	unregisterSymbol(InvincibilityInsLabel)
+	unregisterSymbol(InvincibilityBackupLabel)
+	unregisterSymbol(InvincibilityIns)
+	unregisterSymbol(InvincibilityCodeLabel)
+
+luaCall(print('Deallocs'))
+
+dealloc(NewMemory)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 1EE9B83CCC8
+
+1EE9B83CC9E: 48 89 55 E0                    - mov [rbp-20],rdx
+1EE9B83CCA2: 48 63 87 E4 00 00 00           - movsxd  rax,dword ptr [rdi+000000E4]
+1EE9B83CCA9: 89 45 EC                       - mov [rbp-14],eax
+1EE9B83CCAC: 45 33 F6                       - xor r14d,r14d
+1EE9B83CCAF: 48 63 87 E4 00 00 00           - movsxd  rax,dword ptr [rdi+000000E4]
+1EE9B83CCB6: 48 63 4D E0                    - movsxd  rcx,dword ptr [rbp-20]
+1EE9B83CCBA: 48 8D 0C 89                    - lea rcx,[rcx+rcx*4]
+1EE9B83CCBE: 48 C1 E1 02                    - shl rcx,02
+1EE9B83CCC2: 48 8D 0C 89                    - lea rcx,[rcx+rcx*4]
+1EE9B83CCC6: 03 C1                          - add eax,ecx
+// ---------- INJECTING HERE ----------
+1EE9B83CCC8: 89 87 E4 00 00 00              - mov [rdi+000000E4],eax
+// ---------- DONE INJECTING  ----------
+1EE9B83CCCE: 85 C0                          - test eax,eax
+1EE9B83CCD0: 7F 10                          - jg 1EE9B83CCE2
+1EE9B83CCD2: C7 87 E4 00 00 00 00 00 00 00  - mov [rdi+000000E4],00000000
+1EE9B83CCDC: 41 BE 01 00 00 00              - mov r14d,00000001
+1EE9B83CCE2: 48 63 87 E4 00 00 00           - movsxd  rax,dword ptr [rdi+000000E4]
+1EE9B83CCE9: 39 45 EC                       - cmp [rbp-14],eax
+1EE9B83CCEC: 75 0C                          - jne 1EE9B83CCFA
+1EE9B83CCEE: 48 63 87 E4 00 00 00           - movsxd  rax,dword ptr [rdi+000000E4]
+1EE9B83CCF5: E9 B5 00 00 00                 - jmp 1EE9B83CDAF
+1EE9B83CCFA: 45 85 F6                       - test r14d,r14d
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>114</ID>
+      <Description>"FreeMove"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : LaMulana2
+  Version: 
+  Date   : 2025-06-28
+  Author : willa
+
+  X Coordinate Getter
+}
+{$lua}
+if syntaxcheck then return end
+if memrec then print( 'memrec:', memrec) end
+print('CEVersion:', getCEVersion());
+if( cheatEngineIs64Bit() == true ) then
+	print('64-bit');
+else
+	print('32-bit');
+end
+print('CheatEngineDir:', getCheatEngineDir());
+{$asm}
+luaCall(print('Defines'))
+
+define(mysignature,43 4e 4f 23 55 6e 69 71 75 65 23 53 69 67 6e 61 74 75 72 65 23 43 4e 4f)
+//1D3B15E6BF5 - 48 8D 86 60 05 00 00 F3 0F 10 85 08 FE FF FF F3 0F 5A C0 F2 0F 5A E8 F3 0F 11 28 48 85 F6
+
+/*
+NewPlayer:checkPress+1918 - F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+NewPlayer:checkPress+191c - F3 0F11 28            - movss [rax],xmm5
+F2 0F 5A E8 F3 0F 11 28
+
+26EE1286BBC - 48 85 F6              - test rsi,rsi
+NewPlayer:checkPress+18ff- 0F84 F4040000         - je NewPlayer:checkPress+1df9
+NewPlayer:checkPress+1905- 48 8D 86 60050000     - lea rax,[rsi+00000560]
+NewPlayer:checkPress+190c- F3 0F10 85 08FEFFFF   - movss xmm0,[rbp-000001F8]
+NewPlayer:checkPress+1914- F3 0F5A C0            - cvtss2sd xmm0,xmm0
+NewPlayer:checkPress+1918- F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+NewPlayer:checkPress+191c- F3 0F11 28            - movss [rax],xmm5
+NewPlayer:checkPress+1920- 48 85 F6              - test rsi,rsi
+NewPlayer:checkPress+1923- 0F84 C6040000         - je NewPlayer:checkPress+1def
+NewPlayer:checkPress+1929- 48 8D 86 60050000     - lea rax,[rsi+00000560]
+NewPlayer:checkPress+1930- F3 0F10 85 0CFEFFFF   - movss xmm0,[rbp-000001F4]
+NewPlayer:checkPress+1938- F3 0F5A C0            - cvtss2sd xmm0,xmm0
+NewPlayer:checkPress+193c- F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+NewPlayer:checkPress+1940- F3 0F11 68 04         - movss [rax+04],xmm5
+
+*/
+define(FreeMoveAdd,NewPlayer:checkPress+1905)
+//define(ScanBytes,E9 73 00 00 00 48 85 F6 0F 84 F4 04 00 00 48 8D 86 60 05 00 00 F3 0F 10 85 xx xx FF FF F3 0F 5A C0 F2 0F 5A E8 F3 0F 11 28 48 85 F6 0F 84 C6 04 00 00 48 8D 86 60 05 00 00 F3 0F 10 85 0C FE FF FF F3 0F 5A C0 F2 0F 5A E8 F3 0F 11 68 04 48 85 F6 0F 84 97 04 00 00 48 8D 86 60 05 00 00 F3 0F 10 85 10 FE FF FF)
+//define(ScanBytesLength,$66)
+//define(FreeMoveBytes,F3 0F 11 28 48 85 F6)
+//define(FreeMoveBytesLength,7)
+define(FreeMoveBytes,48 8D 86 60 05 00 00 F3 0F 10 85 08 FE FF FF F3 0F 5A C0 F2 0F 5A E8 F3 0F 11 28 48 85 F6 0F 84 C6 04 00 00 48 8D 86 60 05 00 00 F3 0F 10 85 0C FE FF FF F3 0F 5A C0 F2 0F 5A E8 F3 0F 11 68 04)
+define(FreeMoveNops,90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90)
+define(FreeMoveBytesLength,64)
+
+/*
+FreeMoveAdd - F3 0F10 85 08FEFFFF   - movss xmm0,[rbp-000001F8]
+NewPlayer:checkPress+191c - F3 0F11 28            - movss [rax],xmm5
+L2STATUS.Status:setHP+38 - 89 87 E4000000        - mov [rdi+000000E4],eax
+1CF6D01F7D8 - 48 89 08              - mov [rax],rcx
+NewPlayer:Farst+bc18 - 48 89 08              - mov [rax],rcx
+
+
+
+*/
+[ENABLE]
+luaCall(print('ENABLE'))
+
+luaCall(print('Asserts'))
+assert(FreeMoveAdd,FreeMoveBytes)
+
+luaCall(print('AOB Scans'))
+
+define(ReturnAdd,FreeMoveAdd+8)
+
+luaCall(print('Allocs'))
+alloc(FreeMoveMemory,$1000)
+
+define(FreeMoveIns,FreeMoveMemory+500)
+
+luaCall(print('Labels'))
+
+//label(ScanAddLabel)
+label(FreeMoveMemoryLabel)
+label(FreeMoveBackupLabel)
+label(FreeMovePositionAddressLabel)
+label(FreeMoveInputByteLabel)
+label(FreeMoveFreeMoveSpeedDoubleLabel)
+label(FreeMoveInsLabel)
+label(FreeMoveAddLabel)
+label(FreeMoveReturnLabel)
+label(FreeMoveRightLabel)
+label(FreeMoveXReturnLabel)
+label(FreeMoveDownLabel)
+label(FreeMoveYReturnLabel)
+
+luaCall(print('Memory'))
+
+FreeMoveMemory:
+	FreeMoveMemoryLabel:
+	db mysignature
+	FreeMoveBackupLabel:
+    readmem(FreeMoveAdd,FreeMoveBytesLength)
+    align 64 00
+	FreeMovePositionAddressLabel:
+    dq 00 00 00 00 00 00 00 00
+    FreeMoveInputByteLabel:
+    dq 00 00 00 00 00 00 00 00
+    FreeMoveFreeMoveSpeedDoubleLabel:
+    dq (double)4.0
+
+luaCall(print('Instructions'))
+
+FreeMoveIns:
+	FreeMoveInsLabel:
+	lea rax,[rsi+00000560]
+    pushf
+	mov [FreeMovePositionAddressLabel],rax
+	movss xmm0,[rbp-000001F8]
+	cvtss2sd xmm0,xmm0
+{$luacode}
+input_address = getAddressSafe('FreeMoveInputByteLabel');
+if( input_address ) then
+	input_byte = 0;
+    cond_left = isKeyPressed( VK_NUMPAD4 );
+    cond_right = isKeyPressed( VK_NUMPAD6 );
+    cond_up = isKeyPressed( VK_NUMPAD8 );
+    cond_down = isKeyPressed( VK_NUMPAD2 );
+
+    if( cond_left == true ) then
+  	  input_byte = input_byte | 1;
+    elseif( cond_right == true ) then
+  	  input_byte = input_byte | 3;
+    end
+    if( cond_up == true ) then
+  	  input_byte = input_byte | 4;
+    elseif( cond_down == true ) then
+  	  input_byte = input_byte | 12;
+    end
+  	writeBytes( input_address, input_byte );
+else
+	print( 'Could not load address.', input_address );
+end
+{$asm}
+    test [FreeMoveInputByteLabel],01
+    je FreeMoveXReturnLabel
+    test [FreeMoveInputByteLabel],02
+    jne FreeMoveRightLabel
+    subsd xmm0,[FreeMoveFreeMoveSpeedDoubleLabel]
+    jmp FreeMoveXReturnLabel
+    FreeMoveRightLabel:
+    addsd xmm0,[FreeMoveFreeMoveSpeedDoubleLabel]
+    FreeMoveXReturnLabel:
+	cvtsd2ss xmm5,xmm0
+	movss [rax],xmm5
+	test rsi,rsi
+	//je NewPlayer:checkPress+1def
+	lea rax,[rsi+00000560]
+	movss xmm0,[rbp-000001F4]
+	cvtss2sd xmm0,xmm0
+	test [FreeMoveInputByteLabel],04
+    je FreeMoveYReturnLabel
+    test [FreeMoveInputByteLabel],08
+    jne FreeMoveDownLabel
+    addsd xmm0,[FreeMoveFreeMoveSpeedDoubleLabel]
+    jmp FreeMoveYReturnLabel
+    FreeMoveDownLabel:
+    subsd xmm0,[FreeMoveFreeMoveSpeedDoubleLabel]
+    FreeMoveYReturnLabel:
+	cvtsd2ss xmm5,xmm0
+	movss [rax+04],xmm5
+	popf
+	jmp long FreeMoveReturnLabel
+
+
+FreeMoveAdd:
+	FreeMoveAddLabel:
+  jmp long FreeMoveIns
+  db FreeMoveNops
+
+FreeMoveReturnAdd:
+	FreeMoveReturnLabel:
+	luaCall(print('return'))
+	registerSymbol(FreeMoveAdd)
+	registerSymbol(FreeMoveBytes)
+    registerSymbol(FreeMoveBytesLength)
+    registerSymbol(FreeMoveNops)
+	registerSymbol(FreeMoveMemoryLabel)
+	registerSymbol(FreeMoveBackupLabel)
+    registerSymbol(FreeMovePositionAddressLabel)
+    registerSymbol(FreeMoveInputByteLabel)
+    registerSymbol(FreeMoveFreeMoveSpeedDoubleLabel)
+	registerSymbol(FreeMoveInsLabel)
+    registerSymbol(FreeMoveAddLabel)
+	registerSymbol(FreeMoveRightLabel)
+	registerSymbol(FreeMoveXReturnLabel)
+	registerSymbol(FreeMoveDownLabel)
+	registerSymbol(FreeMoveYReturnLabel)
+
+[DISABLE]
+luaCall(print('DISABLE'))
+
+FreeMoveAdd:
+	readmem(FreeMoveBackupLabel,FreeMoveBytesLength)
+
+luaCall(print('unregisterSymbols'))
+	unregisterSymbol(FreeMoveAdd)
+	unregisterSymbol(FreeMoveBytes)
+    unregisterSymbol(FreeMoveBytesLength)
+    unregisterSymbol(FreeMoveNops)
+	unregisterSymbol(FreeMoveMemoryLabel)
+	unregisterSymbol(FreeMoveBackupLabel)
+    unregisterSymbol(FreeMovePositionAddressLabel)
+    unregisterSymbol(FreeMoveInputByteLabel)
+    unregisterSymbol(FreeMoveFreeMoveSpeedDoubleLabel)
+	unregisterSymbol(FreeMoveInsLabel)
+    unregisterSymbol(FreeMoveAddLabel)
+	unregisterSymbol(FreeMoveRightLabel)
+	unregisterSymbol(FreeMoveXReturnLabel)
+	unregisterSymbol(FreeMoveDownLabel)
+	unregisterSymbol(FreeMoveYReturnLabel)
+
+luaCall(print('Deallocs'))
+
+dealloc(FreeMoveMemory)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 1D3B15E6C10
+
+1D3B15E6BD9: 48 89 BE 48 03 00 00     - mov [rsi+00000348],rdi
+1D3B15E6BE0: 4C 89 BE 50 03 00 00     - mov [rsi+00000350],r15
+1D3B15E6BE7: E9 73 00 00 00           - jmp 1D3B15E6C5F
+1D3B15E6BEC: 48 85 F6                 - test rsi,rsi
+1D3B15E6BEF: 0F 84 F4 04 00 00        - je 1D3B15E70E9
+1D3B15E6BF5: 48 8D 86 60 05 00 00     - lea rax,[rsi+00000560]
+1D3B15E6BFC: F3 0F 10 85 08 FE FF FF  - movss xmm0,[rbp-000001F8]
+1D3B15E6C04: F3 0F 5A C0              - cvtss2sd xmm0,xmm0
+1D3B15E6C08: F2 0F 5A E8              - cvtsd2ss xmm5,xmm0
+1D3B15E6C0C: F3 0F 11 28              - movss [rax],xmm5
+// ---------- INJECTING HERE ----------
+1D3B15E6C10: 48 85 F6                 - test rsi,rsi
+// ---------- DONE INJECTING  ----------
+1D3B15E6C13: 0F 84 C6 04 00 00        - je 1D3B15E70DF
+1D3B15E6C19: 48 8D 86 60 05 00 00     - lea rax,[rsi+00000560]
+1D3B15E6C20: F3 0F 10 85 0C FE FF FF  - movss xmm0,[rbp-000001F4]
+1D3B15E6C28: F3 0F 5A C0              - cvtss2sd xmm0,xmm0
+1D3B15E6C2C: F2 0F 5A E8              - cvtsd2ss xmm5,xmm0
+1D3B15E6C30: F3 0F 11 68 04           - movss [rax+04],xmm5
+1D3B15E6C35: 48 85 F6                 - test rsi,rsi
+1D3B15E6C38: 0F 84 97 04 00 00        - je 1D3B15E70D5
+1D3B15E6C3E: 48 8D 86 60 05 00 00     - lea rax,[rsi+00000560]
+1D3B15E6C45: F3 0F 10 85 10 FE FF FF  - movss xmm0,[rbp-000001F0]
+
+1D3B15E6BE7 - E9 73000000           - jmp 1D3B15E6C5F
+1D3B15E6BEC - 48 85 F6              - test rsi,rsi
+1D3B15E6BEF - 0F84 F4040000         - je 1D3B15E70E9
+1D3B15E6BF5 - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+1D3B15E6BFC - F3 0F10 85 08FEFFFF   - movss xmm0,[rbp-000001F8]
+1D3B15E6C04 - F3 0F5A C0            - cvtss2sd xmm0,xmm0
+1D3B15E6C08 - F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+1D3B15E6C0C - F3 0F11 28            - movss [rax],xmm5
+1D3B15E6C10 - 48 85 F6              - test rsi,rsi
+1D3B15E6C13 - 0F84 C6040000         - je 1D3B15E70DF
+1D3B15E6C19 - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+1D3B15E6C20 - F3 0F10 85 0CFEFFFF   - movss xmm0,[rbp-000001F4]
+1D3B15E6C28 - F3 0F5A C0            - cvtss2sd xmm0,xmm0
+1D3B15E6C2C - F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+1D3B15E6C30 - F3 0F11 68 04         - movss [rax+04],xmm5
+1D3B15E6C35 - 48 85 F6              - test rsi,rsi
+1D3B15E6C38 - 0F84 97040000         - je 1D3B15E70D5
+1D3B15E6C3E - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+1D3B15E6C45 - F3 0F10 85 10FEFFFF   - movss xmm0,[rbp-000001F0]
+
+21A27250AF7 - E9 73000000           - jmp 21A27250B6F
+21A27250AFC - 48 85 F6              - test rsi,rsi
+21A27250AFF - 0F84 F4040000         - je 21A27250FF9
+21A27250B05 - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+21A27250B0C - F3 0F10 85 08FEFFFF   - movss xmm0,[rbp-000001F8]
+21A27250B14 - F3 0F5A C0            - cvtss2sd xmm0,xmm0
+21A27250B18 - F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+21A27250B1C - F3 0F11 28            - movss [rax],xmm5
+21A27250B20 - 48 85 F6              - test rsi,rsi
+21A27250B23 - 0F84 C6040000         - je 21A27250FEF
+21A27250B29 - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+21A27250B30 - F3 0F10 85 0CFEFFFF   - movss xmm0,[rbp-000001F4]
+21A27250B38 - F3 0F5A C0            - cvtss2sd xmm0,xmm0
+21A27250B3C - F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+21A27250B40 - F3 0F11 68 04         - movss [rax+04],xmm5
+21A27250B45 - 48 85 F6              - test rsi,rsi
+21A27250B48 - 0F84 97040000         - je 21A27250FE5
+21A27250B4E - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+21A27250B55 - F3 0F10 85 10FEFFFF   - movss xmm0,[rbp-000001F0]
+
+NewPlayer:checkPress+18f7 - E9 73000000           - jmp NewPlayer:checkPress+196f
+NewPlayer:checkPress+18fc - 48 85 F6              - test rsi,rsi
+NewPlayer:checkPress+18ff - 0F84 F4040000         - je NewPlayer:checkPress+1df9
+NewPlayer:checkPress+1905 - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+NewPlayer:checkPress+190c - F3 0F10 85 08FEFFFF   - movss xmm0,[rbp-000001F8]
+NewPlayer:checkPress+1914 - F3 0F5A C0            - cvtss2sd xmm0,xmm0
+NewPlayer:checkPress+1918 - F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+NewPlayer:checkPress+191c - F3 0F11 28            - movss [rax],xmm5
+NewPlayer:checkPress+1920 - 48 85 F6              - test rsi,rsi
+NewPlayer:checkPress+1923 - 0F84 C6040000         - je NewPlayer:checkPress+1def
+NewPlayer:checkPress+1929 - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+NewPlayer:checkPress+1930 - F3 0F10 85 0CFEFFFF   - movss xmm0,[rbp-000001F4]
+NewPlayer:checkPress+1938 - F3 0F5A C0            - cvtss2sd xmm0,xmm0
+NewPlayer:checkPress+193c - F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+NewPlayer:checkPress+1940 - F3 0F11 68 04         - movss [rax+04],xmm5
+NewPlayer:checkPress+1945 - 48 85 F6              - test rsi,rsi
+NewPlayer:checkPress+1948 - 0F84 97040000         - je NewPlayer:checkPress+1de5
+NewPlayer:checkPress+194e - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+NewPlayer:checkPress+1955 - F3 0F10 85 10FEFFFF   - movss xmm0,[rbp-000001F0]
+
+
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>116</ID>
+      <Description>"InjMemoryLabel"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>InjMemoryLabel</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>278</ID>
+      <Description>"PosX/Area"</Description>
+      <VariableType>Float</VariableType>
+      <Address>1D41E102560</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>366</ID>
+      <Description>"ScanAddLabel"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>ScanAddLabel</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>391</ID>
+      <Description>"Gold"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>214BDDE8E58</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>392</ID>
+      <Description>"GoldStatus"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>214C5707D2C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>398</ID>
+      <Description>"X"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>1CF09A7C560</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>399</ID>
+      <Description>"Y"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>1CF09A7C564</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>400</ID>
+      <Description>"AlwaysAddedToPosX"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>1CF09A7C554</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>401</ID>
+      <Description>"Subtracted From X when left pressed."</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>1CF6D031590</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>402</ID>
+      <Description>"Temporary X"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>5F18FE554</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>403</ID>
+      <Description>"ZeroedAfterMoveLeft"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>1CF09A7C808</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>404</ID>
+      <Description>"this-&gt;RAX after move left"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1CF09A7C018</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>405</ID>
+      <Description>"this-&gt;xmm0"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>1CF09A7C3B8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>406</ID>
+      <Description>"this-&gt;xmm1"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>1CF09A7C3BC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>407</ID>
+      <Description>"DifferenceOfPreviousTwoWrittenHere"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>5F18FE014</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>408</ID>
+      <Description>"this-&gt;xmm0"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>1CF6D031570</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>409</ID>
+      <Description>"3B8"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>1CF09A7C3B8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>410</ID>
+      <Description>"3B8Multiplier"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>1CF6D031570</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>411</ID>
+      <Description>"Scaled_3B8"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>5F18FE010</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>413</ID>
+      <Description>"rbp+5f8 = [rsi+3e8]-15"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>5F18FDF98</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>414</ID>
+      <Description>"rbp-600= [rsi+3e8] - 3 "</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>5F18FDF90</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>415</ID>
+      <Description>"rsi+4bc"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>1CF09A7C4BC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>416</ID>
+      <Description>"rsi+428"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1CF09A7C430</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>417</ID>
+      <Description>"rbp-3c"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>5F18FE554</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>418</ID>
+      <Description>"rsi+420"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>1CF09A7C420</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>419</ID>
+      <Description>"rbp-584=rsi+420"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>5F18FE00C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>420</ID>
+      <Description>"rsi+410"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1CF09A7C410</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>421</ID>
+      <Description>"PosX/Area"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>26E86A53560</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>422</ID>
+      <Description>"PosY/Area"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>26E86A53564</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>423</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>FreeMovePositionAddressLabel</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>GoldSetter Function Code :mov [r13+20],ax</Description>
+      <AddressString>1EE85A54B0D</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>0F</Byte>
+        <Byte>BF</Byte>
+        <Byte>45</Byte>
+        <Byte>B8</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>41</Byte>
+        <Byte>89</Byte>
+        <Byte>45</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>B8</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>DamageReceived Code :mov [rdi+000000E4],eax</Description>
+      <AddressString>1EE9B83CCC8</AddressString>
+      <Before>
+        <Byte>8D</Byte>
+        <Byte>0C</Byte>
+        <Byte>89</Byte>
+        <Byte>03</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>87</Byte>
+        <Byte>E4</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>7F</Byte>
+        <Byte>10</Byte>
+        <Byte>C7</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>XSetter Code :movss [rax],xmm5</Description>
+      <AddressString>1EE9B7B747C</AddressString>
+      <Before>
+        <Byte>C0</Byte>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+        <Byte>E8</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>F6</Byte>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss [rax],xmm5</Description>
+      <AddressString>1D3B15E6C0C</AddressString>
+      <Before>
+        <Byte>C0</Byte>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+        <Byte>E8</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>F6</Byte>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss [rax],xmm5</Description>
+      <AddressString>21A27250B1C</AddressString>
+      <Before>
+        <Byte>C0</Byte>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+        <Byte>E8</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>F6</Byte>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss [rax],xmm5</Description>
+      <AddressString>19A0883111C</AddressString>
+      <Before>
+        <Byte>C0</Byte>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+        <Byte>E8</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>F6</Byte>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>SetHP Code :mov [rdi+000000E4],eax</Description>
+      <AddressString>214F21F88E8</AddressString>
+      <Before>
+        <Byte>8D</Byte>
+        <Byte>0C</Byte>
+        <Byte>89</Byte>
+        <Byte>03</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>87</Byte>
+        <Byte>E4</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>7F</Byte>
+        <Byte>10</Byte>
+        <Byte>C7</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>AddCoinCode :mov [rdi+000000EC],eax</Description>
+      <AddressString>214F22533A6</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>03</Byte>
+        <Byte>45</Byte>
+        <Byte>E8</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>87</Byte>
+        <Byte>EC</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>0F</Byte>
+        <Byte>BF</Byte>
+        <Byte>45</Byte>
+        <Byte>F6</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Launched into Air Code :movsxd  rax,dword ptr [rbp-00000BB8]</Description>
+      <AddressString>1CF6D01F7B7</AddressString>
+      <Before>
+        <Byte>85</Byte>
+        <Byte>00</Byte>
+        <Byte>FE</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>85</Byte>
+        <Byte>48</Byte>
+        <Byte>F4</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>85</Byte>
+        <Byte>08</Byte>
+        <Byte>FE</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Plummet1Code :mov [rax],rcx</Description>
+      <AddressString>1CF6D08EA9D</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>10</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Plummet2Code :mov [rax],rdx</Description>
+      <AddressString>1CF6D0185C9</AddressString>
+      <Before>
+        <Byte>95</Byte>
+        <Byte>D0</Byte>
+        <Byte>FA</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>95</Byte>
+        <Byte>D8</Byte>
+        <Byte>FA</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>TrueStart of FarstCode :mov rax,[rbp-00000BC0]</Description>
+      <AddressString>1CF6D01F7A9</AddressString>
+      <Before>
+        <Byte>AD</Byte>
+        <Byte>44</Byte>
+        <Byte>F4</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>85</Byte>
+        <Byte>40</Byte>
+        <Byte>F4</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>85</Byte>
+        <Byte>00</Byte>
+        <Byte>FE</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Set Y Velocity of mov [rax],rcx</Description>
+      <AddressString>1CF6D01F7D8</AddressString>
+      <Before>
+        <Byte>8D</Byte>
+        <Byte>00</Byte>
+        <Byte>FE</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>8D</Byte>
+        <Byte>08</Byte>
+        <Byte>FE</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Writes Zero mov [rax+08],ecx</Description>
+      <AddressString>1CF6D01F7E2</AddressString>
+      <Before>
+        <Byte>8D</Byte>
+        <Byte>08</Byte>
+        <Byte>FE</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>48</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>C6</Byte>
+        <Byte>85</Byte>
+        <Byte>A3</Byte>
+        <Byte>F5</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :push rbp</Description>
+      <AddressString>1CF6D0652C0</AddressString>
+      <Before>
+        <Byte>2B</Byte>
+        <Byte>CF</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>55</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>EC</Byte>
+        <Byte>56</Byte>
+        <Byte>57</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>L2Base.L2System:getL2Keys Code :push rbp</Description>
+      <AddressString>1CF2D79F9B0</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>55</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>EC</Byte>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Dynamic Address in launch Code :mov rcx,rsi</Description>
+      <AddressString>1CF6D02A3E2</AddressString>
+      <Before>
+        <Byte>E9</Byte>
+        <Byte>F6</Byte>
+        <Byte>20</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>CE</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>EC</Byte>
+        <Byte>20</Byte>
+        <Byte>49</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Reduce Swim Power Code :push rbp</Description>
+      <AddressString>1CF6D0877B0</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>55</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>EC</Byte>
+        <Byte>56</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Back Code :push rbp</Description>
+      <AddressString>26EE12816A0</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>55</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>EC</Byte>
+        <Byte>53</Byte>
+        <Byte>56</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of je NewPlayer:hitCallBack+b4</Description>
+      <AddressString>26EE12A4CB8</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>20</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>74</Byte>
+        <Byte>0A</Byte>
+      </Actual>
+      <After>
+        <Byte>B8</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <DisassemblerComments>
+    <DisassemblerComment>
+      <Address>1CF2D79F9EA</Address>
+      <Comment>Call InputManager
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D01F7A9</Address>
+      <Comment>True Start of Farst
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D01F7E2</Address>
+      <Comment>Writes 0
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A20A</Address>
+      <Comment>Next: key to check
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A231</Address>
+      <Comment>LeftPressed
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A25E</Address>
+      <Comment>Next, key to check maybe.
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A266</Address>
+      <Comment>Clear r8
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A27A</Address>
+      <Comment>calls L2System:getL2Keys
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A283</Address>
+      <Comment>Jumps to moveHorizontal if eax == 0
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A289</Address>
+      <Comment>Right pressed
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A29E</Address>
+      <Comment>Only triggers when right is pressed
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A2B4</Address>
+      <Comment>Clear xmm0
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A2BC</Address>
+      <Comment>Never runs
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A2DF</Address>
+      <Comment>Code resume
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A2E2</Address>
+      <Comment>Nop
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A2E8</Address>
+      <Comment>Load PosX address to RAX
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A2EF</Address>
+      <Comment>Load PosX value -&gt; xmm0
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A2FE</Address>
+      <Comment>Pointless Comparison
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A304</Address>
+      <Comment>Always loads 0.0
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A310</Address>
+      <Comment>Always Adds 0.0
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A318</Address>
+      <Comment>Writes X Position
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A385</Address>
+      <Comment>Never Run
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A3A3</Address>
+      <Comment>Pointlessly reassign r15
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A3B5</Address>
+      <Comment>Run on launch
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A3F3</Address>
+      <Comment>call NewPlayer:reduceSwimPower
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02A408</Address>
+      <Comment>Always jumps
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02ABCF</Address>
+      <Comment>Always Jumps
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D02AC6B</Address>
+      <Comment>Run at start of launch + right
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D030895</Address>
+      <Comment>Writes -542.0
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>1CF6D066BDC</Address>
+      <Comment>Writes -524.0
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>214F21F88C2</Address>
+      <Comment>Loads HP
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>214F21F88D6</Address>
+      <Comment>Loads DMG
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>214F21F88DA</Address>
+      <Comment>*4.5 times, effectively?
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>214F21F88E6</Address>
+      <Comment>Apply Damage HP
+</Comment>
+    </DisassemblerComment>
+  </DisassemblerComments>
+</CheatTable>

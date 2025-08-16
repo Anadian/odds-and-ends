@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>39</ID>
+      <Description>"Spyro_Position_XYZ "</Description>
+      <LastState Value="00 00 80 3F 00 00 80 3F 00 00 80 3F 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 8D 61 5E 3F 86 A2 FD 3E B9 15 92 48 BE 66 92 48 4E 19 85 C3 00 00 00" RealAddress="271C65CD1D8"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>55</ByteLength>
+      <Address>271C65CD1D8</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

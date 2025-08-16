@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Gold"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>1EED6388E58</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Weights"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>1EED6388458</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"HPx100"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>1EEDF34BD24</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Auto Assemble script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : LaMulana2
+  Version: 
+  Date   : 2025-06-28
+  Author : willa
+
+  This script does blah blah blah
+}
+{$lua}
+if syntaxcheck then return end
+if memrec then print( 'memrec:', memrec) end
+print('CEVersion:', getCEVersion());
+if( cheatEngineIs64Bit() == true ) then
+	print('64-bit');
+else
+	print('32-bit');
+end
+print('CheatEngineDir:', getCheatEngineDir());
+{$asm}
+luaCall(print('Defines'))
+
+define(mysignature,43 4e 4f 23 55 6e 69 71 75 65 23 53 69 67 6e 61 74 75 72 65 23 43 4e 4f)
+
+define(InjAdd,1EE9B83CCC8)
+define(InjBytes,89 87 E4 00 00 00 85 C0 7F 10 C7 87 E4 00 00 00 00 00 00 00)
+define(InjBytesLength,20)
+define(NopLength,InjBytesLength-6)
+define(IXBytes1,F3 0F 10 85 08 FE FF FF F3 0F 5A C0 F2 0F 5A E8 F3 0F 11 28 48 85 F6 0F 84 C6 04 00 00 48 8D 86 60 05 00 00 F3 0F 10 85 0C FE FF FF)
+
+/* For next time: PosX_Setter
+1EE9B7B746C - F3 0F10 85 08FEFFFF   - movss xmm0,[rbp-000001F8]
+1EE9B7B7474 - F3 0F5A C0            - cvtss2sd xmm0,xmm0
+1EE9B7B7478 - F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+&gt;&gt;1EE9B7B747C - F3 0F11 28            - movss [rax],xmm5 //X coordinate pointed to by rax
+1EE9B7B7480 - 48 85 F6              - test rsi,rsi
+1EE9B7B7483 - 0F84 C6040000         - je 1EE9B7B794F
+1EE9B7B7489 - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+1EE9B7B7490 - F3 0F10 85 0CFEFFFF   - movss xmm0,[rbp-000001F4]
+*/
+
+[ENABLE]
+luaCall(print('ENABLE'))
+
+luaCall(print('Asserts'))
+assert(InjAdd,InjBytes)
+
+luaCall(print('AOB Scans'))
+
+luaCall(print('Allocs'))
+alloc(NewMemory,$1000)
+
+define(InjIns,NewMemory+500)
+
+luaCall(print('Labels'))
+
+label(NewMemoryLabel)
+label(InjBackupLabel)
+label(InjInsLabel)
+label(OriginalCodeLabel)
+label(returnLabel)
+
+luaCall(print('Memory'))
+
+NewMemory:
+	NewMemoryLabel:
+	db mysignature
+
+InjBackupLabel:
+    readmem(InjAdd,InjBytesLength)
+
+luaCall(print('Instructions'))
+
+InjIns:
+	InjInsLabel:
+
+OriginalCodeLabel:
+  mov [rdi+000000E4],eax
+  test eax,eax
+  jg 1EE9B83CCE2
+  mov [rdi+000000E4],00000000
+  jmp returnLabel
+
+InjAdd:
+  jmp long InjIns
+  nop NopLength
+
+returnLabel:
+	luaCall(print('return'))
+	registerSymbol(InjAdd)
+	registerSymbol(InjBytes)
+	registerSymbol(NewMemoryLabel)
+	registerSymbol(InjInsLabel)
+	registerSymbol(InjBackupLabel)
+	registerSymbol(InjIns)
+	registerSymbol(OriginalCodeLabel)
+
+
+[DISABLE]
+luaCall(print('DISABLE'))
+
+InjAdd:
+	readmem(InjBackupLabel,InjBytesLength)
+
+luaCall(print('unregisterSymbols'))
+	unregisterSymbol(InjAdd)
+	unregisterSymbol(InjBytes)
+	unregisterSymbol(NewMemoryLabel)
+	unregisterSymbol(InjInsLabel)
+	unregisterSymbol(InjBackupLabel)
+	unregisterSymbol(InjIns)
+	unregisterSymbol(OriginalCodeLabel)
+
+luaCall(print('Deallocs'))
+
+dealloc(NewMemory)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 1EE9B83CCC8
+
+1EE9B83CC9E: 48 89 55 E0                    - mov [rbp-20],rdx
+1EE9B83CCA2: 48 63 87 E4 00 00 00           - movsxd  rax,dword ptr [rdi+000000E4]
+1EE9B83CCA9: 89 45 EC                       - mov [rbp-14],eax
+1EE9B83CCAC: 45 33 F6                       - xor r14d,r14d
+1EE9B83CCAF: 48 63 87 E4 00 00 00           - movsxd  rax,dword ptr [rdi+000000E4]
+1EE9B83CCB6: 48 63 4D E0                    - movsxd  rcx,dword ptr [rbp-20]
+1EE9B83CCBA: 48 8D 0C 89                    - lea rcx,[rcx+rcx*4]
+1EE9B83CCBE: 48 C1 E1 02                    - shl rcx,02
+1EE9B83CCC2: 48 8D 0C 89                    - lea rcx,[rcx+rcx*4]
+1EE9B83CCC6: 03 C1                          - add eax,ecx
+// ---------- INJECTING HERE ----------
+1EE9B83CCC8: 89 87 E4 00 00 00              - mov [rdi+000000E4],eax
+// ---------- DONE INJECTING  ----------
+1EE9B83CCCE: 85 C0                          - test eax,eax
+1EE9B83CCD0: 7F 10                          - jg 1EE9B83CCE2
+1EE9B83CCD2: C7 87 E4 00 00 00 00 00 00 00  - mov [rdi+000000E4],00000000
+1EE9B83CCDC: 41 BE 01 00 00 00              - mov r14d,00000001
+1EE9B83CCE2: 48 63 87 E4 00 00 00           - movsxd  rax,dword ptr [rdi+000000E4]
+1EE9B83CCE9: 39 45 EC                       - cmp [rbp-14],eax
+1EE9B83CCEC: 75 0C                          - jne 1EE9B83CCFA
+1EE9B83CCEE: 48 63 87 E4 00 00 00           - movsxd  rax,dword ptr [rdi+000000E4]
+1EE9B83CCF5: E9 B5 00 00 00                 - jmp 1EE9B83CDAF
+1EE9B83CCFA: 45 85 F6                       - test r14d,r14d
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>53</ID>
+      <Description>"PosX/Area"</Description>
+      <VariableType>Float</VariableType>
+      <Address>1EF20C87560</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>54</ID>
+      <Description>"PosY/Area"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>1EF20C87564</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>108</ID>
+      <Description>"PosX/Area"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>1EF18FFA560</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>109</ID>
+      <Description>"PosY/Area"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>1EF18FFA564</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>110</ID>
+      <Description>"PosX/Area"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>1EF230F6560</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>111</ID>
+      <Description>"PosY/Area"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>1EF230F6564</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>113</ID>
+      <Description>"No description"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>44</ByteLength>
+      <Address>1D3B15E6BFC</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>112</ID>
+          <Description>"HP"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>1D38B5E0D24</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>114</ID>
+      <Description>"Auto Assemble script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : LaMulana2
+  Version: 
+  Date   : 2025-06-28
+  Author : willa
+
+  X Coordinate Getter
+}
+{$lua}
+if syntaxcheck then return end
+if memrec then print( 'memrec:', memrec) end
+print('CEVersion:', getCEVersion());
+if( cheatEngineIs64Bit() == true ) then
+	print('64-bit');
+else
+	print('32-bit');
+end
+print('CheatEngineDir:', getCheatEngineDir());
+{$asm}
+luaCall(print('Defines'))
+
+define(mysignature,43 4e 4f 23 55 6e 69 71 75 65 23 53 69 67 6e 61 74 75 72 65 23 43 4e 4f)
+//1D3B15E6BF5 - 48 8D 86 60 05 00 00 F3 0F 10 85 08 FE FF FF F3 0F 5A C0 F2 0F 5A E8 F3 0F 11 28 48 85 F6
+
+define(ScanBytes,E9 73 00 00 00 48 85 F6 0F 84 F4 04 00 00 48 8D 86 60 05 00 00 F3 0F 10 85 xx xx FF FF F3 0F 5A C0 F2 0F 5A E8 F3 0F 11 28 48 85 F6 0F 84 C6 04 00 00 48 8D 86 60 05 00 00 F3 0F 10 85 0C FE FF FF F3 0F 5A C0 F2 0F 5A E8 F3 0F 11 68 04 48 85 F6 0F 84 97 04 00 00 48 8D 86 60 05 00 00 F3 0F 10 85 10 FE FF FF)
+define(ScanBytesLength,$66)
+define(InjBytes,F3 0F 11 28 48 85 F6)
+define(InjBytesLength,7)
+define(InjNopLength,1)
+
+[ENABLE]
+luaCall(print('ENABLE'))
+
+luaCall(print('Asserts'))
+
+luaCall(print('AOB Scans'))
+
+aobScan(ScanAdd,ScanBytes)
+/*actual 01 d3 82 b7 00 00
+69 32 B8 B1 D3 01 00 00
+start  01 D3 B1 50 00 00
+tRGET  01 D3 B1 5E 6C 0C
+stop   01 D3 B2 00 00 00*/
+//assert(ScanAdd,01D3B15E6C0C)
+//define(RealScanAdd,ScanAdd-$5ac682)
+//define(ScanAdd,0000000000000000)
+define(InjAdd,ScanAdd+$25)
+define(ReturnAdd,InjAdd+7)
+
+luaCall(print('Allocs'))
+alloc(NewMemory,$1000)
+
+define(InjIns,NewMemory+500)
+
+luaCall(print('Labels'))
+
+label(ScanAddLabel)
+label(InjBackupLabel)
+label(InjMemoryLabel)
+label(InjInsLabel)
+label(InjAddLabel)
+label(InjCodeLabel)
+label(InjReturnLabel)
+
+luaCall(print('Memory'))
+
+NewMemory:
+	db mysignature
+
+InjBackupLabel:
+    readmem(ScanAdd,ScanBytesLength)
+	InjMemoryLabel:
+    dq ScanAdd
+    db 90
+    dq InjAdd
+    db 90
+
+luaCall(print('Instructions'))
+
+InjIns:
+	InjInsLabel:
+	mov [InjMemoryLabel],rax
+
+InjCodeLabel:
+  movss [rax],xmm5 //X coordinate pointed to by rax
+  test rsi,rsi
+  jmp long InjReturnLabel
+
+ScanAdd:
+	ScanAddLabel:
+
+InjAdd:
+	InjAddLabel:
+  jmp long InjIns
+  nop InjNopLength
+
+ReturnAdd:
+	InjReturnLabel:
+	luaCall(print('return'))
+    registerSymbol(ScanAdd)
+    registerSymbol(ScanBytes)
+    registerSymbol(ScanBytesLength)
+	registerSymbol(InjAdd)
+	registerSymbol(InjBytes)
+    registerSymbol(InjBytesLength)
+    registerSymbol(InjNopLength)
+    registerSymbol(ScanAddLabel)
+	registerSymbol(InjBackupLabel)
+	registerSymbol(InjMemoryLabel)
+	registerSymbol(InjInsLabel)
+    registerSymbol(InjAddLabel)
+	registerSymbol(InjCodeLabel)
+
+
+[DISABLE]
+luaCall(print('DISABLE'))
+
+ScanAdd:
+	readmem(InjBackupLabel,ScanBytesLength)
+
+luaCall(print('unregisterSymbols'))
+	unregisterSymbol(ScanAdd)
+    unregisterSymbol(ScanBytes)
+    unregisterSymbol(ScaneBytesLength)
+	unregisterSymbol(InjAdd)
+	unregisterSymbol(InjBytes)
+    unregisterSymbol(InjBytesLength)
+    unregisterSymbol(InjNopLength)
+    unregisterSymbol(ScanAddLabel)
+	unregisterSymbol(InjBackupLabel)
+	unregisterSymbol(InjMemoryLabel)
+	unregisterSymbol(InjInsLabel)
+    unregisterSymbol(InjAddLabel)
+	unregisterSymbol(InjCodeLabel)
+
+luaCall(print('Deallocs'))
+
+dealloc(NewMemory)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 1D3B15E6C10
+
+1D3B15E6BD9: 48 89 BE 48 03 00 00     - mov [rsi+00000348],rdi
+1D3B15E6BE0: 4C 89 BE 50 03 00 00     - mov [rsi+00000350],r15
+1D3B15E6BE7: E9 73 00 00 00           - jmp 1D3B15E6C5F
+1D3B15E6BEC: 48 85 F6                 - test rsi,rsi
+1D3B15E6BEF: 0F 84 F4 04 00 00        - je 1D3B15E70E9
+1D3B15E6BF5: 48 8D 86 60 05 00 00     - lea rax,[rsi+00000560]
+1D3B15E6BFC: F3 0F 10 85 08 FE FF FF  - movss xmm0,[rbp-000001F8]
+1D3B15E6C04: F3 0F 5A C0              - cvtss2sd xmm0,xmm0
+1D3B15E6C08: F2 0F 5A E8              - cvtsd2ss xmm5,xmm0
+1D3B15E6C0C: F3 0F 11 28              - movss [rax],xmm5
+// ---------- INJECTING HERE ----------
+1D3B15E6C10: 48 85 F6                 - test rsi,rsi
+// ---------- DONE INJECTING  ----------
+1D3B15E6C13: 0F 84 C6 04 00 00        - je 1D3B15E70DF
+1D3B15E6C19: 48 8D 86 60 05 00 00     - lea rax,[rsi+00000560]
+1D3B15E6C20: F3 0F 10 85 0C FE FF FF  - movss xmm0,[rbp-000001F4]
+1D3B15E6C28: F3 0F 5A C0              - cvtss2sd xmm0,xmm0
+1D3B15E6C2C: F2 0F 5A E8              - cvtsd2ss xmm5,xmm0
+1D3B15E6C30: F3 0F 11 68 04           - movss [rax+04],xmm5
+1D3B15E6C35: 48 85 F6                 - test rsi,rsi
+1D3B15E6C38: 0F 84 97 04 00 00        - je 1D3B15E70D5
+1D3B15E6C3E: 48 8D 86 60 05 00 00     - lea rax,[rsi+00000560]
+1D3B15E6C45: F3 0F 10 85 10 FE FF FF  - movss xmm0,[rbp-000001F0]
+
+1D3B15E6BE7 - E9 73000000           - jmp 1D3B15E6C5F
+1D3B15E6BEC - 48 85 F6              - test rsi,rsi
+1D3B15E6BEF - 0F84 F4040000         - je 1D3B15E70E9
+1D3B15E6BF5 - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+1D3B15E6BFC - F3 0F10 85 08FEFFFF   - movss xmm0,[rbp-000001F8]
+1D3B15E6C04 - F3 0F5A C0            - cvtss2sd xmm0,xmm0
+1D3B15E6C08 - F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+1D3B15E6C0C - F3 0F11 28            - movss [rax],xmm5
+1D3B15E6C10 - 48 85 F6              - test rsi,rsi
+1D3B15E6C13 - 0F84 C6040000         - je 1D3B15E70DF
+1D3B15E6C19 - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+1D3B15E6C20 - F3 0F10 85 0CFEFFFF   - movss xmm0,[rbp-000001F4]
+1D3B15E6C28 - F3 0F5A C0            - cvtss2sd xmm0,xmm0
+1D3B15E6C2C - F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+1D3B15E6C30 - F3 0F11 68 04         - movss [rax+04],xmm5
+1D3B15E6C35 - 48 85 F6              - test rsi,rsi
+1D3B15E6C38 - 0F84 97040000         - je 1D3B15E70D5
+1D3B15E6C3E - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+1D3B15E6C45 - F3 0F10 85 10FEFFFF   - movss xmm0,[rbp-000001F0]
+
+21A27250AF7 - E9 73000000           - jmp 21A27250B6F
+21A27250AFC - 48 85 F6              - test rsi,rsi
+21A27250AFF - 0F84 F4040000         - je 21A27250FF9
+21A27250B05 - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+21A27250B0C - F3 0F10 85 08FEFFFF   - movss xmm0,[rbp-000001F8]
+21A27250B14 - F3 0F5A C0            - cvtss2sd xmm0,xmm0
+21A27250B18 - F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+21A27250B1C - F3 0F11 28            - movss [rax],xmm5
+21A27250B20 - 48 85 F6              - test rsi,rsi
+21A27250B23 - 0F84 C6040000         - je 21A27250FEF
+21A27250B29 - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+21A27250B30 - F3 0F10 85 0CFEFFFF   - movss xmm0,[rbp-000001F4]
+21A27250B38 - F3 0F5A C0            - cvtss2sd xmm0,xmm0
+21A27250B3C - F2 0F5A E8            - cvtsd2ss xmm5,xmm0
+21A27250B40 - F3 0F11 68 04         - movss [rax+04],xmm5
+21A27250B45 - 48 85 F6              - test rsi,rsi
+21A27250B48 - 0F84 97040000         - je 21A27250FE5
+21A27250B4E - 48 8D 86 60050000     - lea rax,[rsi+00000560]
+21A27250B55 - F3 0F10 85 10FEFFFF   - movss xmm0,[rbp-000001F0]
+
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>115</ID>
+      <Description>"No description"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>24</ByteLength>
+      <Address>1D382B70000</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>116</ID>
+      <Description>"InjMemoryLabel"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>InjMemoryLabel</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>278</ID>
+      <Description>"PosX/Area"</Description>
+      <VariableType>Float</VariableType>
+      <Address>1D41E102560</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>366</ID>
+      <Description>"ScanAddLabel"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>ScanAddLabel</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>367</ID>
+      <Description>"HP"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>21A113B7D24</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>365</ID>
+          <Description>"PosX/Area"</Description>
+          <VariableType>Float</VariableType>
+          <Address>21A3FC77560</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>368</ID>
+      <Description>"PosY/Area"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>21A3FC77564</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>369</ID>
+      <Description>"PosX/Area"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>21A96F5A560</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>370</ID>
+      <Description>"PosY/Area"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>21A96F5A564</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>371</ID>
+      <Description>"PosX/Area"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>21A96F5A560</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>372</ID>
+      <Description>"PosY/Area"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>21A96F5A564</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>373</ID>
+      <Description>"PosX"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>21A90A39560</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>374</ID>
+      <Description>"PosY"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>21A90A39564</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>375</ID>
+      <Description>"PosX"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>20CE269A560</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>376</ID>
+      <Description>"PosY"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>20CE269A564</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>377</ID>
+      <Description>"HP"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>20C9932DD24</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>GoldSetter Function Code :mov [r13+20],ax</Description>
+      <AddressString>1EE85A54B0D</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>0F</Byte>
+        <Byte>BF</Byte>
+        <Byte>45</Byte>
+        <Byte>B8</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>41</Byte>
+        <Byte>89</Byte>
+        <Byte>45</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>B8</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>DamageReceived Code :mov [rdi+000000E4],eax</Description>
+      <AddressString>1EE9B83CCC8</AddressString>
+      <Before>
+        <Byte>8D</Byte>
+        <Byte>0C</Byte>
+        <Byte>89</Byte>
+        <Byte>03</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>87</Byte>
+        <Byte>E4</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>7F</Byte>
+        <Byte>10</Byte>
+        <Byte>C7</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>XSetter Code :movss [rax],xmm5</Description>
+      <AddressString>1EE9B7B747C</AddressString>
+      <Before>
+        <Byte>C0</Byte>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+        <Byte>E8</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>F6</Byte>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss [rax],xmm5</Description>
+      <AddressString>1D3B15E6C0C</AddressString>
+      <Before>
+        <Byte>C0</Byte>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+        <Byte>E8</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>F6</Byte>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss [rax],xmm5</Description>
+      <AddressString>21A27250B1C</AddressString>
+      <Before>
+        <Byte>C0</Byte>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+        <Byte>E8</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>F6</Byte>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

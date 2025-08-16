@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Health"</Description>
+      <LastState Value="3" RealAddress="0F882C7C"/>
+      <VariableType>Float</VariableType>
+      <Address>0F882C7C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"ZPosition"</Description>
+      <LastState Value="2.672055244" RealAddress="0D625A5C"/>
+      <VariableType>Float</VariableType>
+      <Address>0D625A5C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"XPosition"</Description>
+      <LastState Value="2.92001009" RealAddress="0D625A54"/>
+      <VariableType>Float</VariableType>
+      <Address>0D625A54</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

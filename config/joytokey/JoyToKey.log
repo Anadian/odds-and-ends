@@ -1,0 +1,82 @@
+2025-07-16 21:32:07.857 Info   Starting JoyToKey v7.1.0
+2025-07-16 21:32:07.857 Info   ExeFile = C:\ProgramData\chocolatey\lib\joytokey\tools\JoyToKey.exe
+2025-07-16 21:32:07.857 Info   Args = C:\ProgramData\chocolatey\lib\joytokey\tools\JoyToKey.exe
+2025-07-16 21:32:07.857 Info   Args = Desktop
+2025-07-16 21:32:07.857 Info   DataDirectory = C:\Users\willa\Documents\JoyToKey\
+2025-07-16 21:32:07.857 Info   Profile = Desktop
+2025-07-16 21:32:07.857 Info   IniFile = C:\Users\willa\Documents\JoyToKey\JoyToKey.ini
+2025-07-16 21:32:07.857 Info   Loading ini file: C:\Users\willa\Documents\JoyToKey\JoyToKey.ini (C:\Dropbox\src\JoyToKey\src\AppInfo.cpp#263)
+2025-07-16 21:32:07.858 Info   LicenseKey "" is not valid
+2025-07-16 21:32:07.907 Info   Loading hid.dll (Joystick/ProcessingHID.h#58)
+2025-07-16 21:32:07.908 Info   Initialized HID (C:\Dropbox\src\JoyToKey\src\Joystick\Processing.cpp#171)
+2025-07-16 21:32:07.908 Info   Loading XInput1_4.dll (C:\Dropbox\src\JoyToKey\src\Joystick\Processing.cpp#181)
+2025-07-16 21:32:07.908 Info   Initialized XInput (C:\Dropbox\src\JoyToKey\src\Joystick\Processing.cpp#206)
+2025-07-16 21:32:07.917 Info   Initialized DirectInput (C:\Dropbox\src\JoyToKey\src\Joystick\Processing.cpp#219)
+2025-07-16 21:32:07.917 Info   Detected a HID controller[0]: VendorId=0x413D, ProductId=0x2104, UsagePage=1, Usage=5, Path=\\?\HID#VID_413D&PID_2104&IG_00#9&2f93bab6&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
+2025-07-16 21:32:07.917 Info   Vendor = General
+2025-07-16 21:32:07.917 Info   Product = Controller (XBOX 360 For Windows)
+2025-07-16 21:32:07.917 Info   DeviceName = BIGBIG WON Blitz2
+2025-07-16 21:32:07.917 Info   numAxis = 5 [1,1,1,1,1,0,0,0]
+2025-07-16 21:32:07.917 Info   numPOVs = 1
+2025-07-16 21:32:07.917 Info   numButtons = 10
+2025-07-16 21:32:07.921 Info   Detected a XI joystick 1
+2025-07-16 21:32:07.921 Info   VendorId=413D, ProductId=2104
+2025-07-16 21:32:07.921 Info   GUID=413D2104-1, Name=XInput Device #1
+2025-07-16 21:32:07.921 Info   DetectJoysticks: Detected 1 XI joystick(s)
+2025-07-16 21:32:07.930 Info   Detected a DI joystick: Controller (XBOX 360 For Windows), Controller (XBOX 360 For Windows), 2104413D, {C9FB0010-4233-11EF-8003-444553540000}
+2025-07-16 21:32:07.934 Info   Detected a DI joystick: Controller (XBOX 360 For Windows), Controller (XBOX 360 For Windows), 2104413D, {C9FB2720-4233-11EF-8004-444553540000}
+2025-07-16 21:32:07.934 Info   Assign BIGBIG WON Blitz2 to Joystick #1 (413D2104-1)
+2025-07-16 21:32:07.934 Info   1 joystick(s) are detected (C:\Dropbox\src\JoyToKey\src\Joystick\Processing.cpp#306)
+2025-07-16 21:32:07.934 Info   ConfigDir=C:\Users\willa\Documents\JoyToKey\*.cfg (C:\Dropbox\src\JoyToKey\src\ConfigFileManager.cpp#41)
+2025-07-16 21:32:07.936 Info   Failed to find AppLink.dat (C:\Dropbox\src\JoyToKey\src\AppLink\AppLinkManager.cpp#29)
+2025-07-16 21:32:07.968 Info   TimerInit: Initializing timer with x1 speed mode (interval = 16 msec)
+2025-07-16 21:32:08.057 Info   Detected a HID controller[0]: VendorId=0x413D, ProductId=0x2104, UsagePage=1, Usage=5, Path=\\?\HID#VID_413D&PID_2104&IG_00#9&2f93bab6&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
+2025-07-16 21:32:08.057 Info   Vendor = General
+2025-07-16 21:32:08.057 Info   Product = Controller (XBOX 360 For Windows)
+2025-07-16 21:32:08.057 Info   DeviceName = BIGBIG WON Blitz2
+2025-07-16 21:32:08.057 Info   numAxis = 5 [1,1,1,1,1,0,0,0]
+2025-07-16 21:32:08.057 Info   numPOVs = 1
+2025-07-16 21:32:08.057 Info   numButtons = 10
+2025-07-16 21:32:08.057 Info   Detected a XI joystick 1
+2025-07-16 21:32:08.057 Info   VendorId=413D, ProductId=2104
+2025-07-16 21:32:08.057 Info   GUID=413D2104-1, Name=XInput Device #1
+2025-07-16 21:32:08.058 Info   DetectJoysticks: Detected 1 XI joystick(s)
+2025-07-16 21:32:08.066 Info   Detected a DI joystick: Controller (XBOX 360 For Windows), Controller (XBOX 360 For Windows), 2104413D, {C9FB0010-4233-11EF-8003-444553540000}
+2025-07-16 21:32:08.070 Info   Detected a DI joystick: Controller (XBOX 360 For Windows), Controller (XBOX 360 For Windows), 2104413D, {C9FB2720-4233-11EF-8004-444553540000}
+2025-07-16 21:32:08.070 Info   Assign BIGBIG WON Blitz2 to Joystick #1 (413D2104-1)
+2025-07-16 21:32:08.070 Info   1 joystick(s) are detected (C:\Dropbox\src\JoyToKey\src\Joystick\Processing.cpp#306)
+2025-07-16 21:32:46.720 Info   About to load config file "ShadowManRemastered" (C:\Dropbox\src\JoyToKey\src\ConfigFileManager.cpp#107)
+2025-07-16 21:33:06.095 Error  Failed to obtain the target window handle (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#355)
+2025-07-16 21:33:06.095 Error  Access is denied.
+ (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#356)
+2025-07-16 21:33:07.795 Error  Failed to obtain the target window handle (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#355)
+2025-07-16 21:33:07.795 Error  Access is denied.
+ (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#356)
+2025-07-16 21:33:09.793 Error  Failed to obtain the target window handle (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#355)
+2025-07-16 21:33:09.793 Error  Access is denied.
+ (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#356)
+2025-07-16 22:58:27.474 Error  Failed to obtain the target window handle (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#355)
+2025-07-16 22:58:27.474 Error  Access is denied.
+ (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#356)
+2025-07-16 23:05:53.871 Error  Failed to obtain the target window handle (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#355)
+2025-07-16 23:05:53.871 Error  Access is denied.
+ (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#356)
+2025-07-16 23:05:57.461 Error  Failed to obtain the target window handle (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#355)
+2025-07-16 23:05:57.461 Error  Access is denied.
+ (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#356)
+2025-07-16 23:05:59.167 Error  Failed to obtain the target window handle (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#355)
+2025-07-16 23:05:59.167 Error  Access is denied.
+ (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#356)
+2025-07-16 23:06:02.457 Error  Failed to obtain the target window handle (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#355)
+2025-07-16 23:06:02.457 Error  Access is denied.
+ (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#356)
+2025-07-16 23:06:10.409 Error  Failed to obtain the target window handle (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#355)
+2025-07-16 23:06:10.409 Error  Access is denied.
+ (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#356)
+2025-07-16 23:06:12.263 Error  Failed to obtain the target window handle (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#355)
+2025-07-16 23:06:12.263 Error  Access is denied.
+ (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#356)
+2025-07-16 23:06:16.299 Error  Failed to obtain the target window handle (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#355)
+2025-07-16 23:06:16.299 Error  Access is denied.
+ (C:\Dropbox\src\JoyToKey\src\Utils\Utils.cpp#356)
+2025-07-16 23:06:19.250 Info   Application terminated (C:\Dropbox\src\JoyToKey\src\Utils\LogFile.cpp#20)

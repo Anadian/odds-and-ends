@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"LifeEssence"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>1AF357430BC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"ScrapIron"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>1AF3574319C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Iron"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>1AF3574327C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"StartOfAllocationAddress"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1AF35743000</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>AcquireLifeEssenseCode :mov [rax+000000BC],ecx</Description>
+      <AddressString>1AEA8D4EFFA</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>03</Byte>
+        <Byte>CE</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>88</Byte>
+        <Byte>BC</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>49</Byte>
+        <Byte>8B</Byte>
+        <Byte>47</Byte>
+        <Byte>20</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

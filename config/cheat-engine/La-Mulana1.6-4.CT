@@ -1,0 +1,1042 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>46</ID>
+      <Description>"Auto Assemble script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : La-Mulana / ver 1.6.6.2
+  Version:
+  Date   : 2025-06-16
+  Author : willa
+
+  This script does blah blah blah
+}
+
+{
+// ORIGINAL CODE - INJECTION POINT: LamulanaWin.exe+1E4D9C
+
+LamulanaWin.exe+1E4D7A: 89 55 08           - mov [ebp+08],edx
+LamulanaWin.exe+1E4D7D: 57                 - push edi
+LamulanaWin.exe+1E4D7E: 8D B9 04 02 00 00  - lea edi,[ecx+00000204]
+LamulanaWin.exe+1E4D84: DB 45 08           - fild dword ptr [ebp+08]
+LamulanaWin.exe+1E4D87: D9 5D 08           - fstp dword ptr [ebp+08]
+LamulanaWin.exe+1E4D8A: D9 45 08           - fld dword ptr [ebp+08]
+LamulanaWin.exe+1E4D8D: D9 96 68 01 00 00  - fst dword ptr [esi+00000168]
+LamulanaWin.exe+1E4D93: 0F BF 07           - movsx eax,word ptr [edi]
+LamulanaWin.exe+1E4D96: D9 45 FC           - fld dword ptr [ebp-04]
+LamulanaWin.exe+1E4D99: 89 45 08           - mov [ebp+08],eax
+// ---------- INJECTING HERE ----------
+LamulanaWin.exe+1E4D9C: DD 05 18 47 AD 00  - fld qword ptr [LamulanaWin.exe+2C4718]
+// ---------- DONE INJECTING  ----------
+LamulanaWin.exe+1E4DA2: D8 F9              - fdivr st(0),st(1)
+LamulanaWin.exe+1E4DA4: DD 05 F0 55 AD 00  - fld qword ptr [LamulanaWin.exe+2C55F0]
+LamulanaWin.exe+1E4DAA: DC C9              - fmul st(1),st(0)
+LamulanaWin.exe+1E4DAC: D9 C9              - fxch st(1)
+LamulanaWin.exe+1E4DAE: DD 55 F8           - fst qword ptr [ebp-08]
+LamulanaWin.exe+1E4DB1: DB 45 08           - fild dword ptr [ebp+08]
+LamulanaWin.exe+1E4DB4: DE F4              - fdivrp st(4),st(0)
+LamulanaWin.exe+1E4DB6: DC CB              - fmul st(3),st(0)
+LamulanaWin.exe+1E4DB8: D9 CB              - fxch st(3)
+LamulanaWin.exe+1E4DBA: D9 5D 08           - fstp dword ptr [ebp+08]
+}
+{$lua}
+if syntaxcheck then return end
+if memrec then print( 'memrec:', memrec) end
+x = 12;
+{$asm}
+luaCall(print('Defines'))
+//define(NOP,90)
+define(mysignature,43 4e 4f 23 55 6e 69 71 75 65 23 53 69 67 6e 61 74 75 72 65 23 43 4e 4f)
+// Injection 1
+define(I1Add1,"LamulanaWin.exe"+1E5AC0)
+//fullAccess(I1Add1,$40)
+define(I1Add2,I1Add1+6)
+define(I1Bytes,8B 83 A0 00 00 00 8B 88 04 02 00 00 83 EC 0C D9)
+// Injection long-jump
+define(ILJAdd1,"LamulanaWin.exe"+1E4D87)
+define(ILJAdd2,"LamulanaWin.exe"+1E4D9C) //define(ILJAdd2,ILJAdd1+15)
+define(ILJReturnAdd,"LamulanaWin.exe"+1E4DA2)
+define(ILJBytes,D9 5D 08 D9 45 08 D9 96 68 01 00 00 0F BF 07 D9 45 FC 89 45 08)
+//
+define(DynamicAllocationBytes,1F 9C 00 xx xx 00 00 00 00 00 00 00 00 00 10 00 08 00 xx xx 08 xx xx xx xx 00 00 00 04 0C 02 00 08 00 00 00 00 20 xx xx 1F 6C)
+
+[ENABLE]
+luaCall(print('ENABLE'))
+
+luaCall(print('Asserts'))
+assert(I1Add1,I1Bytes)
+assert(ILJAdd1,ILJBytes)
+
+luaCall(print('AOB Scans'))
+//aobScan(DynamicAllocationAddress, DynamicAllocationBytes)
+//define(DynamicAllocationAddress,157A2000)
+
+luaCall(print('Allocs'))
+alloc(NewMemory,$1000)
+define(NewMemoryAdd,NewMemory)
+
+define(I1Memory,NewMemory+100)
+define(I1Ins,NewMemory+500)
+
+define(ILJMemory,NewMemory+200)
+define(ILJAdjustedMemory,NewMemory+204)
+define(ILJIns,NewMemory+750)
+define(ILJRestore,NewMemory+18)
+
+luaCall(print('Labels'))
+
+//label(I1code)
+label(ILJBackup)
+label(ILJAdjustedMemoryLabel)
+label(ILJcode)
+label(returnLabel)
+
+luaCall(print('Memory'))
+
+NewMemory:
+	db mysignature
+
+ILJBackup:
+    readmem(ILJAdd2,6)
+
+ILJAdjustedMemory:
+	ILJAdjustedMemoryLabel:
+/*00000000:
+	nop
+*/
+luaCall(print('Instructions'))
+
+/*I1Add2:
+	jmp I1Ins
+	nop
+*/
+
+ILJAdd2:
+  jmp long ILJIns
+  nop
+
+/*I1Ins:
+	mov [WorkingMemory],eax
+*/
+/*I1code:
+	mov ecx,[eax+00000204]
+	jmp return*/
+
+ILJIns:
+/*{$luacode local_eax=eax}
+    --if syntaxcheck then return end
+    print( 'x', x );
+    print( 'EAX', local_eax );
+    address_table = getAddressList();
+    print( 'AddressList', address_table );
+    symbol_table = getSymbolInfo();
+    print( 'SymbolTable', symbol_table );
+    safe_address = getAddressSafe( 'ILJAdd1', true );
+    print( 'ILJAdd1:', safe_address );
+{$asm}*/
+	mov [ILJMemory],edi
+    mov [ILJAdjustedMemory],edi
+    sub [ILJAdjustedMemory],32398
+
+ILJcode:
+  fld qword ptr [LamulanaWin.exe+2C4718]
+  jmp long ILJReturnAdd
+
+ILJReturnAdd:
+returnLabel:
+	luaCall(print('return'))
+    registerSymbol(I1Memory)
+    registerSymbol(I1Add1)
+	registersymbol(I1Add2)
+    registerSymbol(I1Ins)
+    registerSymbol(ILJMemory)
+    registerSymbol(ILJAdjustedMemory)
+    registerSymbol(ILJAdjustedMemoryLabel)
+    registerSymbol(ILJAdd1)
+    registerSymbol(ILJAdd2)
+    registerSymbol(ILJIns)
+    registerSymbol(ILJBackup)
+	luaCall(print( 'getSymbolInfo:', getSymbolInfo() ))
+
+[DISABLE]
+luaCall(print('DISABLE'))
+
+I1Add1:
+	db I1Bytes
+
+ILJAdd1:
+	db ILJBytes
+
+ILJAdd2:
+	readmem(ILJBackup,6)
+
+luaCall(print('unregisterSymbols'))
+	unregisterSymbol(I1Memory)
+    unregisterSymbol(I1Add1)
+	unregistersymbol(I1Add2)
+    unregisterSymbol(I1Ins)
+    unregisterSymbol(ILJMemory)
+    unregisterSymbol(ILJAdjustedMemory)
+    unregisterSymbol(ILJAdjustedMemoryLabel)
+    unregisterSymbol(ILJAdd1)
+    unregisterSymbol(ILJAdd2)
+    unregisterSymbol(ILJIns)
+    unregisterSymbol(ILJBackup)
+
+luaCall(print('Deallocs'))
+
+//unregisterSymbol(NewMemory)
+dealloc(NewMemory)
+{
+// ORIGINAL CODE - INJECTION POINT: LamulanaWin.exe+1E5AC0
+
+LamulanaWin.exe+1E5A96: D9 05 E8 1D A5 00  - fld dword ptr [LamulanaWin.exe+2E1DE8]
+LamulanaWin.exe+1E5A9C: D8 05 E0 1D A5 00  - fadd dword ptr [LamulanaWin.exe+2E1DE0]
+LamulanaWin.exe+1E5AA2: DC 25 30 6F A3 00  - fsub qword ptr [LamulanaWin.exe+2C6F30]
+LamulanaWin.exe+1E5AA8: DC 65 F8           - fsub qword ptr [ebp-08]
+LamulanaWin.exe+1E5AAB: D9 5D 08           - fstp dword ptr [ebp+08]
+LamulanaWin.exe+1E5AAE: D9 45 08           - fld dword ptr [ebp+08]
+LamulanaWin.exe+1E5AB1: D9 1C 24           - fstp dword ptr [esp]
+LamulanaWin.exe+1E5AB4: 57                 - push edi
+LamulanaWin.exe+1E5AB5: E8 36 E5 E6 FF     - call LamulanaWin.exe+53FF0
+LamulanaWin.exe+1E5ABA: D9 05 E0 4D A3 00  - fld dword ptr [LamulanaWin.exe+2C4DE0]
+// ---------- INJECTING HERE ----------
+LamulanaWin.exe+1E5AC0: 8B 83 A0 00 00 00  - mov eax,[ebx+000000A0]
+// ---------- DONE INJECTING  ----------
+LamulanaWin.exe+1E5AC6: 8B 88 04 02 00 00  - mov ecx,[eax+00000204]
+LamulanaWin.exe+1E5ACC: 83 EC 0C           - sub esp,0C
+LamulanaWin.exe+1E5ACF: D9 5C 24 08        - fstp dword ptr [esp+08]
+LamulanaWin.exe+1E5AD3: 8B F7              - mov esi,edi
+LamulanaWin.exe+1E5AD5: D9 05 E4 1D A5 00  - fld dword ptr [LamulanaWin.exe+2E1DE4]
+LamulanaWin.exe+1E5ADB: DC 05 98 3E A3 00  - fadd qword ptr [LamulanaWin.exe+2C3E98]
+LamulanaWin.exe+1E5AE1: D9 5D 08           - fstp dword ptr [ebp+08]
+LamulanaWin.exe+1E5AE4: D9 45 08           - fld dword ptr [ebp+08]
+LamulanaWin.exe+1E5AE7: D9 5C 24 04        - fstp dword ptr [esp+04]
+LamulanaWin.exe+1E5AEB: D9 45 F4           - fld dword ptr [ebp-0C]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>114</ID>
+      <Description>"MusicID"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>LamulanaWin.exe+2DE8A8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>119</ID>
+      <Description>"SoftwareCombo:deathv+move:enabled"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>00CF0F4F</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>118</ID>
+      <Description>"Playtime(ms)"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>LamulanaWin.exe+2E1214</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>15</ID>
+      <Description>"Vit"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>LamulanaWin.exe+2E12A8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>115</ID>
+      <Description>"MobileSuperXMemory"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>LamulanaWin.exe+2E19E0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>120</ID>
+      <Description>"I-Frames"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>013D0EA7</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>113</ID>
+      <Description>"CollisionRoomID"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>LamulanaWin.exe+9C0EBE</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>87</ID>
+      <Description>"DA_Address"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>90</ID>
+      <Description>"PosX/Screen"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+      <Offsets>
+        <Offset>32374</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>91</ID>
+      <Description>"PosY/Screen"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+      <Offsets>
+        <Offset>32378</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>88</ID>
+      <Description>"HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+      <Offsets>
+        <Offset>32398</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>93</ID>
+      <Description>"Weights"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+      <Offsets>
+        <Offset>227d6a</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>92</ID>
+      <Description>"Gold"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+      <Offsets>
+        <Offset>227d6c</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>94</ID>
+      <Description>"Shurikens"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+      <Offsets>
+        <Offset>227D6E</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>95</ID>
+      <Description>"RollingShurikens"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+      <Offsets>
+        <Offset>227D70</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>96</ID>
+      <Description>"EarthSpears"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+      <Offsets>
+        <Offset>227D72</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>97</ID>
+      <Description>"Flares"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+      <Offsets>
+        <Offset>227D74</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>98</ID>
+      <Description>"Bombs"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+      <Offsets>
+        <Offset>227D76</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>99</ID>
+      <Description>"Chakrams"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+      <Offsets>
+        <Offset>227D78</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>100</ID>
+      <Description>"Caltrops"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+      <Offsets>
+        <Offset>227D7A</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>101</ID>
+      <Description>"Magazines"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+      <Offsets>
+        <Offset>227D7C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>102</ID>
+      <Description>"BulletsInPistol"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>ILJAdjustedMemoryLabel</Address>
+      <Offsets>
+        <Offset>227D80</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>121</ID>
+      <Description>"GroundedVelY"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>013D0F4C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>122</ID>
+      <Description>"SomeImportantAddress"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>154D2194</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>128</ID>
+      <Description>"ComparedAgainstZero"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>154D21E4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>129</ID>
+      <Description>"LoadedBaseFloat"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>154D2314</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>123</ID>
+      <Description>"Airborn_VelY_Multiplier (Terminal Velocity: 9)"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>154D22F8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>125</ID>
+      <Description>"JumpLaunchVelocity (default: -5.8)"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>00CD6D70</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>126</ID>
+      <Description>"GravityMultiplier (default: 0.15)"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Double</VariableType>
+      <Address>00CD4000</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>127</ID>
+      <Description>"DoubleJumpLaunchVelocity (default: -4.3)"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>00CD6D68</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>131</ID>
+      <Description>"Volatile"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>0FF1F66C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>130</ID>
+      <Description>"SubtractBy"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Double</VariableType>
+      <Address>00CD42E0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>132</ID>
+      <Description>"Unknown"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00CF1130</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>133</ID>
+      <Description>"Byte_cmp&lt;=0"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>013D0EA7</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>134</ID>
+      <Description>"Address-&gt;edi"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00CF1824</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>135</ID>
+      <Description>"edi+=4"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00CF1828</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>136</ID>
+      <Description>"-&gt;ebx"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00CF0F8C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>137</ID>
+      <Description>"cmp:&lt;=0"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00CF1364</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>138</ID>
+      <Description>"cmp:eax(1)&lt;this"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00CF1130</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>139</ID>
+      <Description>"this cmp 0"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00CF1154</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>140</ID>
+      <Description>"this cmp 0"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>00CF0F38</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>141</ID>
+      <Description>"float cmp 0"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00CF1154</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>142</ID>
+      <Description>"-&gt;edi"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00CF1368</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>143</ID>
+      <Description>"-&gt;edi"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00CF0F38</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>144</ID>
+      <Description>"Addr-&gt;edx"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00CF1890</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>145</ID>
+      <Description>"addr32"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00CF1B90</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>146</ID>
+      <Description>"u8==8"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>154D2444</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :mov ecx,[eax+00000204]</Description>
+      <AddressString>LamulanaWin.exe+1E5AC6</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>A0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>88</Byte>
+        <Byte>04</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>EC</Byte>
+        <Byte>0C</Byte>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fld qword ptr [LamulanaWin.exe+2C4718]</Description>
+      <AddressString>LamulanaWin.exe+1E4D9C</AddressString>
+      <Before>
+        <Byte>45</Byte>
+        <Byte>FC</Byte>
+        <Byte>89</Byte>
+        <Byte>45</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>DD</Byte>
+        <Byte>05</Byte>
+        <Byte>18</Byte>
+        <Byte>47</Byte>
+        <Byte>AD</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>F9</Byte>
+        <Byte>DD</Byte>
+        <Byte>05</Byte>
+        <Byte>F0</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :dec ebp</Description>
+      <AddressString>LamulanaWin.exe</AddressString>
+      <Before/>
+      <Actual>
+        <Byte>4D</Byte>
+      </Actual>
+      <After>
+        <Byte>5A</Byte>
+        <Byte>90</Byte>
+        <Byte>00</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fstp dword ptr [esi]</Description>
+      <AddressString>LamulanaWin.exe+5623A</AddressString>
+      <Before>
+        <Byte>D8</Byte>
+        <Byte>4D</Byte>
+        <Byte>0C</Byte>
+        <Byte>D8</Byte>
+        <Byte>06</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>1E</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>04</Byte>
+        <Byte>24</Byte>
+        <Byte>E8</Byte>
+        <Byte>8C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [esi+000002D4],eax</Description>
+      <AddressString>LamulanaWin.exe+EFE2B</AddressString>
+      <Before>
+        <Byte>B6</Byte>
+        <Byte>7D</Byte>
+        <Byte>19</Byte>
+        <Byte>00</Byte>
+        <Byte>98</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>86</Byte>
+        <Byte>D4</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>8E</Byte>
+        <Byte>D4</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>29</Byte>
+        <Byte>8E</Byte>
+        <Byte>04</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>39</Byte>
+      </Actual>
+      <After>
+        <Byte>9E</Byte>
+        <Byte>04</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :cmp [LamulanaWin.exe+2E0F4F],bl</Description>
+      <AddressString>LamulanaWin.exe+EFE9B</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>01</Byte>
+        <Byte>EB</Byte>
+        <Byte>1E</Byte>
+      </Before>
+      <Actual>
+        <Byte>38</Byte>
+        <Byte>1D</Byte>
+        <Byte>4F</Byte>
+        <Byte>0F</Byte>
+        <Byte>CF</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>74</Byte>
+        <Byte>0F</Byte>
+        <Byte>C6</Byte>
+        <Byte>05</Byte>
+        <Byte>A7</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov byte ptr [LamulanaWin.exe+9C0EA7],3C</Description>
+      <AddressString>LamulanaWin.exe+EFEB2</AddressString>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>CF</Byte>
+        <Byte>00</Byte>
+        <Byte>75</Byte>
+        <Byte>07</Byte>
+      </Before>
+      <Actual>
+        <Byte>C6</Byte>
+        <Byte>05</Byte>
+        <Byte>A7</Byte>
+        <Byte>0E</Byte>
+        <Byte>3D</Byte>
+        <Byte>01</Byte>
+        <Byte>3C</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>4E</Byte>
+        <Byte>1C</Byte>
+        <Byte>B8</Byte>
+        <Byte>06</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fstp dword ptr [ebx+000001E4]</Description>
+      <AddressString>LamulanaWin.exe+E861C</AddressString>
+      <Before>
+        <Byte>05</Byte>
+        <Byte>4C</Byte>
+        <Byte>0F</Byte>
+        <Byte>3D</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>9B</Byte>
+        <Byte>E4</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>84</Byte>
+        <Byte>C9</Byte>
+        <Byte>74</Byte>
+        <Byte>42</Byte>
+        <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :jmp LamulanaWin.exe+EABC6</Description>
+      <AddressString>LamulanaWin.exe+EABB8</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>64</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>EB</Byte>
+        <Byte>0C</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>83</Byte>
+        <Byte>80</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fld dword ptr [LamulanaWin.exe+2C6D70]</Description>
+      <AddressString>LamulanaWin.exe+EA82F</AddressString>
+      <Before>
+        <Byte>E8</Byte>
+        <Byte>A1</Byte>
+        <Byte>F3</Byte>
+        <Byte>F2</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>05</Byte>
+        <Byte>70</Byte>
+        <Byte>6D</Byte>
+        <Byte>CD</Byte>
+        <Byte>00</Byte>
+        <Byte>D9</Byte>
+        <Byte>9B</Byte>
+        <Byte>64</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>B2</Byte>
+        <Byte>01</Byte>
+        <Byte>D9</Byte>
+        <Byte>E8</Byte>
+        <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fmul qword ptr [LamulanaWin.exe+2C4000]</Description>
+      <AddressString>LamulanaWin.exe+EAB33</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>80</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>DC</Byte>
+        <Byte>0D</Byte>
+        <Byte>00</Byte>
+        <Byte>40</Byte>
+        <Byte>CD</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>05</Byte>
+        <Byte>4C</Byte>
+        <Byte>0F</Byte>
+        <Byte>3D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>DoubleJump Code :fld dword ptr [LamulanaWin.exe+2C6D68]</Description>
+      <AddressString>LamulanaWin.exe+EAAE6</AddressString>
+      <Before>
+        <Byte>01</Byte>
+        <Byte>EB</Byte>
+        <Byte>02</Byte>
+        <Byte>DD</Byte>
+        <Byte>D8</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>05</Byte>
+        <Byte>68</Byte>
+        <Byte>6D</Byte>
+        <Byte>CD</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>B8</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>ComplexJumpLogic Code :test ah,05</Description>
+      <AddressString>LamulanaWin.exe+EAB9D</AddressString>
+      <Before>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>DF</Byte>
+        <Byte>E0</Byte>
+      </Before>
+      <Actual>
+        <Byte>F6</Byte>
+        <Byte>C4</Byte>
+        <Byte>05</Byte>
+      </Actual>
+      <After>
+        <Byte>7A</Byte>
+        <Byte>08</Byte>
+        <Byte>D9</Byte>
+        <Byte>9B</Byte>
+        <Byte>64</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>BrickFallingCode :fstp dword ptr [ebx+000001E4]</Description>
+      <AddressString>LamulanaWin.exe+E8231</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>E4</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>9B</Byte>
+        <Byte>E4</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>83</Byte>
+        <Byte>60</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>LandingCode :fstp dword ptr [ebx+000001E4]</Description>
+      <AddressString>LamulanaWin.exe+E7B39</AddressString>
+      <Before>
+        <Byte>25</Byte>
+        <Byte>E0</Byte>
+        <Byte>42</Byte>
+        <Byte>CD</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>9B</Byte>
+        <Byte>E4</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>EE</Byte>
+        <Byte>D9</Byte>
+        <Byte>9B</Byte>
+        <Byte>60</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>WhereYouEndUpAfterSomeMeaninglessCompJumpsCode :mov eax,[esp+0C]</Description>
+      <AddressString>LamulanaWin.exe+7FBD6</AddressString>
+      <Before>
+        <Byte>13</Byte>
+        <Byte>CF</Byte>
+        <Byte>00</Byte>
+        <Byte>72</Byte>
+        <Byte>8C</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>0C</Byte>
+      </Actual>
+      <After>
+        <Byte>40</Byte>
+        <Byte>83</Byte>
+        <Byte>C7</Byte>
+        <Byte>28</Byte>
+        <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>ChangeFollowingJNEtoJMPforInvincibilityCode :cmp byte ptr [LamulanaWin.exe+9C0EA7],00</Description>
+      <AddressString>LamulanaWin.exe+7F948</AddressString>
+      <Before>
+        <Byte>85</Byte>
+        <Byte>AA</Byte>
+        <Byte>FC</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>80</Byte>
+        <Byte>3D</Byte>
+        <Byte>A7</Byte>
+        <Byte>0E</Byte>
+        <Byte>3D</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>E9</Byte>
+        <Byte>4C</Byte>
+        <Byte>08</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <DisassemblerComments>
+    <DisassemblerComment>
+      <Address>"LamulanaWin.exe"+7F988</Address>
+      <Comment>AlwaysTrue
+</Comment>
+    </DisassemblerComment>
+  </DisassemblerComments>
+</CheatTable>

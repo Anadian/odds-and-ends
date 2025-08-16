@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1511</ID>
+      <Description>"MP"</Description>
+      <VariableType>Float</VariableType>
+      <Address>7FFB1098</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1510</ID>
+      <Description>"HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>74EE01E0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1503</ID>
+      <Description>"PosX"</Description>
+      <VariableType>Float</VariableType>
+      <Address>74EE031C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1504</ID>
+      <Description>"PosY"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>74EE030C</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

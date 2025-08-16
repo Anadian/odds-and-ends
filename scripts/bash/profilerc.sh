@@ -40,6 +40,7 @@ else
 fi
 alias yt-dlp="yt-dlp --config-locations $HOME/dev/OddsandEnds/config/yt-dlp.conf";
 alias grep='pcre2grep';
+alias godot="MANGOHUD=0 $HOME/app/Godot_v4.4.1-stable_mono_linux_x86_64/Godot_v4.4.1-stable_mono_linux.x86_64";
 #alias gtb='git branch'
 #alias gtc='git checkout'
 #alias gtm='git merge'

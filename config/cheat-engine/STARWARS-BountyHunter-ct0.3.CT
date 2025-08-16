@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>47</ID>
+      <Description>"HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>20CDACEB194</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>48</ID>
+      <Description>"EquipID"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>20CDACEB4F0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>50</ID>
+      <Description>"ThermalDetonators"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>20CDAD501A8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>52</ID>
+      <Description>"Long"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>20CDACEAE98</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>53</ID>
+      <Description>"Lat"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>20CDACEAE9C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>51</ID>
+      <Description>"Alt"</Description>
+      <VariableType>Float</VariableType>
+      <Address>20CDACEAEA0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>54</ID>
+      <Description>"HPScript"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : STAR WARS™ Bounty Hunter™
+  Version: 
+  Date   : 2025-07-04
+  Author : willa
+
+  This script does blah blah blah
+}
+/*
+TangoPC.exe.text+1BF4DA - F3 0F58 B3 34030000   - addss xmm6,[rbx+00000334]
+TangoPC.exe.text+1BF4E2 - F3 0F5D F0            - minss xmm6,xmm0
+HPAdd                   - F3 0F11 B3 34030000   - movss [rbx+00000334],xmm6
+TangoPC.exe.text+1BF4EE - 0F28 74 24 20         - movaps xmm6,[rsp+20]
+TangoPC.exe.text+1BF4F3 - 48 83 C4 30           - add rsp,30 { 48 }
+
+F3 0F 58 B3 34 03 00 00 F3 0F 5D F0 F3 0F 11 B3 34 03 00 00 0F 28 74 24 20 48 83 C4 30
+
+TangoPC.exe.text+1E33D7 - F3 41 0F10 99 A8000000  - movss xmm3,[r9+000000A8]
+TangoPC.exe.text+1E33E0 - F3 41 0F10 A1 AC000000  - movss xmm4,[r9+000000AC]
+TangoPC.exe.text+1E33E9 - F3 41 0F10 A9 B0000000  - movss xmm5,[r9+000000B0]
+TangoPC.exe.text+1E33F2 - F3 0F5C 1A            - subss xmm3,[rdx]
+TangoPC.exe.text+1E33F6 - F3 0F5C 62 04         - subss xmm4,[rdx+04]
+TangoPC.exe.text+1E33FB - F3 0F5C 6A 08         - subss xmm5,[rdx+08]
+TangoPC.exe.text+1E3400 - F3 0F10 35 581C4D00   - movss xmm6,[TangoPC.exe.rdata+A060] { (Nan) }
+F3 41 0F 10 99 A8 00 00 00 F3 41 0F 10 A1 AC 00 00 00 F3 41 0F 10 A9 B0 00 00 00 F3 0F 5C 1A F3 0F 5C 62 04 F3 0F 5C 6A 08 F3 0F 10 35 58 1C 4D 00
+movss xmm3,[r9+000000A8]
+movss xmm4,[r9+000000AC]
+movss xmm5,[r9+000000B0]
+subss xmm3,[rdx]
+subss xmm4,[rdx+04]
+subss xmm5,[rdx+08]
+Tmovss xmm6,[TangoPC.exe.rdata+A060]
+*/
+define(HPAdd,"TangoPC.exe.text"+1BF4DA)
+define(HPBytes,F3 0F 58 B3 34 03 00 00 F3 0F 5D F0 F3 0F 11 B3 34 03 00 00 0F 28 74 24 20 48 83 C4 30)
+define(HPNops,90 90 90 90 90 90 90 90 90 90 90 90 90 90 90)
+define(HPBytesLength,$1D) //29
+
+define(PosAdd,"TangoPC.exe.text"+1E33D7)
+define(PosBytes,F3 41 0F 10 99 A8 00 00 00 F3 41 0F 10 A1 AC 00 00 00 F3 41 0F 10 A9 B0 00 00 00 F3 0F 5C 1A F3 0F 5C 62 04 F3 0F 5C 6A 08)
+define(PosNops,90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90)
+define(PosBytesLength,$29) //41
+
+[ENABLE]
+
+assert(HPAdd,HPBytes)
+assert(PosAdd,PosBytes)
+alloc(HPMem,$1000)
+
+define(HPIns,HPMem+500)
+define(PosIns,HPMem+600)
+
+label(HPMemLabel)
+label(HPBackupLabel)
+label(HPRAXBackupLabel)
+label(HPRBXBackupLabel)
+label(HPEffectiveAddressLabel)
+label(HPInsLabel)
+label(HPCodeLabel)
+label(HPReturnLabel)
+
+label(PosBackupLabel)
+label(PosEffectiveAddressLabel)
+label(PosInsLabel)
+label(PosCodeLabel)
+label(PosReturnLabel)
+
+HPMem:
+	HPMemLabel:
+    db 'CNO#Unique#Signature#CNO'
+    db '&lt;HPBackup&gt;'
+    HPBackupLabel:
+    readmem(HPAdd,HPBytesLength)
+    db '&lt;/HPBackup&gt;'
+    db '&lt;HP-RAX-Backup&gt;'
+    HPRAXBackupLabel:
+    dq 00
+    db '&lt;/HP-RAX-Backup&gt;
+    db '&lt;HP-RBX-Backup&gt;'
+    HPRBXBackupLabel:
+    dq 00
+    db '&lt;/HP-RBX-Backup&gt;
+    db '&lt;HPEffectiveAddress&gt;'
+    HPEffectiveAddressLabel:
+    dq 00
+    db '&lt;/HPHPEffectiveAddress&gt;
+    db '&lt;PosBackup&gt;'
+    PosBackupLabel:
+    readmem(PosAdd,PosBytesLength)
+    db '&lt;/PosBackup&gt;'
+    db '&lt;PosEffectiveAddress&gt;'
+    PosEffectiveAddressLabel:
+    dq 00
+    db '&lt;/PosEffectiveAddress&gt;'
+
+HPIns:
+	HPInsLabel:
+	mov [HPRAXBackupLabel],rax
+    lea rax,[rbx+334]
+    mov [HPEffectiveAddressLabel],rax
+    mov rax,[HPRAXBackupLabel]
+    nop
+
+HPCodeLabel:
+	addss xmm6,[rbx+00000334]
+  	minss xmm6,xmm0
+	movss [rbx+00000334],xmm6
+	movaps xmm6,[rsp+20]
+	add rsp,30 { 48 }
+  jmp HPReturnLabel
+
+HPAdd:
+  jmp HPInsLabel
+  db HPNops
+HPReturnLabel:
+	registerSymbol(HPAdd)
+	registerSymbol(HPBytes)
+	registerSymbol(HPBytesLength)
+	registerSymbol(HPNops)
+	registerSymbol(HPIns)
+  registerSymbol(HPMemLabel)
+  registerSymbol(HPBackupLabel)
+  registerSymbol(HPRAXBackupLabel)
+  registerSymbol(HPRBXBackupLabel)
+  registerSymbol(HPEffectiveAddressLabel)
+  registerSymbol(HPInsLabel)
+  registerSymbol(HPCodeLabel)
+  registerSymbol(HPReturnLabel)
+
+
+PosIns:
+	PosInsLabel:
+    mov [PosEffectiveAddressLabel],rdx
+    nop
+
+PosCodeLabel:
+	movss xmm3,[r9+000000A8]
+	movss xmm4,[r9+000000AC]
+	movss xmm5,[r9+000000B0]
+	subss xmm3,[rdx]
+	subss xmm4,[rdx+04]
+	subss xmm5,[rdx+08]
+  jmp PosReturnLabel
+
+PosAdd:
+  jmp PosInsLabel
+  db PosNops
+PosReturnLabel:
+	registerSymbol(PosAdd)
+	registerSymbol(PosBytes)
+	registerSymbol(PosBytesLength)
+	registerSymbol(PosNops)
+	registerSymbol(PosIns)
+  registerSymbol(PosBackupLabel)
+  registerSymbol(PosEffectiveAddressLabel)
+  registerSymbol(PosInsLabel)
+  registerSymbol(PosCodeLabel)
+  registerSymbol(PosReturnLabel)
+
+[DISABLE]
+
+HPAdd:
+  readmem(HPBackupLabel,HPBytesLength)
+  // movss [rbx+00000334],xmm6
+  // movaps xmm6,[rsp+20]
+  // add rsp,30
+
+PosAdd:
+	readmem(PosBackupLabel,PosBytesLength)
+
+
+  unregisterSymbol(HPAdd)
+  unregisterSymbol(HPBytes)
+  unregisterSymbol(HPBytesLength)
+  unregisterSymbol(HPNops)
+  unregisterSymbol(HPIns)
+  unregisterSymbol(HPMemLabel)
+  unregisterSymbol(HPBackupLabel)
+  unregisterSymbol(HPRAXBackupLabel)
+  unregisterSymbol(HPRBXBackupLabel)
+  unregisterSymbol(HPEffectiveAddressLabel)
+  unregisterSymbol(HPInsLabel)
+  unregisterSymbol(HPCodeLabel)
+  unregisterSymbol(HPReturnLabel)
+
+  unregisterSymbol(PosAdd)
+  unregisterSymbol(PosBytes)
+  unregisterSymbol(PosBytesLength)
+  unregisterSymbol(PosNops)
+  unregisterSymbol(PosIns)
+  unregisterSymbol(PosBackupLabel)
+  unregisterSymbol(PosEffectiveAddressLabel)
+  unregisterSymbol(PosInsLabel)
+  unregisterSymbol(PosCodeLabel)
+  unregisterSymbol(PosReturnLabel)
+
+dealloc(HPMem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: TangoPC.exe.text+1BF4E6
+
+TangoPC.exe.text+1BF4BF: CC                       - int 3 
+TangoPC.exe.text+1BF4C0: 40 53                    - push rbx
+TangoPC.exe.text+1BF4C2: 48 83 EC 30              - sub rsp,30
+TangoPC.exe.text+1BF4C6: 48 8B 01                 - mov rax,[rcx]
+TangoPC.exe.text+1BF4C9: 48 8B D9                 - mov rbx,rcx
+TangoPC.exe.text+1BF4CC: 0F 29 74 24 20           - movaps [rsp+20],xmm6
+TangoPC.exe.text+1BF4D1: 0F 28 F1                 - movaps xmm6,xmm1
+TangoPC.exe.text+1BF4D4: FF 90 E8 01 00 00        - call qword ptr [rax+000001E8]
+TangoPC.exe.text+1BF4DA: F3 0F 58 B3 34 03 00 00  - addss xmm6,[rbx+00000334]
+TangoPC.exe.text+1BF4E2: F3 0F 5D F0              - minss xmm6,xmm0
+// ---------- INJECTING HERE ----------
+TangoPC.exe.text+1BF4E6: F3 0F 11 B3 34 03 00 00  - movss [rbx+00000334],xmm6
+// ---------- DONE INJECTING  ----------
+TangoPC.exe.text+1BF4EE: 0F 28 74 24 20           - movaps xmm6,[rsp+20]
+TangoPC.exe.text+1BF4F3: 48 83 C4 30              - add rsp,30
+TangoPC.exe.text+1BF4F7: 5B                       - pop rbx
+TangoPC.exe.text+1BF4F8: C3                       - ret 
+TangoPC.exe.text+1BF4F9: CC                       - int 3 
+TangoPC.exe.text+1BF4FA: CC                       - int 3 
+TangoPC.exe.text+1BF4FB: CC                       - int 3 
+TangoPC.exe.text+1BF4FC: CC                       - int 3 
+TangoPC.exe.text+1BF4FD: CC                       - int 3 
+TangoPC.exe.text+1BF4FE: CC                       - int 3 
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>55</ID>
+      <Description>"HP [0,200]"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>HPEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>56</ID>
+      <Description>"Long"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>PosEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>57</ID>
+      <Description>"Lat"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>PosEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>58</ID>
+      <Description>"Alt"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>PosEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>59</ID>
+      <Description>"JangoAntiCWFromX+;-1@Y-;+1@Y+"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>PosEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>-30</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>60</ID>
+      <Description>"JangoAntiCWFromY+;ProbablyReal;+1@X-;-1@X+"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>PosEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>-2C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>61</ID>
+      <Description>"ScannerTL-CWFromY+;-1@X-;+1@X+"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>PosEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>-20</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>62</ID>
+      <Description>"ScannerTC;AntiCWFromX+"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>PosEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>-1C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>63</ID>
+      <Description>"SccanerTR-Pitch"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>7FF6160EB388</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>64</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>19F289D01A8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>65</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>19F289D01AC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>66</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>19F289E01A8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>67</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>19F289E01AC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>68</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>19F47DBC768</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>69</ID>
+      <Description>"CameraYaw?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>19F289D0188</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>70</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>19F289D0190</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>71</ID>
+      <Description>"CameraRotX"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>19F47DBC760</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>72</ID>
+      <Description>"CameraRotY;AntiCWFromX+;+1@Y+;-1@Y-"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>19F47DBC764</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>73</ID>
+      <Description>"CameraPitch;AntiCWFromHorizontalPlane"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>19F47DBC768</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>74</ID>
+      <Description>"OtherCamera"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>19F48BB6280</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>75</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>19F48BB6284</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>76</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>19F48BB6288</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>77</ID>
+      <Description>"MarkedBounty"</Description>
+      <VariableType>String</VariableType>
+      <Length>10</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>19F26983A80</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>78</ID>
+      <Description>"CurrentBountyMessage"</Description>
+      <VariableType>String</VariableType>
+      <Length>10</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>19F48B1B967</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Longitude Writer Code :movss [rdi+38],xmm0</Description>
+      <AddressString>TangoPC.exe+128D47</AddressString>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>47</Byte>
+        <Byte>38</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>47</Byte>
+        <Byte>38</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>CD</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Never Jump Code :jmp TangoPC.exe+128D66</Description>
+      <AddressString>TangoPC.exe+128D3D</AddressString>
+      <Before>
+        <Byte>87</Byte>
+        <Byte>50</Byte>
+        <Byte>07</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>EB</Byte>
+        <Byte>27</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>C4</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Injection CandidateCode :mov qword ptr [rdi+00000314],00000000</Description>
+      <AddressString>TangoPC.exe+128D66</AddressString>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>47</Byte>
+        <Byte>40</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>C7</Byte>
+        <Byte>87</Byte>
+        <Byte>14</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>B7</Byte>
+        <Byte>10</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Next Equipment Code :mov [rsi+000000B0],di</Description>
+      <AddressString>TangoPC.exe+15FECE</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
+        <Byte>0F</Byte>
+        <Byte>B7</Byte>
+        <Byte>C7</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>89</Byte>
+        <Byte>BE</Byte>
+        <Byte>B0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+        <Byte>38</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Unique to Player Previous EquipmentCode :mov [rsi+000000B0],bx</Description>
+      <AddressString>TangoPC.exe+15FFB8</AddressString>
+      <Before>
+        <Byte>C4</Byte>
+        <Byte>20</Byte>
+        <Byte>41</Byte>
+        <Byte>5E</Byte>
+        <Byte>C3</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>89</Byte>
+        <Byte>9E</Byte>
+        <Byte>B0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>B7</Byte>
+        <Byte>C3</Byte>
+        <Byte>EB</Byte>
+        <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Direct Equip ScannerCode or Previous :mov [rbx+000000B0],di</Description>
+      <AddressString>TangoPC.exe+1600AF</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>B2</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>89</Byte>
+        <Byte>BB</Byte>
+        <Byte>B0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>B7</Byte>
+        <Byte>C7</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Writes static equipment address Code :mov [rsi+000007B0],di</Description>
+      <AddressString>TangoPC.exe+C3003</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>C0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>89</Byte>
+        <Byte>BE</Byte>
+        <Byte>B0</Byte>
+        <Byte>07</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>8E</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>HP WriterCode :movss [rcx+00000334],xmm1</Description>
+      <AddressString>TangoPC.exe+1C02F9</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>CE</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>89</Byte>
+        <Byte>34</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>FE</Byte>
+        <Byte>05</Byte>
+        <Byte>74</Byte>
+        <Byte>05</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>ThermalDet Writer Code :mov [rdi+58],eax</Description>
+      <AddressString>TangoPC.exe+10C2C2</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>47</Byte>
+        <Byte>58</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>20</Byte>
+        <Byte>5F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Prospective Alt Writer Code :movss [rbx+40],xmm1</Description>
+      <AddressString>TangoPC.exe+1239D0</AddressString>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>4B</Byte>
+        <Byte>40</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>4B</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>A3</Byte>
+        <Byte>00</Byte>
+        <Byte>05</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>&lt;Generic&gt;GetHP Code :movss xmm0,[rcx+00000334]</Description>
+      <AddressString>TangoPC.exe+1062E0</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>81</Byte>
+        <Byte>34</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Player.HealHP Code :movss [rbx+00000334],xmm6</Description>
+      <AddressString>TangoPC.exe+1C04E6</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5D</Byte>
+        <Byte>F0</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>B3</Byte>
+        <Byte>34</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+        <Byte>20</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Player Unique Position Code :subss xmm3,[rdx]</Description>
+      <AddressString>TangoPC.exe+1E43F2</AddressString>
+      <Before>
+        <Byte>A9</Byte>
+        <Byte>B0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>1A</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>62</Byte>
+        <Byte>04</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>PlayerCameraPitchWriterCode :movups [rax+rcx*8],xmm0</Description>
+      <AddressString>TangoPC.exe+63419</AddressString>
+      <Before>
+        <Byte>C9</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>57</Byte>
+        <Byte>D6</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>04</Byte>
+        <Byte>C8</Byte>
+      </Actual>
+      <After>
+        <Byte>FF</Byte>
+        <Byte>43</Byte>
+        <Byte>08</Byte>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>MarkedBounty1Code :mov [rax],r8</Description>
+      <AddressString>VCRUNTIME140.dll+FD0D</AddressString>
+      <Before>
+        <Byte>02</Byte>
+        <Byte>0F</Byte>
+        <Byte>B7</Byte>
+        <Byte>4A</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>4C</Byte>
+        <Byte>89</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>66</Byte>
+        <Byte>89</Byte>
+        <Byte>48</Byte>
+        <Byte>08</Byte>
+        <Byte>C3</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>MarkedBounty2WriterCode :mov [rax+08],cx</Description>
+      <AddressString>VCRUNTIME140.dll+FD10</AddressString>
+      <Before>
+        <Byte>4A</Byte>
+        <Byte>08</Byte>
+        <Byte>4C</Byte>
+        <Byte>89</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>89</Byte>
+        <Byte>48</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>4C</Byte>
+        <Byte>8B</Byte>
+        <Byte>02</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
