@@ -12,7 +12,7 @@ export COREPACK_ENABLE_PROJECT_SPEC=0;
 export PNPM_HOME="$HOME/.local/share/pnpm";
 export NODE_PATH="$PNPM_HOME/global/5/node_modules:$NODE_PATH:/usr/local/lib/node_modules:$HOME/.local/lib/node_modules";
 export PATH=$HOMEBIN:$HOME/bin:$PNPM_HOME:/snap/bin:$PATH:$GOPATH/bin;
-export RIPGREP_CONFIG_PATH="$HOME/dev/OddsandEnds/config/ripgreprc";
+export RIPGREP_CONFIG_PATH="$HOME/dev/odds-and-ends/config/ripgreprc";
 if [[ $(uname -o) == 'Android' ]]; then
 	export NODE_PATH=/data/data/com.termux/files/usr/lib/node_modules:$NODE_PATH;
 else
@@ -38,7 +38,7 @@ else
 	alias set-clipboard='xclip -selection clipboard'; 
 	alias get-clipboard='xclip -selection clipboard -o';
 fi
-alias yt-dlp="yt-dlp --config-locations $HOME/dev/OddsandEnds/config/yt-dlp.conf";
+alias yt-dlp="yt-dlp --config-locations $HOME/dev/odds-and-ends/config/yt-dlp.conf";
 alias grep='pcre2grep';
 alias godot="MANGOHUD=0 $HOME/app/Godot_v4.4.1-stable_mono_linux_x86_64/Godot_v4.4.1-stable_mono_linux.x86_64";
 #alias gtb='git branch'
