@@ -4,27 +4,135 @@
 :c:tcs::{
     SendText( "the caller stated" )
 }
-::ts::{
+:c:ts::{
     SendText( "the suspect" )
 }
-::tss::{
+:c:tss::{
     SendText( "the suspects" )
 }
-::tdi::{ ; Time date ISO
+:c:tdi::{ ; Time date ISO
     SendText( FormatTime(,"yyyy-MM-dd") )
 }
-::tti::{
+:c:tti::{
     SendText( FormatTime(,"HH:mm") )
 }
-::tdt::{ ; Text
+:c:tdt::{ ; Text
     SendText( FormatTime(,"LongDate") )
 }
-::ttt::{
+:c:ttt::{
     SendText( FormatTime(,"h:mm tt") )
 }
-::aa::{
+:c:aa::{
     SendText( "at approximately" )
 }
-::tdti::{
+:c:tdti::{
 	SendText( FormatTime(,"yyyy-MM-ddTHH:mm:ss") )
+}
+:c:Tcw::{
+	SendText( "The caller wanted to report" )
+}
+:c:tcw::{
+	SendText( "the caller wanted to report" )
+}
+:c:Unc::{
+	SendText( "Unknown to caller" )
+}
+:c:unc::{
+	SendText( "unknown to caller" )
+}
+:c:Non::{
+	SendText( "None known to caller" )
+}
+:c:Unk::{
+	SendText( "Unknown" )
+}
+:c:unk::{
+	SendText( "unknown" )
+}
+:c:mp::{
+	SendText( "missing person" )
+}
+:c:poi::{
+	SendText( "person of interest" )
+}
+:c:sus::{
+	SendText( "suspicious" )
+}
+:c:cbel::{
+	SendText( "the caller believes" )
+}
+:c:csp::{
+	SendText( "(caller spelled)" )
+}
+:c:cun::{
+	SendText( "(caller uncertain)" )
+}
+:c:PD::{
+	SendText( "Police Department" )
+}
+:c:Lou::{
+	SendText( "Louisiana" )
+}
+:c:Fl::{
+	SendText( "Florida" )
+}
+:c:Mi::{
+	SendText( "Michigan" )
+}
+:c:NFL::{
+	SendText( "Newfoundland and Labrador" )
+}
+:c:Sas::{
+	SendText( "Saskatchewan" )
+}
+:c:BC::{
+	SendText( "British Columbia" )
+}
+:c:Al::{
+	SendText( "Alberta" )
+}
+:c:On::{
+	SendText( "Ontario" )
+}
+:c:NS::{
+	SendText( "Nova Scotia" )
+}
+:c:NB::{
+	SendText( "New Brunswick" )
+}
+:c:PEI::{
+	SendText( "Prince Edward Island" )
+}
+:c:Aug::{
+	SendText( "August" )
+}
+:c:Sep::{
+	SendText( "September" )
+}
+:c:dir::{
+	SendText( "directed to" )
+}
+:c:cot::{
+	SendText( "called out to" )
+}
+:c:Mon::{
+	SendText( "Monday" )
+}
+:c:Tue::{
+	SendText( "Tuesday" )
+}
+:c:Wed::{
+	SendText( "Wednesday" )
+}
+:c:Thu::{
+	SendText( "Thursday" )
+}
+:c:Fri::{
+	SendText( "Friday" )
+}
+:c:Sat::{
+	SendText( "Saturday" )
+}
+:c:Sun::{
+	SendText( "Sunday" )
 }
