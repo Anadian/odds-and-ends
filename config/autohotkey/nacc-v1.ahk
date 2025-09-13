@@ -67,6 +67,27 @@
 :c:cun::{
 	SendText( "(caller uncertain)" )
 }
+:c:spunc::{
+	SendText( "specifics unknown to caller" )
+}
+:c:1hi::{
+	SendText( "First-hand information" )
+}
+:c:2hi::{
+	SendText( "second-hand information" )
+}
+:c:Blvd::{
+	SendText( "Boulevard" )
+}
+:c:Ave::{
+	SendText( "Avenue" )
+}
+:c:Rd::{
+	SendText( "Road" )
+}
+:c:Ct::{
+	SendText( "Court" )
+}
 :c:PD::{
 	SendText( "Police Department" )
 }
