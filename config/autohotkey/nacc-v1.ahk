@@ -49,6 +49,9 @@
 :c:unk::{
 	SendText( "unknown" )
 }
+:c:info::{
+	SendText( "information" )
+}
 :c:mp::{
 	SendText( "missing person" )
 }
@@ -91,6 +94,9 @@
 :c:PD::{
 	SendText( "Police Department" )
 }
+:c:Cal::{
+	SendText( "California" )
+}
 :c:Lou::{
 	SendText( "Louisiana" )
 }
@@ -123,6 +129,9 @@
 }
 :c:PEI::{
 	SendText( "Prince Edward Island" )
+}
+:c:CLSO::{
+	SendText( "Crimeline Speakout Hotline" )
 }
 :c:Aug::{
 	SendText( "August" )
