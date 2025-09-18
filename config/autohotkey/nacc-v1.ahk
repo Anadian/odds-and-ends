@@ -4,6 +4,9 @@
 :c:tcs::{
     SendText( "the caller stated" )
 }
+:c:Ts::{
+	SendText( "The suspect" )
+}
 :c:ts::{
     SendText( "the suspect" )
 }
@@ -64,6 +67,12 @@
 :c:cbel::{
 	SendText( "the caller believes" )
 }
+:c:Tsbel::{
+	SendText( "The suspect is believed to" )
+}
+:c:tsbel::{
+	SendText( "the suspect is believed to" )
+}
 :c:csp::{
 	SendText( "(caller spelled)" )
 }
@@ -72,6 +81,12 @@
 }
 :c:spunc::{
 	SendText( "specifics unknown to caller" )
+}
+:c:cqs::{
+	SendText( "clarifying questions" )
+}
+:c:qua::{
+	SendText( "quantity" )
 }
 :c:1hi::{
 	SendText( "First-hand information" )
@@ -115,10 +130,10 @@
 :c:BC::{
 	SendText( "British Columbia" )
 }
-:c:Al::{
+:c:Alb::{
 	SendText( "Alberta" )
 }
-:c:On::{
+:c:Ont::{
 	SendText( "Ontario" )
 }
 :c:NS::{
@@ -133,17 +148,50 @@
 :c:CLSO::{
 	SendText( "Crimeline Speakout Hotline" )
 }
+:c:Jan::{
+	SendText( "January" )
+}
+:c:Feb::{
+	SendText( "February" )
+}
+:c:Mar::{
+	SendText( "March" )
+}
+:c:Apr::{
+	SendText( "April" )
+}
+:c:Jun::{
+	SendText( "June" )
+}
+:c:Jul::{
+	SendText( "July" )
+}
 :c:Aug::{
 	SendText( "August" )
 }
 :c:Sep::{
 	SendText( "September" )
 }
+:c:Oct::{
+	SendText( "October" )
+}
+:c:Nov::{
+	SendText( "November" )
+}
+:c:Dec::{
+	SendText( "December" )
+}
 :c:dir::{
 	SendText( "directed to" )
 }
 :c:cot::{
 	SendText( "called out to" )
+}
+:c:Tcd::{
+	SendText( "The call disconnected" )
+}
+:c:tcd::{
+	SendText( "the call disconnected" )
 }
 :c:Mon::{
 	SendText( "Monday" )
