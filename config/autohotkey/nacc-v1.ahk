@@ -26,7 +26,7 @@
     SendText( FormatTime(,"h:mm tt") )
 }
 :c:aa::{
-    SendText( "at approximately" )
+    SendText( "at around" )
 }
 :c:tdti::{
 	SendText( FormatTime(,"yyyy-MM-ddTHH:mm:ss") )
@@ -79,6 +79,9 @@
 :c:cun::{
 	SendText( "(caller uncertain)" )
 }
+:c:ccon::{
+	SendText( "(caller confirmed)" )
+}
 :c:spunc::{
 	SendText( "specifics unknown to caller" )
 }
@@ -121,11 +124,17 @@
 :c:Mi::{
 	SendText( "Michigan" )
 }
+:c:Il::{
+	SendText( "Illinois" )
+}
 :c:NFL::{
 	SendText( "Newfoundland and Labrador" )
 }
 :c:Sas::{
 	SendText( "Saskatchewan" )
+}
+:c:Mani::{
+	SendText( "Manitoba" )
 }
 :c:BC::{
 	SendText( "British Columbia" )
