@@ -331,22 +331,116 @@
   Author : willa
 
   This script does blah blah blah
+AtomicHeart-Win64-Shipping.exe+F0FB70 - F3 0F11 49 0C         - movss [rcx+0C],xmm1
+AtomicHeart-Win64-Shipping.exe+F0FB75 - C3                    - ret
+AtomicHeart-Win64-Shipping.exe+F0FB76 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB77 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB78 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB79 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB7A - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB7B - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB7C - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB7D - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB7E - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB7F - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB80 - F3 0F11 49 08         - movss [rcx+08],xmm1
+AtomicHeart-Win64-Shipping.exe+F0FB85 - C3                    - ret
+AtomicHeart-Win64-Shipping.exe+F0FB86 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB87 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB88 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB89 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB8A - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB8B - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB8C - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB8D - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB8E - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB8F - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB90 - 48 89 54 24 10        - mov [rsp+10],rdx
+AtomicHeart-Win64-Shipping.exe+F0FB95 - 53                    - push rbx
+AtomicHeart-Win64-Shipping.exe+F0FB96 - 55                    - push rbp
+AtomicHeart-Win64-Shipping.exe+F0FB97 - 56                    - push rsi
+AtomicHeart-Win64-Shipping.exe+F0FB98 - 57                    - push rdi
+AtomicHeart-Win64-Shipping.exe+F0FB99 - 41 54                 - push r12
+AtomicHeart-Win64-Shipping.exe+F0FB9B - 48 83 EC 60           - sub rsp,60 { 96 }
 }
+{$lua}
+if syntaxcheck then return end
+if memrec then print( 'memrec:', memrec) end
+print('CEVersion:', getCEVersion());
+if( cheatEngineIs64Bit() == true ) then
+print('64-bit');
+else
+print('32-bit');
+end
+print('CheatEngineDir:', getCheatEngineDir());
+{$asm}
+luaCall(print('Defines'))
 
-define(address,"AtomicHeart-Win64-Shipping.exe"+F0FB80)
-define(bytes,F3 0F 11 49 08 C3 CC CC CC CC CC CC CC CC)
+define(mysignature,43 4e 4f 23 55 6e 69 71 75 65 23 53 69 67 6e 61 74 75 72 65 23 43 4e 4f)
+
+define(DodgeChargerAssertAdd,"AtomicHeart-Win64-Shipping.exe"+F0FB70)
+define(DodgeChargerInjAdd,"AtomicHeart-Win64-Shipping.exe"+F0FB80)
+define(DodgeChargerAssertBytes,F3 0F 11 49 0C C3 CC CC CC CC CC CC CC CC CC CC F3 0F 11 49 08 C3 CC CC CC CC CC CC CC CC CC CC 48 89 54 24 10 53 55 56 57 41 54 48 83 EC 60)
+define(DodgeChargerAssertBytesLength,$2F)
+define(DodgeChargerNops,90 90 90 90 90 90 90)
 
 [ENABLE]
+luaCall(print('ENABLE'))
 
-assert(address,bytes)
-alloc(newmem,$1000)
+luaCall(print('Asserts'))
+assert(DodgeChargerAssertAdd,DodgeChargerAssertBytes)
 
-label(code)
-label(return)
+luaCall(print('AOB Scans'))
 
-newmem:
+luaCall(print('Allocs'))
+alloc(DodgeChargerMemory,$1000)
 
-code:
+define(DodgeChargerIns,DodgeChargerMemory+500)
+
+luaCall(print('Labels'))
+
+label(DodgeChargerMemoryLabel)
+label(DodgeChargerBackupLabel)
+label(DodgeChargerEffectiveAddressLabel)
+label(DodgeChargerInsLabel)
+label(DodgeChargerCodeLabel)
+label(DodgeChargerReturnLabel)
+
+label(FreeMoveEnabledLabel)
+label(FreeMoveSpeedLabel)
+label(SkipFreeMoveLabel)
+
+luaCall(print('Memory'))
+
+DodgeChargerMemory:
+	DodgeChargerMemoryLabel:
+	db mysignature
+	db '&lt;DodgeChargerBackup&gt;'
+	DodgeChargerBackupLabel:
+	readmem(DodgeChargerAssertAdd,DodgeChargerAssertBytesLength)
+	db '&lt;/DodgeChargerBackup&gt;'
+	db '&lt;DodgeChargerEffectiveAddress&gt;'
+	DodgeChargerEffectiveAddressLabel:
+	dq 00
+	db '&lt;/DodgeChargerEffectiveAddress&gt;'
+	db '&lt;FreeMoveEnabled:u8&gt;'
+	FreeMoveEnabledLabel:
+	db 00
+	db '&lt;/FreeMoveEnabled:u8&gt;'
+	db '&lt;FreeMoveSpeed:f32&gt;'
+	FreeMoveSpeedLabel:
+	dd (float)8.0
+	db '&lt;/FreeMoveSpeed:f32&gt;'
+
+
+luaCall(print('Instructions'))
+
+DodgeChargerIns:
+	DodgeChargerInsLabel:
+	mov [DodgeChargerEffectiveAddressLabel],rcx
+
+DodgeChargerCodeLabel:
+// Original code
   movss [rcx+08],xmm1
   ret 
   int 3 
@@ -357,28 +451,175 @@ code:
   int 3 
   int 3 
   int 3 
-  jmp return
+{$luacode}
+--print('LuaCode1');
+if( isKeyPressed( VK_NUMPAD5 ) == true ) then
+	--print('NUMPAD 5 pressed.');
+	enabled_address = getAddressSafe( 'FreeMoveEnabledLabel' );
+    --print( 'enabled_address:', enabled_address );
+    byte_value = readByte( enabled_address, 1, false );
+    if( byte_value ~= 0 ) then
+    	byte_value = 0;
+    else
+       	byte_value = 1;
+        address_list = getAddressList();
+        speed_address = getAddressSafe( 'FreeMoveSpeedLabel' );
+        x_memrec = address_list.getMemoryRecordByDescription( 'PosX' );
+   		x_address = x_memrec.getCurrentAddress();
+        x_f32 = readFloat( x_address );
+        previous_x_f32 = x_f32;
+        y_memrec = address_list.getMemoryRecordByDescription( 'PosY' );
+   		y_address = y_memrec.getCurrentAddress();
+        y_f32 = readFloat( y_address );
+        previous_y_f32 = y_f32;
+        z_memrec = address_list.getMemoryRecordByDescription( 'PosZ' );
+        z_address = z_memrec.getCurrentAddress();
+    	z_f32 = readFloat( z_address );
+        previous_z_f32 = z_f32;
+        yaw_memrec = address_list.getMemoryRecordByDescription( 'FirstPersonYaw (rad AntiCW from North)' );
+        yaw_address = yaw_memrec.getCurrentAddress();
+	end
+    writeBytes( enabled_address, byte_value );
+end
+{$asm}
+	pushf
+	push rax
+	mov al,[FreeMoveEnabledLabel]
+	cmp al,1
+	pop rax
+	jne	SkipFreeMoveLabel
+{$luacode}
+cond_left = isKeyPressed( VK_NUMPAD4 );
+cond_right = isKeyPressed( VK_NUMPAD6 );
+cond_forward = isKeyPressed( VK_NUMPAD8 );
+cond_backward = isKeyPressed( VK_NUMPAD2 );
+cond_ascend = isKeyPressed( VK_NUMPAD7 );
+cond_descend = isKeyPressed( VK_NUMPAD1 );
 
-address:
-  jmp far newmem
-return:
+speed_f32 = readFloat( speed_address );
+yaw_f32 = readFloat( yaw_address );
+function Overflow( input, min, max )
+	_return = 0.0;
+	if( input &lt; min ) then
+		_return = max - ( ( min - input ) % ( max - min ) );
+	elseif( input &gt; max ) then
+		_return = min + ( ( input - max ) % ( max - min ) );
+	else
+		_return = input;
+	end
+	return _return;
+end
+--print( 'speed: ', speed_f32, 'yaw: ', yaw_f32 );
+if( (cond_left == true) or (cond_right == true) or (cond_forward == true) or (cond_backward == true) ) then
+	direction_f32 = 0.0;
+	skip_horizontal = 0;
+    if( cond_left == true ) then
+		if( cond_forward == true ) then
+			direction_f32 = math.pi / 4;
+		elseif( cond_backward == true ) then
+			direction_f32 = math.pi * (3 / 4);
+		else
+			direction_f32 = math.pi / 2;
+		end
+    elseif( cond_right == true ) then
+		if( cond_forward == true ) then
+			direction_f32 = -math.pi / 4;
+		elseif( cond_backward == true ) then
+			direction_f32 = -math.pi * (3 / 4);
+		else
+			direction_f32 = -math.pi / 2;
+		end
+    else
+		if( cond_forward == true ) then
+			direction_f32 = 0.0;
+		elseif( cond_backward == true ) then
+			direction_f32 = math.pi;
+		else
+			skip_horizontal = 1;
+		end
+    end
+	adjusted_f32 = yaw_f32 + direction_f32;
+	if( math.abs(adjusted_f32) &gt; math.pi ) then
+		adjusted_f32 = Overflow( adjusted_f32, -math.pi, math.pi );
+	end
+    x_vel_f32 = -1 * speed_f32 * math.sin(adjusted_f32);
+    z_vel_f32 = speed_f32 * math.cos(adjusted_f32);
+    if( x_vel_f32 ~= 0.0 ) then
+    	--print( 'vel.x: ', x_vel_f32 );
+    	x_f32 = previous_x_f32 + x_vel_f32;
+    end
+    if( z_vel_f32 ~= 0.0 ) then
+    	--print( 'vel.z: ', z_vel_f32 );
+    	z_f32 = previous_z_f32 + z_vel_f32;
+    end
+end
+if( (cond_ascend == true) or (cond_descend == true) ) then
+    if( cond_ascend == true ) then
+   		y_f32 = previous_y_f32 + speed_f32;
+   	elseif( cond_descend == true ) then
+   		y_f32 = previous_y_f32 - speed_f32;
+    end
+else
+	y_f32 = previous_y_f32;
+end
+writeFloat( x_address, x_f32 );
+previous_x_f32 = x_f32;
+writeFloat( y_address, y_f32 );
+previous_y_f32 = y_f32;
+writeFloat( z_address, z_f32 );
+previous_z_f32 = z_f32;
+{$asm}
+	SkipFreeMoveLabel:
+	popf
+	jmp DodgeChargerReturnLabel
+
+DodgeChargerInjAdd:
+	jmp long DodgeChargerInsLabel
+	db DodgeChargerNops
+
+DodgeChargerReturnLabel:
+	luaCall(print('return'))
+	registerSymbol(DodgeChargerAdd)
+	registerSymbol(DodgeChargerBytes)
+	registerSymbol(DodgeChargerBytesLength)
+	registerSymbol(DodgeChargerNops)
+	registerSymbol(DodgeChargerIns)
+	registerSymbol(DodgeChargerMemoryLabel)
+	registerSymbol(DodgeChargerBackupLabel)
+	registerSymbol(DodgeChargerEffectiveAddressLabel)
+	registerSymbol(DodgeChargerInsLabel)
+	registerSymbol(DodgeChargerCodeLabel)
+	registerSymbol(FreeMoveEnabledLabel)
+	registerSymbol(FreeMoveSpeedLabel)
+	registerSymbol(SkipFreeMoveLabel)
 
 [DISABLE]
+luaCall(print('DISABLE'))
 
-address:
-  db bytes
-  // movss [rcx+08],xmm1
-  // ret 
-  // int 3 
-  // int 3 
-  // int 3 
-  // int 3 
-  // int 3 
-  // int 3 
-  // int 3 
-  // int 3 
+DodgeChargerAssertAdd:
+	readmem(DodgeChargerBackupLabel,DodgeChargerAssertBytesLength)
 
-dealloc(newmem)
+	luaCall(print('unregisterSymbols'))
+	unregisterSymbol(DodgeChargerAssertAdd)
+	unregisterSymbol(DodgeChargerInjAdd)
+	unregisterSymbol(DodgeChargerAssertBytes)
+	unregisterSymbol(DodgeChargerAssertBytesLength)
+	unregisterSymbol(DodgeChargerNops)
+	unregisterSymbol(DodgeChargerIns)
+	unregisterSymbol(DodgeChargerMemoryLabel)
+	unregisterSymbol(DodgeChargerBackupLabel)
+	unregisterSymbol(DodgeChargerEffectiveAddressLabel)
+	unregisterSymbol(DodgeChargerInsLabel)
+	unregisterSymbol(DodgeChargerCodeLabel)
+	//HP
+	//FreeMove
+	unregisterSymbol(FreeMoveEnabledLabel)
+	unregisterSymbol(FreeMoveSpeedLabel)
+	unregisterSymbol(SkipFreeMoveLabel)
+
+luaCall(print('Deallocs'))
+
+dealloc(DodgeChargerMemory)
 
 {
 // ORIGINAL CODE - INJECTION POINT: AtomicHeart-Win64-Shipping.exe+F0FB80
