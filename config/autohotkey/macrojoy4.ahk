@@ -5,6 +5,9 @@ SetTimer(Tick30Hz, 33)
 repeating := 0
 turbo_key := "{Enter}"
 controller_modifier := "Joy13" ; PS button/Xbox home
+noita_started := 0
+;noita_joytokey := 0
+;noita_savescummer := 0
 
 ; # Utility
 
@@ -24,10 +27,24 @@ ToggleRepeat(){ ;Start repeat
 	}
 }
 Tick30Hz(){
+	global
 	;Pause()
 	TickPOV()
 	if( repeating == 1 ){
 		Send( turbo_key )
+	}
+	win_id := WinExist("ahk_exe noita.exe")
+	if( win_id and noita_started == 0 ){
+		; Start up
+		noita_started := 1
+		joytokey_id := WinExist("ahk_exe JoyToKey.exe")
+		if( not joytokey_id ){
+			ToggleEXE( "C:\ProgramData\chocolatey\lib\joytokey\tools\JoyToKey.exe", "`"Noita`"" )
+		}
+		save_scummer_id := WinExist("ahk_exe NoitaSaveScummer.exe")
+		if( not save_scummer_id ){
+			ToggleEXE( "C:\Users\willa\apps\NoitaSaveScummer.exe" )
+		}
 	}
 } ;Tick30Hz
 TickPOV(){
@@ -242,7 +259,8 @@ Enter::{
 		Sleep(1000)
 	}
 }
-
+;#HotIf WinActive("ahk_exe noita.exe")
+;joy2key_open
 #HotIf GetKeyState("Joy13") == 1 and WinActive("ahk_exe outcast.exe")
 ;MsgBox, "OutCast active"
 Joy11::{

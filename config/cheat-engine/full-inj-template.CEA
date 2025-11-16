@@ -1,0 +1,113 @@
+{ Game   : AtomicHeart  
+  Version: 
+  Date   : 2025-11-15
+  Author : willa
+
+  This script does blah blah blah
+}
+
+define(address,"AtomicHeart-Win64-Shipping.exe"+F0FB80)
+define(bytes,F3 0F 11 49 08 C3 CC CC CC CC CC CC CC CC)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  movss [rcx+08],xmm1
+  ret 
+  int 3 
+  int 3 
+  int 3 
+  int 3 
+  int 3 
+  int 3 
+  int 3 
+  int 3 
+  jmp return
+
+address:
+  jmp far newmem
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // movss [rcx+08],xmm1
+  // ret 
+  // int 3 
+  // int 3 
+  // int 3 
+  // int 3 
+  // int 3 
+  // int 3 
+  // int 3 
+  // int 3 
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: AtomicHeart-Win64-Shipping.exe+F0FB80
+
+AtomicHeart-Win64-Shipping.exe+F0FB76: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB77: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB78: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB79: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB7A: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB7B: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB7C: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB7D: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB7E: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB7F: CC              - int 3 
+// ---------- INJECTING HERE ----------
+AtomicHeart-Win64-Shipping.exe+F0FB80: F3 0F 11 49 08  - movss [rcx+08],xmm1
+// ---------- DONE INJECTING  ----------
+AtomicHeart-Win64-Shipping.exe+F0FB85: C3              - ret 
+AtomicHeart-Win64-Shipping.exe+F0FB86: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB87: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB88: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB89: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB8A: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB8B: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB8C: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB8D: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB8E: CC              - int 3 
+AtomicHeart-Win64-Shipping.exe+F0FB70 - F3 0F11 49 0C         - movss [rcx+0C],xmm1
+AtomicHeart-Win64-Shipping.exe+F0FB75 - C3                    - ret
+AtomicHeart-Win64-Shipping.exe+F0FB76 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB77 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB78 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB79 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB7A - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB7B - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB7C - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB7D - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB7E - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB7F - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB80 - F3 0F11 49 08         - movss [rcx+08],xmm1
+AtomicHeart-Win64-Shipping.exe+F0FB85 - C3                    - ret
+AtomicHeart-Win64-Shipping.exe+F0FB86 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB87 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB88 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB89 - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB8A - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB8B - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB8C - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB8D - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB8E - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB8F - CC                    - int 3
+AtomicHeart-Win64-Shipping.exe+F0FB90 - 48 89 54 24 10        - mov [rsp+10],rdx
+AtomicHeart-Win64-Shipping.exe+F0FB95 - 53                    - push rbx
+AtomicHeart-Win64-Shipping.exe+F0FB96 - 55                    - push rbp
+AtomicHeart-Win64-Shipping.exe+F0FB97 - 56                    - push rsi
+AtomicHeart-Win64-Shipping.exe+F0FB98 - 57                    - push rdi
+AtomicHeart-Win64-Shipping.exe+F0FB99 - 41 54                 - push r12
+AtomicHeart-Win64-Shipping.exe+F0FB9B - 48 83 EC 60           - sub rsp,60 { 96 }
+
