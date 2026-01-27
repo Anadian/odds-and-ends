@@ -361,7 +361,16 @@ AtomicHeart-Win64-Shipping.exe+F0FB96 - 55                    - push rbp
 AtomicHeart-Win64-Shipping.exe+F0FB97 - 56                    - push rsi
 AtomicHeart-Win64-Shipping.exe+F0FB98 - 57                    - push rdi
 AtomicHeart-Win64-Shipping.exe+F0FB99 - 41 54                 - push r12
-AtomicHeart-Win64-Shipping.exe+F0FB9B - 48 83 EC 60           - sub rsp,60 { 96 }
+AtomicHeart-Win64-Shipping.exe+F0FB9B - 48 83 EC 60           - sub rsp,60 { 96
+
+AtomicHeart-Win64-Shipping.exe+F10851 - 49 63 59 4C           - movsxd  rbx,dword ptr [r9+4C]
+AtomicHeart-Win64-Shipping.exe+F10855 - 4D 8B C4              - mov r8,r12
+AtomicHeart-Win64-Shipping.exe+F10858 - 49 8B 07              - mov rax,[r15]
+AtomicHeart-Win64-Shipping.exe+F1085B - 49 8B D5              - mov rdx,r13
+AtomicHeart-Win64-Shipping.exe+F1085E - 49 8B CF              - mov rcx,r15
+AtomicHeart-Win64-Shipping.exe+F10861 - 49 03 DF              - add rbx,r15
+49 63 59 4C 4D 8B C4 49 8B 07 49 8B D5 49 8B CF 49 03 DF
+}
 {$lua}
 if syntaxcheck then return end
 if memrec then print( 'memrec:', memrec) end
@@ -377,11 +386,14 @@ luaCall(print('Defines'))
 
 define(mysignature,43 4e 4f 23 55 6e 69 71 75 65 23 53 69 67 6e 61 74 75 72 65 23 43 4e 4f)
 
-define(DodgeChargerAssertAdd,"AtomicHeart-Win64-Shipping.exe"+F0FB70)
+//define(DodgeChargerAssertAdd,"AtomicHeart-Win64-Shipping.exe"+F0FB70)
 define(DodgeChargerInjAdd,"AtomicHeart-Win64-Shipping.exe"+F0FB80)
-define(DodgeChargerAssertBytes,F3 0F 11 49 0C C3 CC CC CC CC CC CC CC CC CC CC F3 0F 11 49 08 C3 CC CC CC CC CC CC CC CC CC CC 48 89 54 24 10 53 55 56 57 41 54 48 83 EC 60)
-define(DodgeChargerAssertBytesLength,$2F)
-define(DodgeChargerNops,90 90 90 90 90 90 90)
+define(DodgeChargerAssertAdd,"AtomicHeart-Win64-Shipping.exe"+F10851)
+//define(DodgeChargerAssertBytes,F3 0F 11 49 0C C3 CC CC CC CC CC CC CC CC CC CC F3 0F 11 49 08 C3 CC CC CC CC CC CC CC CC CC CC 48 89 54 24 10 53 55 56 57 41 54 48 83 EC 60)
+define(DodgeChargerAssertBytes,49 63 59 4C 4D 8B C4 49 8B 07 49 8B D5 49 8B CF 49 03 DF)
+//define(DodgeChargerAssertBytesLength,$2F)
+define(DodgeChargerAssertBytesLength,$13)
+define(DodgeChargerNops,90 90 90 90 90)
 
 [ENABLE]
 luaCall(print('ENABLE'))
@@ -436,11 +448,16 @@ luaCall(print('Instructions'))
 
 DodgeChargerIns:
 	DodgeChargerInsLabel:
-	mov [DodgeChargerEffectiveAddressLabel],rcx
+	mov [DodgeChargerEffectiveAddressLabel],r15
 
 DodgeChargerCodeLabel:
 // Original code
-  movss [rcx+08],xmm1
+   movsxd  rbx,dword ptr [r9+4C]
+  mov r8,r12
+  mov rax,[r15]
+  mov rdx,r13
+  mov rcx,r15
+  add rbx,r15
 {$luacode}
 --print('LuaCode1');
 if( isKeyPressed( VK_NUMPAD5 ) == true ) then
@@ -563,11 +580,12 @@ previous_z_f32 = z_f32;
 	popf
 	jmp DodgeChargerReturnLabel
 
-DodgeChargerInjAdd:
-	jmp long DodgeChargerInsLabel
+DodgeChargerAssertAdd:
+	jmp DodgeChargerInsLabel
+    db DodgeChargerNops
 
 DodgeChargerReturnLabel:
-	ret
+	//ret
 	luaCall(print('return'))
 	registerSymbol(DodgeChargerAssertAdd)
     registerSymbol(DodgeChargerInjAdd)
@@ -671,6 +689,224 @@ AtomicHeart-Win64-Shipping.exe+F0FB99 - 41 54                 - push r12
 AtomicHeart-Win64-Shipping.exe+F0FB9B - 48 83 EC 60           - sub rsp,60 { 96 }
 
 </AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>82</ID>
+      <Description>"EffectiveAddress"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>DodgeChargerEffectiveAddressLabel</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>83</ID>
+      <Description>"DodgeCharges"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DodgeChargerEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>84</ID>
+      <Description>"HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DodgeChargerEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>-2E8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>93</ID>
+      <Description>"TrueBase?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>DB0A3B20</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>85</ID>
+      <Description>"iFrames?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DB0A3BA4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>86</ID>
+      <Description>"StanceState?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>DB0A3BB4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>87</ID>
+      <Description>"HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>DB0A3B70</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>90</ID>
+      <Description>"PolymericCharge"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DB0A3D00</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>88</ID>
+      <Description>"ShokCharge?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DB0A3D70</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>89</ID>
+      <Description>"ShieldCharge"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DB0A3D90</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>91</ID>
+      <Description>"Battery?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DB0A3C50</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>92</ID>
+      <Description>"DodgeCharges"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DB0A3E60</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>96</ID>
+      <Description>"HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DodgeChargerEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>50</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>94</ID>
+      <Description>"iFrames"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DodgeChargerEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>84</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>95</ID>
+      <Description>"Stance"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>DodgeChargerEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>94</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>100</ID>
+      <Description>"Battery"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DodgeChargerEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>130</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>97</ID>
+      <Description>"PolymericJetCharge"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DodgeChargerEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>1e0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>98</ID>
+      <Description>"ShokCharge"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DodgeChargerEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>250</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>99</ID>
+      <Description>"ShieldCharge"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DodgeChargerEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>270</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>101</ID>
+      <Description>"DodgeCharges"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>DodgeChargerEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>340</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>102</ID>
+      <Description>"SyntheticMaterial"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>B924B950</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>103</ID>
+      <Description>"ResMetalParts"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>B924B9A0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104</ID>
+      <Description>"MicroElectronics"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>B924B9F0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>105</ID>
+      <Description>"SuperConducter"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>B924BA40</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>106</ID>
+      <Description>"ResChemistry"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>B924BA90</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>107</ID>
+      <Description>"BioMat"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>B924BAE0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>108</ID>
+      <Description>"EnergyModule"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>B924BB30</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -943,6 +1179,181 @@ AtomicHeart-Win64-Shipping.exe+F0FB9B - 48 83 EC 60           - sub rsp,60 { 96 
         <Byte>CC</Byte>
         <Byte>CC</Byte>
         <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss xmm6,[rcx+08]</Description>
+      <AddressString>AtomicHeart-Win64-Shipping.exe+F2A632</AddressString>
+      <Before>
+        <Byte>49</Byte>
+        <Byte>03</Byte>
+        <Byte>CE</Byte>
+        <Byte>74</Byte>
+        <Byte>28</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>71</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>EB</Byte>
+        <Byte>21</Byte>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :call qword ptr [rax+10] Potential Callsite</Description>
+      <AddressString>AtomicHeart-Win64-Shipping.exe+F2A43F</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>A0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>FF</Byte>
+        <Byte>50</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>4C</Byte>
+        <Byte>8B</Byte>
+        <Byte>C3</Byte>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :add rbx,r15 adding to rbx</Description>
+      <AddressString>AtomicHeart-Win64-Shipping.exe+F10861</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>D5</Byte>
+        <Byte>49</Byte>
+        <Byte>8B</Byte>
+        <Byte>CF</Byte>
+      </Before>
+      <Actual>
+        <Byte>49</Byte>
+        <Byte>03</Byte>
+        <Byte>DF</Byte>
+      </Actual>
+      <After>
+        <Byte>FF</Byte>
+        <Byte>90</Byte>
+        <Byte>88</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movzx r15d,byte ptr [rsp+38] Clears r15</Description>
+      <AddressString>AtomicHeart-Win64-Shipping.exe+F0FFD9</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>74</Byte>
+        <Byte>10</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>B6</Byte>
+        <Byte>7C</Byte>
+        <Byte>24</Byte>
+        <Byte>38</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov r15,[rsp+00000080] Write r15</Description>
+      <AddressString>AtomicHeart-Win64-Shipping.exe+F2A319</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>4F</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>4C</Byte>
+        <Byte>8B</Byte>
+        <Byte>BC</Byte>
+        <Byte>24</Byte>
+        <Byte>80</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>B4</Byte>
+        <Byte>24</Byte>
+        <Byte>A8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov r15,[rax+00000270] What's this</Description>
+      <AddressString>AtomicHeart-Win64-Shipping.exe+F27653</AddressString>
+      <Before>
+        <Byte>3C</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>4C</Byte>
+        <Byte>8B</Byte>
+        <Byte>B8</Byte>
+        <Byte>70</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>80</Byte>
+        <Byte>78</Byte>
+        <Byte>02</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov rax,[r15] Consistent r15?</Description>
+      <AddressString>AtomicHeart-Win64-Shipping.exe+F10858</AddressString>
+      <Before>
+        <Byte>59</Byte>
+        <Byte>4C</Byte>
+        <Byte>4D</Byte>
+        <Byte>8B</Byte>
+        <Byte>C4</Byte>
+      </Before>
+      <Actual>
+        <Byte>49</Byte>
+        <Byte>8B</Byte>
+        <Byte>07</Byte>
+      </Actual>
+      <After>
+        <Byte>49</Byte>
+        <Byte>8B</Byte>
+        <Byte>D5</Byte>
+        <Byte>49</Byte>
+        <Byte>8B</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>

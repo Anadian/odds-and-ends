@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>21A46FE8A04</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :mov [rcx+44],eax-SetStackSize?</Description>
+      <AddressString>GameAssembly.dll+256D568</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>D0</Byte>
+        <Byte>2B</Byte>
+        <Byte>51</Byte>
+        <Byte>44</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>44</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>4B</Byte>
+        <Byte>10</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

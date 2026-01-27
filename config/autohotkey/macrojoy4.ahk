@@ -46,6 +46,13 @@ Tick30Hz(){
 			ToggleEXE( "C:\Users\willa\apps\NoitaSaveScummer.exe" )
 		}
 	}
+	win_id := WinActive("ahk_exe Etrian Odyssey.exe")
+	if( win_id and False ){
+		SendMode("Event")
+		SetKeyDelay( 0, 20, )
+		Send( "w" )
+		Send( "s" )
+	}
 } ;Tick30Hz
 TickPOV(){
 	global
@@ -277,7 +284,13 @@ Joy1::{
 Joy4::{
 	SendInput("``ToggleDebugCamera{Enter}")
 }
-
+#HotIf WinActive("ahk_exe Etrian Odyssey.exe")
+	;Loop( 500 ){
+	;	SendInput "{w down}"
+	;	SendInput "{w up}"
+	;	SendInput "{s down}"
+	;	SendInput "{s up}"
+	;}
 #HotIf
 
 Joy5::{ ;PS+L1
