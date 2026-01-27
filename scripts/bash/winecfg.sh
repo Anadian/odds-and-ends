@@ -13,6 +13,7 @@ echo "STEAM_APP_ID: $STEAM_APP_ID";
 PROTON_TYPE=${2:-'Proton Hotfix'};
 echo "PROTON_TYPE: $PROTON_TYPE";
 
+# waitforexitandrun (see: https://github.com/Open-Wine-Components/umu-launcher#what-does-it-do)
 PROTON_SUBCOMMAND=${3:-'runinprefix'};
 echo "PROTON_SUBCOMMAND: $PROTON_SUBCOMMAND";
 
