@@ -1,0 +1,294 @@
+{ Game   : Etrian Odyssey.exe
+  Version: 
+  Date   : 2026-01-27
+  Author : willa
+
+  This script does blah blah blah
+GameAssembly.dll+1CE37CD: 8B 41 10           - mov eax,[rcx+10]
+// ---------- INJECTING HERE ----------
+GameAssembly.dll+1CE37D0: 89 43 38           - mov [rbx+38],eax
+// ---------- DONE INJECTING  ----------
+GameAssembly.dll+1CE37D3: 48 8B 47 60        - mov rax,[rdi+60]
+GameAssembly.dll+1CE37D7: 48 85 C0           - test rax,rax
+}
+{$lua}
+if syntaxcheck then return end
+if memrec then print( 'memrec:', memrec) end
+print('CEVersion:', getCEVersion());
+if( cheatEngineIs64Bit() == true ) then
+print('64-bit');
+else
+print('32-bit');
+end
+print('CheatEngineDir:', getCheatEngineDir());
+{$asm}
+luaCall(print('Defines'))
+
+define(mysignature,43 4e 4f 23 55 6e 69 71 75 65 23 53 69 67 6e 61 74 75 72 65 23 43 4e 4f)
+
+// I1: Post-battle, pre-result, HP write
+define(I1Address,"GameAssembly.dll"+1CE37CD)
+define(I1Bytes,8B 41 10 89 43 38 48 8B 47 60 48 85 C0)
+define(I1BytesLength,$0D)
+define(I1Nops,90 90 90 90 90)
+
+[ENABLE]
+luaCall(print('ENABLE'))
+
+luaCall(print('Asserts'))
+assert(I1Address,I1Bytes)
+
+luaCall(print('AOB Scans'))
+
+luaCall(print('Allocs'))
+alloc(NewMemory,$1000)
+
+define(I1Ins,NewMemory+500)
+
+luaCall(print('Labels'))
+
+label(I1MemoryLabel)
+label(I1BackupLabel)
+label(I1EffectiveAddressLabel)
+label(I1InsLabel)
+label(I1CodeLabel)
+label(I1ReturnLabel)
+
+label(FreeMoveEnabledLabel)
+label(FreeMoveSpeedLabel)
+label(SkipFreeMoveLabel)
+
+luaCall(print('Memory'))
+
+NewMemory:
+	I1MemoryLabel:
+	db mysignature
+	db '<I1Backup>'
+	I1BackupLabel:
+	readmem(I1Address,I1BytesLength)
+	db '</I1Backup>'
+	db '<I1EffectiveAddress>'
+	I1EffectiveAddressLabel:
+	dq 00
+	db '</I1EffectiveAddress>'
+	db '<FreeMoveEnabled:u8>'
+	FreeMoveEnabledLabel:
+	db 00
+	db '</FreeMoveEnabled:u8>'
+	db '<FreeMoveSpeed:f32>'
+	FreeMoveSpeedLabel:
+	dd (float)8.0
+	db '</FreeMoveSpeed:f32>'
+
+
+luaCall(print('Instructions'))
+
+I1Ins:
+	I1InsLabel:
+	mov [I1EffectiveAddressLabel],rbx
+
+I1CodeLabel:
+// Original code
+	mov eax,[rcx+10]
+  mov [rbx+38],eax
+  mov rax,[rdi+60]
+  test rax,rax
+{$luacode}
+--print('LuaCode1');
+if( isKeyPressed( VK_NUMPAD5 ) == true ) then
+	--print('NUMPAD 5 pressed.');
+	enabled_address = getAddressSafe( 'FreeMoveEnabledLabel' );
+    --print( 'enabled_address:', enabled_address );
+    byte_value = readByte( enabled_address, 1, false );
+    if( byte_value ~= 0 ) then
+    	byte_value = 0;
+    else
+       	byte_value = 1;
+        address_list = getAddressList();
+        speed_address = getAddressSafe( 'FreeMoveSpeedLabel' );
+        x_memrec = address_list.getMemoryRecordByDescription( 'PosX' );
+   		x_address = x_memrec.getCurrentAddress();
+        x_f32 = readFloat( x_address );
+        previous_x_f32 = x_f32;
+        y_memrec = address_list.getMemoryRecordByDescription( 'PosY' );
+   		y_address = y_memrec.getCurrentAddress();
+        y_f32 = readFloat( y_address );
+        previous_y_f32 = y_f32;
+        z_memrec = address_list.getMemoryRecordByDescription( 'PosZ' );
+        z_address = z_memrec.getCurrentAddress();
+    	z_f32 = readFloat( z_address );
+        previous_z_f32 = z_f32;
+        yaw_memrec = address_list.getMemoryRecordByDescription( 'FirstPersonYaw (rad AntiCW from North)' );
+        yaw_address = yaw_memrec.getCurrentAddress();
+	end
+    writeBytes( enabled_address, byte_value );
+end
+{$asm}
+	pushf
+	push rax
+	mov al,[FreeMoveEnabledLabel]
+	cmp al,1
+	pop rax
+	jne	SkipFreeMoveLabel
+{$luacode}
+cond_left = isKeyPressed( VK_NUMPAD4 );
+cond_right = isKeyPressed( VK_NUMPAD6 );
+cond_forward = isKeyPressed( VK_NUMPAD8 );
+cond_backward = isKeyPressed( VK_NUMPAD2 );
+cond_ascend = isKeyPressed( VK_NUMPAD7 );
+cond_descend = isKeyPressed( VK_NUMPAD1 );
+
+speed_f32 = readFloat( speed_address );
+yaw_f32 = readFloat( yaw_address );
+function Overflow( input, min, max )
+	_return = 0.0;
+	if( input < min ) then
+		_return = max - ( ( min - input ) % ( max - min ) );
+	elseif( input > max ) then
+		_return = min + ( ( input - max ) % ( max - min ) );
+	else
+		_return = input;
+	end
+	return _return;
+end
+--print( 'speed: ', speed_f32, 'yaw: ', yaw_f32 );
+if( (cond_left == true) or (cond_right == true) or (cond_forward == true) or (cond_backward == true) ) then
+	direction_f32 = 0.0;
+	skip_horizontal = 0;
+    if( cond_left == true ) then
+		if( cond_forward == true ) then
+			direction_f32 = math.pi / 4;
+		elseif( cond_backward == true ) then
+			direction_f32 = math.pi * (3 / 4);
+		else
+			direction_f32 = math.pi / 2;
+		end
+    elseif( cond_right == true ) then
+		if( cond_forward == true ) then
+			direction_f32 = -math.pi / 4;
+		elseif( cond_backward == true ) then
+			direction_f32 = -math.pi * (3 / 4);
+		else
+			direction_f32 = -math.pi / 2;
+		end
+    else
+		if( cond_forward == true ) then
+			direction_f32 = 0.0;
+		elseif( cond_backward == true ) then
+			direction_f32 = math.pi;
+		else
+			skip_horizontal = 1;
+		end
+    end
+	adjusted_f32 = yaw_f32 + direction_f32;
+	if( math.abs(adjusted_f32) > math.pi ) then
+		adjusted_f32 = Overflow( adjusted_f32, -math.pi, math.pi );
+	end
+    x_vel_f32 = -1 * speed_f32 * math.sin(adjusted_f32);
+    z_vel_f32 = speed_f32 * math.cos(adjusted_f32);
+    if( x_vel_f32 ~= 0.0 ) then
+    	--print( 'vel.x: ', x_vel_f32 );
+    	x_f32 = previous_x_f32 + x_vel_f32;
+    end
+    if( z_vel_f32 ~= 0.0 ) then
+    	--print( 'vel.z: ', z_vel_f32 );
+    	z_f32 = previous_z_f32 + z_vel_f32;
+    end
+end
+if( (cond_ascend == true) or (cond_descend == true) ) then
+    if( cond_ascend == true ) then
+   		y_f32 = previous_y_f32 + speed_f32;
+   	elseif( cond_descend == true ) then
+   		y_f32 = previous_y_f32 - speed_f32;
+    end
+else
+	y_f32 = previous_y_f32;
+end
+writeFloat( x_address, x_f32 );
+previous_x_f32 = x_f32;
+writeFloat( y_address, y_f32 );
+previous_y_f32 = y_f32;
+writeFloat( z_address, z_f32 );
+previous_z_f32 = z_f32;
+{$asm}
+	SkipFreeMoveLabel:
+	popf
+	jmp I1ReturnLabel
+
+I1Address:
+	jmp I1InsLabel
+    db I1Nops
+
+I1ReturnLabel:
+	//ret
+	luaCall(print('return'))
+	registerSymbol(I1Address)
+	registerSymbol(I1Bytes)
+	registerSymbol(I1BytesLength)
+	registerSymbol(I1Nops)
+	registerSymbol(I1Ins)
+	registerSymbol(I1MemoryLabel)
+	registerSymbol(I1BackupLabel)
+	registerSymbol(I1EffectiveAddressLabel)
+	registerSymbol(I1InsLabel)
+	registerSymbol(I1CodeLabel)
+    registerSymbol(I1ReturnLabel)
+	registerSymbol(FreeMoveEnabledLabel)
+	registerSymbol(FreeMoveSpeedLabel)
+	registerSymbol(SkipFreeMoveLabel)
+
+[DISABLE]
+luaCall(print('DISABLE'))
+
+I1Address:
+	readmem(I1BackupLabel,I1BytesLength)
+
+	luaCall(print('unregisterSymbols'))
+    unregisterSymbol(I1Address)
+	unregisterSymbol(I1Bytes)
+	unregisterSymbol(I1BytesLength)
+	unregisterSymbol(I1Nops)
+	unregisterSymbol(I1Ins)
+	unregisterSymbol(I1MemoryLabel)
+	unregisterSymbol(I1BackupLabel)
+	unregisterSymbol(I1EffectiveAddressLabel)
+	unregisterSymbol(I1InsLabel)
+	unregisterSymbol(I1CodeLabel)
+    unregisterSymbol(I1ReturnLabel)
+	//HP
+	//FreeMove
+	unregisterSymbol(FreeMoveEnabledLabel)
+	unregisterSymbol(FreeMoveSpeedLabel)
+	unregisterSymbol(SkipFreeMoveLabel)
+
+luaCall(print('Deallocs'))
+
+dealloc(NewMemory)
+
+{
+// ORIGINAL CODE - INJECTION POINT: GameAssembly.dll+1CE37D0
+
+GameAssembly.dll+1CE37A8: 0F 84 9A 00 00 00  - je GameAssembly.dll+1CE3848
+GameAssembly.dll+1CE37AE: 48 8B 40 10        - mov rax,[rax+10]
+GameAssembly.dll+1CE37B2: 48 85 C0           - test rax,rax
+GameAssembly.dll+1CE37B5: 0F 84 8D 00 00 00  - je GameAssembly.dll+1CE3848
+GameAssembly.dll+1CE37BB: 39 70 18           - cmp [rax+18],esi
+GameAssembly.dll+1CE37BE: 0F 86 8A 00 00 00  - jbe GameAssembly.dll+1CE384E
+GameAssembly.dll+1CE37C4: 48 8B 48 20        - mov rcx,[rax+20]
+GameAssembly.dll+1CE37C8: 48 85 C9           - test rcx,rcx
+GameAssembly.dll+1CE37CB: 74 7B              - je GameAssembly.dll+1CE3848
+GameAssembly.dll+1CE37CD: 8B 41 10           - mov eax,[rcx+10]
+// ---------- INJECTING HERE ----------
+GameAssembly.dll+1CE37D0: 89 43 38           - mov [rbx+38],eax
+// ---------- DONE INJECTING  ----------
+GameAssembly.dll+1CE37D3: 48 8B 47 60        - mov rax,[rdi+60]
+GameAssembly.dll+1CE37D7: 48 85 C0           - test rax,rax
+GameAssembly.dll+1CE37DA: 74 6C              - je GameAssembly.dll+1CE3848
+GameAssembly.dll+1CE37DC: 48 8B 40 10        - mov rax,[rax+10]
+GameAssembly.dll+1CE37E0: 48 85 C0           - test rax,rax
+GameAssembly.dll+1CE37E3: 74 63              - je GameAssembly.dll+1CE3848
+GameAssembly.dll+1CE37E5: 83 78 18 01        - cmp dword ptr [rax+18],01
+GameAssembly.dll+1CE37E9: 76 73              - jna GameAssembly.dll+1CE385E
+GameAssembly.dll+1CE37EB: 48 8B 48 28        - mov rcx,[rax+28]
+GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
+}
