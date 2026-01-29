@@ -36,6 +36,7 @@ function SlotTable:new( slots_array )
 	--this:write();
     return this;
 end
+
 function SlotTable:exists( value )
 	local _return = 0;
 	for i in ipairs( self.slots ) do
@@ -48,6 +49,7 @@ function SlotTable:exists( value )
     end
     return _return;
 end
+
 function SlotTable:read()
 	if( self.noop == true ) then
 		for i in ipairs( self.slots ) do
@@ -55,22 +57,11 @@ function SlotTable:read()
 		end
 	else
 		for i = 1,5,1 do
-			--print('i: ', i);
-			offset = string.format( '%02x', i * 8 );
-			--print('offset: ', offset);
-			address_string = 'I1EffectiveAddressLabel+'..offset;
-			--print('address_string: ', address_string);
-			temp_address = getAddressSafe( address_string );
-			--print('temp_address: ', temp_address);
-			temp_pointer = readQword( test_address );
-			--print('temp_pointer: ', temp_pointer);
-			printf( 'read: For %d/%d: Got %d from %d (%s) possibly replacing %d', i, #self.slots, temp_pointer, temp_address, address_string, self.slots[i] );
-			if( temp_pointer ~= nil ) then
-				self.slots[i] = temp_pointer;
-			end
+			self.slots[i] = self:getU64FromOffsetIndex( i );
 		end
 	end
 end
+
 function SlotTable:write()
 	if( self.noop == true ) then
 		for i in ipairs( self.slots ) do
@@ -78,19 +69,19 @@ function SlotTable:write()
 		end
 	else
 		for i,value in ipairs( self.slots ) do
-			offset = string.format( '%02x', i * 8 );
-			address_string = 'I1EffectiveAddressLabel+'..offset;
-			temp_address = getAddressSafe( address_string );
-			printf( 'write: For %d/%d: Writing %d to %d (%s)', i, #self.slots, value, temp_address, address_string );
-			writeQword( test_address, value );
+			address = self:getAddressFromOffsetIndex( i );
+			printf( 'write: For %d/%d: Writing %d to %d', i, #self.slots, value, temp_address );
+			writeQword( address, value );
 		end
 	end
 end
+
 function SlotTable:clear()
 	for i in ipairs( self.slots ) do
 		self.slots[i] = 0;
 	end
 end
+
 function SlotTable:getEmpty()
 	_return = 0;
 	for i in ipairs( self.slots ) do
@@ -105,12 +96,14 @@ function SlotTable:getEmpty()
 	end
 	return _return;
 end
+
 function SlotTable:add( value )
 	if( self:exists( value ) == 0 ) then
 		empty_slot = self:getEmpty();
-		self.slot[empty_slot] = value;
+		self.slots[empty_slot] = value;
 	end
 end
+
 function SlotTable:getAddressFromOffsetIndex( index )
 	_return = nil;
 	if( self.noop ~= true and index >= 0 and index < self.maxSlots ) then
@@ -123,7 +116,9 @@ function SlotTable:getAddressFromOffsetIndex( index )
 	end
 	return _return;
 end
+
 function SlotTable:getU64FromOffsetIndex( index )
+	printf( 'getU64FromOffsetIndex received %d', index );
 	_return = 0;
 	address = self:getAddressFromOffsetIndex( index );
 	if( self.noop ~= true and address ~= nil ) then
@@ -133,15 +128,14 @@ function SlotTable:getU64FromOffsetIndex( index )
 			printf( 'Got %d from %d', _return, address );
 		end
 	end
+	printf( 'getU64FromOffsetIndex returned %d', _return );
 	return _return;
 end
---function SlotTable:writeU64FromIndex
 
 function SlotTable:getBufferValue()
 	self.bufferValue = self:getU64FromOffsetIndex( 0 );
 	return self.bufferValue;
 end
-
 
 slot_table = SlotTable:new();
 slot_table[1] = 1;
@@ -150,8 +144,6 @@ st2 = SlotTable:new( { 1, 2, 3, 4, 5 } );
 print( 'st2.exists( 5 ) = ', st2:exists( 5 ) );
 st = SlotTable:new();
 printf( 'st = %s', st );
---index = st:exists( buffer_pointer );
---printf( 'index = %d', index );
 st:add( 6 );
 st:add( 7 );
 print( st );
