@@ -2,508 +2,6 @@
 <CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
-      <ID>0</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>GameAssembly.dll+2EF4258</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>1</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>241643AC970</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>2</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4C330E7B0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>3</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4C330E7B0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>4</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4C2988C50</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>5</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4E1F352F0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>6</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4D03686B0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>7</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4E1463E10</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>8</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4E238ADF0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>9</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4C40B1E70</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>10</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4C41A5DB0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>11</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4E1D8F030</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>12</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4877E2178</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>13</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4C3B95D70</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>14</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4C3BD3E10</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>15</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4E46A6270</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>16</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4E49FD3F0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>17</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4ECC427D0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>18</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4EB061858</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>19</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4C41443B0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>20</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>1A4EFB51530</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>21</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>2425C42A5C8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>22</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>242682D8C68</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>23</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C634D84F8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>24</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C9915E040</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>25</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CCA54B6E8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>26</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CCA793BE8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>31</ID>
-      <Description>"LandWalkrHP"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07998</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>32</ID>
-      <Description>"LW-TP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B0799C</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>33</ID>
-      <Description>"LW-XP"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B079A0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>27</ID>
-      <Description>"LandWalkrLevel"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B079B4</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>28</ID>
-      <Description>"LandWalkrBP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B079B8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>29</ID>
-      <Description>"XP?"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07990</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>30</ID>
-      <Description>"XP?"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B079D8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>34</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07B80</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>35</ID>
-      <Description>"SB-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07B78</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>36</ID>
-      <Description>"SB-TP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07B7C</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>37</ID>
-      <Description>"SB-XP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07B80</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>38</ID>
-      <Description>"SB-LVL"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07B94</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>39</ID>
-      <Description>"SB-BP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07B98</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>40</ID>
-      <Description>"SB-SkP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07BA4</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>41</ID>
-      <Description>"EE-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07F38</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>42</ID>
-      <Description>"EE-TP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07F3C</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>43</ID>
-      <Description>"EE-XP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07F40</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>44</ID>
-      <Description>"H-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07E98</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>45</ID>
-      <Description>"H-TP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07E9C</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>46</ID>
-      <Description>"H-XP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07EA0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>47</ID>
-      <Description>"U-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07CB8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>48</ID>
-      <Description>"U-TP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07CBC</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>49</ID>
-      <Description>"U-XP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07CC0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>50</ID>
-      <Description>"No description"</Description>
-      <ShowAsHex>1</ShowAsHex>
-      <VariableType>Array of byte</VariableType>
-      <ByteLength>8</ByteLength>
-      <Address>19C64B07A38</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>51</ID>
-      <Description>"RH-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19C64B07A38</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>52</ID>
-      <Description>"No description"</Description>
-      <ShowAsHex>1</ShowAsHex>
-      <VariableType>Array of byte</VariableType>
-      <ByteLength>8</ByteLength>
-      <Address>19CBB7A7A38</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>53</ID>
-      <Description>"No description"</Description>
-      <ShowAsHex>1</ShowAsHex>
-      <VariableType>Array of byte</VariableType>
-      <ByteLength>8</ByteLength>
-      <Address>19CC19030D8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>54</ID>
-      <Description>"No description"</Description>
-      <ShowAsHex>1</ShowAsHex>
-      <VariableType>Array of byte</VariableType>
-      <ByteLength>8</ByteLength>
-      <Address>19CBB7A78F8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>55</ID>
-      <Description>"No description"</Description>
-      <ShowAsHex>1</ShowAsHex>
-      <VariableType>Array of byte</VariableType>
-      <ByteLength>8</ByteLength>
-      <Address>19CBB7A7858</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>56</ID>
-      <Description>"Hexer-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CBB7A7858</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>57</ID>
-      <Description>"TrueStartofHexer"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Byte</VariableType>
-      <Address>19CBB7A7A00</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>58</ID>
-      <Description>"LJ-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CC19030D8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>59</ID>
-      <Description>"1"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel</Address>
-      <Offsets>
-        <Offset>8</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>63</ID>
-      <Description>"1-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CBB7A7A00+38</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>64</ID>
-      <Description>"1-TP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CBB7A7A3C</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>65</ID>
-      <Description>"1-XP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CBB7A7A3C+4</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>60</ID>
-      <Description>"2"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CC19030A0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>66</ID>
-      <Description>"2-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CC19030D8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>67</ID>
-      <Description>"2-TP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CC19030DC</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>68</ID>
-      <Description>"2-XP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CC19030E0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>61</ID>
-      <Description>"3"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CBB7A78C0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>69</ID>
-      <Description>"3-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CBB7A78C4</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>70</ID>
-      <Description>"3-TP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CBB7A78C0+3c</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>71</ID>
-      <Description>"3-XP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CBB7A78C0+40</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>62</ID>
-      <Description>"4"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CBB7A7820</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>72</ID>
-      <Description>"4-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CBB7A7820+38</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>73</ID>
-      <Description>"4-TP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CBB7A7820+3c</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>74</ID>
-      <Description>"4-XP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>19CBB7A7820+40</Address>
-    </CheatEntry>
-    <CheatEntry>
       <ID>75</ID>
       <Description>"Auto Assemble script"</Description>
       <VariableType>Auto Assembler Script</VariableType>
@@ -620,96 +118,156 @@ I1Ins:
     //mov [I1R13BackupLabel],r13
 	mov [I1EffectiveAddressLabel],rbx
 {$luacode}
+print( 'LuaCode1' );
+SlotTable = {};
 function SlotTable:new( slots_array )
-    local this = { slots = ( slots_array or {0,0,0,0,0} ) };
-    setmetatable( this, { __newindex = function( slot, value ) self.slots[slot] = value; end } );
+	print( 'Creating new SlotTable.' );
+    local this = {
+		slots = ( slots_array or {0,0,0,0,0} ),
+		noop = false,
+		baseLabel = 'I1EffectiveAddressLabel',
+		bufferValue = 0451,
+		maxSlots = 5
+	};
+    printf( 'Have this: baseLabel=%s bufferValue=%d maxSlots=%d', this.baseLabel, this.bufferValue, this.maxSlots );
+    setmetatable( this, {
+		__index = SlotTable,
+		__newindex = function( this, slot, value )
+			printf( 'Attempting set slot %d to %d', slot, value );
+			this.slots[slot] = value;
+		end,
+		__tostring = function( this )
+			local _return = '[ ';
+			for i,v in ipairs( this.slots ) do
+				_return = _return .. v;
+				if( i &lt; 5 ) then
+					_return = _return .. ', ';
+				else
+					_return = _return .. ' ]';
+				end
+			end
+			return _return;
+		end
+	} );
+    print( 'Set metatable for this.' );
+	this:read();
+	--this:write();
     return this;
 end
+
 function SlotTable:exists( value )
 	local _return = 0;
-	for i = 1,#self.slots,1 do
+	for i in ipairs( self.slots ) do
+		printf( 'Checking %d/%d: %d == %d ?', i, #self.slots, self.slots[i], value );
     	if( self.slots[i] == value ) then
         	_return = i;
+			printf( 'Found match (%d) should break.', _return );
             break;
         end
     end
     return _return;
 end
 
---[[function GetPointerArray()
-	print('GetPointerArray');
-	_return = { 0, 0, 0, 0, 0 };
-    print( '_return length: ', #_return );
-    for i = 1,5,1 do
-    	--print('i: ', i);
-    	offset = string.format( '%02x', i * 8 );
-        --print('offset: ', offset);
-        address_string = 'I1EffectiveAddressLabel+'..offset;
-        --print('address_string: ', address_string);
-    	temp_address = getAddressSafe( address_string );
-        --print('temp_address: ', temp_address);
-       	temp_pointer = readQword( test_address );
-        --print('temp_pointer: ', temp_pointer);
-		if( temp_pointer == nil ) then
-        	temp_pointer = 0;
-        elseif( temp_pointer &gt; 0 ) then
-        	_return[i] = temp_pointer;
-        else
-        	_return[i] = 0;
-        end
-        --print('_return[i]: ', _return[i]);
-        printf( 'Get %d (%s=%d): %d =&gt; %d (#%d)', i, address_string, temp_address, temp_pointer, _return[i], #_return);
-    end
-    return _return;
+function SlotTable:read()
+	print( 'SlotTable:read' );
+	if( self.noop == true ) then
+		for i in ipairs( self.slots ) do
+			printf( 'read %d/%d: %d =&gt; x', i, #self.slots, self.slots[i] );
+		end
+	else
+		for i in ipairs( self.slots ) do
+        	printf( 'read %d/%d', i, #self.slots );
+			self.slots[i] = self:getU64FromOffsetIndex( i );
+		end
+	end
 end
-function SetPointerArray( pointer_array )
-	printf('SetPointerArray received array#%d', #pointer_array );
-    for i,value in ipairs(pointer_array) do
-    	offset = string.format( '%02x', i * 8 );
-        address_string = 'I1EffectiveAddressLabel+'..offset;
-    	temp_address = getAddressSafe( address_string );
-        printf( 'Set %d=%d =&gt; %d', i, value, temp_address );
-        writeQword( test_address, value );
-    end
+
+function SlotTable:write()
+	if( self.noop == true ) then
+		for i in ipairs( self.slots ) do
+			printf( 'write %d/%d: writing %d to address', i, #self.slots, self.slots[i] );
+		end
+	else
+		for i,value in ipairs( self.slots ) do
+			local address = self:getAddressFromOffsetIndex( i );
+			printf( 'write: For %d/%d: Writing %d to %d', i, #self.slots, value, address );
+			writeQword( address, value );
+		end
+	end
 end
---	slot_address = getAddressSafe( 'I1CurrentPartySlotLabel' );
---    current_slot = readByte( slot_address, 1, false );
---if( current_slot &lt; 5 ) then
-	print('In luacode.');
-    buffer_address = getAddressSafe( 'I1EffectiveAddressLabel' );
-    --print('buffer_address: ', buffer_address);
-    buffer_pointer = readPointer( buffer_address );
-    --print('buffer_pointer: ', buffer_pointer);
-    slot_pointer_array = GetPointerArray();
-    exists = 0;
-    printf( 'buffer=%d @ %d array#%d exists=%d', buffer_pointer, buffer_address, #slot_pointer_array, exists );
-    for i = 1,#slot_pointer_array,1 do
-    	printf('DoesExist? %d/%d: %d == %d ', i, #slot_pointer_array, slot_pointer_array[i], buffer_pointer );
-    	if( slot_pointer_array[i] == buffer_pointer ) then
-        	exists = i;
-            i = #slot_pointer_array + 1;
-            printf( 'Did exists; escaping... %d %d/%d', exists, i, #slot_pointer_array );
-        end
-    end
-    if( exists == 0 ) then
-    	for i = 1,#slot_pointer_array,1 do --CanSet
-			printf( 'CanSet %d/%d: %d =&gt; %d', i, #slot_pointer_array, buffer_pointer, slot_pointer_array[i] );
-            if( slot_pointer_array[i] == 0 ) then
-            	slot_pointer_array[i] = buffer_pointer;
-                print( 'post-assignment slot_pointer_array[i]=', slot_pointer_array[i] );
-                SetPointerArray( slot_pointer_array );
-                i = #slot_pointer_array + 1;
-                printf( 'Did set? %d/%d', i, #slot_pointer_array );
-        	end
-    	end
-    end
---end
-]]
-print('In luacode.');
-buffer_address = getAddressSafe( 'I1EffectiveAddressLabel' );
---print('buffer_address: ', buffer_address);
-buffer_pointer = readPointer( buffer_address );
---print('buffer_pointer: ', buffer_pointer);
+
+function SlotTable:clear()
+	for i in ipairs( self.slots ) do
+		self.slots[i] = 0;
+	end
+end
+
+function SlotTable:getEmpty()
+	local _return = 0;
+	for i in ipairs( self.slots ) do
+		if( self.slots[i] == 0 ) then
+			_return = i;
+			break;
+		end
+	end
+	if( _return == 0 ) then
+		self:clear();
+		_return = 1;
+	end
+	return _return;
+end
+
+function SlotTable:add( value )
+	if( self:exists( value ) == 0 ) then
+		local empty_slot = self:getEmpty();
+		self.slots[empty_slot] = value;
+	end
+end
+
+function SlotTable:getAddressFromOffsetIndex( index )
+	printf( 'getAddressFromOffsetIndex received %d', index );
+	local _return = nil;
+	if( self.noop ~= true and index &gt;= 0 and index &lt;= self.maxSlots ) then
+    	print( 'Checks passed.' );
+		local address_string = self.baseLabel;
+        print( 'address_string: ', address_string );
+		if( index &gt; 0 ) then
+			local offset = string.format( '+%02x', index * 8 );
+        	print( 'offset: ', offset );
+			address_string = address_string..offset;
+        	print( 'address_string: ', address_string );
+		end
+		_return = getAddressSafe( address_string );
+	end
+	printf( 'getAddressFromOffsetIndex returned %d', _return );
+	return _return;
+end
+
+function SlotTable:getU64FromOffsetIndex( index )
+	printf( 'getU64FromOffsetIndex received %d', index );
+	local _return = 0;
+	local address = self:getAddressFromOffsetIndex( index );
+	if( self.noop ~= true and address ~= nil ) then
+		local temp_pointer = readQword( address );
+		if( temp_pointer ~= nil ) then
+			_return = temp_pointer;
+			printf( 'Got %d from %d', _return, address );
+		end
+	end
+	printf( 'getU64FromOffsetIndex returned %d', _return );
+	return _return;
+end
+
+function SlotTable:getBufferValue()
+	self.bufferValue = self:getU64FromOffsetIndex( 0 );
+	return self.bufferValue;
+end
+
+st = SlotTable:new();
+local buffer_value = st:getBufferValue();
+st:add( buffer_value );
+print( 'st: ', tostring(st) );
+st:write();
 {$asm}
 
 
@@ -728,36 +286,6 @@ I1CodeLabel:
   mov rcx,[rax+28]
   test rcx,rcx
   je GameAssembly.dll+1CE3848
-{$luacode}
---print('LuaCode1');
-if( isKeyPressed( VK_NUMPAD5 ) == true ) then
-	--print('NUMPAD 5 pressed.');
-	enabled_address = getAddressSafe( 'FreeMoveEnabledLabel' );
-    --print( 'enabled_address:', enabled_address );
-    byte_value = readByte( enabled_address, 1, false );
-    if( byte_value ~= 0 ) then
-    	byte_value = 0;
-    else
-       	byte_value = 1;
-        address_list = getAddressList();
-        speed_address = getAddressSafe( 'FreeMoveSpeedLabel' );
-        x_memrec = address_list.getMemoryRecordByDescription( 'PosX' );
-   		x_address = x_memrec.getCurrentAddress();
-        x_f32 = readFloat( x_address );
-        previous_x_f32 = x_f32;
-        y_memrec = address_list.getMemoryRecordByDescription( 'PosY' );
-   		y_address = y_memrec.getCurrentAddress();
-        y_f32 = readFloat( y_address );
-        previous_y_f32 = y_f32;
-        z_memrec = address_list.getMemoryRecordByDescription( 'PosZ' );
-        z_address = z_memrec.getCurrentAddress();
-    	z_f32 = readFloat( z_address );
-        previous_z_f32 = z_f32;
-        yaw_memrec = address_list.getMemoryRecordByDescription( 'FirstPersonYaw (rad AntiCW from North)' );
-        yaw_address = yaw_memrec.getCurrentAddress();
-	end
-    writeBytes( enabled_address, byte_value );
-end
 {$asm}
 	pushf
 	push rax
@@ -765,87 +293,6 @@ end
 	cmp al,1
 	pop rax
 	jne	SkipFreeMoveLabel
-{$luacode}
-cond_left = isKeyPressed( VK_NUMPAD4 );
-cond_right = isKeyPressed( VK_NUMPAD6 );
-cond_forward = isKeyPressed( VK_NUMPAD8 );
-cond_backward = isKeyPressed( VK_NUMPAD2 );
-cond_ascend = isKeyPressed( VK_NUMPAD7 );
-cond_descend = isKeyPressed( VK_NUMPAD1 );
-
-speed_f32 = readFloat( speed_address );
-yaw_f32 = readFloat( yaw_address );
-function Overflow( input, min, max )
-	_return = 0.0;
-	if( input &lt; min ) then
-		_return = max - ( ( min - input ) % ( max - min ) );
-	elseif( input &gt; max ) then
-		_return = min + ( ( input - max ) % ( max - min ) );
-	else
-		_return = input;
-	end
-	return _return;
-end
---print( 'speed: ', speed_f32, 'yaw: ', yaw_f32 );
-if( (cond_left == true) or (cond_right == true) or (cond_forward == true) or (cond_backward == true) ) then
-	direction_f32 = 0.0;
-	skip_horizontal = 0;
-    if( cond_left == true ) then
-		if( cond_forward == true ) then
-			direction_f32 = math.pi / 4;
-		elseif( cond_backward == true ) then
-			direction_f32 = math.pi * (3 / 4);
-		else
-			direction_f32 = math.pi / 2;
-		end
-    elseif( cond_right == true ) then
-		if( cond_forward == true ) then
-			direction_f32 = -math.pi / 4;
-		elseif( cond_backward == true ) then
-			direction_f32 = -math.pi * (3 / 4);
-		else
-			direction_f32 = -math.pi / 2;
-		end
-    else
-		if( cond_forward == true ) then
-			direction_f32 = 0.0;
-		elseif( cond_backward == true ) then
-			direction_f32 = math.pi;
-		else
-			skip_horizontal = 1;
-		end
-    end
-	adjusted_f32 = yaw_f32 + direction_f32;
-	if( math.abs(adjusted_f32) &gt; math.pi ) then
-		adjusted_f32 = Overflow( adjusted_f32, -math.pi, math.pi );
-	end
-    x_vel_f32 = -1 * speed_f32 * math.sin(adjusted_f32);
-    z_vel_f32 = speed_f32 * math.cos(adjusted_f32);
-    if( x_vel_f32 ~= 0.0 ) then
-    	--print( 'vel.x: ', x_vel_f32 );
-    	x_f32 = previous_x_f32 + x_vel_f32;
-    end
-    if( z_vel_f32 ~= 0.0 ) then
-    	--print( 'vel.z: ', z_vel_f32 );
-    	z_f32 = previous_z_f32 + z_vel_f32;
-    end
-end
-if( (cond_ascend == true) or (cond_descend == true) ) then
-    if( cond_ascend == true ) then
-   		y_f32 = previous_y_f32 + speed_f32;
-   	elseif( cond_descend == true ) then
-   		y_f32 = previous_y_f32 - speed_f32;
-    end
-else
-	y_f32 = previous_y_f32;
-end
-writeFloat( x_address, x_f32 );
-previous_x_f32 = x_f32;
-writeFloat( y_address, y_f32 );
-previous_y_f32 = y_f32;
-writeFloat( z_address, z_f32 );
-previous_z_f32 = z_f32;
-{$asm}
 	SkipFreeMoveLabel:
 	popf
 	jmp I1ReturnLabel
@@ -932,6 +379,363 @@ GameAssembly.dll+1CE37EB: 48 8B 48 28        - mov rcx,[rax+28]
 GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
 }
 </AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>76</ID>
+      <Description>"NewMemory"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>I1MemoryLabel</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>59</ID>
+      <Description>"1"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+8</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>63</ID>
+      <Description>"1-HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+8</Address>
+      <Offsets>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>64</ID>
+      <Description>"1-TP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+8</Address>
+      <Offsets>
+        <Offset>3C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>65</ID>
+      <Description>"1-XP [0,874140]"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+8</Address>
+      <Offsets>
+        <Offset>40</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>77</ID>
+      <Description>"1-LVL"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+8</Address>
+      <Offsets>
+        <Offset>54</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>78</ID>
+      <Description>"1-BP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+8</Address>
+      <Offsets>
+        <Offset>58</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>79</ID>
+      <Description>"1-SkP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+8</Address>
+      <Offsets>
+        <Offset>64</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>80</ID>
+      <Description>"2"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+10</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>81</ID>
+      <Description>"2-HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+10</Address>
+      <Offsets>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>82</ID>
+      <Description>"2-TP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+10</Address>
+      <Offsets>
+        <Offset>3C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>83</ID>
+      <Description>"2-XP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+10</Address>
+      <Offsets>
+        <Offset>40</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>84</ID>
+      <Description>"2-LVL"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+10</Address>
+      <Offsets>
+        <Offset>54</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>85</ID>
+      <Description>"2-BP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+10</Address>
+      <Offsets>
+        <Offset>58</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>86</ID>
+      <Description>"2-SkP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+10</Address>
+      <Offsets>
+        <Offset>64</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>87</ID>
+      <Description>"3"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1C05A6D0086</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>88</ID>
+      <Description>"3-HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D0086</Address>
+      <Offsets>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>89</ID>
+      <Description>"3-TP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D0086</Address>
+      <Offsets>
+        <Offset>3C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>90</ID>
+      <Description>"3-XP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D0086</Address>
+      <Offsets>
+        <Offset>40</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>91</ID>
+      <Description>"3-LVL"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D0086</Address>
+      <Offsets>
+        <Offset>54</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>92</ID>
+      <Description>"3-BP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D0086</Address>
+      <Offsets>
+        <Offset>58</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>93</ID>
+      <Description>"3-SkP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D0086</Address>
+      <Offsets>
+        <Offset>64</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>94</ID>
+      <Description>"4"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1C05A6D008E</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>95</ID>
+      <Description>"4-HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D008E</Address>
+      <Offsets>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>96</ID>
+      <Description>"4-TP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D008E</Address>
+      <Offsets>
+        <Offset>3C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>97</ID>
+      <Description>"4-XP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D008E</Address>
+      <Offsets>
+        <Offset>40</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>98</ID>
+      <Description>"4-LVL"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D008E</Address>
+      <Offsets>
+        <Offset>54</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>99</ID>
+      <Description>"4-BP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D008E</Address>
+      <Offsets>
+        <Offset>58</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>100</ID>
+      <Description>"4-SkP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D008E</Address>
+      <Offsets>
+        <Offset>64</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>103</ID>
+      <Description>"5"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1C05A6D0096</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104</ID>
+      <Description>"5-HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D0096</Address>
+      <Offsets>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>105</ID>
+      <Description>"5-TP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D0096</Address>
+      <Offsets>
+        <Offset>3C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>106</ID>
+      <Description>"5-XP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D0096</Address>
+      <Offsets>
+        <Offset>40</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>107</ID>
+      <Description>"5-LVL"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D0096</Address>
+      <Offsets>
+        <Offset>54</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>108</ID>
+      <Description>"5-BP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D0096</Address>
+      <Offsets>
+        <Offset>58</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>109</ID>
+      <Description>"5-SkP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C05A6D0096</Address>
+      <Offsets>
+        <Offset>64</Offset>
+      </Offsets>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
