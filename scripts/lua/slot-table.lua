@@ -1,26 +1,24 @@
-if( printf == nil) then
-	function printf( format_string, ... )
-		print( string.format( format_string, ... ) );
-	end
-end
+#!/usr/bin/env lua
 
 SlotTable = {};
 function SlotTable:new( slots_array )
-    local this = {
+	print( 'Creating new SlotTable.' );
+	local this = {
 		slots = ( slots_array or {0,0,0,0,0} ),
-		noop = true,
+		noop = false,
 		baseLabel = 'I1EffectiveAddressLabel',
 		bufferValue = 0451,
 		maxSlots = 5
 	};
-    setmetatable( this, {
+	printf( 'Have this: baseLabel=%s bufferValue=%d maxSlots=%d', this.baseLabel, this.bufferValue, this.maxSlots );
+	setmetatable( this, {
 		__index = SlotTable,
 		__newindex = function( this, slot, value )
 			printf( 'Attempting set slot %d to %d', slot, value );
 			this.slots[slot] = value;
 		end,
 		__tostring = function( this )
-			_return = '[ ';
+			local _return = '[ ';
 			for i,v in ipairs( this.slots ) do
 				_return = _return .. v;
 				if( i < 5 ) then
@@ -32,31 +30,34 @@ function SlotTable:new( slots_array )
 			return _return;
 		end
 	} );
+	print( 'Set metatable for this.' );
 	this:read();
 	--this:write();
-    return this;
+	return this;
 end
 
 function SlotTable:exists( value )
 	local _return = 0;
 	for i in ipairs( self.slots ) do
 		printf( 'Checking %d/%d: %d == %d ?', i, #self.slots, self.slots[i], value );
-    	if( self.slots[i] == value ) then
-        	_return = i;
+		if( self.slots[i] == value ) then
+			_return = i;
 			printf( 'Found match (%d) should break.', _return );
-            break;
-        end
-    end
-    return _return;
+			break;
+		end
+	end
+	return _return;
 end
 
 function SlotTable:read()
+	print( 'SlotTable:read' );
 	if( self.noop == true ) then
 		for i in ipairs( self.slots ) do
 			printf( 'read %d/%d: %d => x', i, #self.slots, self.slots[i] );
 		end
 	else
-		for i = 1,5,1 do
+		for i in ipairs( self.slots ) do
+			printf( 'read %d/%d', i, #self.slots );
 			self.slots[i] = self:getU64FromOffsetIndex( i );
 		end
 	end
@@ -69,8 +70,8 @@ function SlotTable:write()
 		end
 	else
 		for i,value in ipairs( self.slots ) do
-			address = self:getAddressFromOffsetIndex( i );
-			printf( 'write: For %d/%d: Writing %d to %d', i, #self.slots, value, temp_address );
+			local address = self:getAddressFromOffsetIndex( i );
+			printf( 'write: For %d/%d: Writing %d to %d', i, #self.slots, value, address );
 			writeQword( address, value );
 		end
 	end
@@ -83,7 +84,7 @@ function SlotTable:clear()
 end
 
 function SlotTable:getEmpty()
-	_return = 0;
+	local _return = 0;
 	for i in ipairs( self.slots ) do
 		if( self.slots[i] == 0 ) then
 			_return = i;
@@ -99,30 +100,36 @@ end
 
 function SlotTable:add( value )
 	if( self:exists( value ) == 0 ) then
-		empty_slot = self:getEmpty();
+		local empty_slot = self:getEmpty();
 		self.slots[empty_slot] = value;
 	end
 end
 
 function SlotTable:getAddressFromOffsetIndex( index )
-	_return = nil;
-	if( self.noop ~= true and index >= 0 and index < self.maxSlots ) then
-		address_string = self.baseLabel;
+	printf( 'getAddressFromOffsetIndex received %d', index );
+	local _return = nil;
+	if( self.noop ~= true and index >= 0 and index <= self.maxSlots ) then
+		print( 'Checks passed.' );
+		local address_string = self.baseLabel;
+		print( 'address_string: ', address_string );
 		if( index > 0 ) then
-			offset = string.format( '+%02x', i * 8 );
+			local offset = string.format( '+%02x', index * 8 );
+			print( 'offset: ', offset );
 			address_string = address_string..offset;
+			print( 'address_string: ', address_string );
 		end
 		_return = getAddressSafe( address_string );
 	end
+	printf( 'getAddressFromOffsetIndex returned %d', _return );
 	return _return;
 end
 
 function SlotTable:getU64FromOffsetIndex( index )
 	printf( 'getU64FromOffsetIndex received %d', index );
-	_return = 0;
-	address = self:getAddressFromOffsetIndex( index );
+	local _return = 0;
+	local address = self:getAddressFromOffsetIndex( index );
 	if( self.noop ~= true and address ~= nil ) then
-		temp_pointer = readQword( address );
+		local temp_pointer = readQword( address );
 		if( temp_pointer ~= nil ) then
 			_return = temp_pointer;
 			printf( 'Got %d from %d', _return, address );
@@ -136,3 +143,9 @@ function SlotTable:getBufferValue()
 	self.bufferValue = self:getU64FromOffsetIndex( 0 );
 	return self.bufferValue;
 end
+
+--[[st = SlotTable:new();
+local buffer_value = st:getBufferValue();
+st:add( buffer_value );
+print( 'st: ', tostring(st) );
+st:write();]]
