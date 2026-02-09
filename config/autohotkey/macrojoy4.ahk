@@ -30,6 +30,12 @@ Tick30Hz(){
 	global
 	;Pause()
 	TickPOV()
+	win_id := WinActive("ahk_exe Etrian Odyssey 2.exe")
+	if( win_id and repeating == 1 ){
+		SendMode("Event")
+		SetKeyDelay( 0, 20, )
+		turbo_key := "{Space}"
+	}
 	if( repeating == 1 ){
 		Send( turbo_key )
 	}
@@ -45,13 +51,6 @@ Tick30Hz(){
 		if( not save_scummer_id ){
 			ToggleEXE( "C:\Users\willa\apps\NoitaSaveScummer.exe" )
 		}
-	}
-	win_id := WinActive("ahk_exe Etrian Odyssey 2.exe")
-	if( win_id ){
-		SendMode("Event")
-		SetKeyDelay( 0, 20, )
-		Send( turbo_key )
-		;Send( "s" )
 	}
 } ;Tick30Hz
 TickPOV(){
