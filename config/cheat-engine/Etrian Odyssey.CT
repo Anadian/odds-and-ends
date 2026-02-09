@@ -532,7 +532,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"3"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>8 Bytes</VariableType>
-      <Address>1C05A6D0086</Address>
+      <Address>I1EffectiveAddressLabel+18</Address>
       <Offsets>
         <Offset>0</Offset>
       </Offsets>
@@ -542,7 +542,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"3-HP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D0086</Address>
+      <Address>I1EffectiveAddressLabel+18</Address>
       <Offsets>
         <Offset>38</Offset>
       </Offsets>
@@ -552,7 +552,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"3-TP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D0086</Address>
+      <Address>I1EffectiveAddressLabel+18</Address>
       <Offsets>
         <Offset>3C</Offset>
       </Offsets>
@@ -562,7 +562,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"3-XP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D0086</Address>
+      <Address>I1EffectiveAddressLabel+18</Address>
       <Offsets>
         <Offset>40</Offset>
       </Offsets>
@@ -572,7 +572,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"3-LVL"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D0086</Address>
+      <Address>I1EffectiveAddressLabel+18</Address>
       <Offsets>
         <Offset>54</Offset>
       </Offsets>
@@ -582,7 +582,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"3-BP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D0086</Address>
+      <Address>I1EffectiveAddressLabel+18</Address>
       <Offsets>
         <Offset>58</Offset>
       </Offsets>
@@ -592,7 +592,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"3-SkP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D0086</Address>
+      <Address>I1EffectiveAddressLabel+18</Address>
       <Offsets>
         <Offset>64</Offset>
       </Offsets>
@@ -602,7 +602,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"4"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>8 Bytes</VariableType>
-      <Address>1C05A6D008E</Address>
+      <Address>I1EffectiveAddressLabel+20</Address>
       <Offsets>
         <Offset>0</Offset>
       </Offsets>
@@ -612,7 +612,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"4-HP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D008E</Address>
+      <Address>I1EffectiveAddressLabel+20</Address>
       <Offsets>
         <Offset>38</Offset>
       </Offsets>
@@ -622,7 +622,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"4-TP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D008E</Address>
+      <Address>I1EffectiveAddressLabel+20</Address>
       <Offsets>
         <Offset>3C</Offset>
       </Offsets>
@@ -632,7 +632,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"4-XP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D008E</Address>
+      <Address>I1EffectiveAddressLabel+20</Address>
       <Offsets>
         <Offset>40</Offset>
       </Offsets>
@@ -642,7 +642,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"4-LVL"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D008E</Address>
+      <Address>I1EffectiveAddressLabel+20</Address>
       <Offsets>
         <Offset>54</Offset>
       </Offsets>
@@ -652,7 +652,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"4-BP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D008E</Address>
+      <Address>I1EffectiveAddressLabel+20</Address>
       <Offsets>
         <Offset>58</Offset>
       </Offsets>
@@ -662,7 +662,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"4-SkP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D008E</Address>
+      <Address>I1EffectiveAddressLabel+20</Address>
       <Offsets>
         <Offset>64</Offset>
       </Offsets>
@@ -672,7 +672,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"5"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>8 Bytes</VariableType>
-      <Address>1C05A6D0096</Address>
+      <Address>I1EffectiveAddressLabel+28</Address>
       <Offsets>
         <Offset>0</Offset>
       </Offsets>
@@ -682,7 +682,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"5-HP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D0096</Address>
+      <Address>I1EffectiveAddressLabel+28</Address>
       <Offsets>
         <Offset>38</Offset>
       </Offsets>
@@ -692,7 +692,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"5-TP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D0096</Address>
+      <Address>I1EffectiveAddressLabel+28</Address>
       <Offsets>
         <Offset>3C</Offset>
       </Offsets>
@@ -702,7 +702,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"5-XP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D0096</Address>
+      <Address>I1EffectiveAddressLabel+28</Address>
       <Offsets>
         <Offset>40</Offset>
       </Offsets>
@@ -712,7 +712,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"5-LVL"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D0096</Address>
+      <Address>I1EffectiveAddressLabel+28</Address>
       <Offsets>
         <Offset>54</Offset>
       </Offsets>
@@ -722,7 +722,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"5-BP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D0096</Address>
+      <Address>I1EffectiveAddressLabel+28</Address>
       <Offsets>
         <Offset>58</Offset>
       </Offsets>
@@ -732,15 +732,419 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"5-SkP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>1C05A6D0096</Address>
+      <Address>I1EffectiveAddressLabel+28</Address>
       <Offsets>
         <Offset>64</Offset>
       </Offsets>
     </CheatEntry>
+    <CheatEntry>
+      <ID>110</ID>
+      <Description>"StalkerBuffTurnsLeft"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C96D07C9B0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>111</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C8E94FAF70</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>112</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C8E91B0490</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>113</ID>
+      <Description>"No Description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C8E91940D0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>114</ID>
+      <Description>"AddressFromEnemyBattleStatus"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1C8E91B0480</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>115</ID>
+      <Description>"AddressChain"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1C96C592CE0</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>116</ID>
+      <Description>"SettingTable?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>10</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>1C700187F6E</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>117</ID>
+      <Description>"AddressChainFromEmenyBattleStatus"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>10</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>1C8E91B0480</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>118</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C8E91B0490</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>119</ID>
+      <Description>"StalkerBuff"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C8E904FE70</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>120</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C949AB6750</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>121</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C708BFDF10</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>122</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C9DF244D90</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>123</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C8E8EB5A10</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>124</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1C8E8EB5A10</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>125</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1F2B5C76350</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>126</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>12B56905E50</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>127</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>12B0DA0A9B0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>128</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>12B564EFAB0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>129</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>21C3DD3F190</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>156</ID>
+      <Description>"InvIndex"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>2D02AF67440</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>157</ID>
+      <Description>"PreviousInvIndex"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>2D02AF6742C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>158</ID>
+      <Description>"PointerChainFollowingInvIndex"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>32</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>2D02AF67448</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>159</ID>
+      <Description>"PointerSetOnzloadInvMenu"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>10</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>2D02AF67460</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>160</ID>
+      <Description>"StaticPointerBetween2SetOnLoadInv"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>10</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>2D02AF67458</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>161</ID>
+      <Description>"ItemsInInventory;Set on LoadInvMenu"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>2D02AF67434</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>162</ID>
+      <Description>"Inv"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>2D02AF67450</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>163</ID>
+      <Description>"CurrentItemIndexAsBeenConfirmedForSubmenu"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>2D02AF67428</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>164</ID>
+      <Description>"1"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>2D02AF673C4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>165</ID>
+      <Description>"7"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>2D02AF67398</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>166</ID>
+      <Description>"1"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>2D02AF67358</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>167</ID>
+      <Description>"PointerSetOnInvSelectionChange"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>10</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>2D02AF67350</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>169</ID>
+      <Description>"PointerToActualMoney"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>2D030967868</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>170</ID>
+      <Description>"ItemCompendiumIndex"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>2D03A56B5C0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>171</ID>
+      <Description>"ItemIndex?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>2D03A56B658</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>172</ID>
+      <Description>"SelectionIndex"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>2D03A56B5C0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>173</ID>
+      <Description>"PrevItemCompendiumSelectionIndex"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>2D03A56B5AC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>174</ID>
+      <Description>"No description"</Description>
+      <VariableType>String</VariableType>
+      <Length>23</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>2CEF0ED9DC5</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>175</ID>
+      <Description>"No description"</Description>
+      <VariableType>String</VariableType>
+      <Length>23</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>2CEF0F74BE3</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>176</ID>
+      <Description>"No description"</Description>
+      <VariableType>String</VariableType>
+      <Length>23</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>2CEF0FA56C8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>177</ID>
+      <Description>"No description"</Description>
+      <VariableType>String</VariableType>
+      <Length>7</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>1FC90FA22B6</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>178</ID>
+      <Description>"No description"</Description>
+      <VariableType>String</VariableType>
+      <Length>10</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>1FC91039B31</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>179</ID>
+      <Description>"No description"</Description>
+      <VariableType>String</VariableType>
+      <Length>20</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>1FC90FC8656</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>180</ID>
+      <Description>"No description"</Description>
+      <VariableType>String</VariableType>
+      <Length>4</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>1FD9954E57B</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>181</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1FC111F63F0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>182</ID>
+      <Description>"No description"</Description>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1FD9DD8A7B0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>183</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1FDDAE9B3B0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>184</ID>
+      <Description>"zmaxHP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1FDDB038D94</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>185</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1FDDB08BFB0</Address>
+    </CheatEntry>
   </CheatEntries>
   <CheatCodes>
     <CodeEntry>
-      <Description>Code :mov [rbp+10],eax</Description>
+      <Description>Code :mov [rbp+10],eax, BattleStatusChange</Description>
       <AddressString>GameAssembly.dll+F9A55F5</AddressString>
       <Before>
         <Byte>48</Byte>
@@ -902,6 +1306,896 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
         <Byte>E8</Byte>
         <Byte>21</Byte>
         <Byte>40</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rcx+10],eax, EndOfTurnApplyBuffsField</Description>
+      <AddressString>GameAssembly.dll+DE960A</AddressString>
+      <Before>
+        <Byte>C0</Byte>
+        <Byte>7E</Byte>
+        <Byte>14</Byte>
+        <Byte>FF</Byte>
+        <Byte>C8</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>7F</Byte>
+        <Byte>0B</Byte>
+        <Byte>33</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbp+10],eax,ApplyStalkerBuff</Description>
+      <AddressString>GameAssembly.dll+1F19298</AddressString>
+      <Before>
+        <Byte>84</Byte>
+        <Byte>CC</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>45</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>44</Byte>
+        <Byte>38</Byte>
+        <Byte>25</Byte>
+        <Byte>07</Byte>
+        <Byte>13</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [r11-5DF09431],r8d, RemoveBuff</Description>
+      <AddressString>GameAssembly.dll+7D5B9F2</AddressString>
+      <Before>
+        <Byte>EB</Byte>
+        <Byte>CF</Byte>
+        <Byte>6B</Byte>
+        <Byte>0F</Byte>
+        <Byte>A2</Byte>
+      </Before>
+      <Actual>
+        <Byte>45</Byte>
+        <Byte>89</Byte>
+        <Byte>83</Byte>
+        <Byte>CF</Byte>
+        <Byte>6B</Byte>
+        <Byte>0F</Byte>
+        <Byte>A2</Byte>
+      </Actual>
+      <After>
+        <Byte>4D</Byte>
+        <Byte>29</Byte>
+        <Byte>C0</Byte>
+        <Byte>41</Byte>
+        <Byte>BC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rcx+10],ebx MonsterSlain</Description>
+      <AddressString>GameAssembly.dll+1CE3A69</AddressString>
+      <Before>
+        <Byte>33</Byte>
+        <Byte>DB</Byte>
+        <Byte>45</Byte>
+        <Byte>33</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>59</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>B2</Byte>
+        <Byte>01</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>CE</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rdi+10],ebx RandomTick?</Description>
+      <AddressString>GameAssembly.dll+A5170</AddressString>
+      <Before>
+        <Byte>05</Byte>
+        <Byte>80</Byte>
+        <Byte>1C</Byte>
+        <Byte>E5</Byte>
+        <Byte>02</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>5F</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>66</Byte>
+        <Byte>89</Byte>
+        <Byte>44</Byte>
+        <Byte>5F</Byte>
+        <Byte>14</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rax],rdx,Noise</Description>
+      <AddressString>GameAssembly.dll+2B5F4C</AddressString>
+      <Before>
+        <Byte>66</Byte>
+        <Byte>89</Byte>
+        <Byte>51</Byte>
+        <Byte>FE</Byte>
+        <Byte>C3</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>10</Byte>
+        <Byte>66</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rax],cl,Noise</Description>
+      <AddressString>GameAssembly.dll+2B60B7</AddressString>
+      <Before>
+        <Byte>08</Byte>
+        <Byte>C3</Byte>
+        <Byte>0F</Byte>
+        <Byte>B6</Byte>
+        <Byte>0A</Byte>
+      </Before>
+      <Actual>
+        <Byte>88</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>8B</Byte>
+        <Byte>0A</Byte>
+        <Byte>89</Byte>
+        <Byte>08</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss [rsi+10],xmm0 Noise</Description>
+      <AddressString>GameAssembly.dll+F8EFA6</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>9C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>46</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>4E</Byte>
+        <Byte>14</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rax],ecx Noise</Description>
+      <AddressString>GameAssembly.dll+2B60BC</AddressString>
+      <Before>
+        <Byte>88</Byte>
+        <Byte>08</Byte>
+        <Byte>C3</Byte>
+        <Byte>8B</Byte>
+        <Byte>0A</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>90</Byte>
+        <Byte>49</Byte>
+        <Byte>83</Byte>
+        <Byte>F8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rsi+10],eax Noise</Description>
+      <AddressString>GameAssembly.dll+FA9256</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>F6</Byte>
+        <Byte>74</Byte>
+        <Byte>7D</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>46</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>FF</Byte>
+        <Byte>74</Byte>
+        <Byte>75</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rcx+40],r9d $SelectionIndex+=1</Description>
+      <AddressString>GameAssembly.dll+ED9B81F</AddressString>
+      <Before>
+        <Byte>2C</Byte>
+        <Byte>44</Byte>
+        <Byte>8D</Byte>
+        <Byte>4E</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>49</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>0D</Byte>
+        <Byte>2F</Byte>
+        <Byte>06</Byte>
+        <Byte>A4</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rcx+40],r9d $SelectionIndex-=1</Description>
+      <AddressString>GameAssembly.dll+ED7D4EC</AddressString>
+      <Before>
+        <Byte>89</Byte>
+        <Byte>CB</Byte>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>C8</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>49</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>44</Byte>
+        <Byte>29</Byte>
+        <Byte>D0</Byte>
+        <Byte>C1</Byte>
+        <Byte>E8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbx+40],eax WrapTopToBottom $SelectionIndex=-1</Description>
+      <AddressString>GameAssembly.dll+ED7D5D8</AddressString>
+      <Before>
+        <Byte>22</Byte>
+        <Byte>33</Byte>
+        <Byte>F2</Byte>
+        <Byte>89</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+        <Byte>18</Byte>
+        <Byte>39</Byte>
+        <Byte>43</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov qword ptr [rbx+3C],00000000 WrapBottomToTop $SelectionIndex=0</Description>
+      <AddressString>GameAssembly.dll+ED9B918</AddressString>
+      <Before>
+        <Byte>1E</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>4B</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>C7</Byte>
+        <Byte>43</Byte>
+        <Byte>3C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>5B</Byte>
+        <Byte>38</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbx+40],eax $SelectionIndex-=10</Description>
+      <AddressString>GameAssembly.dll+1B858F5</AddressString>
+      <Before>
+        <Byte>9B</Byte>
+        <Byte>52</Byte>
+        <Byte>FF</Byte>
+        <Byte>8B</Byte>
+        <Byte>D0</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>39</Byte>
+        <Byte>43</Byte>
+        <Byte>2C</Byte>
+        <Byte>74</Byte>
+        <Byte>2A</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbx+40],edx $SelectionIndex+=10</Description>
+      <AddressString>GameAssembly.dll+1B85AD1</AddressString>
+      <Before>
+        <Byte>43</Byte>
+        <Byte>38</Byte>
+        <Byte>89</Byte>
+        <Byte>4B</Byte>
+        <Byte>3C</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>53</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>45</Byte>
+        <Byte>33</Byte>
+        <Byte>C0</Byte>
+        <Byte>B2</Byte>
+        <Byte>01</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rcx+40],edx InvIndex = 0 on Pause/Items/(Inventory|Valuables)=&gt;Inventory</Description>
+      <AddressString>GameAssembly.dll+1B887B0</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>41</Byte>
+        <Byte>3C</Byte>
+        <Byte>33</Byte>
+        <Byte>D2</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>51</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>51</Byte>
+        <Byte>3C</Byte>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[rbx+40] No Effect</Description>
+      <AddressString>GameAssembly.dll+ED9C62C</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>BE</Byte>
+        <Byte>16</Byte>
+        <Byte>F4</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>40</Byte>
+        <Byte>88</Byte>
+        <Byte>7B</Byte>
+        <Byte>30</Byte>
+        <Byte>31</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov edx,[rbx+40] Nop-&gt;Softlock on load InventoryMenu</Description>
+      <AddressString>GameAssembly.dll+ED9C728</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>E9</Byte>
+        <Byte>EB</Byte>
+        <Byte>32</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>53</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>FA</Byte>
+        <Byte>FF</Byte>
+        <Byte>75</Byte>
+        <Byte>08</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :add edx,[rsi] InventoryUpdate</Description>
+      <AddressString>GameAssembly.dll+B1FD555</AddressString>
+      <Before>
+        <Byte>FA</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>29</Byte>
+        <Byte>D1</Byte>
+      </Before>
+      <Actual>
+        <Byte>03</Byte>
+        <Byte>16</Byte>
+      </Actual>
+      <After>
+        <Byte>01</Byte>
+        <Byte>D1</Byte>
+        <Byte>49</Byte>
+        <Byte>89</Byte>
+        <Byte>8D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movsxd  rbp,dword ptr [rax+40] InvIndex on DirectionalInput in Inv</Description>
+      <AddressString>GameAssembly.dll+1D1C525</AddressString>
+      <Before>
+        <Byte>84</Byte>
+        <Byte>C3</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>68</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>3B</Byte>
+        <Byte>6B</Byte>
+        <Byte>18</Byte>
+        <Byte>72</Byte>
+        <Byte>07</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov esi,[rcx+40] gInvD RemoveSelection on MenuDown Uncertain</Description>
+      <AddressString>GameAssembly.dll+ED9B7FA</AddressString>
+      <Before>
+        <Byte>56</Byte>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>EC</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>71</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>CB</Byte>
+        <Byte>44</Byte>
+        <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :cmp [rbx+40],ecx gInvD RemoveSelection on MenuDown in Inv</Description>
+      <AddressString>GameAssembly.dll+ED9B947</AddressString>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>8B</Byte>
+        <Byte>4B</Byte>
+        <Byte>2C</Byte>
+      </Before>
+      <Actual>
+        <Byte>39</Byte>
+        <Byte>4B</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+        <Byte>47</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov edx,[rbx+40] LoadText on MenuDown in Inv</Description>
+      <AddressString>GameAssembly.dll+ED9B8BA</AddressString>
+      <Before>
+        <Byte>2C</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>53</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>3B</Byte>
+        <Byte>53</Byte>
+        <Byte>2C</Byte>
+        <Byte>75</Byte>
+        <Byte>08</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movsxd  rsi,dword ptr [rax+40] gInvUD Does Nothing</Description>
+      <AddressString>GameAssembly.dll+1D1C8D1</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>FF</Byte>
+        <Byte>74</Byte>
+        <Byte>39</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>70</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>3B</Byte>
+        <Byte>77</Byte>
+        <Byte>18</Byte>
+        <Byte>72</Byte>
+        <Byte>07</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov r11d,[rcx+40] InvIndex on MenuUp Uncertain</Description>
+      <AddressString>GameAssembly.dll+ED7D4C4</AddressString>
+      <Before>
+        <Byte>57</Byte>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>EC</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>8B</Byte>
+        <Byte>59</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>31</Byte>
+        <Byte>FF</Byte>
+        <Byte>44</Byte>
+        <Byte>8B</Byte>
+        <Byte>51</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :cmp [rbx+40],ecx RemoveSelection on MenuUp in Inv</Description>
+      <AddressString>GameAssembly.dll+ED7D61D</AddressString>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>8B</Byte>
+        <Byte>4B</Byte>
+        <Byte>2C</Byte>
+      </Before>
+      <Actual>
+        <Byte>39</Byte>
+        <Byte>4B</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+        <Byte>1F</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movsxd  rsi,dword ptr [rbx+40] Open|Close ItemMenu No effect</Description>
+      <AddressString>GameAssembly.dll+8F211E</AddressString>
+      <Before>
+        <Byte>84</Byte>
+        <Byte>0A</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>73</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>3B</Byte>
+        <Byte>77</Byte>
+        <Byte>18</Byte>
+        <Byte>72</Byte>
+        <Byte>07</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[rcx+40] Open|Close ItemMenu NoEffect</Description>
+      <AddressString>GameAssembly.dll+1B86160</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>41</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>2B</Byte>
+        <Byte>41</Byte>
+        <Byte>3C</Byte>
+        <Byte>C3</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov edx,[rcx+40] Close ItemMenu Reset ItemMenuIndex?</Description>
+      <AddressString>GameAssembly.dll+1B84900</AddressString>
+      <Before>
+        <Byte>EB</Byte>
+        <Byte>03</Byte>
+        <Byte>8B</Byte>
+        <Byte>41</Byte>
+        <Byte>2C</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>51</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>3B</Byte>
+        <Byte>D0</Byte>
+        <Byte>75</Byte>
+        <Byte>08</Byte>
+        <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :add [rax+18],ebx Money=ebx on SellItem</Description>
+      <AddressString>GameAssembly.dll+1A28AE4</AddressString>
+      <Before>
+        <Byte>84</Byte>
+        <Byte>83</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>01</Byte>
+        <Byte>58</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>33</Byte>
+        <Byte>C9</Byte>
+        <Byte>E8</Byte>
+        <Byte>72</Byte>
+        <Byte>F5</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rax+18],r9d Money=r9d on SpendMoney:=(BuyItem|SleepInn)</Description>
+      <AddressString>GameAssembly.dll+E944A40</AddressString>
+      <Before>
+        <Byte>7C</Byte>
+        <Byte>0F</Byte>
+        <Byte>41</Byte>
+        <Byte>29</Byte>
+        <Byte>D9</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>48</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>B0</Byte>
+        <Byte>01</Byte>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbx+28],eax Money=eax on MoneyChange</Description>
+      <AddressString>GameAssembly.dll+E89F9A6</AddressString>
+      <Before>
+        <Byte>74</Byte>
+        <Byte>0C</Byte>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>20</Byte>
+        <Byte>5B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movsxd  rdi,dword ptr [rcx+40] get $SelectionIndex * 5 on SelectionChange</Description>
+      <AddressString>GameAssembly.dll+8C8D1BE</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>C9</Byte>
+        <Byte>74</Byte>
+        <Byte>2F</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>79</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>39</Byte>
+        <Byte>C7</Byte>
+        <Byte>72</Byte>
+        <Byte>07</Byte>
+        <Byte>31</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbx+58],eax ItemIndex=eax</Description>
+      <AddressString>GameAssembly.dll+8C4FF91</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>7C</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>58</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>20</Byte>
+        <Byte>5B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rsi+58],eax ItemIndex=4006</Description>
+      <AddressString>GameAssembly.dll+8C49952</AddressString>
+      <Before>
+        <Byte>68</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>6E</Byte>
+        <Byte>60</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>46</Byte>
+        <Byte>58</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>0D</Byte>
+        <Byte>9C</Byte>
+        <Byte>50</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov ebx,[rbx+58] get ItemID on ItemCompendSelIndexChange</Description>
+      <AddressString>GameAssembly.dll+C8BBBF</AddressString>
+      <Before>
+        <Byte>F6</Byte>
+        <Byte>34</Byte>
+        <Byte>27</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>5B</Byte>
+        <Byte>58</Byte>
+      </Actual>
+      <After>
+        <Byte>75</Byte>
+        <Byte>13</Byte>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+        <Byte>0D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov ebx,[rcx+14] Get MaxHP twice</Description>
+      <AddressString>GameAssembly.dll+F9DBF35</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>59</Byte>
+        <Byte>14</Byte>
+      </Actual>
+      <After>
+        <Byte>85</Byte>
+        <Byte>D2</Byte>
+        <Byte>75</Byte>
+        <Byte>54</Byte>
+        <Byte>45</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>

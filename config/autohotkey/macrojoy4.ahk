@@ -3,7 +3,7 @@
 ; # Turbo key settings.
 SetTimer(Tick30Hz, 33)
 repeating := 0
-turbo_key := "{Enter}"
+turbo_key := "{Space}" ;"{Enter}"
 controller_modifier := "Joy13" ; PS button/Xbox home
 noita_started := 0
 ;noita_joytokey := 0
@@ -46,12 +46,12 @@ Tick30Hz(){
 			ToggleEXE( "C:\Users\willa\apps\NoitaSaveScummer.exe" )
 		}
 	}
-	win_id := WinActive("ahk_exe Etrian Odyssey.exe")
-	if( win_id and False ){
+	win_id := WinActive("ahk_exe Etrian Odyssey 2.exe")
+	if( win_id ){
 		SendMode("Event")
 		SetKeyDelay( 0, 20, )
-		Send( "w" )
-		Send( "s" )
+		Send( turbo_key )
+		;Send( "s" )
 	}
 } ;Tick30Hz
 TickPOV(){
