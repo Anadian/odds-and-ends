@@ -2,36 +2,749 @@
 <CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
+    <CheatEntry>
       <ID>0</ID>
-      <Description>"No description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>18CBB1EAA64</Address>
+      <Description>"Auto Assemble script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+if syntaxcheck then return end
+if memrec then print( 'memrec:', memrec) end
+print('CEVersion:', getCEVersion());
+if( cheatEngineIs64Bit() == true ) then
+print('64-bit');
+else
+print('32-bit');
+end
+print('CheatEngineDir:', getCheatEngineDir());
+{$asm}
+luaCall(print('Defines'))
+
+define(mysignature,43 4e 4f 23 55 6e 69 71 75 65 23 53 69 67 6e 61 74 75 72 65 23 43 4e 4f)
+
+// I1: Post-battle, pre-result, HP write
+define(I1Address,"GameAssembly.dll"+1CE37CD)
+define(I1Bytes,8B 41 10 89 43 38 48 8B 47 60 48 85 C0 74 6C 48 8B 40 10 48 85 C0 74 63 83 78 18 01 76 73 48 8B 48 28 48 85 C9 74 54)
+define(I1BytesLength,$27)
+define(I1Nops,90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90)
+
+[ENABLE]
+luaCall(print('ENABLE'))
+
+luaCall(print('Asserts'))
+assert(I1Address,I1Bytes)
+
+luaCall(print('AOB Scans'))
+
+luaCall(print('Allocs'))
+alloc(NewMemory,$1000)
+
+define(I1Ins,NewMemory+500)
+
+luaCall(print('Labels'))
+
+label(I1MemoryLabel)
+label(I1BackupLabel)
+label(I1EffectiveAddressLabel)
+label(I1CurrentPartySlotLabel)
+label(I1R13BackupLabel)
+label(I1InsLabel)
+label(I1CodeLabel)
+label(I1ReturnLabel)
+
+label(FreeMoveEnabledLabel)
+label(FreeMoveSpeedLabel)
+label(SkipFreeMoveLabel)
+
+luaCall(print('Memory'))
+
+NewMemory:
+	I1MemoryLabel:
+	db mysignature
+	db '&lt;I1Backup&gt;'
+	I1BackupLabel:
+	readmem(I1Address,I1BytesLength)
+	db '&lt;/I1Backup&gt;'
+	db '&lt;I1EffectiveAddress:u64*6&gt;'
+	I1EffectiveAddressLabel:
+	dq 00 // Buffer Address
+    dq 00 // Slot0
+    dq 00 // Slot1
+    dq 00
+    dq 00
+    dq 00 // Slot4
+	db '&lt;/I1EffectiveAddress:u64*6&gt;'
+    db '&lt;I1CurrentPartySlot:u8&gt;'
+	I1CurrentPartySlotLabel:
+	db 00
+	db '&lt;/I1CurrentPartySlot:u8&gt;'
+    db '&lt;I1R13Backup:u64&gt;'
+	I1R13BackupLabel:
+	dq 00
+	db '&lt;/I1R13Backup:u64&gt;'
+	db '&lt;FreeMoveEnabled:u8&gt;'
+	FreeMoveEnabledLabel:
+	db 00
+	db '&lt;/FreeMoveEnabled:u8&gt;'
+	db '&lt;FreeMoveSpeed:f32&gt;'
+	FreeMoveSpeedLabel:
+	dd (float)8.0
+	db '&lt;/FreeMoveSpeed:f32&gt;'
+
+
+luaCall(print('Instructions'))
+
+I1Ins:
+	I1InsLabel:
+    //mov [I1R13BackupLabel],r13
+	mov [I1EffectiveAddressLabel],rbx
+{$luacode}
+print( 'LuaCode1' );
+SlotTable = {};
+function SlotTable:new( slots_array )
+	print( 'Creating new SlotTable.' );
+    local this = {
+		slots = ( slots_array or {0,0,0,0,0} ),
+		noop = false,
+		baseLabel = 'I1EffectiveAddressLabel',
+		bufferValue = 0451,
+		maxSlots = 5
+	};
+    printf( 'Have this: baseLabel=%s bufferValue=%d maxSlots=%d', this.baseLabel, this.bufferValue, this.maxSlots );
+    setmetatable( this, {
+		__index = SlotTable,
+		__newindex = function( this, slot, value )
+			printf( 'Attempting set slot %d to %d', slot, value );
+			this.slots[slot] = value;
+		end,
+		__tostring = function( this )
+			local _return = '[ ';
+			for i,v in ipairs( this.slots ) do
+				_return = _return .. v;
+				if( i &lt; 5 ) then
+					_return = _return .. ', ';
+				else
+					_return = _return .. ' ]';
+				end
+			end
+			return _return;
+		end
+	} );
+    print( 'Set metatable for this.' );
+	this:read();
+	--this:write();
+    return this;
+end
+
+function SlotTable:exists( value )
+	local _return = 0;
+	for i in ipairs( self.slots ) do
+		printf( 'Checking %d/%d: %d == %d ?', i, #self.slots, self.slots[i], value );
+    	if( self.slots[i] == value ) then
+        	_return = i;
+			printf( 'Found match (%d) should break.', _return );
+            break;
+        end
+    end
+    return _return;
+end
+
+function SlotTable:read()
+	print( 'SlotTable:read' );
+	if( self.noop == true ) then
+		for i in ipairs( self.slots ) do
+			printf( 'read %d/%d: %d =&gt; x', i, #self.slots, self.slots[i] );
+		end
+	else
+		for i in ipairs( self.slots ) do
+        	printf( 'read %d/%d', i, #self.slots );
+			self.slots[i] = self:getU64FromOffsetIndex( i );
+		end
+	end
+end
+
+function SlotTable:write()
+	if( self.noop == true ) then
+		for i in ipairs( self.slots ) do
+			printf( 'write %d/%d: writing %d to address', i, #self.slots, self.slots[i] );
+		end
+	else
+		for i,value in ipairs( self.slots ) do
+			local address = self:getAddressFromOffsetIndex( i );
+			printf( 'write: For %d/%d: Writing %d to %d', i, #self.slots, value, address );
+			writeQword( address, value );
+		end
+	end
+end
+
+function SlotTable:clear()
+	for i in ipairs( self.slots ) do
+		self.slots[i] = 0;
+	end
+end
+
+function SlotTable:getEmpty()
+	local _return = 0;
+	for i in ipairs( self.slots ) do
+		if( self.slots[i] == 0 ) then
+			_return = i;
+			break;
+		end
+	end
+	if( _return == 0 ) then
+		self:clear();
+		_return = 1;
+	end
+	return _return;
+end
+
+function SlotTable:add( value )
+	if( self:exists( value ) == 0 ) then
+		local empty_slot = self:getEmpty();
+		self.slots[empty_slot] = value;
+	end
+end
+
+function SlotTable:getAddressFromOffsetIndex( index )
+	printf( 'getAddressFromOffsetIndex received %d', index );
+	local _return = nil;
+	if( self.noop ~= true and index &gt;= 0 and index &lt;= self.maxSlots ) then
+    	print( 'Checks passed.' );
+		local address_string = self.baseLabel;
+        print( 'address_string: ', address_string );
+		if( index &gt; 0 ) then
+			local offset = string.format( '+%02x', index * 8 );
+        	print( 'offset: ', offset );
+			address_string = address_string..offset;
+        	print( 'address_string: ', address_string );
+		end
+		_return = getAddressSafe( address_string );
+	end
+	printf( 'getAddressFromOffsetIndex returned %d', _return );
+	return _return;
+end
+
+function SlotTable:getU64FromOffsetIndex( index )
+	printf( 'getU64FromOffsetIndex received %d', index );
+	local _return = 0;
+	local address = self:getAddressFromOffsetIndex( index );
+	if( self.noop ~= true and address ~= nil ) then
+		local temp_pointer = readQword( address );
+		if( temp_pointer ~= nil ) then
+			_return = temp_pointer;
+			printf( 'Got %d from %d', _return, address );
+		end
+	end
+	printf( 'getU64FromOffsetIndex returned %d', _return );
+	return _return;
+end
+
+function SlotTable:getBufferValue()
+	self.bufferValue = self:getU64FromOffsetIndex( 0 );
+	return self.bufferValue;
+end
+
+st = SlotTable:new();
+local buffer_value = st:getBufferValue();
+st:add( buffer_value );
+print( 'st: ', tostring(st) );
+st:write();
+{$asm}
+
+
+I1CodeLabel:
+// Original code
+	mov eax,[rcx+10]
+  mov [rbx+38],eax
+  mov rax,[rdi+60]
+  test rax,rax
+  je GameAssembly.dll+1CE3848
+  mov rax,[rax+10]
+  test rax,rax
+  je GameAssembly.dll+1CE3848
+  cmp dword ptr [rax+18],01
+  jna GameAssembly.dll+1CE385E
+  mov rcx,[rax+28]
+  test rcx,rcx
+  je GameAssembly.dll+1CE3848
+{$asm}
+	pushf
+	push rax
+	mov al,[FreeMoveEnabledLabel]
+	cmp al,1
+	pop rax
+	jne	SkipFreeMoveLabel
+	SkipFreeMoveLabel:
+	popf
+	jmp I1ReturnLabel
+
+I1Address:
+	jmp I1InsLabel
+    db I1Nops
+
+I1ReturnLabel:
+	//ret
+	luaCall(print('return'))
+	registerSymbol(I1Address)
+	registerSymbol(I1Bytes)
+	registerSymbol(I1BytesLength)
+	registerSymbol(I1Nops)
+	registerSymbol(I1Ins)
+	registerSymbol(I1MemoryLabel)
+	registerSymbol(I1BackupLabel)
+	registerSymbol(I1EffectiveAddressLabel)
+	registerSymbol(I1InsLabel)
+	registerSymbol(I1CodeLabel)
+    registerSymbol(I1ReturnLabel)
+	registerSymbol(FreeMoveEnabledLabel)
+	registerSymbol(FreeMoveSpeedLabel)
+	registerSymbol(SkipFreeMoveLabel)
+    registerSymbol(I1CurrentPartySlotLabel)
+	registerSymbol(I1R13BackupLabel)
+
+[DISABLE]
+luaCall(print('DISABLE'))
+
+I1Address:
+	readmem(I1BackupLabel,I1BytesLength)
+
+	luaCall(print('unregisterSymbols'))
+    unregisterSymbol(I1Address)
+	unregisterSymbol(I1Bytes)
+	unregisterSymbol(I1BytesLength)
+	unregisterSymbol(I1Nops)
+	unregisterSymbol(I1Ins)
+	unregisterSymbol(I1MemoryLabel)
+	unregisterSymbol(I1BackupLabel)
+	unregisterSymbol(I1EffectiveAddressLabel)
+	unregisterSymbol(I1InsLabel)
+	unregisterSymbol(I1CodeLabel)
+    unregisterSymbol(I1ReturnLabel)
+	//HP
+	//FreeMove
+	unregisterSymbol(FreeMoveEnabledLabel)
+	unregisterSymbol(FreeMoveSpeedLabel)
+	unregisterSymbol(SkipFreeMoveLabel)
+    unregisterSymbol(I1CurrentPartySlotLabel)
+	unregisterSymbol(I1R13BackupLabel)
+
+luaCall(print('Deallocs'))
+
+dealloc(NewMemory)
+
+{
+// ORIGINAL CODE - INJECTION POINT: GameAssembly.dll+1CE37D0
+
+GameAssembly.dll+1CE37A8: 0F 84 9A 00 00 00  - je GameAssembly.dll+1CE3848
+GameAssembly.dll+1CE37AE: 48 8B 40 10        - mov rax,[rax+10]
+GameAssembly.dll+1CE37B2: 48 85 C0           - test rax,rax
+GameAssembly.dll+1CE37B5: 0F 84 8D 00 00 00  - je GameAssembly.dll+1CE3848
+GameAssembly.dll+1CE37BB: 39 70 18           - cmp [rax+18],esi
+GameAssembly.dll+1CE37BE: 0F 86 8A 00 00 00  - jbe GameAssembly.dll+1CE384E
+GameAssembly.dll+1CE37C4: 48 8B 48 20        - mov rcx,[rax+20]
+GameAssembly.dll+1CE37C8: 48 85 C9           - test rcx,rcx
+GameAssembly.dll+1CE37CB: 74 7B              - je GameAssembly.dll+1CE3848
+GameAssembly.dll+1CE37CD: 8B 41 10           - mov eax,[rcx+10]
+// ---------- INJECTING HERE ----------
+GameAssembly.dll+1CE37D0: 89 43 38           - mov [rbx+38],eax
+// ---------- DONE INJECTING  ----------
+GameAssembly.dll+1CE37D3: 48 8B 47 60        - mov rax,[rdi+60]
+GameAssembly.dll+1CE37D7: 48 85 C0           - test rax,rax
+GameAssembly.dll+1CE37DA: 74 6C              - je GameAssembly.dll+1CE3848
+GameAssembly.dll+1CE37DC: 48 8B 40 10        - mov rax,[rax+10]
+GameAssembly.dll+1CE37E0: 48 85 C0           - test rax,rax
+GameAssembly.dll+1CE37E3: 74 63              - je GameAssembly.dll+1CE3848
+GameAssembly.dll+1CE37E5: 83 78 18 01        - cmp dword ptr [rax+18],01
+GameAssembly.dll+1CE37E9: 76 73              - jna GameAssembly.dll+1CE385E
+GameAssembly.dll+1CE37EB: 48 8B 48 28        - mov rcx,[rax+28]
+GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
+}
+</AssemblerScript>
     </CheatEntry>
-    <CheatEntry>
-      <ID>3</ID>
-      <Description>"Chops"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>18CE51EFB90</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>2</ID>
-      <Description>"Mines"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>18CE51EFB94</Address>
-    </CheatEntry>
-    <CheatEntry>
       <ID>1</ID>
-      <Description>"Takes"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>18CE51EFB98</Address>
+      <Description>"NewMemory"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>I1MemoryLabel</Address>
     </CheatEntry>
     <CheatEntry>
-      <ID>4</ID>
-      <Description>"No description"</Description>
+      <ID>100</ID>
+      <Description>"1"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+8</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>101</ID>
+      <Description>"1-HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>18CE4F969D4</Address>
+      <Address>I1EffectiveAddressLabel+8</Address>
+      <Offsets>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>102</ID>
+      <Description>"1-TP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+8</Address>
+      <Offsets>
+        <Offset>3C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>103</ID>
+      <Description>"1-XP [0,874140]"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+8</Address>
+      <Offsets>
+        <Offset>40</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104</ID>
+      <Description>"1-LVL"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+8</Address>
+      <Offsets>
+        <Offset>54</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>105</ID>
+      <Description>"1-BP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+8</Address>
+      <Offsets>
+        <Offset>58</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>106</ID>
+      <Description>"1-SkP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+8</Address>
+      <Offsets>
+        <Offset>64</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>200</ID>
+      <Description>"2"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+10</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>201</ID>
+      <Description>"2-HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+10</Address>
+      <Offsets>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>202</ID>
+      <Description>"2-TP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+10</Address>
+      <Offsets>
+        <Offset>3C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>203</ID>
+      <Description>"2-XP [0,874140]"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+10</Address>
+      <Offsets>
+        <Offset>40</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>204</ID>
+      <Description>"2-LVL"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+10</Address>
+      <Offsets>
+        <Offset>54</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>205</ID>
+      <Description>"2-BP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+10</Address>
+      <Offsets>
+        <Offset>58</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>206</ID>
+      <Description>"2-SkP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+10</Address>
+      <Offsets>
+        <Offset>64</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>300</ID>
+      <Description>"3"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+18</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>301</ID>
+      <Description>"3-HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+18</Address>
+      <Offsets>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>302</ID>
+      <Description>"3-TP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+18</Address>
+      <Offsets>
+        <Offset>3C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>303</ID>
+      <Description>"3-XP [0,874140]"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+18</Address>
+      <Offsets>
+        <Offset>40</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>304</ID>
+      <Description>"3-LVL"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+18</Address>
+      <Offsets>
+        <Offset>54</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>305</ID>
+      <Description>"3-BP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+18</Address>
+      <Offsets>
+        <Offset>58</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>306</ID>
+      <Description>"3-SkP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+18</Address>
+      <Offsets>
+        <Offset>64</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>400</ID>
+      <Description>"4"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+20</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>401</ID>
+      <Description>"4-HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+20</Address>
+      <Offsets>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>402</ID>
+      <Description>"4-TP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+20</Address>
+      <Offsets>
+        <Offset>3C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>403</ID>
+      <Description>"4-XP [0,874140]"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+20</Address>
+      <Offsets>
+        <Offset>40</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>404</ID>
+      <Description>"4-LVL"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+20</Address>
+      <Offsets>
+        <Offset>54</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>405</ID>
+      <Description>"4-BP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+20</Address>
+      <Offsets>
+        <Offset>58</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>406</ID>
+      <Description>"4-SkP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+20</Address>
+      <Offsets>
+        <Offset>64</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>500</ID>
+      <Description>"5"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+28</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>501</ID>
+      <Description>"5-HP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+28</Address>
+      <Offsets>
+        <Offset>38</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>502</ID>
+      <Description>"5-TP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+28</Address>
+      <Offsets>
+        <Offset>3C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>503</ID>
+      <Description>"5-XP [0,874140]"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+28</Address>
+      <Offsets>
+        <Offset>40</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>504</ID>
+      <Description>"5-LVL"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+28</Address>
+      <Offsets>
+        <Offset>54</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>505</ID>
+      <Description>"5-BP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+28</Address>
+      <Offsets>
+        <Offset>58</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>506</ID>
+      <Description>"5-SkP"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>I1EffectiveAddressLabel+28</Address>
+      <Offsets>
+        <Offset>64</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>30</ID>
+      <Description>"ChopsUsed"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>HarvestCountersEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>31</ID>
+      <Description>"MinesUsed"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>HarvestCountersEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>32</ID>
+      <Description>"TakesUsed"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>HarvestCountersEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>8</Offset>
+      </Offsets>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
