@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheatTable CheatEngineTableVersion="45">
+  <Forms>
+    <UDF1 Class="TCEForm" Encoding="Ascii85">3u0hk2nldAU:MM2b.}cxWeIh0Gi32eO*FvcW?Ph7%{mcIVgALy9FkwaRL(ZnnNpGg/gz.[7L.V;:dpp6@SY!KXQt/cWag#?1b8x4FfafB</UDF1>
+  </Forms>
   <CheatEntries>
     <CheatEntry>
-    <CheatEntry>
-      <ID>0</ID>
+      <ID>507</ID>
       <Description>"Auto Assemble script"</Description>
       <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{$lua}
+      <AssemblerScript>{ Game   : Etrian Odyssey 2.exe
+  Version: 
+  Date   : 2026-02-11
+  Author : willa
+
+  This script does blah blah blah
+GameAssembly.dll+100A369: 8B 41 10           - mov eax,[rcx+10]
+// ---------- INJECTING HERE ----------
+GameAssembly.dll+100A36C: 89 43 44           - mov [rbx+44],eax
+// ---------- DONE INJECTING  ----------
+GameAssembly.dll+100A36F: 48 8B 47 58        - mov rax,[rdi+58]
+GameAssembly.dll+100A373: 48 85 C0           - test rax,rax
+GameAssembly.dll+100A376: 74 5E              - je GameAssembly.dll+100A3D6
+}
+{$lua}
 if syntaxcheck then return end
 if memrec then print( 'memrec:', memrec) end
 print('CEVersion:', getCEVersion());
@@ -22,34 +38,32 @@ luaCall(print('Defines'))
 define(mysignature,43 4e 4f 23 55 6e 69 71 75 65 23 53 69 67 6e 61 74 75 72 65 23 43 4e 4f)
 
 // I1: Post-battle, pre-result, HP write
-define(I1Address,"GameAssembly.dll"+1CE37CD)
-define(I1Bytes,8B 41 10 89 43 38 48 8B 47 60 48 85 C0 74 6C 48 8B 40 10 48 85 C0 74 63 83 78 18 01 76 73 48 8B 48 28 48 85 C9 74 54)
-define(I1BytesLength,$27)
-define(I1Nops,90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90)
+define(FieldPartyAddress,"GameAssembly.dll"+100A369)
+define(FieldPartyBytes,8B 41 10 89 43 44 48 8B 47 58 48 85 C0 74 5E)
+define(FieldPartyBytesLength,$0F)
+define(FieldPartyNops,90)
 
 [ENABLE]
 luaCall(print('ENABLE'))
 
 luaCall(print('Asserts'))
-assert(I1Address,I1Bytes)
+assert(FieldPartyAddress,FieldPartyBytes)
 
 luaCall(print('AOB Scans'))
 
 luaCall(print('Allocs'))
 alloc(NewMemory,$1000)
 
-define(I1Ins,NewMemory+500)
+define(FieldPartyIns,NewMemory+500)
 
 luaCall(print('Labels'))
 
-label(I1MemoryLabel)
-label(I1BackupLabel)
-label(I1EffectiveAddressLabel)
-label(I1CurrentPartySlotLabel)
-label(I1R13BackupLabel)
-label(I1InsLabel)
-label(I1CodeLabel)
-label(I1ReturnLabel)
+label(NewMemoryLabel)
+label(FieldPartyBackupLabel)
+label(FieldPartyEffectiveAddressLabel)
+label(FieldPartyInsLabel)
+label(FieldPartyCodeLabel)
+label(FieldPartyReturnLabel)
 
 label(FreeMoveEnabledLabel)
 label(FreeMoveSpeedLabel)
@@ -58,29 +72,21 @@ label(SkipFreeMoveLabel)
 luaCall(print('Memory'))
 
 NewMemory:
-	I1MemoryLabel:
+	NewMemoryLabel:
 	db mysignature
-	db '&lt;I1Backup&gt;'
-	I1BackupLabel:
-	readmem(I1Address,I1BytesLength)
-	db '&lt;/I1Backup&gt;'
-	db '&lt;I1EffectiveAddress:u64*6&gt;'
-	I1EffectiveAddressLabel:
+	db '&lt;FieldPartyBackup&gt;'
+	FieldPartyBackupLabel:
+	readmem(FieldPartyAddress,FieldPartyBytesLength)
+	db '&lt;/FieldPartyBackup&gt;'
+	db '&lt;FieldPartyEffectiveAddress:u64*6&gt;'
+	FieldPartyEffectiveAddressLabel:
 	dq 00 // Buffer Address
     dq 00 // Slot0
     dq 00 // Slot1
     dq 00
     dq 00
     dq 00 // Slot4
-	db '&lt;/I1EffectiveAddress:u64*6&gt;'
-    db '&lt;I1CurrentPartySlot:u8&gt;'
-	I1CurrentPartySlotLabel:
-	db 00
-	db '&lt;/I1CurrentPartySlot:u8&gt;'
-    db '&lt;I1R13Backup:u64&gt;'
-	I1R13BackupLabel:
-	dq 00
-	db '&lt;/I1R13Backup:u64&gt;'
+	db '&lt;/FieldPartyEffectiveAddress:u64*6&gt;'
 	db '&lt;FreeMoveEnabled:u8&gt;'
 	FreeMoveEnabledLabel:
 	db 00
@@ -93,10 +99,9 @@ NewMemory:
 
 luaCall(print('Instructions'))
 
-I1Ins:
-	I1InsLabel:
-    //mov [I1R13BackupLabel],r13
-	mov [I1EffectiveAddressLabel],rbx
+FieldPartyIns:
+	FieldPartyInsLabel:
+	mov [FieldPartyEffectiveAddressLabel],rbx
 {$luacode}
 print( 'LuaCode1' );
 SlotTable = {};
@@ -105,7 +110,7 @@ function SlotTable:new( slots_array )
     local this = {
 		slots = ( slots_array or {0,0,0,0,0} ),
 		noop = false,
-		baseLabel = 'I1EffectiveAddressLabel',
+		baseLabel = 'FieldPartyEffectiveAddressLabel',
 		bufferValue = 0451,
 		maxSlots = 5
 	};
@@ -251,21 +256,13 @@ st:write();
 {$asm}
 
 
-I1CodeLabel:
+FieldPartyCodeLabel:
 // Original code
 	mov eax,[rcx+10]
-  mov [rbx+38],eax
-  mov rax,[rdi+60]
-  test rax,rax
-  je GameAssembly.dll+1CE3848
-  mov rax,[rax+10]
-  test rax,rax
-  je GameAssembly.dll+1CE3848
-  cmp dword ptr [rax+18],01
-  jna GameAssembly.dll+1CE385E
-  mov rcx,[rax+28]
-  test rcx,rcx
-  je GameAssembly.dll+1CE3848
+	mov [rbx+44],eax
+	mov rax,[rdi+58]
+	test rax,rax
+	je GameAssembly.dll+100A3D6
 {$asm}
 	pushf
 	push rax
@@ -275,103 +272,102 @@ I1CodeLabel:
 	jne	SkipFreeMoveLabel
 	SkipFreeMoveLabel:
 	popf
-	jmp I1ReturnLabel
+	jmp FieldPartyReturnLabel
 
-I1Address:
-	jmp I1InsLabel
-    db I1Nops
+FieldPartyAddress:
+	jmp FieldPartyInsLabel
+    db FieldPartyNops
 
-I1ReturnLabel:
+FieldPartyReturnLabel:
 	//ret
 	luaCall(print('return'))
-	registerSymbol(I1Address)
-	registerSymbol(I1Bytes)
-	registerSymbol(I1BytesLength)
-	registerSymbol(I1Nops)
-	registerSymbol(I1Ins)
-	registerSymbol(I1MemoryLabel)
-	registerSymbol(I1BackupLabel)
-	registerSymbol(I1EffectiveAddressLabel)
-	registerSymbol(I1InsLabel)
-	registerSymbol(I1CodeLabel)
-    registerSymbol(I1ReturnLabel)
+	registerSymbol(FieldPartyAddress)
+	registerSymbol(FieldPartyBytes)
+	registerSymbol(FieldPartyBytesLength)
+	registerSymbol(FieldPartyNops)
+	registerSymbol(FieldPartyIns)
+	registerSymbol(NewMemoryLabel)
+	registerSymbol(FieldPartyBackupLabel)
+	registerSymbol(FieldPartyEffectiveAddressLabel)
+	registerSymbol(FieldPartyInsLabel)
+	registerSymbol(FieldPartyCodeLabel)
+    registerSymbol(FieldPartyReturnLabel)
 	registerSymbol(FreeMoveEnabledLabel)
 	registerSymbol(FreeMoveSpeedLabel)
 	registerSymbol(SkipFreeMoveLabel)
-    registerSymbol(I1CurrentPartySlotLabel)
-	registerSymbol(I1R13BackupLabel)
 
 [DISABLE]
 luaCall(print('DISABLE'))
 
-I1Address:
-	readmem(I1BackupLabel,I1BytesLength)
+FieldPartyAddress:
+	readmem(FieldPartyBackupLabel,FieldPartyBytesLength)
 
 	luaCall(print('unregisterSymbols'))
-    unregisterSymbol(I1Address)
-	unregisterSymbol(I1Bytes)
-	unregisterSymbol(I1BytesLength)
-	unregisterSymbol(I1Nops)
-	unregisterSymbol(I1Ins)
-	unregisterSymbol(I1MemoryLabel)
-	unregisterSymbol(I1BackupLabel)
-	unregisterSymbol(I1EffectiveAddressLabel)
-	unregisterSymbol(I1InsLabel)
-	unregisterSymbol(I1CodeLabel)
-    unregisterSymbol(I1ReturnLabel)
+    unregisterSymbol(FieldPartyAddress)
+	unregisterSymbol(FieldPartyBytes)
+	unregisterSymbol(FieldPartyBytesLength)
+	unregisterSymbol(FieldPartyNops)
+	unregisterSymbol(FieldPartyIns)
+	unregisterSymbol(NewMemoryLabel)
+	unregisterSymbol(FieldPartyBackupLabel)
+	unregisterSymbol(FieldPartyEffectiveAddressLabel)
+	unregisterSymbol(FieldPartyInsLabel)
+	unregisterSymbol(FieldPartyCodeLabel)
+    unregisterSymbol(FieldPartyReturnLabel)
 	//HP
 	//FreeMove
 	unregisterSymbol(FreeMoveEnabledLabel)
 	unregisterSymbol(FreeMoveSpeedLabel)
 	unregisterSymbol(SkipFreeMoveLabel)
-    unregisterSymbol(I1CurrentPartySlotLabel)
-	unregisterSymbol(I1R13BackupLabel)
 
 luaCall(print('Deallocs'))
 
 dealloc(NewMemory)
 
 {
-// ORIGINAL CODE - INJECTION POINT: GameAssembly.dll+1CE37D0
+// ORIGINAL CODE - INJECTION POINT: GameAssembly.dll+100A36C
 
-GameAssembly.dll+1CE37A8: 0F 84 9A 00 00 00  - je GameAssembly.dll+1CE3848
-GameAssembly.dll+1CE37AE: 48 8B 40 10        - mov rax,[rax+10]
-GameAssembly.dll+1CE37B2: 48 85 C0           - test rax,rax
-GameAssembly.dll+1CE37B5: 0F 84 8D 00 00 00  - je GameAssembly.dll+1CE3848
-GameAssembly.dll+1CE37BB: 39 70 18           - cmp [rax+18],esi
-GameAssembly.dll+1CE37BE: 0F 86 8A 00 00 00  - jbe GameAssembly.dll+1CE384E
-GameAssembly.dll+1CE37C4: 48 8B 48 20        - mov rcx,[rax+20]
-GameAssembly.dll+1CE37C8: 48 85 C9           - test rcx,rcx
-GameAssembly.dll+1CE37CB: 74 7B              - je GameAssembly.dll+1CE3848
-GameAssembly.dll+1CE37CD: 8B 41 10           - mov eax,[rcx+10]
+GameAssembly.dll+100A34B: 0F 84 85 00 00 00  - je GameAssembly.dll+100A3D6
+GameAssembly.dll+100A351: 48 8B 40 10        - mov rax,[rax+10]
+GameAssembly.dll+100A355: 48 85 C0           - test rax,rax
+GameAssembly.dll+100A358: 74 7C              - je GameAssembly.dll+100A3D6
+GameAssembly.dll+100A35A: 83 78 18 00        - cmp dword ptr [rax+18],00
+GameAssembly.dll+100A35E: 76 7C              - jna GameAssembly.dll+100A3DC
+GameAssembly.dll+100A360: 48 8B 48 20        - mov rcx,[rax+20]
+GameAssembly.dll+100A364: 48 85 C9           - test rcx,rcx
+GameAssembly.dll+100A367: 74 6D              - je GameAssembly.dll+100A3D6
+GameAssembly.dll+100A369: 8B 41 10           - mov eax,[rcx+10]
 // ---------- INJECTING HERE ----------
-GameAssembly.dll+1CE37D0: 89 43 38           - mov [rbx+38],eax
+GameAssembly.dll+100A36C: 89 43 44           - mov [rbx+44],eax
 // ---------- DONE INJECTING  ----------
-GameAssembly.dll+1CE37D3: 48 8B 47 60        - mov rax,[rdi+60]
-GameAssembly.dll+1CE37D7: 48 85 C0           - test rax,rax
-GameAssembly.dll+1CE37DA: 74 6C              - je GameAssembly.dll+1CE3848
-GameAssembly.dll+1CE37DC: 48 8B 40 10        - mov rax,[rax+10]
-GameAssembly.dll+1CE37E0: 48 85 C0           - test rax,rax
-GameAssembly.dll+1CE37E3: 74 63              - je GameAssembly.dll+1CE3848
-GameAssembly.dll+1CE37E5: 83 78 18 01        - cmp dword ptr [rax+18],01
-GameAssembly.dll+1CE37E9: 76 73              - jna GameAssembly.dll+1CE385E
-GameAssembly.dll+1CE37EB: 48 8B 48 28        - mov rcx,[rax+28]
-GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
+GameAssembly.dll+100A36F: 48 8B 47 58        - mov rax,[rdi+58]
+GameAssembly.dll+100A373: 48 85 C0           - test rax,rax
+GameAssembly.dll+100A376: 74 5E              - je GameAssembly.dll+100A3D6
+GameAssembly.dll+100A378: 48 8B 40 10        - mov rax,[rax+10]
+GameAssembly.dll+100A37C: 48 85 C0           - test rax,rax
+GameAssembly.dll+100A37F: 74 55              - je GameAssembly.dll+100A3D6
+GameAssembly.dll+100A381: 83 78 18 01        - cmp dword ptr [rax+18],01
+GameAssembly.dll+100A385: 76 65              - jna GameAssembly.dll+100A3EC
+GameAssembly.dll+100A387: 48 8B 48 28        - mov rcx,[rax+28]
+GameAssembly.dll+100A38B: 48 85 C9           - test rcx,rcx
 }
 </AssemblerScript>
-    </CheatEntry>
-      <ID>1</ID>
-      <Description>"NewMemory"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Byte</VariableType>
-      <Address>I1MemoryLabel</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"NewMemory"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>NewMemoryLabel</Address>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
     <CheatEntry>
       <ID>100</ID>
       <Description>"1"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>8 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+8</Address>
+      <Address>FieldPartyEffectiveAddressLabel+8</Address>
       <Offsets>
         <Offset>0</Offset>
       </Offsets>
@@ -381,9 +377,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"1-HP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+8</Address>
+      <Address>FieldPartyEffectiveAddressLabel+8</Address>
       <Offsets>
-        <Offset>38</Offset>
+        <Offset>44</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -391,9 +387,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"1-TP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+8</Address>
+      <Address>FieldPartyEffectiveAddressLabel+8</Address>
       <Offsets>
-        <Offset>3C</Offset>
+        <Offset>48</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -401,9 +397,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"1-XP [0,874140]"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+8</Address>
+      <Address>FieldPartyEffectiveAddressLabel+8</Address>
       <Offsets>
-        <Offset>40</Offset>
+        <Offset>4C</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -411,9 +407,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"1-LVL"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+8</Address>
+      <Address>FieldPartyEffectiveAddressLabel+8</Address>
       <Offsets>
-        <Offset>54</Offset>
+        <Offset>5C</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -421,9 +417,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"1-BP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+8</Address>
+      <Address>FieldPartyEffectiveAddressLabel+8</Address>
       <Offsets>
-        <Offset>58</Offset>
+        <Offset>60</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -431,9 +427,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"1-SkP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+8</Address>
+      <Address>FieldPartyEffectiveAddressLabel+8</Address>
       <Offsets>
-        <Offset>64</Offset>
+        <Offset>68</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -441,7 +437,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"2"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>8 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+10</Address>
+      <Address>FieldPartyEffectiveAddressLabel+10</Address>
       <Offsets>
         <Offset>0</Offset>
       </Offsets>
@@ -451,9 +447,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"2-HP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+10</Address>
+      <Address>FieldPartyEffectiveAddressLabel+10</Address>
       <Offsets>
-        <Offset>38</Offset>
+        <Offset>44</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -461,9 +457,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"2-TP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+10</Address>
+      <Address>FieldPartyEffectiveAddressLabel+10</Address>
       <Offsets>
-        <Offset>3C</Offset>
+        <Offset>48</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -471,9 +467,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"2-XP [0,874140]"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+10</Address>
+      <Address>FieldPartyEffectiveAddressLabel+10</Address>
       <Offsets>
-        <Offset>40</Offset>
+        <Offset>4C</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -481,9 +477,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"2-LVL"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+10</Address>
+      <Address>FieldPartyEffectiveAddressLabel+10</Address>
       <Offsets>
-        <Offset>54</Offset>
+        <Offset>5C</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -491,9 +487,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"2-BP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+10</Address>
+      <Address>FieldPartyEffectiveAddressLabel+10</Address>
       <Offsets>
-        <Offset>58</Offset>
+        <Offset>60</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -501,9 +497,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"2-SkP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+10</Address>
+      <Address>FieldPartyEffectiveAddressLabel+10</Address>
       <Offsets>
-        <Offset>64</Offset>
+        <Offset>68</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -511,7 +507,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"3"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>8 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+18</Address>
+      <Address>FieldPartyEffectiveAddressLabel+18</Address>
       <Offsets>
         <Offset>0</Offset>
       </Offsets>
@@ -521,9 +517,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"3-HP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+18</Address>
+      <Address>FieldPartyEffectiveAddressLabel+18</Address>
       <Offsets>
-        <Offset>38</Offset>
+        <Offset>44</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -531,9 +527,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"3-TP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+18</Address>
+      <Address>FieldPartyEffectiveAddressLabel+18</Address>
       <Offsets>
-        <Offset>3C</Offset>
+        <Offset>48</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -541,9 +537,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"3-XP [0,874140]"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+18</Address>
+      <Address>FieldPartyEffectiveAddressLabel+18</Address>
       <Offsets>
-        <Offset>40</Offset>
+        <Offset>4C</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -551,9 +547,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"3-LVL"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+18</Address>
+      <Address>FieldPartyEffectiveAddressLabel+18</Address>
       <Offsets>
-        <Offset>54</Offset>
+        <Offset>5C</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -561,9 +557,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"3-BP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+18</Address>
+      <Address>FieldPartyEffectiveAddressLabel+18</Address>
       <Offsets>
-        <Offset>58</Offset>
+        <Offset>60</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -571,9 +567,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"3-SkP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+18</Address>
+      <Address>FieldPartyEffectiveAddressLabel+18</Address>
       <Offsets>
-        <Offset>64</Offset>
+        <Offset>68</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -581,7 +577,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"4"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>8 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+20</Address>
+      <Address>FieldPartyEffectiveAddressLabel+20</Address>
       <Offsets>
         <Offset>0</Offset>
       </Offsets>
@@ -591,9 +587,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"4-HP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+20</Address>
+      <Address>FieldPartyEffectiveAddressLabel+20</Address>
       <Offsets>
-        <Offset>38</Offset>
+        <Offset>44</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -601,9 +597,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"4-TP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+20</Address>
+      <Address>FieldPartyEffectiveAddressLabel+20</Address>
       <Offsets>
-        <Offset>3C</Offset>
+        <Offset>48</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -611,9 +607,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"4-XP [0,874140]"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+20</Address>
+      <Address>FieldPartyEffectiveAddressLabel+20</Address>
       <Offsets>
-        <Offset>40</Offset>
+        <Offset>4C</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -621,9 +617,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"4-LVL"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+20</Address>
+      <Address>FieldPartyEffectiveAddressLabel+20</Address>
       <Offsets>
-        <Offset>54</Offset>
+        <Offset>5C</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -631,9 +627,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"4-BP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+20</Address>
+      <Address>FieldPartyEffectiveAddressLabel+20</Address>
       <Offsets>
-        <Offset>58</Offset>
+        <Offset>60</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -641,9 +637,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"4-SkP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+20</Address>
+      <Address>FieldPartyEffectiveAddressLabel+20</Address>
       <Offsets>
-        <Offset>64</Offset>
+        <Offset>68</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -651,7 +647,7 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"5"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>8 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+28</Address>
+      <Address>FieldPartyEffectiveAddressLabel+28</Address>
       <Offsets>
         <Offset>0</Offset>
       </Offsets>
@@ -661,9 +657,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"5-HP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+28</Address>
+      <Address>FieldPartyEffectiveAddressLabel+28</Address>
       <Offsets>
-        <Offset>38</Offset>
+        <Offset>44</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -671,9 +667,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"5-TP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+28</Address>
+      <Address>FieldPartyEffectiveAddressLabel+28</Address>
       <Offsets>
-        <Offset>3C</Offset>
+        <Offset>48</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -681,9 +677,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"5-XP [0,874140]"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+28</Address>
+      <Address>FieldPartyEffectiveAddressLabel+28</Address>
       <Offsets>
-        <Offset>40</Offset>
+        <Offset>4C</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -691,9 +687,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"5-LVL"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+28</Address>
+      <Address>FieldPartyEffectiveAddressLabel+28</Address>
       <Offsets>
-        <Offset>54</Offset>
+        <Offset>5C</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -701,9 +697,9 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"5-BP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+28</Address>
+      <Address>FieldPartyEffectiveAddressLabel+28</Address>
       <Offsets>
-        <Offset>58</Offset>
+        <Offset>60</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -711,10 +707,27 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Description>"5-SkP"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>I1EffectiveAddressLabel+28</Address>
+      <Address>FieldPartyEffectiveAddressLabel+28</Address>
       <Offsets>
-        <Offset>64</Offset>
+        <Offset>68</Offset>
       </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>508</ID>
+      <Description>"InfiniteHarvest"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+"GameAssembly.dll"+1349803:
+	mov al,01
+	nop
+
+[DISABLE]
+
+"GameAssembly.dll"+1349803:
+    setl al
+
+</AssemblerScript>
     </CheatEntry>
     <CheatEntry>
       <ID>30</ID>
@@ -745,6 +758,30 @@ GameAssembly.dll+1CE37EF: 48 85 C9           - test rcx,rcx
       <Offsets>
         <Offset>8</Offset>
       </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>509</ID>
+      <Description>"TestInheritedAddresses"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ define(SubAddress,NewMemoryLabel+50)
+
+ SubAddress:
+ 	db 1
+
+ registerSymbol(SubAddress)
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+SubAddress:
+ 	db 0
+
+ unregisterSymbol(SubAddress)
+
+</AssemblerScript>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>

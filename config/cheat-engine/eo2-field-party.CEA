@@ -1,0 +1,343 @@
+{ Game   : Etrian Odyssey 2.exe
+  Version: 
+  Date   : 2026-02-11
+  Author : willa
+
+  This script does blah blah blah
+GameAssembly.dll+100A369: 8B 41 10           - mov eax,[rcx+10]
+// ---------- INJECTING HERE ----------
+GameAssembly.dll+100A36C: 89 43 44           - mov [rbx+44],eax
+// ---------- DONE INJECTING  ----------
+GameAssembly.dll+100A36F: 48 8B 47 58        - mov rax,[rdi+58]
+GameAssembly.dll+100A373: 48 85 C0           - test rax,rax
+GameAssembly.dll+100A376: 74 5E              - je GameAssembly.dll+100A3D6
+}
+{$lua}
+if syntaxcheck then return end
+if memrec then print( 'memrec:', memrec) end
+print('CEVersion:', getCEVersion());
+if( cheatEngineIs64Bit() == true ) then
+print('64-bit');
+else
+print('32-bit');
+end
+print('CheatEngineDir:', getCheatEngineDir());
+{$asm}
+luaCall(print('Defines'))
+
+define(mysignature,43 4e 4f 23 55 6e 69 71 75 65 23 53 69 67 6e 61 74 75 72 65 23 43 4e 4f)
+
+// I1: Post-battle, pre-result, HP write
+define(FieldPartyAddress,"GameAssembly.dll"+100A369)
+define(FieldPartyBytes,8B 41 10 89 43 44 48 8B 47 58 48 85 C0 74 5E)
+define(FieldPartyBytesLength,$0F)
+define(FieldPartyNops,90)
+
+[ENABLE]
+luaCall(print('ENABLE'))
+
+luaCall(print('Asserts'))
+assert(FieldPartyAddress,FieldPartyBytes)
+
+luaCall(print('AOB Scans'))
+
+luaCall(print('Allocs'))
+alloc(NewMemory,$1000)
+
+define(FieldPartyIns,NewMemory+500)
+
+luaCall(print('Labels'))
+
+label(NewMemoryLabel)
+label(FieldPartyBackupLabel)
+label(FieldPartyEffectiveAddressLabel)
+label(FieldPartyInsLabel)
+label(FieldPartyCodeLabel)
+label(FieldPartyReturnLabel)
+
+label(FreeMoveEnabledLabel)
+label(FreeMoveSpeedLabel)
+label(SkipFreeMoveLabel)
+
+luaCall(print('Memory'))
+
+NewMemory:
+	NewMemoryLabel:
+	db mysignature
+	db '<FieldPartyBackup>'
+	FieldPartyBackupLabel:
+	readmem(FieldPartyAddress,FieldPartyBytesLength)
+	db '</FieldPartyBackup>'
+	db '<FieldPartyEffectiveAddress:u64*6>'
+	FieldPartyEffectiveAddressLabel:
+	dq 00 // Buffer Address
+    dq 00 // Slot0
+    dq 00 // Slot1
+    dq 00
+    dq 00
+    dq 00 // Slot4
+	db '</FieldPartyEffectiveAddress:u64*6>'
+	db '<FreeMoveEnabled:u8>'
+	FreeMoveEnabledLabel:
+	db 00
+	db '</FreeMoveEnabled:u8>'
+	db '<FreeMoveSpeed:f32>'
+	FreeMoveSpeedLabel:
+	dd (float)8.0
+	db '</FreeMoveSpeed:f32>'
+
+
+luaCall(print('Instructions'))
+
+FieldPartyIns:
+	FieldPartyInsLabel:
+	mov [FieldPartyEffectiveAddressLabel],rbx
+{$luacode}
+print( 'LuaCode1' );
+SlotTable = {};
+function SlotTable:new( slots_array )
+	print( 'Creating new SlotTable.' );
+    local this = {
+		slots = ( slots_array or {0,0,0,0,0} ),
+		noop = false,
+		baseLabel = 'FieldPartyEffectiveAddressLabel',
+		bufferValue = 0451,
+		maxSlots = 5
+	};
+    printf( 'Have this: baseLabel=%s bufferValue=%d maxSlots=%d', this.baseLabel, this.bufferValue, this.maxSlots );
+    setmetatable( this, {
+		__index = SlotTable,
+		__newindex = function( this, slot, value )
+			printf( 'Attempting set slot %d to %d', slot, value );
+			this.slots[slot] = value;
+		end,
+		__tostring = function( this )
+			local _return = '[ ';
+			for i,v in ipairs( this.slots ) do
+				_return = _return .. v;
+				if( i < 5 ) then
+					_return = _return .. ', ';
+				else
+					_return = _return .. ' ]';
+				end
+			end
+			return _return;
+		end
+	} );
+    print( 'Set metatable for this.' );
+	this:read();
+	--this:write();
+    return this;
+end
+
+function SlotTable:exists( value )
+	local _return = 0;
+	for i in ipairs( self.slots ) do
+		printf( 'Checking %d/%d: %d == %d ?', i, #self.slots, self.slots[i], value );
+    	if( self.slots[i] == value ) then
+        	_return = i;
+			printf( 'Found match (%d) should break.', _return );
+            break;
+        end
+    end
+    return _return;
+end
+
+function SlotTable:read()
+	print( 'SlotTable:read' );
+	if( self.noop == true ) then
+		for i in ipairs( self.slots ) do
+			printf( 'read %d/%d: %d => x', i, #self.slots, self.slots[i] );
+		end
+	else
+		for i in ipairs( self.slots ) do
+        	printf( 'read %d/%d', i, #self.slots );
+			self.slots[i] = self:getU64FromOffsetIndex( i );
+		end
+	end
+end
+
+function SlotTable:write()
+	if( self.noop == true ) then
+		for i in ipairs( self.slots ) do
+			printf( 'write %d/%d: writing %d to address', i, #self.slots, self.slots[i] );
+		end
+	else
+		for i,value in ipairs( self.slots ) do
+			local address = self:getAddressFromOffsetIndex( i );
+			printf( 'write: For %d/%d: Writing %d to %d', i, #self.slots, value, address );
+			writeQword( address, value );
+		end
+	end
+end
+
+function SlotTable:clear()
+	for i in ipairs( self.slots ) do
+		self.slots[i] = 0;
+	end
+end
+
+function SlotTable:getEmpty()
+	local _return = 0;
+	for i in ipairs( self.slots ) do
+		if( self.slots[i] == 0 ) then
+			_return = i;
+			break;
+		end
+	end
+	if( _return == 0 ) then
+		self:clear();
+		_return = 1;
+	end
+	return _return;
+end
+
+function SlotTable:add( value )
+	if( self:exists( value ) == 0 ) then
+		local empty_slot = self:getEmpty();
+		self.slots[empty_slot] = value;
+	end
+end
+
+function SlotTable:getAddressFromOffsetIndex( index )
+	printf( 'getAddressFromOffsetIndex received %d', index );
+	local _return = nil;
+	if( self.noop ~= true and index >= 0 and index <= self.maxSlots ) then
+    	print( 'Checks passed.' );
+		local address_string = self.baseLabel;
+        print( 'address_string: ', address_string );
+		if( index > 0 ) then
+			local offset = string.format( '+%02x', index * 8 );
+        	print( 'offset: ', offset );
+			address_string = address_string..offset;
+        	print( 'address_string: ', address_string );
+		end
+		_return = getAddressSafe( address_string );
+	end
+	printf( 'getAddressFromOffsetIndex returned %d', _return );
+	return _return;
+end
+
+function SlotTable:getU64FromOffsetIndex( index )
+	printf( 'getU64FromOffsetIndex received %d', index );
+	local _return = 0;
+	local address = self:getAddressFromOffsetIndex( index );
+	if( self.noop ~= true and address ~= nil ) then
+		local temp_pointer = readQword( address );
+		if( temp_pointer ~= nil ) then
+			_return = temp_pointer;
+			printf( 'Got %d from %d', _return, address );
+		end
+	end
+	printf( 'getU64FromOffsetIndex returned %d', _return );
+	return _return;
+end
+
+function SlotTable:getBufferValue()
+	self.bufferValue = self:getU64FromOffsetIndex( 0 );
+	return self.bufferValue;
+end
+
+st = SlotTable:new();
+local buffer_value = st:getBufferValue();
+st:add( buffer_value );
+print( 'st: ', tostring(st) );
+st:write();
+{$asm}
+
+
+FieldPartyCodeLabel:
+// Original code
+	mov eax,[rcx+10]
+	mov [rbx+44],eax
+	mov rax,[rdi+58]
+	test rax,rax
+	je GameAssembly.dll+100A3D6
+{$asm}
+	pushf
+	push rax
+	mov al,[FreeMoveEnabledLabel]
+	cmp al,1
+	pop rax
+	jne	SkipFreeMoveLabel
+	SkipFreeMoveLabel:
+	popf
+	jmp FieldPartyReturnLabel
+
+FieldPartyAddress:
+	jmp FieldPartyInsLabel
+    db FieldPartyNops
+
+FieldPartyReturnLabel:
+	//ret
+	luaCall(print('return'))
+	registerSymbol(FieldPartyAddress)
+	registerSymbol(FieldPartyBytes)
+	registerSymbol(FieldPartyBytesLength)
+	registerSymbol(FieldPartyNops)
+	registerSymbol(FieldPartyIns)
+	registerSymbol(NewMemoryLabel)
+	registerSymbol(FieldPartyBackupLabel)
+	registerSymbol(FieldPartyEffectiveAddressLabel)
+	registerSymbol(FieldPartyInsLabel)
+	registerSymbol(FieldPartyCodeLabel)
+    registerSymbol(FieldPartyReturnLabel)
+	registerSymbol(FreeMoveEnabledLabel)
+	registerSymbol(FreeMoveSpeedLabel)
+	registerSymbol(SkipFreeMoveLabel)
+
+[DISABLE]
+luaCall(print('DISABLE'))
+
+FieldPartyAddress:
+	readmem(FieldPartyBackupLabel,FieldPartyBytesLength)
+
+	luaCall(print('unregisterSymbols'))
+    unregisterSymbol(FieldPartyAddress)
+	unregisterSymbol(FieldPartyBytes)
+	unregisterSymbol(FieldPartyBytesLength)
+	unregisterSymbol(FieldPartyNops)
+	unregisterSymbol(FieldPartyIns)
+	unregisterSymbol(NewMemoryLabel)
+	unregisterSymbol(FieldPartyBackupLabel)
+	unregisterSymbol(FieldPartyEffectiveAddressLabel)
+	unregisterSymbol(FieldPartyInsLabel)
+	unregisterSymbol(FieldPartyCodeLabel)
+    unregisterSymbol(FieldPartyReturnLabel)
+	//HP
+	//FreeMove
+	unregisterSymbol(FreeMoveEnabledLabel)
+	unregisterSymbol(FreeMoveSpeedLabel)
+	unregisterSymbol(SkipFreeMoveLabel)
+
+luaCall(print('Deallocs'))
+
+dealloc(NewMemory)
+
+{
+// ORIGINAL CODE - INJECTION POINT: GameAssembly.dll+100A36C
+
+GameAssembly.dll+100A34B: 0F 84 85 00 00 00  - je GameAssembly.dll+100A3D6
+GameAssembly.dll+100A351: 48 8B 40 10        - mov rax,[rax+10]
+GameAssembly.dll+100A355: 48 85 C0           - test rax,rax
+GameAssembly.dll+100A358: 74 7C              - je GameAssembly.dll+100A3D6
+GameAssembly.dll+100A35A: 83 78 18 00        - cmp dword ptr [rax+18],00
+GameAssembly.dll+100A35E: 76 7C              - jna GameAssembly.dll+100A3DC
+GameAssembly.dll+100A360: 48 8B 48 20        - mov rcx,[rax+20]
+GameAssembly.dll+100A364: 48 85 C9           - test rcx,rcx
+GameAssembly.dll+100A367: 74 6D              - je GameAssembly.dll+100A3D6
+GameAssembly.dll+100A369: 8B 41 10           - mov eax,[rcx+10]
+// ---------- INJECTING HERE ----------
+GameAssembly.dll+100A36C: 89 43 44           - mov [rbx+44],eax
+// ---------- DONE INJECTING  ----------
+GameAssembly.dll+100A36F: 48 8B 47 58        - mov rax,[rdi+58]
+GameAssembly.dll+100A373: 48 85 C0           - test rax,rax
+GameAssembly.dll+100A376: 74 5E              - je GameAssembly.dll+100A3D6
+GameAssembly.dll+100A378: 48 8B 40 10        - mov rax,[rax+10]
+GameAssembly.dll+100A37C: 48 85 C0           - test rax,rax
+GameAssembly.dll+100A37F: 74 55              - je GameAssembly.dll+100A3D6
+GameAssembly.dll+100A381: 83 78 18 01        - cmp dword ptr [rax+18],01
+GameAssembly.dll+100A385: 76 65              - jna GameAssembly.dll+100A3EC
+GameAssembly.dll+100A387: 48 8B 48 28        - mov rcx,[rax+28]
+GameAssembly.dll+100A38B: 48 85 C9           - test rcx,rcx
+}
