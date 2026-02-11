@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheatTable CheatEngineTableVersion="45">
-  <Forms>
-    <UDF1 Class="TCEForm" Encoding="Ascii85">3u0hk2nldAU:MM2b.}cxWeIh0Gi32eO*FvcW?Ph7%{mcIVgALy9FkwaRL(ZnnNpGg/gz.[7L.V;:dpp6@SY!KXQt/cWag#?1b8x4FfafB</UDF1>
-  </Forms>
   <CheatEntries>
     <CheatEntry>
       <ID>507</ID>
-      <Description>"Auto Assemble script"</Description>
+      <Description>"AllocateMemoryScript"</Description>
       <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : Etrian Odyssey 2.exe
+      <AssemblerScript>{$lua}
+if syntaxcheck then return end
+if memrec then print( 'memrec:', memrec) end
+if( cheatEngineIs64Bit() == true ) then
+	ce_bits = '64-bit';
+else
+	ce_bits = '32-bit';
+end
+printf( 'CheatEngine v%s (%s) directory: %s', getCEVersion(), ce_bits, getCheatEngineDir() );
+{$asm}
+luaCall(print('Defines'))
+
+define(mysignature,43 4e 4f 23 55 6e 69 71 75 65 23 53 69 67 6e 61 74 75 72 65 23 43 4e 4f)
+
+
+[ENABLE]
+luaCall(print('ENABLE'))
+
+luaCall(print('Asserts'))
+
+luaCall(print('AOB Scans'))
+
+luaCall(print('Allocs'))
+alloc(NewMemory,$1000)
+
+
+luaCall(print('Labels'))
+
+label(NewMemoryLabel)
+
+luaCall(print('Memory'))
+
+NewMemory:
+	NewMemoryLabel:
+	db mysignature
+
+luaCall(print('Instructions'))
+
+	//ret
+	luaCall(print('return'))
+	registerSymbol(NewMemoryLabel)
+
+[DISABLE]
+luaCall(print('DISABLE'))
+
+	luaCall(print('unregisterSymbols'))
+	unregisterSymbol(NewMemoryLabel)
+
+luaCall(print('Deallocs'))
+
+dealloc(NewMemory)
+
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"NewMemory"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>NewMemoryLabel</Address>
+        </CheatEntry>
+		<CheatEntry>
+				<ID>11</ID>
+				<Description>"FieldPartyScript"</Description>
+				<VariableType>Auto Assembler Script</VariableType>
+				<AssemblerScript>{ Game   : Etrian Odyssey 2.exe
   Version: 
   Date   : 2026-02-11
   Author : willa
@@ -22,26 +84,14 @@ GameAssembly.dll+100A36F: 48 8B 47 58        - mov rax,[rdi+58]
 GameAssembly.dll+100A373: 48 85 C0           - test rax,rax
 GameAssembly.dll+100A376: 74 5E              - je GameAssembly.dll+100A3D6
 }
-{$lua}
-if syntaxcheck then return end
-if memrec then print( 'memrec:', memrec) end
-print('CEVersion:', getCEVersion());
-if( cheatEngineIs64Bit() == true ) then
-print('64-bit');
-else
-print('32-bit');
-end
-print('CheatEngineDir:', getCheatEngineDir());
-{$asm}
-luaCall(print('Defines'))
-
-define(mysignature,43 4e 4f 23 55 6e 69 71 75 65 23 53 69 67 6e 61 74 75 72 65 23 43 4e 4f)
 
 // I1: Post-battle, pre-result, HP write
 define(FieldPartyAddress,"GameAssembly.dll"+100A369)
 define(FieldPartyBytes,8B 41 10 89 43 44 48 8B 47 58 48 85 C0 74 5E)
 define(FieldPartyBytesLength,$0F)
 define(FieldPartyNops,90)
+define(FieldPartyMemory,NewMemoryLabel+100)
+define(FieldPartyIns,NewMemoryLabel+500)
 
 [ENABLE]
 luaCall(print('ENABLE'))
@@ -50,30 +100,22 @@ luaCall(print('Asserts'))
 assert(FieldPartyAddress,FieldPartyBytes)
 
 luaCall(print('AOB Scans'))
-
+				
 luaCall(print('Allocs'))
-alloc(NewMemory,$1000)
-
-define(FieldPartyIns,NewMemory+500)
 
 luaCall(print('Labels'))
 
-label(NewMemoryLabel)
+label(FieldPartyMemoryLabel)
 label(FieldPartyBackupLabel)
 label(FieldPartyEffectiveAddressLabel)
 label(FieldPartyInsLabel)
 label(FieldPartyCodeLabel)
 label(FieldPartyReturnLabel)
 
-label(FreeMoveEnabledLabel)
-label(FreeMoveSpeedLabel)
-label(SkipFreeMoveLabel)
-
 luaCall(print('Memory'))
 
-NewMemory:
-	NewMemoryLabel:
-	db mysignature
+FieldPartyMemory:
+	FieldPartyMemoryLabel:
 	db '&lt;FieldPartyBackup&gt;'
 	FieldPartyBackupLabel:
 	readmem(FieldPartyAddress,FieldPartyBytesLength)
@@ -87,15 +129,6 @@ NewMemory:
     dq 00
     dq 00 // Slot4
 	db '&lt;/FieldPartyEffectiveAddress:u64*6&gt;'
-	db '&lt;FreeMoveEnabled:u8&gt;'
-	FreeMoveEnabledLabel:
-	db 00
-	db '&lt;/FreeMoveEnabled:u8&gt;'
-	db '&lt;FreeMoveSpeed:f32&gt;'
-	FreeMoveSpeedLabel:
-	dd (float)8.0
-	db '&lt;/FreeMoveSpeed:f32&gt;'
-
 
 luaCall(print('Instructions'))
 
@@ -263,16 +296,6 @@ FieldPartyCodeLabel:
 	mov rax,[rdi+58]
 	test rax,rax
 	je GameAssembly.dll+100A3D6
-{$asm}
-	pushf
-	push rax
-	mov al,[FreeMoveEnabledLabel]
-	cmp al,1
-	pop rax
-	jne	SkipFreeMoveLabel
-	SkipFreeMoveLabel:
-	popf
-	jmp FieldPartyReturnLabel
 
 FieldPartyAddress:
 	jmp FieldPartyInsLabel
@@ -285,16 +308,14 @@ FieldPartyReturnLabel:
 	registerSymbol(FieldPartyBytes)
 	registerSymbol(FieldPartyBytesLength)
 	registerSymbol(FieldPartyNops)
+	registerSymbol(FieldPartyMemory)
 	registerSymbol(FieldPartyIns)
-	registerSymbol(NewMemoryLabel)
 	registerSymbol(FieldPartyBackupLabel)
 	registerSymbol(FieldPartyEffectiveAddressLabel)
+	registerSymbol(FieldPartyMemoryLabel)
 	registerSymbol(FieldPartyInsLabel)
 	registerSymbol(FieldPartyCodeLabel)
     registerSymbol(FieldPartyReturnLabel)
-	registerSymbol(FreeMoveEnabledLabel)
-	registerSymbol(FreeMoveSpeedLabel)
-	registerSymbol(SkipFreeMoveLabel)
 
 [DISABLE]
 luaCall(print('DISABLE'))
@@ -307,22 +328,14 @@ FieldPartyAddress:
 	unregisterSymbol(FieldPartyBytes)
 	unregisterSymbol(FieldPartyBytesLength)
 	unregisterSymbol(FieldPartyNops)
+	unregisterSymbol(FieldPartyMemory)
 	unregisterSymbol(FieldPartyIns)
-	unregisterSymbol(NewMemoryLabel)
 	unregisterSymbol(FieldPartyBackupLabel)
 	unregisterSymbol(FieldPartyEffectiveAddressLabel)
+	unregisterSymbol(FieldPartyMemoryLabel)
 	unregisterSymbol(FieldPartyInsLabel)
 	unregisterSymbol(FieldPartyCodeLabel)
     unregisterSymbol(FieldPartyReturnLabel)
-	//HP
-	//FreeMove
-	unregisterSymbol(FreeMoveEnabledLabel)
-	unregisterSymbol(FreeMoveSpeedLabel)
-	unregisterSymbol(SkipFreeMoveLabel)
-
-luaCall(print('Deallocs'))
-
-dealloc(NewMemory)
 
 {
 // ORIGINAL CODE - INJECTION POINT: GameAssembly.dll+100A36C
@@ -352,13 +365,6 @@ GameAssembly.dll+100A387: 48 8B 48 28        - mov rcx,[rax+28]
 GameAssembly.dll+100A38B: 48 85 C9           - test rcx,rcx
 }
 </AssemblerScript>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>1</ID>
-          <Description>"NewMemory"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Byte</VariableType>
-          <Address>NewMemoryLabel</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>510</ID>
