@@ -360,363 +360,383 @@ GameAssembly.dll+100A38B: 48 85 C9           - test rcx,rcx
           <VariableType>Byte</VariableType>
           <Address>NewMemoryLabel</Address>
         </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>100</ID>
-      <Description>"1"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>8 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+8</Address>
-      <Offsets>
-        <Offset>0</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>101</ID>
-      <Description>"1-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+8</Address>
-      <Offsets>
-        <Offset>44</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>102</ID>
-      <Description>"1-TP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+8</Address>
-      <Offsets>
-        <Offset>48</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>103</ID>
-      <Description>"1-XP [0,874140]"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+8</Address>
-      <Offsets>
-        <Offset>4C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>104</ID>
-      <Description>"1-LVL"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+8</Address>
-      <Offsets>
-        <Offset>5C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>105</ID>
-      <Description>"1-BP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+8</Address>
-      <Offsets>
-        <Offset>60</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>106</ID>
-      <Description>"1-SkP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+8</Address>
-      <Offsets>
-        <Offset>68</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>200</ID>
-      <Description>"2"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>8 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+10</Address>
-      <Offsets>
-        <Offset>0</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>201</ID>
-      <Description>"2-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+10</Address>
-      <Offsets>
-        <Offset>44</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>202</ID>
-      <Description>"2-TP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+10</Address>
-      <Offsets>
-        <Offset>48</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>203</ID>
-      <Description>"2-XP [0,874140]"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+10</Address>
-      <Offsets>
-        <Offset>4C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>204</ID>
-      <Description>"2-LVL"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+10</Address>
-      <Offsets>
-        <Offset>5C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>205</ID>
-      <Description>"2-BP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+10</Address>
-      <Offsets>
-        <Offset>60</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>206</ID>
-      <Description>"2-SkP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+10</Address>
-      <Offsets>
-        <Offset>68</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>300</ID>
-      <Description>"3"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>8 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+18</Address>
-      <Offsets>
-        <Offset>0</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>301</ID>
-      <Description>"3-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+18</Address>
-      <Offsets>
-        <Offset>44</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>302</ID>
-      <Description>"3-TP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+18</Address>
-      <Offsets>
-        <Offset>48</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>303</ID>
-      <Description>"3-XP [0,874140]"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+18</Address>
-      <Offsets>
-        <Offset>4C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>304</ID>
-      <Description>"3-LVL"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+18</Address>
-      <Offsets>
-        <Offset>5C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>305</ID>
-      <Description>"3-BP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+18</Address>
-      <Offsets>
-        <Offset>60</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>306</ID>
-      <Description>"3-SkP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+18</Address>
-      <Offsets>
-        <Offset>68</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>400</ID>
-      <Description>"4"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>8 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+20</Address>
-      <Offsets>
-        <Offset>0</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>401</ID>
-      <Description>"4-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+20</Address>
-      <Offsets>
-        <Offset>44</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>402</ID>
-      <Description>"4-TP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+20</Address>
-      <Offsets>
-        <Offset>48</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>403</ID>
-      <Description>"4-XP [0,874140]"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+20</Address>
-      <Offsets>
-        <Offset>4C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>404</ID>
-      <Description>"4-LVL"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+20</Address>
-      <Offsets>
-        <Offset>5C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>405</ID>
-      <Description>"4-BP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+20</Address>
-      <Offsets>
-        <Offset>60</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>406</ID>
-      <Description>"4-SkP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+20</Address>
-      <Offsets>
-        <Offset>68</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>500</ID>
-      <Description>"5"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>8 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+28</Address>
-      <Offsets>
-        <Offset>0</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>501</ID>
-      <Description>"5-HP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+28</Address>
-      <Offsets>
-        <Offset>44</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>502</ID>
-      <Description>"5-TP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+28</Address>
-      <Offsets>
-        <Offset>48</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>503</ID>
-      <Description>"5-XP [0,874140]"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+28</Address>
-      <Offsets>
-        <Offset>4C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>504</ID>
-      <Description>"5-LVL"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+28</Address>
-      <Offsets>
-        <Offset>5C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>505</ID>
-      <Description>"5-BP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+28</Address>
-      <Offsets>
-        <Offset>60</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>506</ID>
-      <Description>"5-SkP"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>FieldPartyEffectiveAddressLabel+28</Address>
-      <Offsets>
-        <Offset>68</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>508</ID>
-      <Description>"InfiniteHarvest"</Description>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
+        <CheatEntry>
+          <ID>510</ID>
+          <Description>"FieldPartySlots"</Description>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>100</ID>
+              <Description>"1"</Description>
+              <Options moManualExpandCollapse="1"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>FieldPartyEffectiveAddressLabel+8</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>101</ID>
+                  <Description>"1-HP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+8</Address>
+                  <Offsets>
+                    <Offset>44</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>102</ID>
+                  <Description>"1-TP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+8</Address>
+                  <Offsets>
+                    <Offset>48</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>103</ID>
+                  <Description>"1-XP [0,874140]"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+8</Address>
+                  <Offsets>
+                    <Offset>4C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104</ID>
+                  <Description>"1-LVL"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+8</Address>
+                  <Offsets>
+                    <Offset>5C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>105</ID>
+                  <Description>"1-BP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+8</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>106</ID>
+                  <Description>"1-SkP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+8</Address>
+                  <Offsets>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>200</ID>
+              <Description>"2"</Description>
+              <Options moManualExpandCollapse="1"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>FieldPartyEffectiveAddressLabel+10</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>201</ID>
+                  <Description>"2-HP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+10</Address>
+                  <Offsets>
+                    <Offset>44</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>202</ID>
+                  <Description>"2-TP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+10</Address>
+                  <Offsets>
+                    <Offset>48</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>203</ID>
+                  <Description>"2-XP [0,874140]"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+10</Address>
+                  <Offsets>
+                    <Offset>4C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>204</ID>
+                  <Description>"2-LVL"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+10</Address>
+                  <Offsets>
+                    <Offset>5C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>205</ID>
+                  <Description>"2-BP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+10</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>206</ID>
+                  <Description>"2-SkP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+10</Address>
+                  <Offsets>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>300</ID>
+              <Description>"3"</Description>
+              <Options moManualExpandCollapse="1"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>FieldPartyEffectiveAddressLabel+18</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>301</ID>
+                  <Description>"3-HP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+18</Address>
+                  <Offsets>
+                    <Offset>44</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>302</ID>
+                  <Description>"3-TP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+18</Address>
+                  <Offsets>
+                    <Offset>48</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>303</ID>
+                  <Description>"3-XP [0,874140]"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+18</Address>
+                  <Offsets>
+                    <Offset>4C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>304</ID>
+                  <Description>"3-LVL"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+18</Address>
+                  <Offsets>
+                    <Offset>5C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>305</ID>
+                  <Description>"3-BP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+18</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>306</ID>
+                  <Description>"3-SkP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+18</Address>
+                  <Offsets>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>400</ID>
+              <Description>"4"</Description>
+              <Options moManualExpandCollapse="1"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>FieldPartyEffectiveAddressLabel+20</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>401</ID>
+                  <Description>"4-HP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+20</Address>
+                  <Offsets>
+                    <Offset>44</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>402</ID>
+                  <Description>"4-TP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+20</Address>
+                  <Offsets>
+                    <Offset>48</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>403</ID>
+                  <Description>"4-XP [0,874140]"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+20</Address>
+                  <Offsets>
+                    <Offset>4C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>404</ID>
+                  <Description>"4-LVL"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+20</Address>
+                  <Offsets>
+                    <Offset>5C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>405</ID>
+                  <Description>"4-BP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+20</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>406</ID>
+                  <Description>"4-SkP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+20</Address>
+                  <Offsets>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>500</ID>
+              <Description>"5"</Description>
+              <Options moManualExpandCollapse="1"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>FieldPartyEffectiveAddressLabel+28</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>501</ID>
+                  <Description>"5-HP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+28</Address>
+                  <Offsets>
+                    <Offset>44</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>502</ID>
+                  <Description>"5-TP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+28</Address>
+                  <Offsets>
+                    <Offset>48</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>503</ID>
+                  <Description>"5-XP [0,874140]"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+28</Address>
+                  <Offsets>
+                    <Offset>4C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>504</ID>
+                  <Description>"5-LVL"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+28</Address>
+                  <Offsets>
+                    <Offset>5C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>505</ID>
+                  <Description>"5-BP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+28</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>506</ID>
+                  <Description>"5-SkP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+28</Address>
+                  <Offsets>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>508</ID>
+          <Description>"InfiniteHarvest"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
 
 "GameAssembly.dll"+1349803:
 	mov al,01
@@ -728,6 +748,8 @@ GameAssembly.dll+100A38B: 48 85 C9           - test rcx,rcx
     setl al
 
 </AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
     <CheatEntry>
       <ID>30</ID>
