@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheatTable CheatEngineTableVersion="45">
-	<CheatEntries>
-		<CheatEntry>
-			<ID>507</ID>
-			<Description>"AllocateMemoryScript"</Description>
-			<VariableType>Auto Assembler Script</VariableType>
-			<AssemblerScript>{$lua}
+  <CheatEntries>
+    <CheatEntry>
+      <ID>507</ID>
+      <Description>"AllocateMemoryScript"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
 if syntaxcheck then return end
 if memrec then print( 'memrec:', memrec) end
 if( cheatEngineIs64Bit() == true ) then
@@ -57,20 +57,21 @@ luaCall(print('Deallocs'))
 
 dealloc(NewMemory)
 
-			</AssemblerScript>
-			<CheatEntries>
-				<CheatEntry>
-					<ID>1</ID>
-					<Description>"NewMemory"</Description>
-					<ShowAsSigned>0</ShowAsSigned>
-					<VariableType>Byte</VariableType>
-					<Address>NewMemoryLabel</Address>
-				</CheatEntry>
-				<CheatEntry>
-					<ID>11</ID>
-					<Description>"Update FieldParty on Battle=&gt;Result"</Description>
-					<VariableType>Auto Assembler Script</VariableType>
-					<AssemblerScript>{ Game	 : Etrian Odyssey 2.exe
+			
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"NewMemory"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>NewMemoryLabel</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>11</ID>
+          <Description>"Update FieldParty on Battle=&gt;Result"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game	 : Etrian Odyssey 2.exe
 	Version: 
 	Date	 : 2026-02-11
 	Author : willa
@@ -365,385 +366,385 @@ GameAssembly.dll+100A387: 48 8B 48 28				- mov rcx,[rax+28]
 GameAssembly.dll+100A38B: 48 85 C9					 - test rcx,rcx
 }
 </AssemblerScript>
-				</CheatEntry>
-				<CheatEntry>
-					<ID>510</ID>
-					<Description>"FieldPartySlots"</Description>
-					<Options moManualExpandCollapse="1"/>
-					<GroupHeader>1</GroupHeader>
-					<CheatEntries>
-						<CheatEntry>
-							<ID>100</ID>
-							<Description>"1"</Description>
-							<Options moManualExpandCollapse="1"/>
-							<ShowAsSigned>0</ShowAsSigned>
-							<VariableType>8 Bytes</VariableType>
-							<Address>FieldPartyEffectiveAddressLabel+8</Address>
-							<Offsets>
-								<Offset>0</Offset>
-							</Offsets>
-							<CheatEntries>
-								<CheatEntry>
-									<ID>101</ID>
-									<Description>"1-HP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+8</Address>
-									<Offsets>
-										<Offset>44</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>102</ID>
-									<Description>"1-TP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+8</Address>
-									<Offsets>
-										<Offset>48</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>103</ID>
-									<Description>"1-XP [0,874140]"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+8</Address>
-									<Offsets>
-										<Offset>4C</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>104</ID>
-									<Description>"1-LVL"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+8</Address>
-									<Offsets>
-										<Offset>5C</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>105</ID>
-									<Description>"1-FP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+8</Address>
-									<Offsets>
-										<Offset>60</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>106</ID>
-									<Description>"1-SkP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+8</Address>
-									<Offsets>
-										<Offset>68</Offset>
-									</Offsets>
-								</CheatEntry>
-							</CheatEntries>
-						</CheatEntry>
-						<CheatEntry>
-							<ID>200</ID>
-							<Description>"2"</Description>
-							<Options moManualExpandCollapse="1"/>
-							<ShowAsSigned>0</ShowAsSigned>
-							<VariableType>8 Bytes</VariableType>
-							<Address>FieldPartyEffectiveAddressLabel+10</Address>
-							<Offsets>
-								<Offset>0</Offset>
-							</Offsets>
-							<CheatEntries>
-								<CheatEntry>
-									<ID>201</ID>
-									<Description>"2-HP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+10</Address>
-									<Offsets>
-										<Offset>44</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>202</ID>
-									<Description>"2-TP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+10</Address>
-									<Offsets>
-										<Offset>48</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>203</ID>
-									<Description>"2-XP [0,874140]"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+10</Address>
-									<Offsets>
-										<Offset>4C</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>204</ID>
-									<Description>"2-LVL"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+10</Address>
-									<Offsets>
-										<Offset>5C</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>205</ID>
-									<Description>"2-FP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+10</Address>
-									<Offsets>
-										<Offset>60</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>206</ID>
-									<Description>"2-SkP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+10</Address>
-									<Offsets>
-										<Offset>68</Offset>
-									</Offsets>
-								</CheatEntry>
-							</CheatEntries>
-						</CheatEntry>
-						<CheatEntry>
-							<ID>300</ID>
-							<Description>"3"</Description>
-							<Options moManualExpandCollapse="1"/>
-							<ShowAsSigned>0</ShowAsSigned>
-							<VariableType>8 Bytes</VariableType>
-							<Address>FieldPartyEffectiveAddressLabel+18</Address>
-							<Offsets>
-								<Offset>0</Offset>
-							</Offsets>
-							<CheatEntries>
-								<CheatEntry>
-									<ID>301</ID>
-									<Description>"3-HP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+18</Address>
-									<Offsets>
-										<Offset>44</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>302</ID>
-									<Description>"3-TP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+18</Address>
-									<Offsets>
-										<Offset>48</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>303</ID>
-									<Description>"3-XP [0,874140]"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+18</Address>
-									<Offsets>
-										<Offset>4C</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>304</ID>
-									<Description>"3-LVL"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+18</Address>
-									<Offsets>
-										<Offset>5C</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>305</ID>
-									<Description>"3-FP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+18</Address>
-									<Offsets>
-										<Offset>60</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>306</ID>
-									<Description>"3-SkP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+18</Address>
-									<Offsets>
-										<Offset>68</Offset>
-									</Offsets>
-								</CheatEntry>
-							</CheatEntries>
-						</CheatEntry>
-						<CheatEntry>
-							<ID>400</ID>
-							<Description>"4"</Description>
-							<Options moManualExpandCollapse="1"/>
-							<ShowAsSigned>0</ShowAsSigned>
-							<VariableType>8 Bytes</VariableType>
-							<Address>FieldPartyEffectiveAddressLabel+20</Address>
-							<Offsets>
-								<Offset>0</Offset>
-							</Offsets>
-							<CheatEntries>
-								<CheatEntry>
-									<ID>401</ID>
-									<Description>"4-HP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+20</Address>
-									<Offsets>
-										<Offset>44</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>402</ID>
-									<Description>"4-TP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+20</Address>
-									<Offsets>
-										<Offset>48</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>403</ID>
-									<Description>"4-XP [0,874140]"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+20</Address>
-									<Offsets>
-										<Offset>4C</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>404</ID>
-									<Description>"4-LVL"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+20</Address>
-									<Offsets>
-										<Offset>5C</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>405</ID>
-									<Description>"4-FP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+20</Address>
-									<Offsets>
-										<Offset>60</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>406</ID>
-									<Description>"4-SkP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+20</Address>
-									<Offsets>
-										<Offset>68</Offset>
-									</Offsets>
-								</CheatEntry>
-							</CheatEntries>
-						</CheatEntry>
-						<CheatEntry>
-							<ID>500</ID>
-							<Description>"5"</Description>
-							<Options moManualExpandCollapse="1"/>
-							<ShowAsSigned>0</ShowAsSigned>
-							<VariableType>8 Bytes</VariableType>
-							<Address>FieldPartyEffectiveAddressLabel+28</Address>
-							<Offsets>
-								<Offset>0</Offset>
-							</Offsets>
-							<CheatEntries>
-								<CheatEntry>
-									<ID>501</ID>
-									<Description>"5-HP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+28</Address>
-									<Offsets>
-										<Offset>44</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>502</ID>
-									<Description>"5-TP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+28</Address>
-									<Offsets>
-										<Offset>48</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>503</ID>
-									<Description>"5-XP [0,874140]"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+28</Address>
-									<Offsets>
-										<Offset>4C</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>504</ID>
-									<Description>"5-LVL"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+28</Address>
-									<Offsets>
-										<Offset>5C</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>505</ID>
-									<Description>"5-FP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+28</Address>
-									<Offsets>
-										<Offset>60</Offset>
-									</Offsets>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>506</ID>
-									<Description>"5-SkP"</Description>
-									<ShowAsSigned>0</ShowAsSigned>
-									<VariableType>4 Bytes</VariableType>
-									<Address>FieldPartyEffectiveAddressLabel+28</Address>
-									<Offsets>
-										<Offset>68</Offset>
-									</Offsets>
-								</CheatEntry>
-							</CheatEntries>
-						</CheatEntry>
-					</CheatEntries>
-				</CheatEntry>
-				<CheatEntry>
-					<ID>508</ID>
-					<Description>"InfiniteHarvest"</Description>
-					<VariableType>Auto Assembler Script</VariableType>
-					<AssemblerScript>[ENABLE]
+        </CheatEntry>
+        <CheatEntry>
+          <ID>510</ID>
+          <Description>"FieldPartySlots"</Description>
+          <Options moManualExpandCollapse="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>100</ID>
+              <Description>"1"</Description>
+              <Options moManualExpandCollapse="1"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>FieldPartyEffectiveAddressLabel+8</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>101</ID>
+                  <Description>"1-HP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+8</Address>
+                  <Offsets>
+                    <Offset>44</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>102</ID>
+                  <Description>"1-TP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+8</Address>
+                  <Offsets>
+                    <Offset>48</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>103</ID>
+                  <Description>"1-XP [0,874140]"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+8</Address>
+                  <Offsets>
+                    <Offset>4C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104</ID>
+                  <Description>"1-LVL"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+8</Address>
+                  <Offsets>
+                    <Offset>5C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>105</ID>
+                  <Description>"1-FP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+8</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>106</ID>
+                  <Description>"1-SkP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+8</Address>
+                  <Offsets>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>200</ID>
+              <Description>"2"</Description>
+              <Options moManualExpandCollapse="1"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>FieldPartyEffectiveAddressLabel+10</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>201</ID>
+                  <Description>"2-HP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+10</Address>
+                  <Offsets>
+                    <Offset>44</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>202</ID>
+                  <Description>"2-TP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+10</Address>
+                  <Offsets>
+                    <Offset>48</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>203</ID>
+                  <Description>"2-XP [0,874140]"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+10</Address>
+                  <Offsets>
+                    <Offset>4C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>204</ID>
+                  <Description>"2-LVL"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+10</Address>
+                  <Offsets>
+                    <Offset>5C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>205</ID>
+                  <Description>"2-FP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+10</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>206</ID>
+                  <Description>"2-SkP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+10</Address>
+                  <Offsets>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>300</ID>
+              <Description>"3"</Description>
+              <Options moManualExpandCollapse="1"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>FieldPartyEffectiveAddressLabel+18</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>301</ID>
+                  <Description>"3-HP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+18</Address>
+                  <Offsets>
+                    <Offset>44</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>302</ID>
+                  <Description>"3-TP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+18</Address>
+                  <Offsets>
+                    <Offset>48</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>303</ID>
+                  <Description>"3-XP [0,874140]"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+18</Address>
+                  <Offsets>
+                    <Offset>4C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>304</ID>
+                  <Description>"3-LVL"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+18</Address>
+                  <Offsets>
+                    <Offset>5C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>305</ID>
+                  <Description>"3-FP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+18</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>306</ID>
+                  <Description>"3-SkP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+18</Address>
+                  <Offsets>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>400</ID>
+              <Description>"4"</Description>
+              <Options moManualExpandCollapse="1"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>FieldPartyEffectiveAddressLabel+20</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>401</ID>
+                  <Description>"4-HP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+20</Address>
+                  <Offsets>
+                    <Offset>44</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>402</ID>
+                  <Description>"4-TP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+20</Address>
+                  <Offsets>
+                    <Offset>48</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>403</ID>
+                  <Description>"4-XP [0,874140]"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+20</Address>
+                  <Offsets>
+                    <Offset>4C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>404</ID>
+                  <Description>"4-LVL"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+20</Address>
+                  <Offsets>
+                    <Offset>5C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>405</ID>
+                  <Description>"4-FP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+20</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>406</ID>
+                  <Description>"4-SkP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+20</Address>
+                  <Offsets>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>500</ID>
+              <Description>"5"</Description>
+              <Options moManualExpandCollapse="1"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>FieldPartyEffectiveAddressLabel+28</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>501</ID>
+                  <Description>"5-HP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+28</Address>
+                  <Offsets>
+                    <Offset>44</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>502</ID>
+                  <Description>"5-TP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+28</Address>
+                  <Offsets>
+                    <Offset>48</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>503</ID>
+                  <Description>"5-XP [0,874140]"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+28</Address>
+                  <Offsets>
+                    <Offset>4C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>504</ID>
+                  <Description>"5-LVL"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+28</Address>
+                  <Offsets>
+                    <Offset>5C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>505</ID>
+                  <Description>"5-FP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+28</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>506</ID>
+                  <Description>"5-SkP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>FieldPartyEffectiveAddressLabel+28</Address>
+                  <Offsets>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>508</ID>
+          <Description>"InfiniteHarvest"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
 
 "GameAssembly.dll"+1349803:
 	mov al,01
@@ -754,14 +755,15 @@ GameAssembly.dll+100A38B: 48 85 C9					 - test rcx,rcx
 "GameAssembly.dll"+1349803:
 		setl al
 
-					</AssemblerScript>
-				</CheatEntry>
-				<CheatEntry>
-					<ID>600</ID>
-					<Description>"Manage Addresses on Field=>Battle"</Description>
-					<Options moManualExpandCollapse="1"/>
-					<VariableType>Auto Assembler Script</VariableType>
-					<AssemblerScript>/*
+					
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>600</ID>
+          <Description>"Manage Addresses on Field=&gt;Battle"</Description>
+          <Options moManualExpandCollapse="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>/*
 														 **************************************************************
 														 *													FUNCTION													*
 														 **************************************************************
@@ -782,10 +784,17 @@ GameAssembly.dll+100A38B: 48 85 C9					 - test rcx,rcx
 			 180c12784 48 83 ec 20		 SUB				RSP,0x20
 			 180c12788 80 3d bc				CMP				byte ptr [DAT_18315e54b],0x0
 				 bd 54 02 00
+
+GameAssembly.dll+C12788 - 48 83 FC 00           - cmp rsp,00 { 0 }
+GameAssembly.dll+C1278C - 90                    - nop
+GameAssembly.dll+C1278D - 90                    - nop
+GameAssembly.dll+C1278E - 90                    - nop
+
 */
 
 define(I600Address,"GameAssembly.dll"+C12780)
 define(I600Bytes,40 53 55 57 48 83 EC 20 80 3D BC BD 54 02 00)
+//define(I600Bytes,40 53 55 57 48 83 EC 20 48 83 FC 00 90 90 90)
 define(I600BytesLength,$0F)
 define(I600Nops,90)
 define(I600Memory,NewMemoryLabel+200)
@@ -799,6 +808,19 @@ define(I600Ins,NewMemoryLabel+700)
                  6a 00
        180c12c54 4c 8b f0        MOV        R14,RAX
        180c12c57 4d 85 ff        TEST       R15,R15
+
+GameAssembly.dll+C12C4A - 48 31 C9              - xor rcx,rcx
+GameAssembly.dll+C12C4D - 48 8B F0              - mov rsi,rax
+GameAssembly.dll+C12C50 - E8 3B5F6A00           - call GameAssembly.dll+12B8B90
+GameAssembly.dll+C12C55 - 4C 8B F0              - mov r14,rax
+GameAssembly.dll+C12C58 - 4D 85 FF              - test r15,r15
+
+GameAssembly.dll+C12C4A - 33 C9                 - xor ecx,ecx
+GameAssembly.dll+C12C4C - 48 8B F0              - mov rsi,rax
+GameAssembly.dll+C12C4F - E8 3C5F6A00           - call GameAssembly.dll+12B8B90
+GameAssembly.dll+C12C54 - 4C 8B F0              - mov r14,rax
+GameAssembly.dll+C12C57 - 4D 85 FF              - test r15,r15
+
 */
 
 define(I6001Address,"GameAssembly.dll"+C12C4A)
@@ -851,7 +873,7 @@ I600Memory:
 	db '&lt;/I600EffectiveAddress:a64&gt;'
 	db '&lt;CurrentSlot:u8&gt;'
 	CurrentSlotLabel:
-		db 0
+		db 00
 	db '&lt;/CurrentSlot:u8&gt;'
 	db '&lt;GuildRegistryIndex:u8&gt;'
 	GuildRegistryIndexLabel:
@@ -861,22 +883,22 @@ I600Memory:
 		db 00
 		db 00 // Slot4
 	db '&lt;/GuildRegistryIndex:u8&gt;'
-	db '&lt;FieldPartySlots:a64&gt;'
+	db '&lt;FieldPartySlots:a64*5&gt;'
 	FieldPartySlotsLabel:
 		dq 00 // Slot0
 		dq 00 // Slot1
 		dq 00
 		dq 00
 		dq 00 // Slot4
-	db '&lt;/FieldPartySlots:a64&gt;'
-	db '&lt;BattleParticipantSlots:a64&gt;'
+	db '&lt;/FieldPartySlots:a64*5&gt;'
+	db '&lt;BattleParticipantSlots:a64*5&gt;'
 	BattleParticipantSlotsLabel:
 		dq 00 // Slot0
 		dq 00 // Slot1
 		dq 00
 		dq 00
 		dq 00 // Slot4
-	db '&lt;/BattleParticipantSlots:a64&gt;'
+	db '&lt;/BattleParticipantSlots:a64*5&gt;'
 	
 
 luaCall(print('Instructions'))
@@ -884,17 +906,26 @@ luaCall(print('Instructions'))
 I600Ins:
 	I600InsLabel:
 	mov [I600EffectiveAddressLabel],rcx
-	push rflags
+	pushfq
+    push rbx
 	mov rcx,0
 	ClearLoopLabel:
-	mov qword ptr [FieldPartySlotsLabel+rcx*8],0
-	mov qword ptr [BattleParticipantSlotsLabel+rcx*8],0
+    lea rbx,[GuildRegistryIndexLabel]
+    lea rbx,[rbx+rcx]
+    mov byte [rbx],0
+    lea rbx,[FieldPartySlotsLabel]
+    lea rbx,[rbx+rcx*8]
+	mov qword ptr [rbx],0
+    lea rbx,[BattleParticipantSlotsLabel]
+    lea rbx,[rbx+rcx*8]
+	mov qword ptr [rbx],0
 	inc rcx
 	cmp rcx,5
-	jb [ClearLoopLabel]
-	pop rflags
+	jb ClearLoopLabel
+    pop rbx
+    popfq
 	mov rcx,[I600EffectiveAddressLabel]
-	mov [CurrentSlotLabel],0
+	mov byte [CurrentSlotLabel],0
 
 I600CodeLabel:
 // Original code
@@ -902,7 +933,11 @@ I600CodeLabel:
 	push rbp
 	push rdi
 	sub rsp,20
-	cmp byte ptr ["GameAssembly.dll"+315E54B],0
+    //mov rbx,315E54B
+    //lea rbx,[GameAssembly.dll+rbx]
+	cmp rsp,00
+    //cmp byte ptr [GameAssembly.dll+315E54B],00
+
 	jmp I600ReturnLabel
 
 I600Address:
@@ -911,7 +946,7 @@ I600Address:
 
 I600ReturnLabel:
 	//ret
-	luaCall(print('return'))
+	luaCall(print('I600return'))
 	registerSymbol(I600Address)
 	registerSymbol(I600Bytes)
 	registerSymbol(I600BytesLength)
@@ -926,7 +961,7 @@ I600ReturnLabel:
 	registerSymbol(I600ReturnLabel)
 	registerSymbol(CurrentSlotLabel)
 	registerSymbol(GuildRegistryIndexLabel)
-	registerSymbol(PartySlotsLabel)
+	registerSymbol(FieldPartySlotsLabel)
 	registerSymbol(BattleParticipantSlotsLabel)
 
 I6001Ins:
@@ -935,9 +970,9 @@ I6001Ins:
 
 I6001CodeLabel:
 // Original code
-	xor rcx,rcx
+	xor ecx,ecx
 	mov rsi,rax
-	call [GameAssembly.dll+12B8B98]
+	call GameAssembly.dll+12B8B90
 	mov r14,rax
 	test r15,r15
 	jmp I6001ReturnLabel
@@ -948,7 +983,7 @@ I6001Address:
 
 I6001ReturnLabel:
 	//ret
-	luaCall(print('return'))
+	luaCall(print('I6001return'))
 	registerSymbol(I6001Address)
 	registerSymbol(I6001Bytes)
 	registerSymbol(I6001BytesLength)
@@ -965,11 +1000,7 @@ I600Address:
 	readmem(I600BackupLabel,I600BytesLength)
 
 I6001Address:
-	xor rcx,rcx
-	mov rsi,rax
-	call [GameAssembly.dll+12B8B98]
-	mov r14,rax
-	test r15,r15
+	db I6001Bytes
 
 	luaCall(print('unregisterSymbols'))
 	unregisterSymbol(I600Address)
@@ -996,16 +1027,17 @@ I6001Address:
 
 	unregisterSymbol(CurrentSlotLabel)
 	unregisterSymbol(GuildRegistryIndexLabel)
-	unregisterSymbol(PartySlotsLabel)
+	unregisterSymbol(FieldPartySlotsLabel)
 	unregisterSymbol(BattleParticipantSlotsLabel)
 
-					</AssemblerScript>
-					<CheatEntries>
-						<CheatEntry>
-							<ID>601</ID>
-							<Description>"Update GuildRegistryIndex and FieldPartyObject from OnFieldToBattle_GetBattleParticipantA64FromFieldPartySlotA64AndPartyRegistryIndexU32"</Description>
-							<VariableType>Auto Assembler Script</VariableType>
-							<AssemblerScript>/*
+					
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>601</ID>
+              <Description>"Update GuildRegistryIndex and FieldPartyObject from OnFieldToBattle_GetBattleParticipantA64FromFieldPartySlotA64AndPartyRegistryIndexU32"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>/*
 
 	**************************************************************
 	*	FUNCTION	*
@@ -1026,6 +1058,13 @@ I6001Address:
 	90 00 00 00
 	181007d9d 80 3d c3	CMP	byte ptr [DAT_183162167],0x0
 	a3 15 02 00
+
+GameAssembly.dll+1007D90 - 40 53                 - push rbx
+GameAssembly.dll+1007D92 - 41 54                 - push r12
+GameAssembly.dll+1007D94 - 41 55                 - push r13
+GameAssembly.dll+1007D96 - 48 81 EC 90000000     - sub rsp,I600Nops { 00000090 }
+GameAssembly.dll+1007D9D - 80 3D C3A31502 00     - cmp byte ptr [GameAssembly.dll+3162167],00 { (1),0 }
+
 */
 
 define(I601Address,"GameAssembly.dll"+1007D90)
@@ -1049,7 +1088,6 @@ luaCall(print('Labels'))
 
 label(I601MemoryLabel)
 label(I601BackupLabel)
-//label(I601EffectiveAddressLabel)
 label(I601InsLabel)
 label(I601CodeLabel)
 label(I601ReturnLabel)
@@ -1067,11 +1105,19 @@ luaCall(print('Instructions'))
 
 I601Ins:
 	I601InsLabel:
+    push rax
 	push rbx
-	mov rbx,[CurrentSlotLabel]
-	mov [FieldPartySlotsLabel+rbx],rcx
-	mov [GuildRegistryIndexLabel+rbx],dl
+	lea rax,[CurrentSlotLabel]
+    mov al,[rax]
+    //and rax,al
+    lea rbx,[FieldPartySlotsLabel]
+    lea rbx,[rbx+rax*8]
+	mov [rbx],rcx
+    lea rbx,[GuildRegistryIndexLabel]
+    lea rbx,[rbx+rax]
+	mov byte [rbx],dl
 	pop rbx
+    pop rax
 	
 I601CodeLabel:
 // Original code
@@ -1079,7 +1125,8 @@ I601CodeLabel:
 	push r12
 	push r13
 	sub rsp,90
-	cmp byte ptr ["GameAssembly.dll"+3162167],0
+	//cmp byte ptr [GameAssembly.dll+3162167],00
+    cmp rsp,00
 	jmp I601ReturnLabel
 
 I601Address:
@@ -1096,7 +1143,6 @@ I601ReturnLabel:
 	registerSymbol(I601Memory)
 	registerSymbol(I601Ins)
 	registerSymbol(I601BackupLabel)
-	registerSymbol(I601EffectiveAddressLabel)
 	registerSymbol(I601MemoryLabel)
 	registerSymbol(I601InsLabel)
 	registerSymbol(I601CodeLabel)
@@ -1116,19 +1162,19 @@ I601Address:
 	unregisterSymbol(I601Memory)
 	unregisterSymbol(I601Ins)
 	unregisterSymbol(I601BackupLabel)
-	unregisterSymbol(I601EffectiveAddressLabel)
 	unregisterSymbol(I601MemoryLabel)
 	unregisterSymbol(I601InsLabel)
 	unregisterSymbol(I601CodeLabel)
 	unregisterSymbol(I601ReturnLabel)
 
-							</AssemblerScript>
-						</CheatEntry>
-						<CheatEntry>
-							<ID>602</ID>
-							<Description>"Update FieldPartyObject and BattleParticipantObject from OnFieldToBattle_SetBattleParticipantFromFieldPartySlot"</Description>
-							<VariableType>Auto Assembler Script</VariableType>
-							<AssemblerScript>/*
+							
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>602</ID>
+              <Description>"Update FieldPartyObject and BattleParticipantObject from OnFieldToBattle_SetBattleParticipantFromFieldPartySlot"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>/*
 	**************************************************************
 	*	FUNCTION	*
 	**************************************************************
@@ -1250,531 +1296,543 @@ I602Address:
 	unregisterSymbol(I602CodeLabel)
 	unregisterSymbol(I602ReturnLabel)
 
-							</AssemblerScript>
-						</CheatEntry>
-						
-						<CheatEntry>
-							<ID>603</ID>
-							<Description>"PartySlots"</Description>
-							<Options moManualExpandCollapse="1" />
-							<GroupHeader>1</GroupHeader>
-							<CheatEntries>
-								<CheatEntry>
-									<ID>610</ID>
-									<Description>"1"</Description>
-									<Options moManualExpandCollapse="1" />
-									<GroupHeader>2</GroupHeader>
-									<CheatEntries>
-										<CheatEntry>
-											<ID>611</ID>
-											<Description>"GuildRegistryIndex"</Description>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>Byte</VariableType>
-											<Address>GuildRegistryIndexLabel</Address>
-										</CheatEntry>
-										<CheatEntry>
-											<ID>612</ID>
-											<Description>"FieldPartyObject"</Description>
-											<Options moManualExpandCollapse="1" />
-											<ShowAsHex>1</ShowAsHex>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>8 Bytes</VariableType>
-											<Address>FieldPartySlotsLabel</Address>
-											<CheatEntries>
-												<CheatEntry>
-													<ID>6120</ID>
-													<Description>"HP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel</Address>
-													<Offsets>
-														<Offset>44</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6121</ID>
-													<Description>"TP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel</Address>
-													<Offsets>
-														<Offset>48</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6122</ID>
-													<Description>"XP [0,874140]"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel</Address>
-													<Offsets>
-														<Offset>4C</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6123</ID>
-													<Description>"LVL"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel</Address>
-													<Offsets>
-														<Offset>5C</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6124</ID>
-													<Description>"FP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel</Address>
-													<Offsets>
-														<Offset>60</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6125</ID>
-													<Description>"SkP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel</Address>
-													<Offsets>
-														<Offset>68</Offset>
-													</Offsets>
-												</CheatEntry>
-											</CheatEntries>
-										</CheatEntry>
-										<CheatEntry>
-											<ID>613</ID>
-											<Description>"BattleParticipantObject"</Description>
-											<Options moManualExpandCollapse="1" />
-											<ShowAsHex>1</ShowAsHex>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>8 Bytes</VariableType>
-											<Address>BattleParticipantSlotsLabel</Address>
-										</CheatEntry>
-									</CheatEntries>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>620</ID>
-									<Description>"2"</Description>
-									<Options moManualExpandCollapse="1" />
-									<GroupHeader>2</GroupHeader>
-									<CheatEntries>
-										<CheatEntry>
-											<ID>621</ID>
-											<Description>"GuildRegistryIndex"</Description>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>Byte</VariableType>
-											<Address>GuildRegistryIndexLabel+1</Address>
-										</CheatEntry>
-										<CheatEntry>
-											<ID>622</ID>
-											<Description>"FieldPartyObject"</Description>
-											<Options moManualExpandCollapse="1" />
-											<ShowAsHex>1</ShowAsHex>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>8 Bytes</VariableType>
-											<Address>FieldPartySlotsLabel+8</Address>
-											<CheatEntries>
-												<CheatEntry>
-													<ID>6220</ID>
-													<Description>"HP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+8</Address>
-													<Offsets>
-														<Offset>44</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6221</ID>
-													<Description>"TP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+8</Address>
-													<Offsets>
-														<Offset>48</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6222</ID>
-													<Description>"XP [0,874140]"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+8</Address>
-													<Offsets>
-														<Offset>4C</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6223</ID>
-													<Description>"LVL"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+8</Address>
-													<Offsets>
-														<Offset>5C</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6224</ID>
-													<Description>"FP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+8</Address>
-													<Offsets>
-														<Offset>60</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6225</ID>
-													<Description>"SkP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+8</Address>
-													<Offsets>
-														<Offset>68</Offset>
-													</Offsets>
-												</CheatEntry>
-											</CheatEntries>
-										</CheatEntry>
-										<CheatEntry>
-											<ID>623</ID>
-											<Description>"BattleParticipantObject"</Description>
-											<Options moManualExpandCollapse="1" />
-											<ShowAsHex>1</ShowAsHex>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>8 Bytes</VariableType>
-											<Address>BattleParticipantSlotsLabel+8</Address>
-										</CheatEntry>
-									</CheatEntries>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>630</ID>
-									<Description>"3"</Description>
-									<Options moManualExpandCollapse="1" />
-									<GroupHeader>2</GroupHeader>
-									<CheatEntries>
-										<CheatEntry>
-											<ID>631</ID>
-											<Description>"GuildRegistryIndex"</Description>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>Byte</VariableType>
-											<Address>GuildRegistryIndexLabel+2</Address>
-										</CheatEntry>
-										<CheatEntry>
-											<ID>632</ID>
-											<Description>"FieldPartyObject"</Description>
-											<Options moManualExpandCollapse="1" />
-											<ShowAsHex>1</ShowAsHex>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>8 Bytes</VariableType>
-											<Address>FieldPartySlotsLabel+10</Address>
-											<CheatEntries>
-												<CheatEntry>
-													<ID>6320</ID>
-													<Description>"HP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+10</Address>
-													<Offsets>
-														<Offset>44</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6321</ID>
-													<Description>"TP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+10</Address>
-													<Offsets>
-														<Offset>48</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6322</ID>
-													<Description>"XP [0,874140]"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+10</Address>
-													<Offsets>
-														<Offset>4C</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6323</ID>
-													<Description>"LVL"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+10</Address>
-													<Offsets>
-														<Offset>5C</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6324</ID>
-													<Description>"FP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+10</Address>
-													<Offsets>
-														<Offset>60</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6325</ID>
-													<Description>"SkP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+10</Address>
-													<Offsets>
-														<Offset>68</Offset>
-													</Offsets>
-												</CheatEntry>
-											</CheatEntries>
-										</CheatEntry>
-										<CheatEntry>
-											<ID>633</ID>
-											<Description>"BattleParticipantObject"</Description>
-											<Options moManualExpandCollapse="1" />
-											<ShowAsHex>1</ShowAsHex>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>8 Bytes</VariableType>
-											<Address>BattleParticipantSlotsLabel+10</Address>
-										</CheatEntry>
-									</CheatEntries>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>640</ID>
-									<Description>"4"</Description>
-									<Options moManualExpandCollapse="1" />
-									<GroupHeader>2</GroupHeader>
-									<CheatEntries>
-										<CheatEntry>
-											<ID>641</ID>
-											<Description>"GuildRegistryIndex"</Description>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>Byte</VariableType>
-											<Address>GuildRegistryIndexLabel+3</Address>
-										</CheatEntry>
-										<CheatEntry>
-											<ID>642</ID>
-											<Description>"FieldPartyObject"</Description>
-											<Options moManualExpandCollapse="1" />
-											<ShowAsHex>1</ShowAsHex>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>8 Bytes</VariableType>
-											<Address>FieldPartySlotsLabel+18</Address>
-											<CheatEntries>
-												<CheatEntry>
-													<ID>6420</ID>
-													<Description>"HP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+18</Address>
-													<Offsets>
-														<Offset>44</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6421</ID>
-													<Description>"TP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+18</Address>
-													<Offsets>
-														<Offset>48</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6422</ID>
-													<Description>"XP [0,874140]"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+18</Address>
-													<Offsets>
-														<Offset>4C</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6423</ID>
-													<Description>"LVL"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+18</Address>
-													<Offsets>
-														<Offset>5C</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6424</ID>
-													<Description>"FP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+18</Address>
-													<Offsets>
-														<Offset>60</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6425</ID>
-													<Description>"SkP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+18</Address>
-													<Offsets>
-														<Offset>68</Offset>
-													</Offsets>
-												</CheatEntry>
-											</CheatEntries>
-										</CheatEntry>
-										<CheatEntry>
-											<ID>643</ID>
-											<Description>"BattleParticipantObject"</Description>
-											<Options moManualExpandCollapse="1" />
-											<ShowAsHex>1</ShowAsHex>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>8 Bytes</VariableType>
-											<Address>BattleParticipantSlotsLabel+18</Address>
-										</CheatEntry>
-									</CheatEntries>
-								</CheatEntry>
-								<CheatEntry>
-									<ID>650</ID>
-									<Description>"5"</Description>
-									<Options moManualExpandCollapse="1" />
-									<GroupHeader>2</GroupHeader>
-									<CheatEntries>
-										<CheatEntry>
-											<ID>651</ID>
-											<Description>"GuildRegistryIndex"</Description>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>Byte</VariableType>
-											<Address>GuildRegistryIndexLabel+4</Address>
-										</CheatEntry>
-										<CheatEntry>
-											<ID>652</ID>
-											<Description>"FieldPartyObject"</Description>
-											<Options moManualExpandCollapse="1" />
-											<ShowAsHex>1</ShowAsHex>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>8 Bytes</VariableType>
-											<Address>FieldPartySlotsLabel+20</Address>
-											<CheatEntries>
-												<CheatEntry>
-													<ID>6520</ID>
-													<Description>"HP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+20</Address>
-													<Offsets>
-														<Offset>44</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6521</ID>
-													<Description>"TP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+20</Address>
-													<Offsets>
-														<Offset>48</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6522</ID>
-													<Description>"XP [0,874140]"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+20</Address>
-													<Offsets>
-														<Offset>4C</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6523</ID>
-													<Description>"LVL"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+20</Address>
-													<Offsets>
-														<Offset>5C</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6524</ID>
-													<Description>"FP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+20</Address>
-													<Offsets>
-														<Offset>60</Offset>
-													</Offsets>
-												</CheatEntry>
-												<CheatEntry>
-													<ID>6525</ID>
-													<Description>"SkP"</Description>
-													<ShowAsSigned>0</ShowAsSigned>
-													<VariableType>4 Bytes</VariableType>
-													<Address>FieldPartySlotsLabel+20</Address>
-													<Offsets>
-														<Offset>68</Offset>
-													</Offsets>
-												</CheatEntry>
-											</CheatEntries>
-										</CheatEntry>
-										<CheatEntry>
-											<ID>653</ID>
-											<Description>"BattleParticipantObject"</Description>
-											<Options moManualExpandCollapse="1" />
-											<ShowAsHex>1</ShowAsHex>
-											<ShowAsSigned>0</ShowAsSigned>
-											<VariableType>8 Bytes</VariableType>
-											<Address>BattleParticipantSlotsLabel+20</Address>
-										</CheatEntry>
-									</CheatEntries>
-								</CheatEntry>
-							</CheatEntries>
-						</CheatEntry>
-					</CheatEntries>
-				</CheatEntry>
-			</CheatEntries>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>30</ID>
-			<Description>"ChopsUsed"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>4 Bytes</VariableType>
-			<Address>HarvestCountersEffectiveAddressLabel</Address>
-			<Offsets>
-				<Offset>0</Offset>
-			</Offsets>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>31</ID>
-			<Description>"MinesUsed"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>4 Bytes</VariableType>
-			<Address>HarvestCountersEffectiveAddressLabel</Address>
-			<Offsets>
-				<Offset>4</Offset>
-			</Offsets>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>32</ID>
-			<Description>"TakesUsed"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>4 Bytes</VariableType>
-			<Address>HarvestCountersEffectiveAddressLabel</Address>
-			<Offsets>
-				<Offset>8</Offset>
-			</Offsets>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>509</ID>
-			<Description>"TestInheritedAddresses"</Description>
-			<VariableType>Auto Assembler Script</VariableType>
-			<AssemblerScript>[ENABLE]
+							
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>603</ID>
+              <Description>"PartySlots"</Description>
+              <Options moManualExpandCollapse="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>610</ID>
+                  <Description>"1"</Description>
+                  <Options moManualExpandCollapse="1"/>
+                  <VariableType>Byte</VariableType>
+                  <Address/>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>611</ID>
+                      <Description>"GuildRegistryIndex"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Byte</VariableType>
+                      <Address>GuildRegistryIndexLabel</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>612</ID>
+                      <Description>"FieldPartyObject"</Description>
+                      <Options moManualExpandCollapse="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>FieldPartySlotsLabel</Address>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>6120</ID>
+                          <Description>"HP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel</Address>
+                          <Offsets>
+                            <Offset>44</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6121</ID>
+                          <Description>"TP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel</Address>
+                          <Offsets>
+                            <Offset>48</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6122</ID>
+                          <Description>"XP [0,874140]"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel</Address>
+                          <Offsets>
+                            <Offset>4C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6123</ID>
+                          <Description>"LVL"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel</Address>
+                          <Offsets>
+                            <Offset>5C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6124</ID>
+                          <Description>"FP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel</Address>
+                          <Offsets>
+                            <Offset>60</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6125</ID>
+                          <Description>"SkP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel</Address>
+                          <Offsets>
+                            <Offset>68</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>613</ID>
+                      <Description>"BattleParticipantObject"</Description>
+                      <Options moManualExpandCollapse="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>BattleParticipantSlotsLabel</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>620</ID>
+                  <Description>"2"</Description>
+                  <Options moManualExpandCollapse="1"/>
+                  <VariableType>Byte</VariableType>
+                  <Address/>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>621</ID>
+                      <Description>"GuildRegistryIndex"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Byte</VariableType>
+                      <Address>GuildRegistryIndexLabel+1</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>622</ID>
+                      <Description>"FieldPartyObject"</Description>
+                      <Options moManualExpandCollapse="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>FieldPartySlotsLabel+8</Address>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>6220</ID>
+                          <Description>"HP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+8</Address>
+                          <Offsets>
+                            <Offset>44</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6221</ID>
+                          <Description>"TP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+8</Address>
+                          <Offsets>
+                            <Offset>48</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6222</ID>
+                          <Description>"XP [0,874140]"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+8</Address>
+                          <Offsets>
+                            <Offset>4C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6223</ID>
+                          <Description>"LVL"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+8</Address>
+                          <Offsets>
+                            <Offset>5C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6224</ID>
+                          <Description>"FP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+8</Address>
+                          <Offsets>
+                            <Offset>60</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6225</ID>
+                          <Description>"SkP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+8</Address>
+                          <Offsets>
+                            <Offset>68</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>623</ID>
+                      <Description>"BattleParticipantObject"</Description>
+                      <Options moManualExpandCollapse="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>BattleParticipantSlotsLabel+8</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>630</ID>
+                  <Description>"3"</Description>
+                  <Options moManualExpandCollapse="1"/>
+                  <VariableType>Byte</VariableType>
+                  <Address/>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>631</ID>
+                      <Description>"GuildRegistryIndex"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Byte</VariableType>
+                      <Address>GuildRegistryIndexLabel+2</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>632</ID>
+                      <Description>"FieldPartyObject"</Description>
+                      <Options moManualExpandCollapse="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>FieldPartySlotsLabel+10</Address>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>6320</ID>
+                          <Description>"HP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+10</Address>
+                          <Offsets>
+                            <Offset>44</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6321</ID>
+                          <Description>"TP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+10</Address>
+                          <Offsets>
+                            <Offset>48</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6322</ID>
+                          <Description>"XP [0,874140]"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+10</Address>
+                          <Offsets>
+                            <Offset>4C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6323</ID>
+                          <Description>"LVL"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+10</Address>
+                          <Offsets>
+                            <Offset>5C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6324</ID>
+                          <Description>"FP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+10</Address>
+                          <Offsets>
+                            <Offset>60</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6325</ID>
+                          <Description>"SkP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+10</Address>
+                          <Offsets>
+                            <Offset>68</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>633</ID>
+                      <Description>"BattleParticipantObject"</Description>
+                      <Options moManualExpandCollapse="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>BattleParticipantSlotsLabel+10</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>640</ID>
+                  <Description>"4"</Description>
+                  <Options moManualExpandCollapse="1"/>
+                  <VariableType>Byte</VariableType>
+                  <Address/>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>641</ID>
+                      <Description>"GuildRegistryIndex"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Byte</VariableType>
+                      <Address>GuildRegistryIndexLabel+3</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>642</ID>
+                      <Description>"FieldPartyObject"</Description>
+                      <Options moManualExpandCollapse="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>FieldPartySlotsLabel+18</Address>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>6420</ID>
+                          <Description>"HP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+18</Address>
+                          <Offsets>
+                            <Offset>44</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6421</ID>
+                          <Description>"TP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+18</Address>
+                          <Offsets>
+                            <Offset>48</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6422</ID>
+                          <Description>"XP [0,874140]"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+18</Address>
+                          <Offsets>
+                            <Offset>4C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6423</ID>
+                          <Description>"LVL"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+18</Address>
+                          <Offsets>
+                            <Offset>5C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6424</ID>
+                          <Description>"FP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+18</Address>
+                          <Offsets>
+                            <Offset>60</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6425</ID>
+                          <Description>"SkP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+18</Address>
+                          <Offsets>
+                            <Offset>68</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>643</ID>
+                      <Description>"BattleParticipantObject"</Description>
+                      <Options moManualExpandCollapse="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>BattleParticipantSlotsLabel+18</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>650</ID>
+                  <Description>"5"</Description>
+                  <Options moManualExpandCollapse="1"/>
+                  <VariableType>Byte</VariableType>
+                  <Address/>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>651</ID>
+                      <Description>"GuildRegistryIndex"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Byte</VariableType>
+                      <Address>GuildRegistryIndexLabel+4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>652</ID>
+                      <Description>"FieldPartyObject"</Description>
+                      <Options moManualExpandCollapse="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>FieldPartySlotsLabel+20</Address>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>6520</ID>
+                          <Description>"HP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+20</Address>
+                          <Offsets>
+                            <Offset>44</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6521</ID>
+                          <Description>"TP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+20</Address>
+                          <Offsets>
+                            <Offset>48</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6522</ID>
+                          <Description>"XP [0,874140]"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+20</Address>
+                          <Offsets>
+                            <Offset>4C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6523</ID>
+                          <Description>"LVL"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+20</Address>
+                          <Offsets>
+                            <Offset>5C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6524</ID>
+                          <Description>"FP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+20</Address>
+                          <Offsets>
+                            <Offset>60</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>6525</ID>
+                          <Description>"SkP"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>FieldPartySlotsLabel+20</Address>
+                          <Offsets>
+                            <Offset>68</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>653</ID>
+                      <Description>"BattleParticipantObject"</Description>
+                      <Options moManualExpandCollapse="1"/>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>BattleParticipantSlotsLabel+20</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6526</ID>
+          <Description>"CurrentSlot"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>CurrentSlotLabel</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>30</ID>
+      <Description>"ChopsUsed"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>HarvestCountersEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>31</ID>
+      <Description>"MinesUsed"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>HarvestCountersEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>32</ID>
+      <Description>"TakesUsed"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>HarvestCountersEffectiveAddressLabel</Address>
+      <Offsets>
+        <Offset>8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>509</ID>
+      <Description>"TestInheritedAddresses"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
 //code from here to '[DISABLE]' will be used to enable the cheat
 
  define(SubAddress,NewMemoryLabel+50)
@@ -1793,1679 +1851,1679 @@ SubAddress:
  unregisterSymbol(SubAddress)
 
 </AssemblerScript>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>511</ID>
-			<Description>"HaveMedica"</Description>
-			<VariableType>4 Bytes</VariableType>
-			<Address>162BCEEAEBC</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>512</ID>
-			<Description>"No description"</Description>
-			<VariableType>String</VariableType>
-			<Length>22</Length>
-			<Unicode>0</Unicode>
-			<CodePage>0</CodePage>
-			<ZeroTerminate>1</ZeroTerminate>
-			<Address>161F012E058</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>513</ID>
-			<Description>"No description"</Description>
-			<VariableType>String</VariableType>
-			<Length>22</Length>
-			<Unicode>0</Unicode>
-			<CodePage>0</CodePage>
-			<ZeroTerminate>1</ZeroTerminate>
-			<Address>161F01FB4FF</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>514</ID>
-			<Description>"ItemDescMedica"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>String</VariableType>
-			<Length>32</Length>
-			<Unicode>0</Unicode>
-			<CodePage>0</CodePage>
-			<ZeroTerminate>1</ZeroTerminate>
-			<Address>161F01FB478</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>515</ID>
-			<Description>"No description"</Description>
-			<VariableType>String</VariableType>
-			<Length>16</Length>
-			<Unicode>0</Unicode>
-			<CodePage>0</CodePage>
-			<ZeroTerminate>1</ZeroTerminate>
-			<Address>161F1993703</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>516</ID>
-			<Description>"SellMenuSelIndex"</Description>
-			<VariableType>4 Bytes</VariableType>
-			<Address>162C04A23C0</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>517</ID>
-			<Description>"No description"</Description>
-			<VariableType>4 Bytes</VariableType>
-			<Address>162E957E570</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>518</ID>
-			<Description>"No description"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>162BC6E2188</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>519</ID>
-			<Description>"No description"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>Byte</VariableType>
-			<Address>162B6CBE280</Address>
-			<Offsets>
-				<Offset>10</Offset>
-			</Offsets>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>520</ID>
-			<Description>"TargetedEnemy"</Description>
-			<VariableType>4 Bytes</VariableType>
-			<Address>162E9B1B210</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>521</ID>
-			<Description>"AddressDerivedFromReferenceEnemySelIndex"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>162B859B720</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>522</ID>
-			<Description>"rax+60"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>4 Bytes</VariableType>
-			<Address>162B859B780</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>523</ID>
-			<Description>"New RAX?"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>161E95748A0</Address>
-			<Offsets>
-				<Offset>30</Offset>
-			</Offsets>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>524</ID>
-			<Description>"RAX"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>162B4E9BB40</Address>
-			<Offsets>
-				<Offset>0</Offset>
-			</Offsets>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>525</ID>
-			<Description>"InventoryCounter"</Description>
-			<VariableType>4 Bytes</VariableType>
-			<Address>192D6A2DDB4</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>526</ID>
-			<Description>"EmptyInvSlot=21037059"</Description>
-			<VariableType>4 Bytes</VariableType>
-			<Address>192CF68D218</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>527</ID>
-			<Description>"No description"</Description>
-			<VariableType>4 Bytes</VariableType>
-			<Address>192CF68E948</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>528</ID>
-			<Description>"InvSlot0"</Description>
-			<VariableType>2 Bytes</VariableType>
-			<Address>19150164BB0</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>529</ID>
-			<Description>"No description"</Description>
-			<VariableType>Byte</VariableType>
-			<Address>19204483260</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>530</ID>
-			<Description>"No description"</Description>
-			<VariableType>Byte</VariableType>
-			<Address>192D85445C0</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>531</ID>
-			<Description>"No description"</Description>
-			<VariableType>String</VariableType>
-			<Length>18</Length>
-			<Unicode>0</Unicode>
-			<CodePage>0</CodePage>
-			<ZeroTerminate>1</ZeroTerminate>
-			<Address>1921014C088</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>532</ID>
-			<Description>"TrueStartOfLabelTable"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>String</VariableType>
-			<Length>10</Length>
-			<Unicode>0</Unicode>
-			<CodePage>0</CodePage>
-			<ZeroTerminate>1</ZeroTerminate>
-			<Address>192100C6160</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>533</ID>
-			<Description>"Log"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>String</VariableType>
-			<Length>32</Length>
-			<Unicode>1</Unicode>
-			<CodePage>0</CodePage>
-			<ZeroTerminate>1</ZeroTerminate>
-			<Address>210CAA22854</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>534</ID>
-			<Description>"No description"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>String</VariableType>
-			<Length>32</Length>
-			<Unicode>1</Unicode>
-			<CodePage>0</CodePage>
-			<ZeroTerminate>1</ZeroTerminate>
-			<Address>210CAA22D94</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>535</ID>
-			<Description>"RealEnemyDescription"</Description>
-			<VariableType>String</VariableType>
-			<Length>20</Length>
-			<Unicode>1</Unicode>
-			<CodePage>0</CodePage>
-			<ZeroTerminate>1</ZeroTerminate>
-			<Address>210D03CB554</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>536</ID>
-			<Description>"No description"</Description>
-			<VariableType>String</VariableType>
-			<Length>20</Length>
-			<Unicode>1</Unicode>
-			<CodePage>0</CodePage>
-			<ZeroTerminate>1</ZeroTerminate>
-			<Address>210D03CB554</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>537</ID>
-			<Description>"SomeConstantPrecedingTextString"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>210D03CB540</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>538</ID>
-			<Description>"EnemySel"</Description>
-			<VariableType>4 Bytes</VariableType>
-			<Address>210FA65A5D0</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>539</ID>
-			<Description>"Enemy1Pointer"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>210ED614AA0</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>543</ID>
-			<Description>"Enemy1Pointer"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>String</VariableType>
-			<Length>10</Length>
-			<Unicode>0</Unicode>
-			<CodePage>0</CodePage>
-			<ZeroTerminate>1</ZeroTerminate>
-			<Address>210ED614AA0</Address>
-			<Offsets>
-				<Offset>0</Offset>
-				<Offset>0</Offset>
-				<Offset>0</Offset>
-				<Offset>0</Offset>
-			</Offsets>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>540</ID>
-			<Description>"Enemy2Pointer"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>210ED614AA8</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>541</ID>
-			<Description>"Address=EnemySel:rax+58"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>210FA81EB08</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>542</ID>
-			<Description>"Pointer:EnemySel:rdi+28"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>210CA303CA8</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>544</ID>
-			<Description>"RobnHood3NameString"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>String</VariableType>
-			<Length>20</Length>
-			<Unicode>1</Unicode>
-			<CodePage>0</CodePage>
-			<ZeroTerminate>1</ZeroTerminate>
-			<Address>270DA4B5DF0</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>545</ID>
-			<Description>"RobnHoodObject"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>1FCCCB054C0</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>546</ID>
-			<Description>"HealtherVtAble"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>1FCCCB05130</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>547</ID>
-			<Description>"Changed?"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>4 Bytes</VariableType>
-			<Address>1FCCCB052F8</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>548</ID>
-			<Description>"E.Elric"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>1FCCCB05260</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>549</ID>
-			<Description>"Changed"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>4 Bytes</VariableType>
-			<Address>1FCCCB05428</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>550</ID>
-			<Description>"Changed"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>4 Bytes</VariableType>
-			<Address>1FCCCB05438</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>551</ID>
-			<Description>"RascieObject"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>1FCCCB05390</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>552</ID>
-			<Description>"Changed"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>4 Bytes</VariableType>
-			<Address>1FCCCB05098</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>553</ID>
-			<Description>"UselessObject"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>1FCCCB05000</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>554</ID>
-			<Description>"TurnsElapsed?"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>4 Bytes</VariableType>
-			<Address>1FCCCB05070</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>555</ID>
-			<Description>"No description"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>1FC68A5CD10</Address>
-			<Offsets>
-				<Offset>0</Offset>
-			</Offsets>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>557</ID>
-			<Description>"PartyMemberClass?"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>1FCCA9CDCE0</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>556</ID>
-			<Description>"UselessObject"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>1FC68A5CD10</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>558</ID>
-			<Description>"Healther"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>Byte</VariableType>
-			<Address>1FC68A5CE40</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>559</ID>
-			<Description>"EE"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>Byte</VariableType>
-			<Address>1FCFCC44000</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>560</ID>
-			<Description>"Rascie"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>Byte</VariableType>
-			<Address>1FCFCC44130</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>561</ID>
-			<Description>"RobinHood"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>Byte</VariableType>
-			<Address>1FCFCC44260</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>562</ID>
-			<Description>"EnemyObject?"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>Byte</VariableType>
-			<Address>1FC68A5CBE0</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>563</ID>
-			<Description>"Woodmite"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>Byte</VariableType>
-			<Address>1FC68A5CAB0</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>564</ID>
-			<Description>"Enemy3"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>Byte</VariableType>
-			<Address>1FC68A5C980</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>565</ID>
-			<Description>"BattleParticipantClass accessed on Results=&gt;Field"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>1FCCA9CDCE0</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>566</ID>
-			<Description>"No description"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>1FCD1124480</Address>
-			<Offsets>
-				<Offset>0</Offset>
-			</Offsets>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>567</ID>
-			<Description>"SomeClassUsedToCreateBattleParticipant"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>1FC6792B280</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>568</ID>
-			<Description>"PerPartyMemberTrasitionalState.changing"</Description>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>4 Bytes</VariableType>
-			<Address>1FCD1124AFC</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>569</ID>
-			<Description>"StaticAddressForRegistryLookup?"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>7FFBA7816848</Address>
-		</CheatEntry>
-		<CheatEntry>
-			<ID>570</ID>
-			<Description>"AnotherStaticAddress"</Description>
-			<ShowAsHex>1</ShowAsHex>
-			<ShowAsSigned>0</ShowAsSigned>
-			<VariableType>8 Bytes</VariableType>
-			<Address>1FC606D4B50</Address>
-		</CheatEntry>
-	</CheatEntries>
-	<CheatCodes>
-		<CodeEntry>
-			<Description>Code :mov [rbx+44],eax $Slot.HP=eax on Battlee=&gt;Result</Description>
-			<AddressString>GameAssembly.dll+100A36C</AddressString>
-			<Before>
-				<Byte>74</Byte>
-				<Byte>6D</Byte>
-				<Byte>8B</Byte>
-				<Byte>41</Byte>
-				<Byte>10</Byte>
-			</Before>
-			<Actual>
-				<Byte>89</Byte>
-				<Byte>43</Byte>
-				<Byte>44</Byte>
-			</Actual>
-			<After>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-				<Byte>47</Byte>
-				<Byte>58</Byte>
-				<Byte>48</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :sub [rbx+44],eax $Slot.HP-=eax on FloorDamage</Description>
-			<AddressString>GameAssembly.dll+189E651</AddressString>
-			<Before>
-				<Byte>CA</Byte>
-				<Byte>F3</Byte>
-				<Byte>0F</Byte>
-				<Byte>2C</Byte>
-				<Byte>C1</Byte>
-			</Before>
-			<Actual>
-				<Byte>29</Byte>
-				<Byte>43</Byte>
-				<Byte>44</Byte>
-			</Actual>
-			<After>
-				<Byte>8B</Byte>
-				<Byte>43</Byte>
-				<Byte>44</Byte>
-				<Byte>83</Byte>
-				<Byte>F8</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rbx+44],eax $Slot.HP=eax on FloorDamage</Description>
-			<AddressString>GameAssembly.dll+189E65E</AddressString>
-			<Before>
-				<Byte>00</Byte>
-				<Byte>41</Byte>
-				<Byte>0F</Byte>
-				<Byte>4E</Byte>
-				<Byte>C5</Byte>
-			</Before>
-			<Actual>
-				<Byte>89</Byte>
-				<Byte>43</Byte>
-				<Byte>44</Byte>
-			</Actual>
-			<After>
-				<Byte>33</Byte>
-				<Byte>C9</Byte>
-				<Byte>E8</Byte>
-				<Byte>28</Byte>
-				<Byte>A5</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rbp+44],eax $Slot.HP=eax on Revive</Description>
-			<AddressString>GameAssembly.dll+18C1EE6</AddressString>
-			<Before>
-				<Byte>3B</Byte>
-				<Byte>C8</Byte>
-				<Byte>0F</Byte>
-				<Byte>4E</Byte>
-				<Byte>C1</Byte>
-			</Before>
-			<Actual>
-				<Byte>89</Byte>
-				<Byte>45</Byte>
-				<Byte>44</Byte>
-			</Actual>
-			<After>
-				<Byte>BF</Byte>
-				<Byte>02</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rcx+44],eax $Slot.HP=eax on Sleep?</Description>
-			<AddressString>GameAssembly.dll+189BBD1</AddressString>
-			<Before>
-				<Byte>50</Byte>
-				<Byte>14</Byte>
-				<Byte>8B</Byte>
-				<Byte>40</Byte>
-				<Byte>10</Byte>
-			</Before>
-			<Actual>
-				<Byte>89</Byte>
-				<Byte>41</Byte>
-				<Byte>44</Byte>
-			</Actual>
-			<After>
-				<Byte>89</Byte>
-				<Byte>51</Byte>
-				<Byte>48</Byte>
-				<Byte>33</Byte>
-				<Byte>C9</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :inc [rcx+rax*4+20] HarvestCounter.$SkillType+=1 on Harvest:Chop|Mine|Take</Description>
-			<AddressString>GameAssembly.dll+134A55B</AddressString>
-			<Before>
-				<Byte>83</Byte>
-				<Byte>BD</Byte>
-				<Byte>02</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-			</Before>
-			<Actual>
-				<Byte>FF</Byte>
-				<Byte>44</Byte>
-				<Byte>81</Byte>
-				<Byte>20</Byte>
-			</Actual>
-			<After>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-				<Byte>0D</Byte>
-				<Byte>9A</Byte>
-				<Byte>D5</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :cmp [rdx+rcx*4+20],eax $Harvest &lt; HarvestMax on Harvest</Description>
-			<AddressString>GameAssembly.dll+13497FF</AddressString>
-			<Before>
-				<Byte>8B</Byte>
-				<Byte>C8</Byte>
-				<Byte>8B</Byte>
-				<Byte>43</Byte>
-				<Byte>58</Byte>
-			</Before>
-			<Actual>
-				<Byte>39</Byte>
-				<Byte>44</Byte>
-				<Byte>8A</Byte>
-				<Byte>20</Byte>
-			</Actual>
-			<After>
-				<Byte>0F</Byte>
-				<Byte>9C</Byte>
-				<Byte>C0</Byte>
-				<Byte>48</Byte>
-				<Byte>83</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :sub eax,[rcx+20] ChopsRemaining=MaxChops-Chops on Field=&gt;Pause</Description>
-			<AddressString>GameAssembly.dll+1BE82DA</AddressString>
-			<Before>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-				<Byte>8B</Byte>
-				<Byte>C6</Byte>
-			</Before>
-			<Actual>
-				<Byte>2B</Byte>
-				<Byte>41</Byte>
-				<Byte>20</Byte>
-			</Actual>
-			<After>
-				<Byte>BF</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :sub eax,[rcx+24] MinesRemaining=MaxMines-Mines on Field=&gt;Pause</Description>
-			<AddressString>GameAssembly.dll+1BE8332</AddressString>
-			<Before>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-				<Byte>8B</Byte>
-				<Byte>C6</Byte>
-			</Before>
-			<Actual>
-				<Byte>2B</Byte>
-				<Byte>41</Byte>
-				<Byte>24</Byte>
-			</Actual>
-			<After>
-				<Byte>8B</Byte>
-				<Byte>D7</Byte>
-				<Byte>48</Byte>
-				<Byte>8D</Byte>
-				<Byte>4B</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :sub eax,[rcx+28] TakesRemaining=MaxTakes-Takes on Field=&gt;Pause</Description>
-			<AddressString>GameAssembly.dll+1BE8379</AddressString>
-			<Before>
-				<Byte>02</Byte>
-				<Byte>76</Byte>
-				<Byte>74</Byte>
-				<Byte>8B</Byte>
-				<Byte>C6</Byte>
-			</Before>
-			<Actual>
-				<Byte>2B</Byte>
-				<Byte>41</Byte>
-				<Byte>28</Byte>
-			</Actual>
-			<After>
-				<Byte>0F</Byte>
-				<Byte>49</Byte>
-				<Byte>F8</Byte>
-				<Byte>48</Byte>
-				<Byte>8D</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov edx,[rdx+44] edx=$Slot.HP on Field=&gt;Pause</Description>
-			<AddressString>GameAssembly.dll+1DD1DBE</AddressString>
-			<Before>
-				<Byte>48</Byte>
-				<Byte>45</Byte>
-				<Byte>8B</Byte>
-				<Byte>40</Byte>
-				<Byte>10</Byte>
-			</Before>
-			<Actual>
-				<Byte>8B</Byte>
-				<Byte>52</Byte>
-				<Byte>44</Byte>
-			</Actual>
-			<After>
-				<Byte>48</Byte>
-				<Byte>C7</Byte>
-				<Byte>44</Byte>
-				<Byte>24</Byte>
-				<Byte>30</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov edx,[rsi+44] edx=$Slot.HP on Field=&gt;Battle</Description>
-			<AddressString>GameAssembly.dll+100B695</AddressString>
-			<Before>
-				<Byte>0D</Byte>
-				<Byte>83</Byte>
-				<Byte>D7</Byte>
-				<Byte>00</Byte>
-				<Byte>02</Byte>
-			</Before>
-			<Actual>
-				<Byte>8B</Byte>
-				<Byte>56</Byte>
-				<Byte>44</Byte>
-			</Actual>
-			<After>
-				<Byte>4C</Byte>
-				<Byte>89</Byte>
-				<Byte>65</Byte>
-				<Byte>8F</Byte>
-				<Byte>E8</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :add [rbx+44],eax $Slot.HP+=eax on LevelUp @ Results=&gt;Field</Description>
-			<AddressString>GameAssembly.dll+1A882B6</AddressString>
-			<Before>
-				<Byte>8B</Byte>
-				<Byte>41</Byte>
-				<Byte>10</Byte>
-				<Byte>2B</Byte>
-				<Byte>C7</Byte>
-			</Before>
-			<Actual>
-				<Byte>01</Byte>
-				<Byte>43</Byte>
-				<Byte>44</Byte>
-			</Actual>
-			<After>
-				<Byte>8B</Byte>
-				<Byte>41</Byte>
-				<Byte>14</Byte>
-				<Byte>2B</Byte>
-				<Byte>C6</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rcx+40],r9d $ShopSel-=1 on MenuUp</Description>
-			<AddressString>GameAssembly.dll+15022210</AddressString>
-			<Before>
-				<Byte>89</Byte>
-				<Byte>CB</Byte>
-				<Byte>44</Byte>
-				<Byte>89</Byte>
-				<Byte>C8</Byte>
-			</Before>
-			<Actual>
-				<Byte>44</Byte>
-				<Byte>89</Byte>
-				<Byte>49</Byte>
-				<Byte>40</Byte>
-			</Actual>
-			<After>
-				<Byte>44</Byte>
-				<Byte>29</Byte>
-				<Byte>D0</Byte>
-				<Byte>C1</Byte>
-				<Byte>E8</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rcx+40],r9d $SelIndex+=1 on MenuDown</Description>
-			<AddressString>GameAssembly.dll+15055362</AddressString>
-			<Before>
-				<Byte>D8</Byte>
-				<Byte>44</Byte>
-				<Byte>8D</Byte>
-				<Byte>0C</Byte>
-				<Byte>06</Byte>
-			</Before>
-			<Actual>
-				<Byte>44</Byte>
-				<Byte>89</Byte>
-				<Byte>49</Byte>
-				<Byte>40</Byte>
-			</Actual>
-			<After>
-				<Byte>41</Byte>
-				<Byte>8D</Byte>
-				<Byte>42</Byte>
-				<Byte>FF</Byte>
-				<Byte>44</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov qword ptr [rbx+3C],00000000 $SelIndex=0 on WrapBottomToTop</Description>
-			<AddressString>GameAssembly.dll+1505545A</AddressString>
-			<Before>
-				<Byte>1E</Byte>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-				<Byte>4B</Byte>
-				<Byte>20</Byte>
-			</Before>
-			<Actual>
-				<Byte>48</Byte>
-				<Byte>C7</Byte>
-				<Byte>43</Byte>
-				<Byte>3C</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-			</Actual>
-			<After>
-				<Byte>44</Byte>
-				<Byte>89</Byte>
-				<Byte>5B</Byte>
-				<Byte>38</Byte>
-				<Byte>48</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rbx+40],eax $SelIndex=-1 on WrapTopToBottom</Description>
-			<AddressString>GameAssembly.dll+150222F4</AddressString>
-			<Before>
-				<Byte>9A</Byte>
-				<Byte>F9</Byte>
-				<Byte>EB</Byte>
-				<Byte>89</Byte>
-				<Byte>C1</Byte>
-			</Before>
-			<Actual>
-				<Byte>89</Byte>
-				<Byte>43</Byte>
-				<Byte>40</Byte>
-			</Actual>
-			<After>
-				<Byte>8B</Byte>
-				<Byte>43</Byte>
-				<Byte>18</Byte>
-				<Byte>39</Byte>
-				<Byte>43</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rbx+40],00000000 on NewMenu</Description>
-			<AddressString>GameAssembly.dll+2706607</AddressString>
-			<Before>
-				<Byte>3C</Byte>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-				<Byte>4B</Byte>
-				<Byte>20</Byte>
-			</Before>
-			<Actual>
-				<Byte>C7</Byte>
-				<Byte>43</Byte>
-				<Byte>40</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-			</Actual>
-			<After>
-				<Byte>89</Byte>
-				<Byte>43</Byte>
-				<Byte>38</Byte>
-				<Byte>C7</Byte>
-				<Byte>43</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rbx+40],eax $ShopSel+=7 on MenuRight</Description>
-			<AddressString>GameAssembly.dll+1506EA7E</AddressString>
-			<Before>
-				<Byte>F4</Byte>
-				<Byte>EB</Byte>
-				<Byte>41</Byte>
-				<Byte>89</Byte>
-				<Byte>C1</Byte>
-			</Before>
-			<Actual>
-				<Byte>89</Byte>
-				<Byte>43</Byte>
-				<Byte>40</Byte>
-			</Actual>
-			<After>
-				<Byte>39</Byte>
-				<Byte>43</Byte>
-				<Byte>2C</Byte>
-				<Byte>74</Byte>
-				<Byte>61</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rbx+40],eax $ShopSel-=7 on MenuLeft</Description>
-			<AddressString>GameAssembly.dll+27061C5</AddressString>
-			<Before>
-				<Byte>57</Byte>
-				<Byte>8B</Byte>
-				<Byte>FE</Byte>
-				<Byte>8B</Byte>
-				<Byte>D0</Byte>
-			</Before>
-			<Actual>
-				<Byte>89</Byte>
-				<Byte>43</Byte>
-				<Byte>40</Byte>
-			</Actual>
-			<After>
-				<Byte>39</Byte>
-				<Byte>43</Byte>
-				<Byte>2C</Byte>
-				<Byte>74</Byte>
-				<Byte>2A</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [r14+10],eax Damage EnemyHP</Description>
-			<AddressString>GameAssembly.dll+1007263</AddressString>
-			<Before>
-				<Byte>84</Byte>
-				<Byte>45</Byte>
-				<Byte>04</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-			</Before>
-			<Actual>
-				<Byte>41</Byte>
-				<Byte>89</Byte>
-				<Byte>46</Byte>
-				<Byte>10</Byte>
-			</Actual>
-			<After>
-				<Byte>85</Byte>
-				<Byte>F6</Byte>
-				<Byte>0F</Byte>
-				<Byte>85</Byte>
-				<Byte>BF</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rcx+10],ebx EnemySlain</Description>
-			<AddressString>GameAssembly.dll+100747B</AddressString>
-			<Before>
-				<Byte>84</Byte>
-				<Byte>2D</Byte>
-				<Byte>02</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-			</Before>
-			<Actual>
-				<Byte>89</Byte>
-				<Byte>59</Byte>
-				<Byte>10</Byte>
-			</Actual>
-			<After>
-				<Byte>45</Byte>
-				<Byte>33</Byte>
-				<Byte>C0</Byte>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :call GameAssembly.dll+10089F0</Description>
-			<AddressString>GameAssembly.dll+1007212</AddressString>
-			<Before>
-				<Byte>8B</Byte>
-				<Byte>2C</Byte>
-				<Byte>06</Byte>
-				<Byte>8B</Byte>
-				<Byte>D6</Byte>
-			</Before>
-			<Actual>
-				<Byte>E8</Byte>
-				<Byte>D9</Byte>
-				<Byte>17</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-			</Actual>
-			<After>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-				<Byte>4F</Byte>
-				<Byte>58</Byte>
-				<Byte>44</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rbp+30],r14d EnemySel+=1 on MenuRight</Description>
-			<AddressString>GameAssembly.dll+141E791</AddressString>
-			<Before>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-				<Byte>7C</Byte>
-				<Byte>24</Byte>
-				<Byte>48</Byte>
-			</Before>
-			<Actual>
-				<Byte>44</Byte>
-				<Byte>89</Byte>
-				<Byte>75</Byte>
-				<Byte>30</Byte>
-			</Actual>
-			<After>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-				<Byte>6C</Byte>
-				<Byte>24</Byte>
-				<Byte>40</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rsi+30],r14d EnemySel-=1 on MenuLeft</Description>
-			<AddressString>GameAssembly.dll+141E91D</AddressString>
-			<Before>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-				<Byte>7C</Byte>
-				<Byte>24</Byte>
-				<Byte>48</Byte>
-			</Before>
-			<Actual>
-				<Byte>44</Byte>
-				<Byte>89</Byte>
-				<Byte>76</Byte>
-				<Byte>30</Byte>
-			</Actual>
-			<After>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-				<Byte>74</Byte>
-				<Byte>24</Byte>
-				<Byte>40</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rdi+30],eax EnemySel=0 on CommandMenu=&gt;Attack</Description>
-			<AddressString>GameAssembly.dll+141F0D7</AddressString>
-			<Before>
-				<Byte>81</Byte>
-				<Byte>0C</Byte>
-				<Byte>01</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-			</Before>
-			<Actual>
-				<Byte>89</Byte>
-				<Byte>47</Byte>
-				<Byte>30</Byte>
-			</Actual>
-			<After>
-				<Byte>75</Byte>
-				<Byte>13</Byte>
-				<Byte>48</Byte>
-				<Byte>8D</Byte>
-				<Byte>0D</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rdi+30],eax EnemySel=0 on CommandMenu=&gt;Reference</Description>
-			<AddressString>GameAssembly.dll+141F1CB</AddressString>
-			<Before>
-				<Byte>05</Byte>
-				<Byte>61</Byte>
-				<Byte>5E</Byte>
-				<Byte>D4</Byte>
-				<Byte>01</Byte>
-			</Before>
-			<Actual>
-				<Byte>89</Byte>
-				<Byte>47</Byte>
-				<Byte>30</Byte>
-			</Actual>
-			<After>
-				<Byte>89</Byte>
-				<Byte>47</Byte>
-				<Byte>24</Byte>
-				<Byte>75</Byte>
-				<Byte>13</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rsi+30],eax Set EnemySelf from mouse; EnemySel=0 on Command=&gt;Reference</Description>
-			<AddressString>GameAssembly.dll+141CC3B</AddressString>
-			<Before>
-				<Byte>33</Byte>
-				<Byte>D2</Byte>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-				<Byte>CE</Byte>
-			</Before>
-			<Actual>
-				<Byte>89</Byte>
-				<Byte>46</Byte>
-				<Byte>30</Byte>
-			</Actual>
-			<After>
-				<Byte>E8</Byte>
-				<Byte>8D</Byte>
-				<Byte>2E</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :movsxd	rax,dword ptr [rbx+30] Thrice on EnemySel change for Reference</Description>
-			<AddressString>GameAssembly.dll+142A151</AddressString>
-			<Before>
-				<Byte>48</Byte>
-				<Byte>85</Byte>
-				<Byte>C0</Byte>
-				<Byte>74</Byte>
-				<Byte>14</Byte>
-			</Before>
-			<Actual>
-				<Byte>48</Byte>
-				<Byte>63</Byte>
-				<Byte>43</Byte>
-				<Byte>30</Byte>
-			</Actual>
-			<After>
-				<Byte>3B</Byte>
-				<Byte>41</Byte>
-				<Byte>18</Byte>
-				<Byte>73</Byte>
-				<Byte>11</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :movsxd	rax,dword ptr [rdi+30] EnemySel on Command=&gt;Attack|Reference</Description>
-			<AddressString>GameAssembly.dll+141EBBF</AddressString>
-			<Before>
-				<Byte>84</Byte>
-				<Byte>D8</Byte>
-				<Byte>01</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-			</Before>
-			<Actual>
-				<Byte>48</Byte>
-				<Byte>63</Byte>
-				<Byte>47</Byte>
-				<Byte>30</Byte>
-			</Actual>
-			<After>
-				<Byte>3B</Byte>
-				<Byte>43</Byte>
-				<Byte>18</Byte>
-				<Byte>0F</Byte>
-				<Byte>83</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov eax,[rsi+30] get EnemySel from Mouse</Description>
-			<AddressString>GameAssembly.dll+141CBBB</AddressString>
-			<Before>
-				<Byte>84</Byte>
-				<Byte>DF</Byte>
-				<Byte>02</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-			</Before>
-			<Actual>
-				<Byte>8B</Byte>
-				<Byte>46</Byte>
-				<Byte>30</Byte>
-			</Actual>
-			<After>
-				<Byte>39</Byte>
-				<Byte>41</Byte>
-				<Byte>20</Byte>
-				<Byte>0F</Byte>
-				<Byte>84</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov rax,[GameAssembly.dll+3030190] Write a static address to RAX replacing the EnemySel derived one</Description>
-			<AddressString>GameAssembly.dll+D91D60</AddressString>
-			<Before>
-				<Byte>47</Byte>
-				<Byte>E0</Byte>
-				<Byte>3C</Byte>
-				<Byte>02</Byte>
-				<Byte>01</Byte>
-			</Before>
-			<Actual>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-				<Byte>05</Byte>
-				<Byte>29</Byte>
-				<Byte>E4</Byte>
-				<Byte>29</Byte>
-				<Byte>02</Byte>
-			</Actual>
-			<After>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-				<Byte>88</Byte>
-				<Byte>B8</Byte>
-				<Byte>00</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rbx+34],esi ItemCount=esi on Pause=&gt;Inventory</Description>
-			<AddressString>GameAssembly.dll+15061458</AddressString>
-			<Before>
-				<Byte>31</Byte>
-				<Byte>FF</Byte>
-				<Byte>89</Byte>
-				<Byte>43</Byte>
-				<Byte>2C</Byte>
-			</Before>
-			<Actual>
-				<Byte>89</Byte>
-				<Byte>73</Byte>
-				<Byte>34</Byte>
-			</Actual>
-			<After>
-				<Byte>48</Byte>
-				<Byte>89</Byte>
-				<Byte>6B</Byte>
-				<Byte>48</Byte>
-				<Byte>39</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rdx+1A],ax Sometimes written to when acquiring item</Description>
-			<AddressString>GameAssembly.dll+B6CE5</AddressString>
-			<Before>
-				<Byte>03</Byte>
-				<Byte>4C</Byte>
-				<Byte>8B</Byte>
-				<Byte>42</Byte>
-				<Byte>20</Byte>
-			</Before>
-			<Actual>
-				<Byte>66</Byte>
-				<Byte>89</Byte>
-				<Byte>42</Byte>
-				<Byte>1A</Byte>
-			</Actual>
-			<After>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-				<Byte>03</Byte>
-				<Byte>47</Byte>
-				<Byte>8B</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :cmp [r9],bx Look for start of XML tag</Description>
-			<AddressString>GameAssembly.dll+10248017</AddressString>
-			<Before>
-				<Byte>89</Byte>
-				<Byte>C8</Byte>
-				<Byte>4D</Byte>
-				<Byte>29</Byte>
-				<Byte>D8</Byte>
-			</Before>
-			<Actual>
-				<Byte>66</Byte>
-				<Byte>41</Byte>
-				<Byte>39</Byte>
-				<Byte>19</Byte>
-			</Actual>
-			<After>
-				<Byte>75</Byte>
-				<Byte>27</Byte>
-				<Byte>BA</Byte>
-				<Byte>FE</Byte>
-				<Byte>0F</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov eax,[rdx] Pointless read-&gt;write chain</Description>
-			<AddressString>GameAssembly.dll+1076010</AddressString>
-			<Before>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-			</Before>
-			<Actual>
-				<Byte>8B</Byte>
-				<Byte>02</Byte>
-			</Actual>
-			<After>
-				<Byte>89</Byte>
-				<Byte>01</Byte>
-				<Byte>8B</Byte>
-				<Byte>42</Byte>
-				<Byte>04</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov eax,[rdx+04]</Description>
-			<AddressString>GameAssembly.dll+1076014</AddressString>
-			<Before>
-				<Byte>00</Byte>
-				<Byte>8B</Byte>
-				<Byte>02</Byte>
-				<Byte>89</Byte>
-				<Byte>01</Byte>
-			</Before>
-			<Actual>
-				<Byte>8B</Byte>
-				<Byte>42</Byte>
-				<Byte>04</Byte>
-			</Actual>
-			<After>
-				<Byte>89</Byte>
-				<Byte>41</Byte>
-				<Byte>04</Byte>
-				<Byte>8B</Byte>
-				<Byte>42</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov eax,[rdx+08]</Description>
-			<AddressString>GameAssembly.dll+107601A</AddressString>
-			<Before>
-				<Byte>42</Byte>
-				<Byte>04</Byte>
-				<Byte>89</Byte>
-				<Byte>41</Byte>
-				<Byte>04</Byte>
-			</Before>
-			<Actual>
-				<Byte>8B</Byte>
-				<Byte>42</Byte>
-				<Byte>08</Byte>
-			</Actual>
-			<After>
-				<Byte>89</Byte>
-				<Byte>41</Byte>
-				<Byte>08</Byte>
-				<Byte>8B</Byte>
-				<Byte>42</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov eax,[rdx+0C]</Description>
-			<AddressString>GameAssembly.dll+1076020</AddressString>
-			<Before>
-				<Byte>42</Byte>
-				<Byte>08</Byte>
-				<Byte>89</Byte>
-				<Byte>41</Byte>
-				<Byte>08</Byte>
-			</Before>
-			<Actual>
-				<Byte>8B</Byte>
-				<Byte>42</Byte>
-				<Byte>0C</Byte>
-			</Actual>
-			<After>
-				<Byte>48</Byte>
-				<Byte>83</Byte>
-				<Byte>C2</Byte>
-				<Byte>10</Byte>
-				<Byte>89</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :cmp eax,[rcx+18] Checks $EmenySel&lt;8</Description>
-			<AddressString>GameAssembly.dll+142A155</AddressString>
-			<Before>
-				<Byte>14</Byte>
-				<Byte>48</Byte>
-				<Byte>63</Byte>
-				<Byte>43</Byte>
-				<Byte>30</Byte>
-			</Before>
-			<Actual>
-				<Byte>3B</Byte>
-				<Byte>41</Byte>
-				<Byte>18</Byte>
-			</Actual>
-			<After>
-				<Byte>73</Byte>
-				<Byte>11</Byte>
-				<Byte>48</Byte>
-				<Byte>8B</Byte>
-				<Byte>44</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rsp+20],rbx BattleState.applyEffect( recepient_a64=rcx, effectType_u8=rdx, effectDelta_s32=r8 )</Description>
-			<AddressString>GameAssembly.dll+10071A0</AddressString>
-			<Before>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-			</Before>
-			<Actual>
-				<Byte>48</Byte>
-				<Byte>89</Byte>
-				<Byte>5C</Byte>
-				<Byte>24</Byte>
-				<Byte>20</Byte>
-			</Actual>
-			<After>
-				<Byte>56</Byte>
-				<Byte>57</Byte>
-				<Byte>41</Byte>
-				<Byte>57</Byte>
-				<Byte>48</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rsp+08],rbx Tick0</Description>
-			<AddressString>GameAssembly.dll+25B0</AddressString>
-			<Before>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-			</Before>
-			<Actual>
-				<Byte>48</Byte>
-				<Byte>89</Byte>
-				<Byte>5C</Byte>
-				<Byte>24</Byte>
-				<Byte>08</Byte>
-			</Actual>
-			<After>
-				<Byte>57</Byte>
-				<Byte>48</Byte>
-				<Byte>83</Byte>
-				<Byte>EC</Byte>
-				<Byte>20</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :push rbx Tick0</Description>
-			<AddressString>GameAssembly.dll+6524C0</AddressString>
-			<Before>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-			</Before>
-			<Actual>
-				<Byte>40</Byte>
-				<Byte>53</Byte>
-			</Actual>
-			<After>
-				<Byte>56</Byte>
-				<Byte>57</Byte>
-				<Byte>41</Byte>
-				<Byte>56</Byte>
-				<Byte>41</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :inc [rsi+70] Increment TurnsElapsed</Description>
-			<AddressString>GameAssembly.dll+100AFF2</AddressString>
-			<Before>
-				<Byte>84</Byte>
-				<Byte>76</Byte>
-				<Byte>05</Byte>
-				<Byte>00</Byte>
-				<Byte>00</Byte>
-			</Before>
-			<Actual>
-				<Byte>FF</Byte>
-				<Byte>46</Byte>
-				<Byte>70</Byte>
-			</Actual>
-			<After>
-				<Byte>45</Byte>
-				<Byte>33</Byte>
-				<Byte>E4</Byte>
-				<Byte>8B</Byte>
-				<Byte>86</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :push rsi BattleState.OnTurnEnd( battle_participant_a64=rcx )</Description>
-			<AddressString>GameAssembly.dll+100AF60</AddressString>
-			<Before>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-			</Before>
-			<Actual>
-				<Byte>40</Byte>
-				<Byte>56</Byte>
-			</Actual>
-			<After>
-				<Byte>48</Byte>
-				<Byte>83</Byte>
-				<Byte>EC</Byte>
-				<Byte>50</Byte>
-				<Byte>80</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :sub rsp,28 Somthing begin</Description>
-			<AddressString>GameAssembly.dll+732D0</AddressString>
-			<Before>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-			</Before>
-			<Actual>
-				<Byte>48</Byte>
-				<Byte>83</Byte>
-				<Byte>EC</Byte>
-				<Byte>28</Byte>
-			</Actual>
-			<After>
-				<Byte>85</Byte>
-				<Byte>D2</Byte>
-				<Byte>78</Byte>
-				<Byte>2F</Byte>
-				<Byte>48</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :cmp [r15],rax Access BattleParticipant.Type? Thousands of times on Results=&gt;Field</Description>
-			<AddressString>GameAssembly.dll+8DF64</AddressString>
-			<Before>
-				<Byte>05</Byte>
-				<Byte>DC</Byte>
-				<Byte>6F</Byte>
-				<Byte>0C</Byte>
-				<Byte>03</Byte>
-			</Before>
-			<Actual>
-				<Byte>49</Byte>
-				<Byte>39</Byte>
-				<Byte>07</Byte>
-			</Actual>
-			<After>
-				<Byte>0F</Byte>
-				<Byte>84</Byte>
-				<Byte>7B</Byte>
-				<Byte>05</Byte>
-				<Byte>00</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :mov [rsp+10],rbx OnFieldToBattel_SetBattleParticipantFromFieldPartySlot( battle_participant_a64=rcx, field_party_slot_a64=rdx )</Description>
-			<AddressString>GameAssembly.dll+100B5C0</AddressString>
-			<Before>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-			</Before>
-			<Actual>
-				<Byte>48</Byte>
-				<Byte>89</Byte>
-				<Byte>5C</Byte>
-				<Byte>24</Byte>
-				<Byte>10</Byte>
-			</Actual>
-			<After>
-				<Byte>55</Byte>
-				<Byte>56</Byte>
-				<Byte>41</Byte>
-				<Byte>54</Byte>
-				<Byte>41</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :push rbx Field=&gt;Battle GetBattleParticipantA64( field_party_slot_a64=rcx, party_registry_index_u32=rdx )</Description>
-			<AddressString>GameAssembly.dll+1007D90</AddressString>
-			<Before>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-			</Before>
-			<Actual>
-				<Byte>40</Byte>
-				<Byte>53</Byte>
-			</Actual>
-			<After>
-				<Byte>41</Byte>
-				<Byte>54</Byte>
-				<Byte>41</Byte>
-				<Byte>55</Byte>
-				<Byte>48</Byte>
-			</After>
-		</CodeEntry>
-		<CodeEntry>
-			<Description>Code :push rbx OnFieldToBattle1</Description>
-			<AddressString>GameAssembly.dll+C12780</AddressString>
-			<Before>
-				<Byte>7F</Byte>
-				<Byte>4C</Byte>
-				<Byte>FF</Byte>
-				<Byte>CC</Byte>
-				<Byte>CC</Byte>
-			</Before>
-			<Actual>
-				<Byte>40</Byte>
-				<Byte>53</Byte>
-			</Actual>
-			<After>
-				<Byte>55</Byte>
-				<Byte>57</Byte>
-				<Byte>48</Byte>
-				<Byte>83</Byte>
-				<Byte>EC</Byte>
-			</After>
-		</CodeEntry>
-	</CheatCodes>
-	<UserdefinedSymbols/>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>511</ID>
+      <Description>"HaveMedica"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>162BCEEAEBC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>512</ID>
+      <Description>"No description"</Description>
+      <VariableType>String</VariableType>
+      <Length>22</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>161F012E058</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>513</ID>
+      <Description>"No description"</Description>
+      <VariableType>String</VariableType>
+      <Length>22</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>161F01FB4FF</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>514</ID>
+      <Description>"ItemDescMedica"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>32</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>161F01FB478</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>515</ID>
+      <Description>"No description"</Description>
+      <VariableType>String</VariableType>
+      <Length>16</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>161F1993703</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>516</ID>
+      <Description>"SellMenuSelIndex"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>162C04A23C0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>517</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>162E957E570</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>518</ID>
+      <Description>"No description"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>162BC6E2188</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>519</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>162B6CBE280</Address>
+      <Offsets>
+        <Offset>10</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>520</ID>
+      <Description>"TargetedEnemy"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>162E9B1B210</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>521</ID>
+      <Description>"AddressDerivedFromReferenceEnemySelIndex"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>162B859B720</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>522</ID>
+      <Description>"rax+60"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>162B859B780</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>523</ID>
+      <Description>"New RAX?"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>161E95748A0</Address>
+      <Offsets>
+        <Offset>30</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>524</ID>
+      <Description>"RAX"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>162B4E9BB40</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>525</ID>
+      <Description>"InventoryCounter"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>192D6A2DDB4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>526</ID>
+      <Description>"EmptyInvSlot=21037059"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>192CF68D218</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>527</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>192CF68E948</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>528</ID>
+      <Description>"InvSlot0"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>19150164BB0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>529</ID>
+      <Description>"No description"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>19204483260</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>530</ID>
+      <Description>"No description"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>192D85445C0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>531</ID>
+      <Description>"No description"</Description>
+      <VariableType>String</VariableType>
+      <Length>18</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>1921014C088</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>532</ID>
+      <Description>"TrueStartOfLabelTable"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>10</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>192100C6160</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>533</ID>
+      <Description>"Log"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>32</Length>
+      <Unicode>1</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>210CAA22854</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>534</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>32</Length>
+      <Unicode>1</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>210CAA22D94</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>535</ID>
+      <Description>"RealEnemyDescription"</Description>
+      <VariableType>String</VariableType>
+      <Length>20</Length>
+      <Unicode>1</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>210D03CB554</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>536</ID>
+      <Description>"No description"</Description>
+      <VariableType>String</VariableType>
+      <Length>20</Length>
+      <Unicode>1</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>210D03CB554</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>537</ID>
+      <Description>"SomeConstantPrecedingTextString"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>210D03CB540</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>538</ID>
+      <Description>"EnemySel"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>210FA65A5D0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>539</ID>
+      <Description>"Enemy1Pointer"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>210ED614AA0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>543</ID>
+      <Description>"Enemy1Pointer"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>10</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>210ED614AA0</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>540</ID>
+      <Description>"Enemy2Pointer"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>210ED614AA8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>541</ID>
+      <Description>"Address=EnemySel:rax+58"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>210FA81EB08</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>542</ID>
+      <Description>"Pointer:EnemySel:rdi+28"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>210CA303CA8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>544</ID>
+      <Description>"RobnHood3NameString"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>20</Length>
+      <Unicode>1</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>270DA4B5DF0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>545</ID>
+      <Description>"RobnHoodObject"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1FCCCB054C0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>546</ID>
+      <Description>"HealtherVtAble"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1FCCCB05130</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>547</ID>
+      <Description>"Changed?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1FCCCB052F8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>548</ID>
+      <Description>"E.Elric"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1FCCCB05260</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>549</ID>
+      <Description>"Changed"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1FCCCB05428</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>550</ID>
+      <Description>"Changed"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1FCCCB05438</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>551</ID>
+      <Description>"RascieObject"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1FCCCB05390</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>552</ID>
+      <Description>"Changed"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1FCCCB05098</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>553</ID>
+      <Description>"UselessObject"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1FCCCB05000</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>554</ID>
+      <Description>"TurnsElapsed?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1FCCCB05070</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>555</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1FC68A5CD10</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>557</ID>
+      <Description>"PartyMemberClass?"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1FCCA9CDCE0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>556</ID>
+      <Description>"UselessObject"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1FC68A5CD10</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>558</ID>
+      <Description>"Healther"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>1FC68A5CE40</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>559</ID>
+      <Description>"EE"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>1FCFCC44000</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>560</ID>
+      <Description>"Rascie"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>1FCFCC44130</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>561</ID>
+      <Description>"RobinHood"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>1FCFCC44260</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>562</ID>
+      <Description>"EnemyObject?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>1FC68A5CBE0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>563</ID>
+      <Description>"Woodmite"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>1FC68A5CAB0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>564</ID>
+      <Description>"Enemy3"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>1FC68A5C980</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>565</ID>
+      <Description>"BattleParticipantClass accessed on Results=&gt;Field"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1FCCA9CDCE0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>566</ID>
+      <Description>"No description"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1FCD1124480</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>567</ID>
+      <Description>"SomeClassUsedToCreateBattleParticipant"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1FC6792B280</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>568</ID>
+      <Description>"PerPartyMemberTrasitionalState.changing"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1FCD1124AFC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>569</ID>
+      <Description>"StaticAddressForRegistryLookup?"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>7FFBA7816848</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>570</ID>
+      <Description>"AnotherStaticAddress"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1FC606D4B50</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :mov [rbx+44],eax $Slot.HP=eax on Battlee=&gt;Result</Description>
+      <AddressString>GameAssembly.dll+100A36C</AddressString>
+      <Before>
+        <Byte>74</Byte>
+        <Byte>6D</Byte>
+        <Byte>8B</Byte>
+        <Byte>41</Byte>
+        <Byte>10</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>44</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>47</Byte>
+        <Byte>58</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :sub [rbx+44],eax $Slot.HP-=eax on FloorDamage</Description>
+      <AddressString>GameAssembly.dll+189E651</AddressString>
+      <Before>
+        <Byte>CA</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>2C</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>29</Byte>
+        <Byte>43</Byte>
+        <Byte>44</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+        <Byte>44</Byte>
+        <Byte>83</Byte>
+        <Byte>F8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbx+44],eax $Slot.HP=eax on FloorDamage</Description>
+      <AddressString>GameAssembly.dll+189E65E</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>4E</Byte>
+        <Byte>C5</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>44</Byte>
+      </Actual>
+      <After>
+        <Byte>33</Byte>
+        <Byte>C9</Byte>
+        <Byte>E8</Byte>
+        <Byte>28</Byte>
+        <Byte>A5</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbp+44],eax $Slot.HP=eax on Revive</Description>
+      <AddressString>GameAssembly.dll+18C1EE6</AddressString>
+      <Before>
+        <Byte>3B</Byte>
+        <Byte>C8</Byte>
+        <Byte>0F</Byte>
+        <Byte>4E</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>45</Byte>
+        <Byte>44</Byte>
+      </Actual>
+      <After>
+        <Byte>BF</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rcx+44],eax $Slot.HP=eax on Sleep?</Description>
+      <AddressString>GameAssembly.dll+189BBD1</AddressString>
+      <Before>
+        <Byte>50</Byte>
+        <Byte>14</Byte>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
+        <Byte>10</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>44</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>51</Byte>
+        <Byte>48</Byte>
+        <Byte>33</Byte>
+        <Byte>C9</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :inc [rcx+rax*4+20] HarvestCounter.$SkillType+=1 on Harvest:Chop|Mine|Take</Description>
+      <AddressString>GameAssembly.dll+134A55B</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>BD</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>FF</Byte>
+        <Byte>44</Byte>
+        <Byte>81</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>0D</Byte>
+        <Byte>9A</Byte>
+        <Byte>D5</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :cmp [rdx+rcx*4+20],eax $Harvest &lt; HarvestMax on Harvest</Description>
+      <AddressString>GameAssembly.dll+13497FF</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>C8</Byte>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+        <Byte>58</Byte>
+      </Before>
+      <Actual>
+        <Byte>39</Byte>
+        <Byte>44</Byte>
+        <Byte>8A</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>9C</Byte>
+        <Byte>C0</Byte>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :sub eax,[rcx+20] ChopsRemaining=MaxChops-Chops on Field=&gt;Pause</Description>
+      <AddressString>GameAssembly.dll+1BE82DA</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>C6</Byte>
+      </Before>
+      <Actual>
+        <Byte>2B</Byte>
+        <Byte>41</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>BF</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :sub eax,[rcx+24] MinesRemaining=MaxMines-Mines on Field=&gt;Pause</Description>
+      <AddressString>GameAssembly.dll+1BE8332</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>C6</Byte>
+      </Before>
+      <Actual>
+        <Byte>2B</Byte>
+        <Byte>41</Byte>
+        <Byte>24</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>D7</Byte>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+        <Byte>4B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :sub eax,[rcx+28] TakesRemaining=MaxTakes-Takes on Field=&gt;Pause</Description>
+      <AddressString>GameAssembly.dll+1BE8379</AddressString>
+      <Before>
+        <Byte>02</Byte>
+        <Byte>76</Byte>
+        <Byte>74</Byte>
+        <Byte>8B</Byte>
+        <Byte>C6</Byte>
+      </Before>
+      <Actual>
+        <Byte>2B</Byte>
+        <Byte>41</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>49</Byte>
+        <Byte>F8</Byte>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov edx,[rdx+44] edx=$Slot.HP on Field=&gt;Pause</Description>
+      <AddressString>GameAssembly.dll+1DD1DBE</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>45</Byte>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
+        <Byte>10</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>52</Byte>
+        <Byte>44</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>C7</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov edx,[rsi+44] edx=$Slot.HP on Field=&gt;Battle</Description>
+      <AddressString>GameAssembly.dll+100B695</AddressString>
+      <Before>
+        <Byte>0D</Byte>
+        <Byte>83</Byte>
+        <Byte>D7</Byte>
+        <Byte>00</Byte>
+        <Byte>02</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>56</Byte>
+        <Byte>44</Byte>
+      </Actual>
+      <After>
+        <Byte>4C</Byte>
+        <Byte>89</Byte>
+        <Byte>65</Byte>
+        <Byte>8F</Byte>
+        <Byte>E8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :add [rbx+44],eax $Slot.HP+=eax on LevelUp @ Results=&gt;Field</Description>
+      <AddressString>GameAssembly.dll+1A882B6</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>41</Byte>
+        <Byte>10</Byte>
+        <Byte>2B</Byte>
+        <Byte>C7</Byte>
+      </Before>
+      <Actual>
+        <Byte>01</Byte>
+        <Byte>43</Byte>
+        <Byte>44</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>41</Byte>
+        <Byte>14</Byte>
+        <Byte>2B</Byte>
+        <Byte>C6</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rcx+40],r9d $ShopSel-=1 on MenuUp</Description>
+      <AddressString>GameAssembly.dll+15022210</AddressString>
+      <Before>
+        <Byte>89</Byte>
+        <Byte>CB</Byte>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>C8</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>49</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>44</Byte>
+        <Byte>29</Byte>
+        <Byte>D0</Byte>
+        <Byte>C1</Byte>
+        <Byte>E8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rcx+40],r9d $SelIndex+=1 on MenuDown</Description>
+      <AddressString>GameAssembly.dll+15055362</AddressString>
+      <Before>
+        <Byte>D8</Byte>
+        <Byte>44</Byte>
+        <Byte>8D</Byte>
+        <Byte>0C</Byte>
+        <Byte>06</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>49</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>41</Byte>
+        <Byte>8D</Byte>
+        <Byte>42</Byte>
+        <Byte>FF</Byte>
+        <Byte>44</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov qword ptr [rbx+3C],00000000 $SelIndex=0 on WrapBottomToTop</Description>
+      <AddressString>GameAssembly.dll+1505545A</AddressString>
+      <Before>
+        <Byte>1E</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>4B</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>C7</Byte>
+        <Byte>43</Byte>
+        <Byte>3C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>5B</Byte>
+        <Byte>38</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbx+40],eax $SelIndex=-1 on WrapTopToBottom</Description>
+      <AddressString>GameAssembly.dll+150222F4</AddressString>
+      <Before>
+        <Byte>9A</Byte>
+        <Byte>F9</Byte>
+        <Byte>EB</Byte>
+        <Byte>89</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+        <Byte>18</Byte>
+        <Byte>39</Byte>
+        <Byte>43</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbx+40],00000000 on NewMenu</Description>
+      <AddressString>GameAssembly.dll+2706607</AddressString>
+      <Before>
+        <Byte>3C</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>4B</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>C7</Byte>
+        <Byte>43</Byte>
+        <Byte>40</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>38</Byte>
+        <Byte>C7</Byte>
+        <Byte>43</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbx+40],eax $ShopSel+=7 on MenuRight</Description>
+      <AddressString>GameAssembly.dll+1506EA7E</AddressString>
+      <Before>
+        <Byte>F4</Byte>
+        <Byte>EB</Byte>
+        <Byte>41</Byte>
+        <Byte>89</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>39</Byte>
+        <Byte>43</Byte>
+        <Byte>2C</Byte>
+        <Byte>74</Byte>
+        <Byte>61</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbx+40],eax $ShopSel-=7 on MenuLeft</Description>
+      <AddressString>GameAssembly.dll+27061C5</AddressString>
+      <Before>
+        <Byte>57</Byte>
+        <Byte>8B</Byte>
+        <Byte>FE</Byte>
+        <Byte>8B</Byte>
+        <Byte>D0</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>39</Byte>
+        <Byte>43</Byte>
+        <Byte>2C</Byte>
+        <Byte>74</Byte>
+        <Byte>2A</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [r14+10],eax Damage EnemyHP</Description>
+      <AddressString>GameAssembly.dll+1007263</AddressString>
+      <Before>
+        <Byte>84</Byte>
+        <Byte>45</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>41</Byte>
+        <Byte>89</Byte>
+        <Byte>46</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>85</Byte>
+        <Byte>F6</Byte>
+        <Byte>0F</Byte>
+        <Byte>85</Byte>
+        <Byte>BF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rcx+10],ebx EnemySlain</Description>
+      <AddressString>GameAssembly.dll+100747B</AddressString>
+      <Before>
+        <Byte>84</Byte>
+        <Byte>2D</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>59</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>45</Byte>
+        <Byte>33</Byte>
+        <Byte>C0</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :call GameAssembly.dll+10089F0</Description>
+      <AddressString>GameAssembly.dll+1007212</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>2C</Byte>
+        <Byte>06</Byte>
+        <Byte>8B</Byte>
+        <Byte>D6</Byte>
+      </Before>
+      <Actual>
+        <Byte>E8</Byte>
+        <Byte>D9</Byte>
+        <Byte>17</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>4F</Byte>
+        <Byte>58</Byte>
+        <Byte>44</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbp+30],r14d EnemySel+=1 on MenuRight</Description>
+      <AddressString>GameAssembly.dll+141E791</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>7C</Byte>
+        <Byte>24</Byte>
+        <Byte>48</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>75</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>6C</Byte>
+        <Byte>24</Byte>
+        <Byte>40</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rsi+30],r14d EnemySel-=1 on MenuLeft</Description>
+      <AddressString>GameAssembly.dll+141E91D</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>7C</Byte>
+        <Byte>24</Byte>
+        <Byte>48</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>76</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+        <Byte>40</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rdi+30],eax EnemySel=0 on CommandMenu=&gt;Attack</Description>
+      <AddressString>GameAssembly.dll+141F0D7</AddressString>
+      <Before>
+        <Byte>81</Byte>
+        <Byte>0C</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>47</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>75</Byte>
+        <Byte>13</Byte>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+        <Byte>0D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rdi+30],eax EnemySel=0 on CommandMenu=&gt;Reference</Description>
+      <AddressString>GameAssembly.dll+141F1CB</AddressString>
+      <Before>
+        <Byte>05</Byte>
+        <Byte>61</Byte>
+        <Byte>5E</Byte>
+        <Byte>D4</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>47</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>47</Byte>
+        <Byte>24</Byte>
+        <Byte>75</Byte>
+        <Byte>13</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rsi+30],eax Set EnemySelf from mouse; EnemySel=0 on Command=&gt;Reference</Description>
+      <AddressString>GameAssembly.dll+141CC3B</AddressString>
+      <Before>
+        <Byte>33</Byte>
+        <Byte>D2</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>CE</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>46</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>8D</Byte>
+        <Byte>2E</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movsxd	rax,dword ptr [rbx+30] Thrice on EnemySel change for Reference</Description>
+      <AddressString>GameAssembly.dll+142A151</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>74</Byte>
+        <Byte>14</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>43</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>3B</Byte>
+        <Byte>41</Byte>
+        <Byte>18</Byte>
+        <Byte>73</Byte>
+        <Byte>11</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movsxd	rax,dword ptr [rdi+30] EnemySel on Command=&gt;Attack|Reference</Description>
+      <AddressString>GameAssembly.dll+141EBBF</AddressString>
+      <Before>
+        <Byte>84</Byte>
+        <Byte>D8</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>47</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>3B</Byte>
+        <Byte>43</Byte>
+        <Byte>18</Byte>
+        <Byte>0F</Byte>
+        <Byte>83</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[rsi+30] get EnemySel from Mouse</Description>
+      <AddressString>GameAssembly.dll+141CBBB</AddressString>
+      <Before>
+        <Byte>84</Byte>
+        <Byte>DF</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>46</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>39</Byte>
+        <Byte>41</Byte>
+        <Byte>20</Byte>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov rax,[GameAssembly.dll+3030190] Write a static address to RAX replacing the EnemySel derived one</Description>
+      <AddressString>GameAssembly.dll+D91D60</AddressString>
+      <Before>
+        <Byte>47</Byte>
+        <Byte>E0</Byte>
+        <Byte>3C</Byte>
+        <Byte>02</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>05</Byte>
+        <Byte>29</Byte>
+        <Byte>E4</Byte>
+        <Byte>29</Byte>
+        <Byte>02</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>88</Byte>
+        <Byte>B8</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbx+34],esi ItemCount=esi on Pause=&gt;Inventory</Description>
+      <AddressString>GameAssembly.dll+15061458</AddressString>
+      <Before>
+        <Byte>31</Byte>
+        <Byte>FF</Byte>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>2C</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>73</Byte>
+        <Byte>34</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>6B</Byte>
+        <Byte>48</Byte>
+        <Byte>39</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rdx+1A],ax Sometimes written to when acquiring item</Description>
+      <AddressString>GameAssembly.dll+B6CE5</AddressString>
+      <Before>
+        <Byte>03</Byte>
+        <Byte>4C</Byte>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>89</Byte>
+        <Byte>42</Byte>
+        <Byte>1A</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>03</Byte>
+        <Byte>47</Byte>
+        <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :cmp [r9],bx Look for start of XML tag</Description>
+      <AddressString>GameAssembly.dll+10248017</AddressString>
+      <Before>
+        <Byte>89</Byte>
+        <Byte>C8</Byte>
+        <Byte>4D</Byte>
+        <Byte>29</Byte>
+        <Byte>D8</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>41</Byte>
+        <Byte>39</Byte>
+        <Byte>19</Byte>
+      </Actual>
+      <After>
+        <Byte>75</Byte>
+        <Byte>27</Byte>
+        <Byte>BA</Byte>
+        <Byte>FE</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[rdx] Pointless read-&gt;write chain</Description>
+      <AddressString>GameAssembly.dll+1076010</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>02</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>01</Byte>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+        <Byte>04</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[rdx+04]</Description>
+      <AddressString>GameAssembly.dll+1076014</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>02</Byte>
+        <Byte>89</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>04</Byte>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[rdx+08]</Description>
+      <AddressString>GameAssembly.dll+107601A</AddressString>
+      <Before>
+        <Byte>42</Byte>
+        <Byte>04</Byte>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>08</Byte>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[rdx+0C]</Description>
+      <AddressString>GameAssembly.dll+1076020</AddressString>
+      <Before>
+        <Byte>42</Byte>
+        <Byte>08</Byte>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+        <Byte>0C</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>C2</Byte>
+        <Byte>10</Byte>
+        <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :cmp eax,[rcx+18] Checks $EmenySel&lt;8</Description>
+      <AddressString>GameAssembly.dll+142A155</AddressString>
+      <Before>
+        <Byte>14</Byte>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>43</Byte>
+        <Byte>30</Byte>
+      </Before>
+      <Actual>
+        <Byte>3B</Byte>
+        <Byte>41</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>73</Byte>
+        <Byte>11</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>44</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rsp+20],rbx BattleState.applyEffect( recepient_a64=rcx, effectType_u8=rdx, effectDelta_s32=r8 )</Description>
+      <AddressString>GameAssembly.dll+10071A0</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>56</Byte>
+        <Byte>57</Byte>
+        <Byte>41</Byte>
+        <Byte>57</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rsp+08],rbx Tick0</Description>
+      <AddressString>GameAssembly.dll+25B0</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>57</Byte>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>EC</Byte>
+        <Byte>20</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :push rbx Tick0</Description>
+      <AddressString>GameAssembly.dll+6524C0</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>40</Byte>
+        <Byte>53</Byte>
+      </Actual>
+      <After>
+        <Byte>56</Byte>
+        <Byte>57</Byte>
+        <Byte>41</Byte>
+        <Byte>56</Byte>
+        <Byte>41</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :inc [rsi+70] Increment TurnsElapsed</Description>
+      <AddressString>GameAssembly.dll+100AFF2</AddressString>
+      <Before>
+        <Byte>84</Byte>
+        <Byte>76</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>FF</Byte>
+        <Byte>46</Byte>
+        <Byte>70</Byte>
+      </Actual>
+      <After>
+        <Byte>45</Byte>
+        <Byte>33</Byte>
+        <Byte>E4</Byte>
+        <Byte>8B</Byte>
+        <Byte>86</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :push rsi BattleState.OnTurnEnd( battle_participant_a64=rcx )</Description>
+      <AddressString>GameAssembly.dll+100AF60</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>40</Byte>
+        <Byte>56</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>EC</Byte>
+        <Byte>50</Byte>
+        <Byte>80</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :sub rsp,28 Somthing begin</Description>
+      <AddressString>GameAssembly.dll+732D0</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>EC</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>85</Byte>
+        <Byte>D2</Byte>
+        <Byte>78</Byte>
+        <Byte>2F</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :cmp [r15],rax Access BattleParticipant.Type? Thousands of times on Results=&gt;Field</Description>
+      <AddressString>GameAssembly.dll+8DF64</AddressString>
+      <Before>
+        <Byte>05</Byte>
+        <Byte>DC</Byte>
+        <Byte>6F</Byte>
+        <Byte>0C</Byte>
+        <Byte>03</Byte>
+      </Before>
+      <Actual>
+        <Byte>49</Byte>
+        <Byte>39</Byte>
+        <Byte>07</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+        <Byte>7B</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rsp+10],rbx OnFieldToBattel_SetBattleParticipantFromFieldPartySlot( battle_participant_a64=rcx, field_party_slot_a64=rdx )</Description>
+      <AddressString>GameAssembly.dll+100B5C0</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>55</Byte>
+        <Byte>56</Byte>
+        <Byte>41</Byte>
+        <Byte>54</Byte>
+        <Byte>41</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :push rbx Field=&gt;Battle GetBattleParticipantA64( field_party_slot_a64=rcx, party_registry_index_u32=rdx )</Description>
+      <AddressString>GameAssembly.dll+1007D90</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>40</Byte>
+        <Byte>53</Byte>
+      </Actual>
+      <After>
+        <Byte>41</Byte>
+        <Byte>54</Byte>
+        <Byte>41</Byte>
+        <Byte>55</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :push rbx OnFieldToBattle1</Description>
+      <AddressString>GameAssembly.dll+C12780</AddressString>
+      <Before>
+        <Byte>7F</Byte>
+        <Byte>4C</Byte>
+        <Byte>FF</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>40</Byte>
+        <Byte>53</Byte>
+      </Actual>
+      <After>
+        <Byte>55</Byte>
+        <Byte>57</Byte>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>EC</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
 </CheatTable>
