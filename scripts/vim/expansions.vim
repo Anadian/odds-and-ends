@@ -39,7 +39,7 @@
 "javascript property default
 %s/js\\pd(\([A-Za-z0-9_.]*\),\(.*\))$/this.\1 ??= options.\1 ?? \2;/ge
 
-"javascript try/catch function macro
+"javascript try/catch function macro: 1 indentation, 2 declaration, 3 variable-assignement left hand, 4 assignment-right-hand function name, 5 function parametres
 %s/^\(\t*\)js\\tc(\(var \)\{,1}\([A-Za-z0-9_.]\+ = \)\{,1}\([A-Za-z0-9_. ]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3\4(\5);\r\1} catch(error){\r\1\treturn_error = new Error(`\4 threw an error: \${error}`);\r\1return_error.cause = error;\r\1\tthrow return_error;\r\1}/ge
 
 " javascript Object.defineProperties macro
@@ -193,18 +193,18 @@
 "E\R -> ErrorReport
 "%s/E\\R/ErrorReport/ge
 
-%s/App\\/Application/ge
-%s/C\\/CNO_/ge
-%s/H\\/HAVE_/ge
-%s/A\\/ALLOW_/ge
-%s/CS\\/CNO_Setting_/ge
-%s/c\\/cno_/ge
-%s/\\s/_struct/ge
-%s/\\f/_func/ge
-%s/\\e/_enum/ge
-%s/\\ty/_type/ge
-%s/ON\\/Option_Name_/ge
-%s/i\\o/input_options/ge
+"%s/App\\/Application/ge
+"%s/C\\/CNO_/ge
+"%s/H\\/HAVE_/ge
+"%s/A\\/ALLOW_/ge
+"%s/CS\\/CNO_Setting_/ge
+"%s/c\\/cno_/ge
+"%s/\\s/_struct/ge
+"%s/\\f/_func/ge
+"%s/\\e/_enum/ge
+"%s/\\ty/_type/ge
+"%s/ON\\/Option_Name_/ge
+"%s/i\\o/input_options/ge
 
 " Expand f<BACKSLASH>r to function_return
 %s/f\\r/function_return/ge
