@@ -68,6 +68,7 @@ set backspace=indent,eol,start
 " Removing the annoying auto-comment on lines following a commented line.
 " "fo format options
 autocmd! BufEnter * set fo-=r fo-=o
+"autocmd! BufEnter,BufRead *.xml,*.html,*.xhtml,*.CT so stdpath('data') . '/site/pack/
 " Show invisible characters.
 "set list
 " Make keyboard fast?
@@ -113,10 +114,10 @@ endif
 
 "From Vim Wiki: adds a :Hexmode command to toggle hex editing.
 " ex command for toggling hex mode - define mapping if desired
-command -bar Hexmode call ToggleHex()
+command! -bar Hexmode call ToggleHex()
 
 " helper function to toggle hex mode
-function ToggleHex()
+function! ToggleHex()
   " hex mode should be considered a read-only operation
   " save values for modified and read-only for restoration later,
   " and clear the read-only flag for now
@@ -247,6 +248,8 @@ nnoremap <M-T> cetrue<esc>
 nnoremap <M-F> cefalse<esc>
 " Alt+Shift+n Replace the word under the cursor with 'null'; useful for JSON files.
 nnoremap <M-N> cenull<esc>
+" Alt+O Open netrw in a left-most vetical split
+nnoremap <M-O> :Vexplore<cr>
 "Gnome Terminal
 "" Alt+[ Previous Buffer
 "nnoremap <esc>[ :bp<cr>

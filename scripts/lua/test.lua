@@ -4,22 +4,32 @@ if( printf == nil) then
 		print( string.format( format_string, ... ) );
 	end
 end
-
-if( arg ~= nil ) then
+if( string.at == nil ) then
 	function string:at( index )
 		return self:sub( index, index );
 	end
-	DIRECTORY_SEPERATOR = package.config:at( 1 );
-	PATH_SEPERATOR = package.config:at( 3 );
+end
+if( table.print == nil ) then
+	function table:print()
+		for k,v in pairs( self ) do
+			printf( '%s: %s', k, v );
+		end
+	end
+end
+if( arg ~= nil ) then
+	printf( 'arg#%d is not null', #arg );
+	arg:print();
+	DIRECTORY_SEPARATOR = package.config:at( 1 );
+	PATH_SEPARATOR = package.config:at( 3 );
 	REPLACEMENT_TOKEN = package.config:at( 5 );
 	function dirname( path_string )
-		local match_pattern = string.format( '(.+%s).+%%.lua$', DIRECTORY_SEPERATOR );
+		local match_pattern = string.format( '(.+%s).+%%.lua$', DIRECTORY_SEPARATOR );
 		print( match_pattern );
 		local _return = string.match( path_string, match_pattern );
 		return _return;
 	end
 	function appendPackagePath( new_directory )
-		local inner_format = string.format( '%s%%s%s.lua', PATH_SEPERATOR, REPLACEMENT_TOKEN );
+		local inner_format = string.format( '%s%%s%s.lua', PATH_SEPARATOR, REPLACEMENT_TOKEN );
 		print( inner_format );
 		local outer_string = string.format( inner_format, new_directory );
 		package.path = package.path .. outer_string;
@@ -31,18 +41,6 @@ if( arg ~= nil ) then
 	end
 	printf( 'scriptpath %s\ndirectory %s\npackage config#%d=%spath=%s\ncpath=%s', scriptpath, scriptdirectory, #package.config, package.config, package.path, package.cpath );
 end
+require('bedrock');
 require('slot-table');
-
-slot_table = SlotTable:new();
-slot_table[1] = 1;
-print( 'slot_table:exists( 1 ) = ', slot_table:exists( 1 ) );
-st2 = SlotTable:new( { 1, 2, 3, 4, 5 } );
-print( 'st2.exists( 5 ) = ', st2:exists( 5 ) );
-st = SlotTable:new();
-printf( 'st = %s', st );
---index = st:exists( buffer_pointer );
---printf( 'index = %d', index );
-st:add( 6 );
-st:add( 7 );
-print( st );
-
+printf( path.join( 'a', 'b', 'c' ) );

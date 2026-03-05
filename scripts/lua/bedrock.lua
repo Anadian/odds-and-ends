@@ -1,26 +1,4 @@
--- Standard NVIM startup
-if( vim.fn.has('win32') == 1 ) then
-	vim.cmd.set( 'runtimepath^=~\\.vim_runtime runtimepath+=~\\.vim_runtime\\after' );
-	vim.cmd.let( '&packpath = &runtimepath' );
-	vim.cmd.source( '~\\.vimrc' );
-	DIRECTORY_SEPARATOR = '\\';
-	print('Windows mode.');
-else
-	vim.cmd.set( 'runtimepath^=~/.vim runtimepath+=~/.vim/after' );
-	vim.cmd.let( '&packpath = &runtimepath' );
-	vim.cmd.source( '~/.vimrc' );
-	DIRECTORY_SEPARATOR = '/';
-end
--- paq-nvim as package manager
-require('paq'){
-	'savq/paq-nvim',
-	'hjson/vim-hjson',
-	{ 'neoclide/coc.nvim', branch = 'release' },
-	'cheap-glitch/vim-v',
-	'mfussenegger/nvim-dap',
-	'dzfrias/arena.nvim'
-};
--- Lua stuff
+#!/usr/bin/env lua
 if( printf == nil) then
 	function printf( format_string, ... )
 		print( string.format( format_string, ... ) );
@@ -81,9 +59,12 @@ if( SCRIPT_PATH == nil ) then
 	end
 	printf( 'scriptpath %s\ndirectory %s\npackage config#%d=%spath=%s\ncpath=%s', scriptpath, scriptdirectory, #package.config, package.config, package.path, package.cpath );
 end
-vim.g.PLUGINS_PATH = path.join( vim.fn.stdpath('data'), 'site', 'pack', 'paqs', 'start' );
-
-vim.cmd.let( 'g:xml_syntax_folding=1' );
-vim.cmd.autocmd( 'FileType xml setlocal foldmethod=syntax' );
---vim.cmd.autocmd( 'BufEnter,BufRead *.xml,*.html,*.xhtml,*.CT source ' .. path.join( vim.g.PLUGINS_PATH, 'XML-Folding', 'plugin', 'XMLFolding.vim' ) );
-require("arena").setup();
+function Main()
+	printf( path.join( 'a', 'b', 'c' ) ); -- => 'a/b/c'
+	local debug_table = debug.getinfo( 1 );
+	if( debug_table ~= nil ) then
+		printf( 'debug_table#%d is not null', #debug_table );
+		table.print( debug_table );
+	end
+end
+--Main();
