@@ -29,13 +29,18 @@
        18140d9f6 80 3d a7        CMP        byte ptr [DAT_183164fa4],0x0
                  75 d5 01 00
        18140d9fd 48 8b e9        MOV        RBP,param_1_battlestate_a64
+GameAssembly.dll+140D9F0 - 40 55                 - push rbp
+GameAssembly.dll+140D9F2 - 48 83 EC 30           - sub rsp,30 { 48 }
+GameAssembly.dll+140D9F6 - 80 3D A775D501 00     - cmp byte ptr [GameAssembly.dll+3164FA4],00 { (1),0 }
+GameAssembly.dll+140D9FD - 48 8B E9              - mov rbp,rcx
+
 */
 define(IBSTE0Address,"GameAssembly.dll"+140D9F0)
 define(IBSTE0Bytes,40 55 48 83 EC 30 80 3D A7 75 D5 01 00 48 8B E9)
 define(IBSTE0BytesLength,$10)
 define(IBSTE0Nops,90 90)
-define(IBSTE0Memory,NewMemoryLabel+A00)
-define(IBSTE0Ins,NewMemoryLabel+A80)
+define(IBSTE0Memory,NewMemoryLabel+0A00)
+define(IBSTE0Ins,NewMemoryLabel+0A80)
 
 [ENABLE]
 luaCall(print('ENABLE'))
