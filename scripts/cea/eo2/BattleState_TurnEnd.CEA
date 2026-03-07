@@ -1,0 +1,128 @@
+/*
+                             **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             void __fastcall FUN_18140d9f0_BattleState_TurnEnd(undefi
+                               assume GS_OFFSET = 0xff00000000
+             void              <VOID>         <RETURN>
+             undefined8        RCX:8          param_1_battlestate_a64
+             undefined8        RAX:8          lVar5_party_object_a64                  XREF[4]:     18140da3a(W), 
+                                                                                                   18140db66(W), 
+                                                                                                   18140dc3f(W), 
+                                                                                                   18140dcb3(W)  
+             undefined4        R12D:4         uVar10                                  XREF[1]:     18140da5f(W)  
+             undefined4        EBX:4          uVar8_party_member_offset_u32           XREF[2]:     18140da97(W), 
+                                                                                                   18140dc78(W)  
+             undefined1        AL:1           cVar4                                   XREF[3]:     18140db66(W), 
+                                                                                                   18140dc3f(W), 
+                                                                                                   18140dcb3(W)  
+             undefined8        RAX:8          lVar6                                   XREF[2]:     18140dc3f(W), 
+                                                                                                   18140dcb3(W)  
+             undefined4        EBX:4          uVar9_enemy_party_offset_u32            XREF[1]:     18140dc78(W)  
+             undefined8        RAX:8          uVar7                                   XREF[1]:     18140dcb3(W)  
+             undefined8        HASH:5ff052c   lVar2_party_member_turn_report_a64
+             undefined4        HASH:5f43443   iVar1
+             undefined8        HASH:100db92   pcVar3
+                             FUN_18140d9f0_BattleState_TurnEnd               XREF[2]:     18215588e(c), 19587fc98(*)  
+       18140d9f0 40 55           PUSH       RBP
+       18140d9f2 48 83 ec 30     SUB        RSP,0x30
+       18140d9f6 80 3d a7        CMP        byte ptr [DAT_183164fa4],0x0
+                 75 d5 01 00
+       18140d9fd 48 8b e9        MOV        RBP,param_1_battlestate_a64
+*/
+define(IBSTE0Address,"GameAssembly.dll"+140D9F0)
+define(IBSTE0Bytes,40 55 48 83 EC 30 80 3D A7 75 D5 01 00 48 8B E9)
+define(IBSTE0BytesLength,$10)
+define(IBSTE0Nops,90 90)
+define(IBSTE0Memory,NewMemoryLabel+A00)
+define(IBSTE0Ins,NewMemoryLabel+A80)
+
+[ENABLE]
+luaCall(print('ENABLE'))
+
+luaCall(print('Asserts'))
+assert(IBSTE0Address,IBSTE0Bytes)
+
+luaCall(print('AOB Scans'))
+				
+luaCall(print('Allocs'))
+
+luaCall(print('Labels'))
+
+label(IBSTE0MemoryLabel)
+label(IBSTE0BackupLabel)
+label(IBSTE0EffectiveAddressLabel)
+label(IBSTE0InsLabel)
+label(IBSTE0CodeLabel)
+label(IBSTE0ReturnLabel)
+
+luaCall(print('Memory'))
+
+IBSTE0Memory:
+	IBSTE0MemoryLabel:
+		db 'BackUp'
+		align 8 00 //8
+	IBSTE0BackupLabel:
+		readmem(IBSTE0Address,IBSTE0BytesLength)
+		align 8 00 //16
+		db 'BSTE0EA'
+		align 8 00 //8
+	IBSTE0EffectiveAddressLabel:
+		dq 00 //8 40 bytes total 0x28
+
+luaCall(print('Instructions'))
+
+IBSTE0Ins:
+	IBSTE0InsLabel:
+	mov [IBSTE0EffectiveAddressLabel],rcx
+
+IBSTE0CodeLabel:
+// Original code
+	push rbp
+	sub rsp,0x30
+	cmp byte ptr [GameAssembly.dll+3164FA4],0x00
+	mov rbp,rcx
+
+	jmp IBSTE0ReturnLabel
+
+IBSTE0Address:
+	jmp IBSTE0InsLabel
+	db IBSTE0Nops
+
+IBSTE0ReturnLabel:
+	//ret
+	luaCall(print('IBSTE0return'))
+	registerSymbol(IBSTE0Address)
+	registerSymbol(IBSTE0Bytes)
+	registerSymbol(IBSTE0BytesLength)
+	registerSymbol(IBSTE0Nops)
+	registerSymbol(IBSTE0Memory)
+	registerSymbol(IBSTE0Ins)
+	registerSymbol(IBSTE0BackupLabel)
+	registerSymbol(IBSTE0EffectiveAddressLabel)
+	registerSymbol(IBSTE0MemoryLabel)
+	registerSymbol(IBSTE0InsLabel)
+	registerSymbol(IBSTE0CodeLabel)
+	registerSymbol(IBSTE0ReturnLabel)
+
+
+[DISABLE]
+luaCall(print('DISABLE'))
+
+IBSTE0Address:
+	readmem(IBSTE0BackupLabel,IBSTE0BytesLength)
+
+	luaCall(print('unregisterSymbols'))
+	unregisterSymbol(IBSTE0Address)
+	unregisterSymbol(IBSTE0Bytes)
+	unregisterSymbol(IBSTE0BytesLength)
+	unregisterSymbol(IBSTE0Nops)
+	unregisterSymbol(IBSTE0Memory)
+	unregisterSymbol(IBSTE0Ins)
+	unregisterSymbol(IBSTE0BackupLabel)
+	unregisterSymbol(IBSTE0EffectiveAddressLabel)
+	unregisterSymbol(IBSTE0MemoryLabel)
+	unregisterSymbol(IBSTE0InsLabel)
+	unregisterSymbol(IBSTE0CodeLabel)
+	unregisterSymbol(IBSTE0ReturnLabel)
+

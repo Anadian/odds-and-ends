@@ -3935,7 +3935,7 @@ SubAddress:
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>Code :push rbp</Description>
+      <Description>Code :push rbp BattleState_TurnEnd( battle_state_a64=rcx )</Description>
       <AddressString>GameAssembly.dll+140D9F0</AddressString>
       <Before>
         <Byte>CC</Byte>
