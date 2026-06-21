@@ -677,7 +677,7 @@ I602Address:
                         </CheatEntry>
                         <CheatEntry>
                           <ID>6122</ID>
-                          <Description>"XP [0,874140]"</Description>
+                          <Description>"XP [0,1391600]"</Description>
                           <ShowAsSigned>0</ShowAsSigned>
                           <VariableType>4 Bytes</VariableType>
                           <Address>FieldPartySlotsLabel</Address>
@@ -800,7 +800,7 @@ I602Address:
                         </CheatEntry>
                         <CheatEntry>
                           <ID>6222</ID>
-                          <Description>"XP [0,874140]"</Description>
+                          <Description>"XP [0,1391600]"</Description>
                           <ShowAsSigned>0</ShowAsSigned>
                           <VariableType>4 Bytes</VariableType>
                           <Address>FieldPartySlotsLabel+8</Address>
@@ -896,7 +896,7 @@ I602Address:
                         </CheatEntry>
                         <CheatEntry>
                           <ID>6322</ID>
-                          <Description>"XP [0,874140]"</Description>
+                          <Description>"XP [0,1391600]"</Description>
                           <ShowAsSigned>0</ShowAsSigned>
                           <VariableType>4 Bytes</VariableType>
                           <Address>FieldPartySlotsLabel+10</Address>
@@ -1088,7 +1088,7 @@ I602Address:
                         </CheatEntry>
                         <CheatEntry>
                           <ID>6522</ID>
-                          <Description>"XP [0,874140]"</Description>
+                          <Description>"XP [0,1391600]"</Description>
                           <ShowAsSigned>0</ShowAsSigned>
                           <VariableType>4 Bytes</VariableType>
                           <Address>FieldPartySlotsLabel+20</Address>
@@ -1726,7 +1726,7 @@ IBSTE1Address:
                         </CheatEntry>
                       </CheatEntries>
                     </CheatEntry>
-					<CheatEntry>
+                    <CheatEntry>
                       <ID>6652</ID>
                       <Description>"Slot2"</Description>
                       <ShowAsHex>1</ShowAsHex>
@@ -1899,9 +1899,9 @@ IBSTE1Address:
                         </CheatEntry>
                       </CheatEntries>
                     </CheatEntry>
-					<CheatEntry>
+                    <CheatEntry>
                       <ID>6752</ID>
-                      <Description>"Slot2"</Description>
+                      <Description>"Slot3"</Description>
                       <ShowAsHex>1</ShowAsHex>
                       <ShowAsSigned>0</ShowAsSigned>
                       <VariableType>8 Bytes</VariableType>
@@ -2072,9 +2072,9 @@ IBSTE1Address:
                         </CheatEntry>
                       </CheatEntries>
                     </CheatEntry>
-					<CheatEntry>
+                    <CheatEntry>
                       <ID>6852</ID>
-                      <Description>"Slot3"</Description>
+                      <Description>"Slot4"</Description>
                       <ShowAsHex>1</ShowAsHex>
                       <ShowAsSigned>0</ShowAsSigned>
                       <VariableType>8 Bytes</VariableType>
@@ -2245,9 +2245,9 @@ IBSTE1Address:
                         </CheatEntry>
                       </CheatEntries>
                     </CheatEntry>
-					<CheatEntry>
+                    <CheatEntry>
                       <ID>6952</ID>
-                      <Description>"Slot4"</Description>
+                      <Description>"Slot5"</Description>
                       <ShowAsHex>1</ShowAsHex>
                       <ShowAsSigned>0</ShowAsSigned>
                       <VariableType>8 Bytes</VariableType>
@@ -2418,180 +2418,130 @@ IBSTE1Address:
                         </CheatEntry>
                       </CheatEntries>
                     </CheatEntry>
-					<CheatEntry>
-                      <ID>7052</ID>
-                      <Description>"Slot5"</Description>
-                      <ShowAsHex>1</ShowAsHex>
-                      <ShowAsSigned>0</ShowAsSigned>
-                      <VariableType>8 Bytes</VariableType>
-                      <Address>IBSTE1EffectiveAddressLabel</Address>
-                      <Offsets>
-                        <Offset>50</Offset>
-                      </Offsets>
-                      <CheatEntries>
-                        <CheatEntry>
-                          <ID>7054</ID>
-                          <Description>"BattleParticipantObject"</Description>
-                          <Options moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
-                          <ShowAsHex>1</ShowAsHex>
-                          <ShowAsSigned>0</ShowAsSigned>
-                          <VariableType>8 Bytes</VariableType>
-                          <Address>IBSTE1EffectiveAddressLabel</Address>
-                          <Offsets>
-                            <Offset>0</Offset>
-                            <Offset>50</Offset>
-                          </Offsets>
-                          <CheatEntries>
-                            <CheatEntry>
-                              <ID>7082</ID>
-                              <Description>"GuildRegistryIndex"</Description>
-                              <ShowAsSigned>0</ShowAsSigned>
-                              <VariableType>2 Bytes</VariableType>
-                              <Address>IBSTE1EffectiveAddressLabel</Address>
-                              <Offsets>
-                                <Offset>10</Offset>
-                                <Offset>50</Offset>
-                              </Offsets>
-                            </CheatEntry>
-                            <CheatEntry>
-                              <ID>7055</ID>
-                              <Description>"EffectTypesArrayObject"</Description>
-                              <ShowAsHex>1</ShowAsHex>
-                              <ShowAsSigned>0</ShowAsSigned>
-                              <VariableType>8 Bytes</VariableType>
-                              <Address>IBSTE1EffectiveAddressLabel</Address>
-                              <Offsets>
-                                <Offset>58</Offset>
-                                <Offset>50</Offset>
-                              </Offsets>
-                            </CheatEntry>
-                            <CheatEntry>
-                              <ID>7056</ID>
-                              <Description>"Something"</Description>
-                              <ShowAsSigned>0</ShowAsSigned>
-                              <VariableType>4 Bytes</VariableType>
-                              <Address>IBSTE1EffectiveAddressLabel</Address>
-                              <Offsets>
-                                <Offset>60</Offset>
-                                <Offset>50</Offset>
-                              </Offsets>
-                            </CheatEntry>
-                            <CheatEntry>
-                              <ID>7057</ID>
-                              <Description>"Speed"</Description>
-                              <ShowAsSigned>0</ShowAsSigned>
-                              <VariableType>Byte</VariableType>
-                              <Address>IBSTE1EffectiveAddressLabel</Address>
-                              <Offsets>
-                                <Offset>68</Offset>
-                                <Offset>50</Offset>
-                              </Offsets>
-                            </CheatEntry>
-                            <CheatEntry>
-                              <ID>7058</ID>
-                              <Description>"TurnsElapsed"</Description>
-                              <ShowAsSigned>0</ShowAsSigned>
-                              <VariableType>4 Bytes</VariableType>
-                              <Address>IBSTE1EffectiveAddressLabel</Address>
-                              <Offsets>
-                                <Offset>70</Offset>
-                                <Offset>50</Offset>
-                              </Offsets>
-                            </CheatEntry>
-                            <CheatEntry>
-                              <ID>7059</ID>
-                              <Description>"ActedBefore"</Description>
-                              <ShowAsSigned>0</ShowAsSigned>
-                              <VariableType>Byte</VariableType>
-                              <Address>IBSTE1EffectiveAddressLabel</Address>
-                              <Offsets>
-                                <Offset>98</Offset>
-                                <Offset>50</Offset>
-                              </Offsets>
-                            </CheatEntry>
-                            <CheatEntry>
-                              <ID>7060</ID>
-                              <Description>"ActedAfter"</Description>
-                              <ShowAsSigned>0</ShowAsSigned>
-                              <VariableType>Byte</VariableType>
-                              <Address>IBSTE1EffectiveAddressLabel</Address>
-                              <Offsets>
-                                <Offset>99</Offset>
-                                <Offset>50</Offset>
-                              </Offsets>
-                            </CheatEntry>
-                            <CheatEntry>
-                              <ID>7061</ID>
-                              <Description>"DamageReceived"</Description>
-                              <ShowAsSigned>0</ShowAsSigned>
-                              <VariableType>4 Bytes</VariableType>
-                              <Address>IBSTE1EffectiveAddressLabel</Address>
-                              <Offsets>
-                                <Offset>A8</Offset>
-                                <Offset>50</Offset>
-                              </Offsets>
-                            </CheatEntry>
-                            <CheatEntry>
-                              <ID>7062</ID>
-                              <Description>"FieldPartyObject"</Description>
-                              <ShowAsHex>1</ShowAsHex>
-                              <ShowAsSigned>0</ShowAsSigned>
-                              <VariableType>8 Bytes</VariableType>
-                              <Address>IBSTE1EffectiveAddressLabel</Address>
-                              <Offsets>
-                                <Offset>C8</Offset>
-                                <Offset>50</Offset>
-                              </Offsets>
-                            </CheatEntry>
-                            <CheatEntry>
-                              <ID>7063</ID>
-                              <Description>"BattleCommandSelection"</Description>
-                              <ShowAsSigned>0</ShowAsSigned>
-                              <VariableType>4 Bytes</VariableType>
-                              <Address>IBSTE1EffectiveAddressLabel</Address>
-                              <Offsets>
-                                <Offset>104</Offset>
-                                <Offset>50</Offset>
-                              </Offsets>
-                            </CheatEntry>
-                            <CheatEntry>
-                              <ID>7064</ID>
-                              <Description>"SamePartyTargetSelection"</Description>
-                              <ShowAsSigned>0</ShowAsSigned>
-                              <VariableType>4 Bytes</VariableType>
-                              <Address>IBSTE1EffectiveAddressLabel</Address>
-                              <Offsets>
-                                <Offset>108</Offset>
-                                <Offset>50</Offset>
-                              </Offsets>
-                            </CheatEntry>
-                            <CheatEntry>
-                              <ID>7065</ID>
-                              <Description>"EnemyPartyTargetSelection"</Description>
-                              <ShowAsSigned>0</ShowAsSigned>
-                              <VariableType>4 Bytes</VariableType>
-                              <Address>IBSTE1EffectiveAddressLabel</Address>
-                              <Offsets>
-                                <Offset>10C</Offset>
-                                <Offset>50</Offset>
-                              </Offsets>
-                            </CheatEntry>
-                            <CheatEntry>
-                              <ID>7066</ID>
-                              <Description>"SkillSelection"</Description>
-                              <ShowAsSigned>0</ShowAsSigned>
-                              <VariableType>4 Bytes</VariableType>
-                              <Address>IBSTE1EffectiveAddressLabel</Address>
-                              <Offsets>
-                                <Offset>11C</Offset>
-                                <Offset>50</Offset>
-                              </Offsets>
-                            </CheatEntry>
-                          </CheatEntries>
-                        </CheatEntry>
-                      </CheatEntries>
-                    </CheatEntry>
                   </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>7001</ID>
+              <Description>"AddItemToInventory"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>/*
+GameAssembly.dll+7B3D52 - E8 29B45D00           - call GameAssembly.dll+D8F180
+GameAssembly.dll+7B3D57 - 48 8B D0              - mov rdx,rax
+GameAssembly.dll+7B3D5A - 33 C0                 - xor eax,eax
+GameAssembly.dll+7B3D5C - 0F1F 40 00            - nop dword ptr [rax+00]
+loop start
+GameAssembly.dll+7B3D60 - 48 85 D2              - test rdx,rdx
+GameAssembly.dll+7B3D63 - 74 58                 - je GameAssembly.dll+7B3DBD
+GameAssembly.dll+7B3D65 - 48 8B 4A 68           - mov rcx,[rdx+68]
+GameAssembly.dll+7B3D69 - 48 85 C9              - test rcx,rcx
+*/
+define(IAITI0Address,"GameAssembly.dll"+7B3D52)
+define(IAITI0Bytes,E8 29 B4 5D 00 48 8B D0 33 C0 0F 1F 40 00)
+define(IAITI0BytesLength,$0E)
+//define(IAITI0Nops,)
+define(IAITI0Memory,NewMemoryLabel+0B00)
+define(IAITI0Ins,NewMemoryLabel+0B40)
+[ENABLE]
+luaCall(print('ENABLE'))
+
+luaCall(print('Asserts'))
+assert(IAITI0Address,IAITI0Bytes)
+
+luaCall(print('AOB Scans'))
+
+luaCall(print('Allocs'))
+
+luaCall(print('Labels'))
+
+label(IAITI0MemoryLabel)
+label(IAITI0BackupLabel)
+label(IAITI0EffectiveAddressLabel)
+label(IAITI0InsLabel)
+label(IAITI0CodeLabel)
+label(IAITI0ReturnLabel)
+
+luaCall(print('Memory'))
+
+IAITI0Memory:
+	IAITI0MemoryLabel:
+		db 'AITI0BU'
+		align 8 00 //8
+	IAITI0BackupLabel:
+		readmem(IAITI0Address,IAITI0BytesLength)
+		align 8 00 //16
+		db 'AITI0EA'
+		align 8 00 //8
+	IAITI0EffectiveAddressLabel:
+		dq 00 //8 40 bytes total 0x28
+
+IAITI0Ins:
+	IAITI0CodeLabel:
+	// Original code
+	call GameAssembly.dll+D8F180
+	mov rdx,rax
+	xor eax,eax
+	nop dword ptr [rax+00]
+	IAITI0InsLabel:
+    push rcx
+    mov rcx,[rdx+68]
+    mov [IAITI0EffectiveAddressLabel],rcx
+    pop rcx
+
+	jmp IAITI0ReturnLabel
+
+IAITI0Address:
+	jmp IAITI0CodeLabel
+
+IAITI0ReturnLabel:
+	//ret
+	luaCall(print('IAITI0return'))
+	registerSymbol(IAITI0Address)
+	registerSymbol(IAITI0Bytes)
+	registerSymbol(IAITI0BytesLength)
+	//registerSymbol(IAITI0Nops)
+	registerSymbol(IAITI0Memory)
+	registerSymbol(IAITI0Ins)
+	registerSymbol(IAITI0BackupLabel)
+	registerSymbol(IAITI0EffectiveAddressLabel)
+	registerSymbol(IAITI0MemoryLabel)
+	registerSymbol(IAITI0InsLabel)
+	registerSymbol(IAITI0CodeLabel)
+	registerSymbol(IAITI0ReturnLabel)
+
+[DISABLE]
+luaCall(print('DISABLE'))
+
+IAITI0Address:
+	readmem(IAITI0BackupLabel,IAITI0BytesLength)
+
+	luaCall(print('unregisterSymbols'))
+	unregisterSymbol(IAITI0Address)
+	unregisterSymbol(IAITI0Bytes)
+	unregisterSymbol(IAITI0BytesLength)
+	//unregisterSymbol(IAITI0Nops)
+	unregisterSymbol(IAITI0Memory)
+	unregisterSymbol(IAITI0Ins)
+	unregisterSymbol(IAITI0BackupLabel)
+	unregisterSymbol(IAITI0EffectiveAddressLabel)
+	unregisterSymbol(IAITI0MemoryLabel)
+	unregisterSymbol(IAITI0InsLabel)
+	unregisterSymbol(IAITI0CodeLabel)
+	unregisterSymbol(IAITI0ReturnLabel)
+
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>7002</ID>
+                  <Description>"InventoryArrayObject"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>IAITI0EffectiveAddressLabel</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
                 </CheatEntry>
               </CheatEntries>
             </CheatEntry>
@@ -4010,6 +3960,157 @@ SubAddress:
                 <Offset>0</Offset>
               </Offsets>
             </CheatEntry>
+            <CheatEntry>
+              <ID>6983</ID>
+              <Description>"RCX passed to Harvest"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>19451949310</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6984</ID>
+              <Description>"UsedItemPointer"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>1946EFB9C58</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6985</ID>
+              <Description>"No description"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>1944C31EA60</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6986</ID>
+              <Description>"ActualInventoryAddress"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>1944B4FC5C0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6987</ID>
+              <Description>"InventoryArrayObject"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>1944B4FC5A0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6988</ID>
+              <Description>"No description"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>1946E404920</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6989</ID>
+              <Description>"StaticAddressToDeriveInventoryAddress"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>193E3BF5700</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>6990</ID>
+                  <Description>"StaticAddressToDeriveInventoryAddress"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>193E3BF5700</Address>
+                  <Offsets>
+                    <Offset>B8</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>6991</ID>
+                      <Description>"StaticAddressToDeriveInventoryAddress"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>8 Bytes</VariableType>
+                      <Address>193E3BF5700</Address>
+                      <Offsets>
+                        <Offset>C8</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>6992</ID>
+                          <Description>"StaticAddressToDeriveInventoryAddress"</Description>
+                          <ShowAsHex>1</ShowAsHex>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>8 Bytes</VariableType>
+                          <Address>193E3BF5700</Address>
+                          <Offsets>
+                            <Offset>20</Offset>
+                            <Offset>C8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6993</ID>
+              <Description>"N"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>19450181B40</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6994</ID>
+              <Description>"No description"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>19449005B40</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6995</ID>
+              <Description>"F"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>194285D4680</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6996</ID>
+              <Description>"No description"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>193E3BF57B8</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6997</ID>
+              <Description>"EndResultofRepeatedDerivation"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>194285D4680</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6998</ID>
+              <Description>"No description"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>194285D46E8</Address>
+            </CheatEntry>
           </CheatEntries>
         </CheatEntry>
       </CheatEntries>
@@ -4046,6 +4147,17 @@ SubAddress:
           <Address>GameAssembly.dll+314FA4</Address>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6999</ID>
+      <Description>"InventoryArrayFromStatic"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>1EF237346E8</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -5510,6 +5622,179 @@ SubAddress:
         <Byte>84</Byte>
       </After>
     </CodeEntry>
+    <CodeEntry>
+      <Description>Code :call GameAssembly.dll+1349790 Call HarvestCompareFunction</Description>
+      <AddressString>GameAssembly.dll+134A456</AddressString>
+      <Before>
+        <Byte>33</Byte>
+        <Byte>D2</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>CE</Byte>
+      </Before>
+      <Actual>
+        <Byte>E8</Byte>
+        <Byte>35</Byte>
+        <Byte>F3</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Actual>
+      <After>
+        <Byte>84</Byte>
+        <Byte>C0</Byte>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+        <Byte>56</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :cmp eax,[rdx+18] RDX=WeirdArrayFromHarvestFunction</Description>
+      <AddressString>GameAssembly.dll+13497F4</AddressString>
+      <Before>
+        <Byte>1C</Byte>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>43</Byte>
+        <Byte>50</Byte>
+      </Before>
+      <Actual>
+        <Byte>3B</Byte>
+        <Byte>42</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>73</Byte>
+        <Byte>19</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>C8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rcx+rbx*4+20],00000000 DiscardItem</Description>
+      <AddressString>GameAssembly.dll+7AF51D</AddressString>
+      <Before>
+        <Byte>3B</Byte>
+        <Byte>59</Byte>
+        <Byte>18</Byte>
+        <Byte>73</Byte>
+        <Byte>22</Byte>
+      </Before>
+      <Actual>
+        <Byte>C7</Byte>
+        <Byte>44</Byte>
+        <Byte>99</Byte>
+        <Byte>20</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>B0</Byte>
+        <Byte>01</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>5C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rcx+r8*4+20],edi AddItemToInventory</Description>
+      <AddressString>GameAssembly.dll+7B3DAD</AddressString>
+      <Before>
+        <Byte>3B</Byte>
+        <Byte>41</Byte>
+        <Byte>18</Byte>
+        <Byte>73</Byte>
+        <Byte>16</Byte>
+      </Before>
+      <Actual>
+        <Byte>42</Byte>
+        <Byte>89</Byte>
+        <Byte>7C</Byte>
+        <Byte>81</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rsp+08],rbx AdditemToInventory( RCX=ItemID )</Description>
+      <AddressString>GameAssembly.dll+7B3D00</AddressString>
+      <Before>
+        <Byte>71</Byte>
+        <Byte>69</Byte>
+        <Byte>92</Byte>
+        <Byte>FF</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>57</Byte>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>EC</Byte>
+        <Byte>20</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :sub rsp,28 GetInventoryAddressFromStatic</Description>
+      <AddressString>GameAssembly.dll+D8F180</AddressString>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>EC</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>80</Byte>
+        <Byte>3D</Byte>
+        <Byte>1C</Byte>
+        <Byte>0C</Byte>
+        <Byte>3D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :test rdx,rdx StartOfInventoryAddLoop</Description>
+      <AddressString>GameAssembly.dll+7B3D60</AddressString>
+      <Before>
+        <Byte>C0</Byte>
+        <Byte>0F</Byte>
+        <Byte>1F</Byte>
+        <Byte>40</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>D2</Byte>
+      </Actual>
+      <After>
+        <Byte>74</Byte>
+        <Byte>58</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>4A</Byte>
+      </After>
+    </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols/>
   <Comments># Objects 
@@ -5525,14 +5810,17 @@ BattleParticipantTurnReportObject
 +0x60 Something:u32
 +0x68 SpeedMaybe:0x0A,0x02,0x08,0x0C,0x05,0x06,0x07
 +0x70 turnsElapsed:u64
++0x78 PointerInvertedUsableItemsList:a64
 +0x98 ActedBefore:u8
 +0x99 ActedAfter:u8
 +0xA8 DamageReceived:u32
 +0xC8 FieldPartyObject:a64
 +0x104 BattleCommandSelection:u32
-+0x108 samePartyTargetSelection:u32
-+0x10C TargetSelection:u32
-+0x11C SkillSelection:u32
++0x108 SamePartyTargetSelection:u32
++0x10C EnemyPartyTargetSelection:u32
++0x118 PhysicalSkillSelection:u32
++0x11C MagicSkillSelection:u32
++0x120 UsedItemID:u16
 BattleParticipant[0x58] EffectTypesObject
 +0x00 RTTI:a64 A0 3E B5 D1 C1 01 00 00
 +0x10 EffectTypeArrayObject:a64
@@ -5564,12 +5852,24 @@ TruePartyArrayObject
 +0x00 RTTI:a64 B8 F8 E7 75 AA 02 00 00
 +0x18 PartySize:u32=6:u32
 +0x20-0x50 $PartySize * ( BattleParticipantTurnReportObject:a64 || 0:a64 )
-
 BattleStateTurnEndObject
 +0x00 RTTI:a64 D0 BA 6F 67 C1 01 00 00
 BattleStateTurnEnd.PartyArrayObject
 +0x00 RTTI:a64 98 21 98 80 BF 01 00 00 || B8 F8 E7 75 AA 02 00 00
 +0x18 PartySize:u32
 +0x20-0x50 $PartySize * ( BattleParticipantTurnReportObject:a64 || 0:a64 )
+HarvestRCXObject
++0x00 RTTI:a64 10 B6 C9 E3 93 01 00 00
++0x10 ReadyForHarvest:u8
++0x50 SomeValueLessThanArrayLength:u32
++0x54 CurrentItemID
+HarvestDerivedArrayObject
++0x00 RTTI:a64 C0 93 2B E6 93 01 00 00
++0x18 ArraySize:u32
++0x20 ArrayBegin
+InventoryArrayObject
++0x00 RTTI:a64 00 46 42 49 94 01 00 00 || 00 46 42 49 94 01 00 00
++0x18 Size=60:u64
++0x20 ArrayBegin
 </Comments>
 </CheatTable>

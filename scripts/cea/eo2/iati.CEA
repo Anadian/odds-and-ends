@@ -1,0 +1,104 @@
+/*
+GameAssembly.dll+7B3D52 - E8 29B45D00           - call GameAssembly.dll+D8F180
+GameAssembly.dll+7B3D57 - 48 8B D0              - mov rdx,rax
+GameAssembly.dll+7B3D5A - 33 C0                 - xor eax,eax
+GameAssembly.dll+7B3D5C - 0F1F 40 00            - nop dword ptr [rax+00]
+loop start
+GameAssembly.dll+7B3D60 - 48 85 D2              - test rdx,rdx
+GameAssembly.dll+7B3D63 - 74 58                 - je GameAssembly.dll+7B3DBD
+GameAssembly.dll+7B3D65 - 48 8B 4A 68           - mov rcx,[rdx+68]
+GameAssembly.dll+7B3D69 - 48 85 C9              - test rcx,rcx
+*/
+define(IAITI0Address,"GameAssembly.dll"+7B3D52)
+define(IAITI0Bytes,E9 29 B4 5D 00 48 8B D0 33 C0 0F 1F 40 00)
+define(IAITI0BytesLength,$0E)
+//define(IAITI0Nops,)
+define(IAITI0Memory,NewMemoryLabel+0B00)
+define(IAITI0Ins,NewMemoryLabel+0B40)
+[ENABLE]
+luaCall(print('ENABLE'))
+
+luaCall(print('Asserts'))
+assert(IAITI0Address,IAITI0Bytes)
+
+luaCall(print('AOB Scans'))
+
+luaCall(print('Allocs'))
+
+luaCall(print('Labels'))
+
+label(IAITI0MemoryLabel)
+label(IAITI0BackupLabel)
+label(IAITI0EffectiveAddressLabel)
+label(IAITI0InsLabel)
+label(IAITI0CodeLabel)
+label(IAITI0ReturnLabel)
+
+luaCall(print('Memory'))
+
+IAITI0Memory:
+	IAITI0MemoryLabel:
+		db 'AITI0BU'
+		align 8 00 //8
+	IAITI0BackupLabel:
+		readmem(IAITI0Address,IAITI0BytesLength)
+		align 8 00 //16
+		db 'AITI0EA'
+		align 8 00 //8
+	IAITI0EffectiveAddressLabel:
+		dq 00 //8 40 bytes total 0x28
+
+IAITI0Ins:
+	IAITI0CodeLabel:
+	// Original code
+	call GameAssembly.dll+D8F180
+	mov rdx,rax
+	xor eax,eax
+	nop dword ptr [rax+00]
+	IAITI0InsLabel:
+    push rcx
+    mov rcx,[rdx+68]
+    mov [IAITI0EffectiveAddressLabel],rcx
+    pop rcx
+
+	jmp IAITI0ReturnLabel
+
+IAITI0Address:
+	jmp IAITI0CodeLabel
+
+IAITI0ReturnLabel:
+	//ret
+	luaCall(print('IAITI0return'))
+	registerSymbol(IAITI0Address)
+	registerSymbol(IAITI0Bytes)
+	registerSymbol(IAITI0BytesLength)
+	//registerSymbol(IAITI0Nops)
+	registerSymbol(IAITI0Memory)
+	registerSymbol(IAITI0Ins)
+	registerSymbol(IAITI0BackupLabel)
+	registerSymbol(IAITI0EffectiveAddressLabel)
+	registerSymbol(IAITI0MemoryLabel)
+	registerSymbol(IAITI0InsLabel)
+	registerSymbol(IAITI0CodeLabel)
+	registerSymbol(IAITI0ReturnLabel)
+
+[DISABLE]
+luaCall(print('DISABLE'))
+
+IAITI0Address:
+	readmem(IAITI0BackupLabel,IAITI0BytesLength)
+
+	luaCall(print('unregisterSymbols'))
+	unregisterSymbol(IAITI0Address)
+	unregisterSymbol(IAITI0Bytes)
+	unregisterSymbol(IAITI0BytesLength)
+	//unregisterSymbol(IAITI0Nops)
+	unregisterSymbol(IAITI0Memory)
+	unregisterSymbol(IAITI0Ins)
+	unregisterSymbol(IAITI0BackupLabel)
+	unregisterSymbol(IAITI0EffectiveAddressLabel)
+	unregisterSymbol(IAITI0MemoryLabel)
+	unregisterSymbol(IAITI0InsLabel)
+	unregisterSymbol(IAITI0CodeLabel)
+	unregisterSymbol(IAITI0ReturnLabel)
+

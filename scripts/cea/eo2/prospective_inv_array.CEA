@@ -1,0 +1,15 @@
+/*
+GameAssembly.dll+7B3D52 - E8 29B45D00           - call GameAssembly.dll+D8F180
+GameAssembly.dll+7B3D57 - 48 8B D0              - mov rdx,rax
+GameAssembly.dll+7B3D5A - 33 C0                 - xor eax,eax
+GameAssembly.dll+7B3D5C - 0F1F 40 00            - nop dword ptr [rax+00]
+loop start
+GameAssembly.dll+7B3D60 - 48 85 D2              - test rdx,rdx
+GameAssembly.dll+7B3D63 - 74 58                 - je GameAssembly.dll+7B3DBD
+GameAssembly.dll+7B3D65 - 48 8B 4A 68           - mov rcx,[rdx+68]
+GameAssembly.dll+7B3D69 - 48 85 C9              - test rcx,rcx
+*/
+[ENABLE]
+
+[DISABLE]
+
