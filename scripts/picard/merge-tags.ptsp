@@ -1,0 +1,16 @@
+title: merge-tags
+script_language_version: '1.1'
+script: |
+  $noop(Merges current tags with _og_<tag> tags from "og-tags" script.)
+  $if($is_multi(title),$setmulti(_cur_title,%title%),$set(_cur_title,%title%))
+  $if($is_multi(album),$setmulti(_cur_album,%album%),$set(_cur_album,%album%))
+  $if($is_multi(artist),$setmulti(_cur_artist,%artist%),$set(_cur_artist,%artist%))
+  $if($is_multi(artists),$setmulti(_cur_artists,%artists%),$set(_cur_artists,%artists%))
+  $if($is_multi(genre),$setmulti(_cur_genre,%genre%),$set(_cur_genre,%genre%))
+  $noop(
+  $set(_merged_title,%_og_title%; %_cur_title%)
+  $setmulti(_multi_title,%_merged_title%)
+  $setmulti(_unique_title,$unique(%_multi_title%))
+  )
+  $setmulti(_unique_title,$unique(%_og_title%; %_cur_title%))
+id: efa80770-0236-4740-9029-c8b410f96811

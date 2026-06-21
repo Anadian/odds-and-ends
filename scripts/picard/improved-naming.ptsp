@@ -1,0 +1,13 @@
+title: 'Preset 1: Default file naming script'
+description: |
+  This preset example file naming script does not require any special settings, tagging scripts or plugins.
+author: MusicBrainz Picard Development Team
+license: GNU Public License version 2
+version: '1.0'
+last_updated: 2019-08-05 13:40:00 UTC
+script_language_version: '1.0'
+script: |
+  $if2(%albumartist%,%artist%)/
+  $if(%albumartist%,%album%/,)
+  $if($gt(%totaldiscs%,1),$if($gt(%totaldiscs%,9),$num(%discnumber%,2),%discnumber%)-,)$if($and(%albumartist%,%tracknumber%),$num(%tracknumber%,2) ,)$if(%_multiartist%,$join(%artist%,-))-$join(%title%,-)
+id: Preset 1

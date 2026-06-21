@@ -1,0 +1,45 @@
+title: unique-tags
+script_language_version: '1.1'
+script: "$noop($if($is_multi(%title%),\n\t$logline(is_multi\\(title\\):true,E)\n\t\
+  $setmulti(_current_value,%title%)\n\t$noop($logline($unique(%_current_value%,1),E))\n\
+  \t$setmulti(_unique_value,$unique(%_current_value%,1))\n\t$cleanmulti(_unique_value)\n\
+  \t$if($ne(%_unique_value%,%_current_value%),\n\t\t$logline(Changing \"%_current_value%\"\
+  ->\"%_unique_value%\".,E)\n\t,\n\t\t$logline(No change.,E)\n\t)\n,$logline(is_multi\\\
+  (title\\):false,E))\n$if($is_multi(%album%),\n\t$logline(is_multi\\(album\\):true,E)\n\
+  \t$setmulti(_current_value,%album%)\n\t$setmulti(_unique_value,$unique(%_current_value%,1))\n\
+  \t$cleanmulti(_unique_value)\n\t$if($ne(%_unique_value%,%_current_value%),\n\t\t\
+  $logline(Changing \"%_current_value%\"->\"%_unique_value%\".,E)\n\t\t$copy(album,_unique_value)\n\
+  \t,\n\t\t$logline(No change.,E)\n\t)\n,$logline(is_multi\\(album\\):false,E))\n\
+  )\n$unset(_standard_tags_multi)\n$unset(_standard_tags_number)\n$unset(_looping_bool)\n\
+  $unset(_current_tag_number)\n$unset(_current_tag_string)\n$unset(_current_value)\n\
+  $unset(_unique_value)\n$setmulti(_standard_tags_multi,album; albumartist; albumartistsort;\
+  \ artist; artists; artistsort; asin; barcode; catalognumber; comment; compilation;\
+  \ date; discnumber; discsubtitle; isrc; label; media; musicbrainz_albumartistid;\
+  \ musicbrainz_albumid; musicbrainz_artistid; musicbrainz_discid; musicbrainz_originalalbumid;\
+  \ musicbrainz_originalartistid; musicbrainz_recordingid; musicbrainz_releasegroupid;\
+  \ musicbrainz_trackid; originaldate; originalyear; releasecountry; releasestatus;\
+  \ releasetype; script; title; totaldiscs; totaltracks; tracknumber; website; acoustid_fingerprint;\
+  \ acoustid_id; albumsort; bpm; copyright; encodedby; encodersettings; key; lyrics;\
+  \ musicip_fingerprint; musicip_puid; originalalbum; originalartist; originalfilename;\
+  \ releasedate; showmovement; subtitle; titlesort; gapless; podcast; podcasturl;\
+  \ show; showsort; arranger; composer; composersort; conductor; director; djmixer;\
+  \ engineer; language; license; lyricist; mixer; musicbrainz_workid; producer; remixer;\
+  \ work; writer; genre)\n$set(_standard_tags_number,$lenmulti(%_standard_tags_multi%))\n\
+  $logline(standard_tags_number:\"%_standard_tags_number%\",E)\n$set(_looping_bool,1)\n\
+  $while(%_looping_bool%,\n\t$if($lt(%_loop_count%,%_standard_tags_number%,int),\n\
+  \t\t$logline(loop_count:\"%_loop_count%\",E)\n\t\t$set(_current_tag_string,$getmulti(%_standard_tags_multi%,%_loop_count%))\n\
+  \t\t$logline(_current_tag_string:\"%_current_tag_string%\"get_value:\"$get(%_current_tag_string%)\"\
+  ,E)\n\t\t$noop($if($is_multi($get(%_loop_value%)),\n\t\t\t$logline(is_multi:true,E)\n\
+  \t\t\t$setmulti(_current_value,$get(%_loop_value%))\n\t\t\t$setmulti(_unique_value,$unique(%_current_value%,1))\n\
+  \t\t\t$cleanmulti(_unique_value)\n\t\t\t$if($ne(%_unique_value%,%_current_value%),\n\
+  \t\t\t\t$logline(Changing \"%_current_value%\"->\"%_unique_value%\".,E)\n\t\t\t\t\
+  $copy(%_loop_value%,_unique_value))\n\t\t\t,\n\t\t\t\t$logline(No change.,E)\n\t\
+  \t\t)\n\t\t,\n\t\t\t$logline(is_multi:false,E)\n\t\t) $noop(if[is_multi])\t\n\t\
+  ,\n\t\t$logline(loop_count:\"%_loop_count%\",E)\n\t\t$set(_looping_bool,)\n\t)\n\
+  )\n$noop($foreach(%_standard_tags%,\n\t$logline(_loop_value:\"%_loop_value%\",E)\n\
+  \t$if($is_multi($get(%_loop_value%)),\n\t\t$logline(is_multi:true,E)\n\t\t$setmulti(_current_value,$get(%_loop_value%))\n\
+  \t\t$setmulti(_unique_value,$unique(%_current_value%,1))\n\t\t$cleanmulti(_unique_value)\n\
+  \t\t$if($ne(%_unique_value%,%_current_value%),\n\t\t\t$logline(Changing \"%_current_value%\"\
+  ->\"%_unique_value%\".,E)\n\t\t\t$copy(%_loop_value%,_unique_value))\n\t\t,\n\t\t\
+  \t$logline(No change.,E)\n\t\t)\n\t,\n\t\t$logline(is_multi:false,E)\n\t)\n))\n"
+id: fcea783d-9d42-4030-94d0-56c525896d76
