@@ -40,11 +40,15 @@
 %s/js\\pd(\([A-Za-z0-9_.]*\),\(.*\))$/this.\1 ??= options.\1 ?? \2;/ge
 
 "javascript try/catch function macro: 1 indentation, 2 declaration, 3 variable-assignement left hand, 4 assignment-right-hand function name, 5 function parametres
-%s/^\(\t*\)js\\tc(\(var \)\{,1}\([A-Za-z0-9_.]\+ = \)\{,1}\([A-Za-z0-9_. ]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3\4(\5);\r\1} catch(error){\r\1\treturn_error = new Error(`\4 threw an error: \${error}`);\r\1return_error.cause = error;\r\1\tthrow return_error;\r\1}/ge
+%s/^\(\t*\)js\\tc(\(var \)\{,1}\([A-Za-z0-9_.]\+ = \)\{,1}\([A-Za-z0-9_. ]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3\4(\5);\r\1} catch(error){\r\1\treturn_error = new Error(`\4 threw an error: \${error}`);\r\1\treturn_error.cause = error;\r\1\tthrow return_error;\r\1}/ge
 
 " javascript Object.defineProperties macro
 %s/^\(\t*\)js\\dp(\([A-Za-z0-9_]*\))/\1\2: {\r\1\tvalue: \2,\r\1\twritable: true,\r\1\tenumerable: true\r\1}/ge
 %s/^\(\t*\)js\\dp(\([A-Za-z0-9_]*\),\([0-9A-Za-z_.\(\)-]\+\))/\1\2: {\r\1\tvalue: \3,\r\1\twritable: true,\r\1\tenumerable: true\r\1}/ge
+
+" javascript cachedDefineProperty macro
+%s/^\(\t*\)js\\cdp(\([A-Za-z0-9_]*\))/\1\2: {\r\1\tenumerable: true,\r\1\tget(){\r\1\t\treturn this._cache.get( '\2' );\r\1\t},\r\1\tset( value ){\r\1\t\treturn this._cache.set( '\2', value );\r\1\t}\r\1}/ge
+
 "javascript NodeJS test throws function
 %s/js\\tt(\([^)]*\))/Test.test( '\1:throws', function( t ){\r\tt.diagnostic( t.name );\r\tconst test_matrix = {\r\t\tfunctions: {\r\t\t\tdefaultExport: DefaultExport.\1,\r\t\t\tnamespaceExport: NamespaceExport.\1,\r\t\t\tnamedExport: \1\r\t\t},\r\t\tconditions: {\r\t\t\tinput_options_type: {\r\t\t\t\targs: [\r\t\t\t\t\ttrue\r\t\t\t\t],\r\t\t\t\texpected: {\r\t\t\t\t\tinstanceOf: TypeError,\r\t\t\t\t\tcode: 'ERR_INVALID_ARG_TYPE'\r\t\t\t\t}\r\t\t\t}\r\t\t}\r\t};\r\tfor( const function_key of Object.keys( test_matrix.functions ) ){\r\t\tvar input_function = test_matrix.functions[function_key];\r\t\tfor( const condition_key of Object.keys( test_matrix.conditions ) ){\r\t\t\tvar test_id = `${t.name}:${function_key}:${condition_key}`;\r\t\t\tt.diagnostic( test_id );\r\t\t\tvar condition = test_matrix.conditions[condition_key];\r\t\t\tvar bound_function = input_function.bind( null, ...condition.args );\r\t\t\tvar validator_function = Test.errorExpected.bind( null, condition.expected );\r\t\t\tTest.assert.throws( bound_function, validator_function, test_id );\r\t\t}\r\t}\r} );/ge
 
@@ -204,7 +208,7 @@
 "%s/\\e/_enum/ge
 "%s/\\ty/_type/ge
 "%s/ON\\/Option_Name_/ge
-"%s/i\\o/input_options/ge
+%s/i\\o/input_options/ge
 
 " Expand f<BACKSLASH>r to function_return
 %s/f\\r/function_return/ge

@@ -1,0 +1,20 @@
+title: clear-tags
+script_language_version: '1.1'
+script: |
+  $noop(Unsets _og|cur_<tag> tags.)
+  $unset(_og_title)
+  $unset(_og_album)
+  $unset(_og_artist)
+  $unset(_og_artists)
+  $unset(_og_genre)
+
+  $unset(_cur_title)
+  $unset(_cur_album)
+  $unset(_cur_artist)
+  $unset(_cur_artists)
+  $unset(_cur_genre)
+
+  $unset(_merged_title)
+  $unset(_unique_title)
+  $unset(_multi_title)
+id: 631b029f-996b-4291-9e69-ec68dd638866
