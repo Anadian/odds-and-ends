@@ -19,7 +19,7 @@ else
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)";
 	export HOMEBREW_NO_EMOJI=1;
 fi
-alias ls-plus='ls -GAFosh'
+alias ls-plus='ls -GAFosh';
 alias ls-bins='ls ${PATH//:/ }';
 #alias date-iso-utc='date -ju +%Y-%m-%dT%H:%M:%S%z'
 #alias date-iso='date -j +%Y-%m-%dT%H:%M:%S%z'
@@ -41,8 +41,9 @@ fi
 alias yt-dlp="yt-dlp --config-locations $HOME/dev/odds-and-ends/config/yt-dlp.conf";
 alias grep='pcre2grep';
 alias godot="MANGOHUD=0 $HOME/app/Godot_v4.4.1-stable_mono_linux_x86_64/Godot_v4.4.1-stable_mono_linux.x86_64";
-alias retroarch="/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=antimicrox --file-forwarding io.github.antimicrox.antimicrox --show @@ %f @@; gamemoderun retroarch;";
+alias retroarch="/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=antimicrox --file-forwarding io.github.antimicrox.antimicrox --show @@ %f @@ & gamemoderun retroarch;";
 alias doc="sudo docker";
+alias ollama="sudo docker exec -it ollama ollama";
 #alias gtb='git branch'
 #alias gtc='git checkout'
 #alias gtm='git merge'
