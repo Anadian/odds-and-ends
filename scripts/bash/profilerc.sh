@@ -1,5 +1,6 @@
 #!/bin/bash
 # Variables
+export PROFILE_DEBUG=0;
 export PS1="[\[\033[1;31m\]\u\[\033[0;00m\]\[\033[0;00m\]@\[\033[0;00m\]\[\033[0;34m\]\h\[\033[0;00m\]:\[\033[0;36m\]\W\[\033[0;00m\]]\s\$ "
 export PAGER=less
 export VISUAL=nvim
@@ -23,7 +24,6 @@ fi
 # Aliases
 alias ls-plus='ls -GAFosh';
 alias ls-bins='ls ${PATH//:/ }';
-#alias clang-info='clang -v -dM -E -x c /dev/null';
 alias date-iso='date +%Y-%m-%dT%H:%M:%S%z';
 alias date-iso-utc='date -u +%Y-%m-%dT%H:%M:%S%z';
 alias wget-plus='wget -nH -np -nd -k';
@@ -50,7 +50,7 @@ alias ollama="sudo docker exec -it ollama ollama";
 empty-dir(){
 	for ((i=1; i <= $#; i++))
 	do
-		if (( $PROFILE_DEBUG == 1 )); then
+		if (( ${PROFILE_DEBUG:-0} == 1 )); then
 			echo "$0 $FUNCNAME $# $i ${!i}";
 		fi
 		if [[ -d ${!i} ]]; then
@@ -62,7 +62,7 @@ empty-dir(){
 	return 0;
 }
 full-path(){
-	if (( $PROFILE_DEBUG == 1 )); then
+	if (( ${PROFILE_DEBUG:-0} == 1 )); then
 		echo "$0 $FUNCNAME $# $*";
 	fi
 	ls ${PWD}/$1
@@ -72,7 +72,7 @@ if [[ "$XDG_SESSION_DESKTOP" == 'Gnome' ]]; then
 	gnome-screen-idle-delay(){
 		_return=0;
 		if (( $# == 1 )); then
-			if (( $PROFILE_DEBUG == 1 )); then
+			if (( ${PROFILE_DEBUG:-0} == 1 )); then
 				log_string="$(date --utc --iso-8601='seconds') Setting the screen to turn off after $1 seconds of no input.";
 				echo "$log_string";
 				echo "$log_string" >> ~/gnome-screen.log;
@@ -117,8 +117,6 @@ export SGS8_PORT_SSH='8022';
 export SSH_D7k="$D7k_USER@$D7k_HOST:22";
 export SSH_SGS8="$SGS8_USER@$SGS8_HOST:$SGS8_PORT_SSH";
 export SSH_A15="$A15_USER@$A15_HOST:22";
-#alias ssh-cn-d7k='ssh willa@cn-d7k';
-#alias ftp-cn-d7k='sftp willa@cn-d7k';
 # Shell options
 if [[ $(uname -o) == 'GNU/Linux' ]]; then
 	set meta-flag on;
