@@ -12,3 +12,4 @@ export DIR_wt="$HOME/dev/extract-documentation-comments/node_modules/.pnpm/winst
 export DIR_ccm="$HOME/dev/cno-config-manager"
 export DIR_cproj="$HOME/dev/cno-project-manager"
 export DIR_oe="$HOME/dev/odds-and-ends"
+export DIR_ms="$HOME/dev/media-stuff"
