@@ -215,4 +215,9 @@
 
 "C Header file template (Name)
 %s/headertm(\([^)]*\))/#if !defined(\1)\r#define \1\r\r#if defined(__cplusplus)\rextern "C"{\r#endif \/* defined(__cplusplus) *\/\r\r\r\r#if defined(__cplusplus)\r}\r#endif \/* defined(__cplusplus) *\/\r\r#endif \/* !defined(\1) *\//ge
+
+" Text
+%s/\%u2019/'/ge
+%s/\%u201c\|\%u201d/"/ge
+
 write!

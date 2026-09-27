@@ -43,7 +43,7 @@ alias yt-dlp="yt-dlp --config-locations $HOME/dev/odds-and-ends/config/yt-dlp.co
 alias grep='pcre2grep';
 alias godot="MANGOHUD=0 $HOME/app/Godot_v4.4.1-stable_mono_linux_x86_64/Godot_v4.4.1-stable_mono_linux.x86_64";
 alias retroarch="/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=antimicrox --file-forwarding io.github.antimicrox.antimicrox --show @@ %f @@ & gamemoderun retroarch;";
-alias melonds="/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=antimicrox --file-forwarding io.github.antimicrox.antimicrox --show @@ %f @@ & gamemoderun melonds-emulator;";
+alias melonds="/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=antimicrox --file-forwarding io.github.antimicrox.antimicrox & gamemoderun melonds-emulator;";
 alias doc="sudo docker";
 alias ollama="sudo docker exec -it ollama ollama";
 # Functions
