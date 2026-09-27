@@ -144,7 +144,7 @@
   <CheatCodes>
     <CodeEntry>
       <Description>Code :mov [rax],esi SetVisualSoul</Description>
-      <AddressString>1B6DDA9B1D3</AddressString>
+      <AddressString>PlayerDataManager:SetVisualSoul+33</AddressString>
       <Before>
         <Byte>A5</Byte>
         <Byte>B5</Byte>
@@ -166,7 +166,7 @@
     </CodeEntry>
     <CodeEntry>
       <Description>Code :mov [rax],edi PlayerDataManager:SetSoul+38</Description>
-      <AddressString>18942CF69A8</AddressString>
+      <AddressString>PlayerDataManager:SetSoul+38</AddressString>
       <Before>
         <Byte>23</Byte>
         <Byte>88</Byte>
@@ -188,7 +188,7 @@
     </CodeEntry>
     <CodeEntry>
       <Description>Code :mov [r15+38],edi InvenItem:SetCount+9e:</Description>
-      <AddressString>188F150C3BE</AddressString>
+      <AddressString>InvenItem:SetCount+9e</AddressString>
       <Before>
         <Byte>00</Byte>
         <Byte>00</Byte>
@@ -212,7 +212,7 @@
     </CodeEntry>
     <CodeEntry>
       <Description>Code :movss [rax+38],xmm5 MoreMountains.CorgiEngine.Character:OnMsg_Attacked+911</Description>
-      <AddressString>189705E9521</AddressString>
+      <AddressString>MoreMountains.CorgiEngine.Character:OnMsg_Attacked+911</AddressString>
       <Before>
         <Byte>C0</Byte>
         <Byte>F2</Byte>
