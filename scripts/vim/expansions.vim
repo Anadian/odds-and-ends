@@ -16,6 +16,19 @@
 
 "%s/js\\ava(\([A-Za-z0-9_:]*\))/AVA( '\1', function( t ){\r\tt.log( t.title );\r\t\r} )/ge
 
+" Temporary
+%s/sm\\/SlotsMinigame_/ge
+
+" C symbol renames
+%s/rn\\struct(\(\w\+\),\(\w\+\))/"\2": {\r\tchangeType: "rename",\r\toriginal: "\1",\r\tcurrent: "\2",\r\tsymbolType: "struct"\r},/ge
+%s/rn\\mem(\(\w\+\)\.\(\w\+\),\(\w\+\)\.\(\w\+\))/"\3.\4": {\r\tchangeType: "rename",\r\toriginal: "\1.\2",\r\tcurrent: "\3.\4",\r\tsymbolType: "member"\r},/ge
+%s/rn\\enum(\(\w\+\),\(\w\+\))/"\2": {\r\tchangeType: "rename",\r\toriginal: "\1",\r\tcurrent: "\2",\r\tsymbolType: "enum"\r},/ge
+%s/rn\\field(\(\w\+\)\.\(\w\+\),\(\w\+\)\.\(\w\+\))/"\3.\4": {\r\tchangeType: "rename",\r\toriginal: "\1.\2",\r\tcurrent: "\3.\4",\r\tsymbolType: "field"\r},/ge
+%s/rn\\sub(\(\w\+\),\(\w\+\))/"\2": {\r\tchangeType: "rename",\r\toriginal: "\1",\r\tcurrent: "\2",\r\tsymbolType: "subroutine"\r},/ge
+%s/rn\\par(\(\w\+\)\.\(\w\+\),\(\w\+\)\.\(\w\+\))/"\3.\4": {\r\tchangeType: "rename",\r\toriginal: "\1.\2",\r\tcurrent: "\3.\4",\r\tsymbolType: "param"\r},/ge
+%s/rn\\const(\(\w\+\),\(\w\+\))/"\2": {\r\tchangeType: "rename",\r\toriginal: "\1",\r\tcurrent: "\2",\r\tsymbolType: "constant"\r},/ge
+%s/rn\\static(\(\w\+\),\(\w\+\))/"\2": {\r\tchangeType: "rename",\r\toriginal: "\1",\r\tcurrent: "\2",\r\tsymbolType: "static"\r},/ge
+
 "Javascript
 
 " JSON schema reference 
@@ -41,6 +54,9 @@
 
 "javascript try/catch function macro: 1 indentation, 2 declaration, 3 variable-assignement left hand, 4 assignment-right-hand function name, 5 function parametres
 %s/^\(\t*\)js\\tc(\(var \)\{,1}\([A-Za-z0-9_.]\+ = \)\{,1}\([A-Za-z0-9_. ]\+\)(\([^)]*\)))$/\1try{\r\1\t\2\3\4(\5);\r\1} catch(error){\r\1\treturn_error = new Error(`\4 threw an error: \${error}`);\r\1\treturn_error.cause = error;\r\1\tthrow return_error;\r\1}/ge
+
+"javascript try/catch function 2 macro: 1 indentation, 2 declaration, 3 variable-assignement left hand, 4 assignment-right-hand function name, 5 function parametres
+%s/^\(\t*\)js\\tc(\(.*\))$/\1try{\r\1\t\2;\r\1} catch(error){\r\1\treturn_error = new Error(`\2 threw an error: \${error}`);\r\1\treturn_error.cause = error;\r\1\tthrow return_error;\r\1}/ge
 
 " javascript Object.defineProperties macro
 %s/^\(\t*\)js\\dp(\([A-Za-z0-9_]*\))/\1\2: {\r\1\tvalue: \2,\r\1\twritable: true,\r\1\tenumerable: true\r\1}/ge
@@ -68,7 +84,7 @@
 %s/go\\msi/map[string]interface{}/ge
 
 "cs\r -> C# _Ready for Godot;
-%s/cs\\r/\/\/Meta\r\tpublic NodeMeta _meta;\r\r\t\/\/ Called when the node enters the scene tree for the first time.\r\tpublic override void _Ready(){\r\t\tmeta = new Meta( Name );\r\t\tInit();\r\t\tmeta.ready_time = Meta.GetNow();\r\t}/g
+%s/cs\\r/\/\/Meta\r\tpublic NodeMeta _meta;\r\r\t\/\/ Called when the node enters the scene tree for the first time.\r\tpublic override void _Ready(){\r\t\tmeta = new Meta( Name );\r\t\tInit();\r\t\tmeta.ready_time = Meta.GetNow();\r\t}/ge
 
 "cs\log(<string>) > Debug.Log($"{gameObject.name}: {name}: {fname}: <string>");
 %s/^\(\t*\)cs\\log(\([^)]*\))/\1Debug.Log($"{Time.frameCount}: {gameObject.name}: {cname}: {fname}: \2");/ge

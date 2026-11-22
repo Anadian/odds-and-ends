@@ -17,21 +17,22 @@ set scrolloff=4 "so
 scriptencoding utf-8
 set encoding=utf8
 set encoding=utf-8
-set termencoding=utf-8
+"set termencoding=utf-8 " Now gives an error
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,big5,gb2312,latin1
 " Use Unix as the standard file type, then DOS, then old-school Macintosh.
 set ffs=unix,dos,mac
 " ##Indentation
+set noexpandtab
 " Automatically tab to the current indentation when creating a new line.
 set autoindent
 set smartindent     " indent when
 " Make auto indentation 4 spaces in width.
 set shiftwidth=4
-" Make tabs 4 spaces in width.
-set tabstop=4
 " Make back space remove 4 spaces??
 set softtabstop=4
+" Make tabs 4 spaces in width.
+set tabstop=4
 " Make tabs work more intuitively.
 set shiftround
 " ##User Inteface
@@ -530,3 +531,10 @@ endfunction
 " <nop> No operation
 " Use :scriptnames to see all scripts that have been sourced in the order they were sourced
 " Control+l forces redrawing of the screen.
+
+:let g:coc_float_disable = 1
+:highlight Pmenu ctermbg=NONE guibg=NONE
+:highlight PmenuSel ctermbg=black guibg=black
+
+:set completeopt=menuone,menu
+
